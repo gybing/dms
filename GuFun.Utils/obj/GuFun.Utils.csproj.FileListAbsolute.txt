@@ -1,0 +1,13 @@
+E:\Sources\Net\GuFun\GuFun.Utils\bin\Debug\GuFun.Utils.dll
+E:\Sources\Net\GuFun\GuFun.Utils\bin\Debug\GuFun.Utils.pdb
+E:\Sources\Net\GuFun\GuFun.Utils\obj\Debug\ResolveAssemblyReference.cache
+E:\Sources\Net\GuFun\GuFun.Utils\obj\Debug\GuFun.Utils.dll
+E:\Sources\Net\GuFun\GuFun.Utils\obj\Debug\GuFun.Utils.pdb
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\bin\Debug\GuFun.Utils.dll
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\bin\Debug\GuFun.Utils.pdb
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\bin\Debug\Interop.VBIDE.dll
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\obj\Debug\ResolveAssemblyReference.cache
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\obj\Debug\Interop.VBIDE.dll
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\obj\Debug\GuFun.Utils.csproj.ResolveComReference.cache
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\obj\Debug\GuFun.Utils.dll
+E:\Sources\Win\bm\GuFun.BillManager\GuFun.Utils\obj\Debug\GuFun.Utils.pdb

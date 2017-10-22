@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE89D881-C1DA-444F-BCE8-9DD889987C02}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMS</RootNamespace>
+    <AssemblyName>DMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\ManCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\ManCompany.Designer.cs">
+      <DependentUpon>ManCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BaseListEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\BaseListEditForm.Designer.cs">
+      <DependentUpon>BaseListEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBConfig.Designer.cs">
+      <DependentUpon>DBConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flash.Designer.cs">
+      <DependentUpon>Flash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Update\RemoteFileUpdater.cs" />
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\ManCompany.resx">
+      <DependentUpon>ManCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\BaseListEditForm.resx">
+      <DependentUpon>BaseListEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBConfig.resx">
+      <DependentUpon>DBConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flash.resx">
+      <DependentUpon>Flash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuFun.Utils\GuFun.Utils.csproj">
+      <Project>{0dd64f9e-a3be-46c3-a7c0-60045a06bf07}</Project>
+      <Name>GuFun.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuFun.WinControls\GuFun.WinControls.csproj">
+      <Project>{04CFB4AB-2B4F-4B97-A2A8-A081DDFFE2D2}</Project>
+      <Name>GuFun.WinControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuFun.WinCore\GuFun.WinCore.csproj">
+      <Project>{6357278a-01f9-434a-90ed-63d2e606a4e9}</Project>
+      <Name>GuFun.WinCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\background\login.jpg" />
+    <Content Include="Resources\ribbon\01.gif" />
+    <Content Include="Resources\ribbon\02.gif" />
+    <Content Include="Resources\ribbon\03.gif" />
+    <Content Include="Resources\ribbon\04.gif" />
+    <Content Include="Resources\ribbon\05.gif" />
+    <Content Include="Resources\ribbon\06.gif" />
+    <Content Include="Resources\ribbon\07.gif" />
+    <Content Include="Resources\ribbon\08.gif" />
+    <Content Include="Resources\ribbon\09.gif" />
+    <Content Include="Resources\ribbon\10.gif" />
+    <Content Include="Resources\ribbon\11.gif" />
+    <Content Include="Resources\ribbon\12.gif" />
+    <Content Include="Resources\ribbon\13.gif" />
+    <Content Include="Resources\ribbon\14.gif" />
+    <Content Include="Resources\ribbon\15.gif" />
+    <Content Include="Resources\ribbon\16.gif" />
+    <Content Include="Resources\ribbon\17.gif" />
+    <Content Include="Resources\ribbon\18.gif" />
+    <Content Include="Resources\ribbon\19.gif" />
+    <Content Include="Resources\ribbon\20.gif" />
+    <Content Include="Resources\ribbon\21.gif" />
+    <Content Include="Resources\ribbon\22.gif" />
+    <Content Include="Resources\ribbon\23.gif" />
+    <Content Include="Resources\ribbon\24.gif" />
+    <Content Include="Resources\ribbon\25.gif" />
+    <Content Include="Resources\ribbon\26.gif" />
+    <Content Include="Resources\ribbon\27.gif" />
+    <Content Include="Resources\ribbon\28.gif" />
+    <Content Include="Resources\ribbon\29.gif" />
+    <Content Include="Resources\ribbon\30.gif" />
+    <Content Include="Resources\ribbon\31.gif" />
+    <Content Include="Resources\ribbon\32.gif" />
+    <Content Include="Resources\ribbon\33.gif" />
+    <Content Include="Resources\ribbon\34.gif" />
+    <Content Include="Resources\ribbon\35.gif" />
+    <Content Include="Resources\ribbon\36.gif" />
+    <Content Include="Resources\ribbon\37.gif" />
+    <Content Include="Resources\ribbon\38.gif" />
+    <Content Include="Resources\ribbon\39.gif" />
+    <Content Include="Resources\ribbon\40.gif" />
+    <Content Include="Resources\ribbon\41.gif" />
+    <Content Include="Resources\ribbon\42.gif" />
+    <Content Include="Resources\ribbon\43.gif" />
+    <Content Include="Resources\ribbon\44.gif" />
+    <Content Include="Resources\ribbon\45.gif" />
+    <Content Include="Resources\ribbon\46.gif" />
+    <Content Include="Resources\ribbon\47.gif" />
+    <Content Include="Resources\tools\add.gif" />
+    <Content Include="Resources\tools\cancel.gif" />
+    <Content Include="Resources\tools\copy.gif" />
+    <Content Include="Resources\tools\del.gif" />
+    <Content Include="Resources\tools\detail.gif" />
+    <Content Include="Resources\tools\edit.gif" />
+    <Content Include="Resources\tools\exit.gif" />
+    <Content Include="Resources\tools\export.gif" />
+    <Content Include="Resources\tools\first.gif" />
+    <Content Include="Resources\tools\last.gif" />
+    <Content Include="Resources\tools\next.gif" />
+    <Content Include="Resources\tools\prev.gif" />
+    <Content Include="Resources\tools\print.gif" />
+    <Content Include="Resources\tools\save.gif" />
+    <Content Include="Resources\tools\search.gif" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,8 @@
+bin\Debug\GuFun.Utils.dll
+bin\Debug\GuFun.Utils.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\GuFun.Utils.dll
+obj\Debug\GuFun.Utils.pdb
+obj\Debug\GuFun.Utils.csproj.ResolveComReference.cache
+bin\Debug\Interop.VBIDE.dll
+obj\Debug\Interop.VBIDE.dll

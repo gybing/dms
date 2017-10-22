@@ -1,0 +1,7 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\GuFun.WinCore.dll
+bin\Debug\GuFun.WinCore.pdb
+bin\Debug\GuFun.Utils.dll
+bin\Debug\GuFun.Utils.pdb
+obj\Debug\GuFun.WinCore.dll
+obj\Debug\GuFun.WinCore.pdb
