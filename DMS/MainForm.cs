@@ -21,10 +21,10 @@ namespace DMS
             msMain.Renderer = new Office2007Renderer();
             ssMain.Renderer = msMain.Renderer;
             sslMan.Text = " " + sslMan.Text + Program.ManInfo.Man.ManName;
-            sslDept.Text = " " + sslMan.Text + Program.ManInfo.Man.DeptName;
+            sslDept.Text = " " + sslDept.Text + Program.ManInfo.Man.DeptName;
             sslTime.Text = "当前时间：" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
 
-            ssMain.Items.Clear();
+            msMain.Items.Clear();
             CreateUserMenu();
 
             ToolStripMenuItem helpItem = new ToolStripMenuItem();
@@ -393,6 +393,40 @@ namespace DMS
             {
 
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < this.Controls.Count; i++)
+            {
+                if (this.Controls[i].GetType().ToString() == "System.Windows.Forms.MdiClient")
+                {
+                    ((System.Windows.Forms.MdiClient)this.Controls[i]).BackColor = StringHelper.GetColor("#99CCC3");
+                    //this.BackgroundImage = GBill.Properties.Resources.back;
+                   
+                    break;
+                }
+            }
+
+            try
+            {
+                DateTime now = SqlBaseProvider.GetSysDate();
+
+                bool isUnPrint = true;
+
+                
+            }
+            catch (Exception ex)
+            {
+                Global.ShowSysError(ex);
+            }
+
+            this.Resize += new EventHandler(MainForm_Resize);
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            this.Refresh();
         }
     }
 }

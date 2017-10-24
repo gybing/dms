@@ -149,6 +149,8 @@
             // 
             // tmTime
             // 
+            this.tmTime.Enabled = true;
+            this.tmTime.Interval = 1000;
             this.tmTime.Tick += new System.EventHandler(this.tmTime_Tick);
             // 
             // ilRibbon
