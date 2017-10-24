@@ -205,28 +205,7 @@ namespace DMS
                         return;
                     }
 
-                    DateTime dt = SqlBaseProvider.GetSysDate();
-                    if (uc.Man.WorkDate != dt.ToString("yyyyMMdd"))
-                    {
-                        // 日结判断
-                        if ((uc.Man.ManLevel > ml) && !uc.Man.IsFirst && uc.Man.IsDayCash)
-                        {
-                            BillDayCash daycash = SqlBaseProvider.GetBillDayCash(uc.Man.ManID, uc.Man.WorkDate);
-
-                            if (String.IsNullOrEmpty(daycash.ManID))
-                            {
-                                SqlBaseProvider.SetLockMan(uc.Man.ManID, true);
-                                Global.ShowSysInfo("您在上一工作日[" + uc.Man.WorkDate + "]未进行日结，用户名锁定不能进行操作！" + StringHelper.WriteEnter(1) + "请与部门负责人或者系统管理员联系进行解锁！");
-                                this.DialogResult = DialogResult.Cancel;
-                                return;
-                            }
-                        }
-
-                        SqlBaseProvider.LoginSuccess(uc.Man.ManID, dt.ToString("yyyyMMdd"));
-                        uc.Man.PreWorkDate = uc.Man.WorkDate;
-                        uc.Man.WorkDate = dt.ToString("yyyyMMdd");
-                        uc.Man.OperSerial = 1;
-                    }
+                  
 
                     // 读取参数
                     SqlBaseProvider.GetCacheParameters(uc);

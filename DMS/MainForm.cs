@@ -91,8 +91,8 @@ namespace DMS
                 SysMenu mitem = mgitem.Menus[j];
 
                 // modify by cloudy 20101022
-                if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((mitem.MFunction == "ManEquipBackFee") || (mitem.MFunction == "ManReDeptBackFee")))
-                continue;
+                //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((mitem.MFunction == "ManEquipBackFee") || (mitem.MFunction == "ManReDeptBackFee")))
+                //continue;
 
                 ToolStripMenuItem mi = new ToolStripMenuItem();
                 mi.Name = mitem.MCode + "-" + mitem.MFunction;
@@ -173,8 +173,8 @@ namespace DMS
                     for (k = 0; k < rt.Panels[j].Buttons.Count; k++)
                     {
                         // modify by cloudy 20101022
-                        if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((rt.Panels[j].Buttons[k].MFunction == "ManEquipBackFee") || (rt.Panels[j].Buttons[k].MFunction == "ManReDeptBackFee")))
-                        continue;
+                        //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((rt.Panels[j].Buttons[k].MFunction == "ManEquipBackFee") || (rt.Panels[j].Buttons[k].MFunction == "ManReDeptBackFee")))
+                        //continue;
 
                         RibbonButton rButton = new RibbonButton();
                         rButton.Text = rt.Panels[j].Buttons[k].RibBtnName;
@@ -261,7 +261,7 @@ namespace DMS
                 if (String.IsNullOrEmpty(codes[1]))
                     return;
 
-                Form fm = Global.GetForm("GBill." + codes[1]);
+                Form fm = Global.GetForm("DMS." + codes[1]);
 
                 if (fm != null)
                 {

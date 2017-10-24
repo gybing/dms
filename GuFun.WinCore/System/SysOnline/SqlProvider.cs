@@ -104,8 +104,8 @@ namespace GuFun.WinCore
 				ArrayList paras = new ArrayList();
 
 				paras.Add(DBUtils.MakeInParam("@Man_ID", SqlDbType.NVarChar, 6, item.ManID));
-				paras.Add(DBUtils.MakeInParam("@Login_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.LoginDate)));
-				paras.Add(DBUtils.MakeInParam("@Online_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.OnlineDate)));
+                paras.Add(DBUtils.MakeInParam("@Login_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.LoginDate)));
+                paras.Add(DBUtils.MakeInParam("@Online_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.OnlineDate)));
 				paras.Add(DBUtils.MakeInParam("@Menu_Code", SqlDbType.NVarChar, 4, item.MenuCode));
 				paras.Add(DBUtils.MakeInParam("@Reg_ID", SqlDbType.SmallInt, item.RegID));
 				paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));

@@ -229,50 +229,6 @@ namespace GuFun.WinCore
 
     #endregion AuthType Methods
 
-    public static void ToDetailMoney(BillDetail item)
-    {
-      // Ω∂Ó◊™ªª
-      item.CnAmount = StringHelper.ToCapMoneyNum(item.EnAmount.ToString());
-
-      string[] amounts = item.EnAmount.ToString("0.00").Split('.');
-
-      if (amounts.Length > 1)
-      {
-        if (amounts[1].Length > 0) item.En02 = amounts[1].Substring(0, 1);
-        if (amounts[1].Length > 1) item.En01 = amounts[1].Substring(1, 1);
-      }
-
-      amounts[0] = "£§" + amounts[0];
-      int len = amounts[0].Length;
-
-      if (len > 0) item.En03 = amounts[0].Substring(len - 1, 1);
-      if (len > 1) item.En04 = amounts[0].Substring(len - 2, 1);
-      if (len > 2) item.En05 = amounts[0].Substring(len - 3, 1);
-      if (len > 3) item.En06 = amounts[0].Substring(len - 4, 1);
-      if (len > 4) item.En07 = amounts[0].Substring(len - 5, 1);
-      if (len > 5) item.En08 = amounts[0].Substring(len - 6, 1);
-      if (len > 6) item.En09 = amounts[0].Substring(len - 7, 1);
-      if (len > 7) item.En10 = amounts[0].Substring(len - 8, 1);
-      if (len > 8) item.En11 = amounts[0].Substring(len - 9, 1);
-      if (len > 9) item.En12 = amounts[0].Substring(len - 10, 1);
-    }
-
-    public static void ToDetailDate(BillDetail item)
-    {
-      if (item.BillDate > DateTime.MinValue)
-      {
-        item.EnDate = item.BillDate.ToString("yyyyMMdd");
-        item.EnYearMonth = item.BillDate.ToString("yyyyMM");
-        item.EnYear = item.BillDate.ToString("yyyy");
-        item.EnMonth = item.BillDate.ToString("MM");
-        item.EnDay = item.BillDate.ToString("dd");
-
-        item.CnYear = StringHelper.ToChinese(item.EnYear.Substring(0, 1)) + StringHelper.ToChinese(item.EnYear.Substring(1, 1)) + StringHelper.ToChinese(item.EnYear.Substring(2, 1)) + StringHelper.ToChinese(item.EnYear.Substring(3, 1));
-        item.CnMonth = StringHelper.ToChinese(item.EnMonth.Substring(0, 1)) + (item.EnMonth.Substring(0, 1) == "0" ? String.Empty : " ∞") + StringHelper.ToChinese(item.EnMonth.Substring(1, 1));
-        item.CnMonth = item.CnMonth.Replace(" ∞¡„", " ∞");
-        item.CnDay = StringHelper.ToChinese(item.EnDay.Substring(0, 1)) + (item.EnDay.Substring(0, 1) == "0" ? String.Empty : " ∞") + StringHelper.ToChinese(item.EnDay.Substring(1, 1));
-        item.CnDay = item.CnDay.Replace(" ∞¡„", " ∞");
-      }
-    }
+   
   }
 }

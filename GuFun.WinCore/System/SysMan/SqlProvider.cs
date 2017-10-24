@@ -255,7 +255,7 @@ namespace GuFun.WinCore
 				paras.Add(DBUtils.MakeInParam("@Crt_Oper", SqlDbType.NVarChar, 6, item.CrtOper));
 				paras.Add(DBUtils.MakeInParam("@Man_Tele", SqlDbType.NVarChar, 30, item.ManTele));
 				paras.Add(DBUtils.MakeInParam("@Man_EMail", SqlDbType.NVarChar, 32, item.ManEMail));
-				paras.Add(DBUtils.MakeInParam("@Man_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.ManDate)));
+                paras.Add(DBUtils.MakeInParam("@Man_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.ManDate)));
 				paras.Add(DBUtils.MakeInParam("@Man_Level", SqlDbType.SmallInt, item.ManLevel));
 				paras.Add(DBUtils.MakeInParam("@Man_Title", SqlDbType.SmallInt, item.ManTitle));
 				paras.Add(DBUtils.MakeInParam("@Man_Sex", SqlDbType.SmallInt, item.ManSex));
@@ -348,58 +348,7 @@ namespace GuFun.WinCore
       }
     }
 
-    public static void SetCashLockMan(BillDayCash item)
-    {
-      if (item == null)
-        return;
-
-      SqlConnection conn = DBUtils.GetConnection();
-      SqlCommand cmd = DBUtils.GetCommand();
-
-      try
-      {
-        cmd.Transaction = conn.BeginTransaction();
-
-        ArrayList paras = new ArrayList();
-
-        paras.Add(DBUtils.MakeInParam("@Man_ID", SqlDbType.NVarChar, 6, item.ManID));
-        paras.Add(DBUtils.MakeInParam("@Man_Name", SqlDbType.NVarChar, 10, item.ManName));
-        paras.Add(DBUtils.MakeInParam("@Dept_ID", SqlDbType.NVarChar, 8, item.DeptID));
-        paras.Add(DBUtils.MakeInParam("@Day_Cash", SqlDbType.Decimal, item.DayCash));
-        paras.Add(DBUtils.MakeInParam("@Day_Bank", SqlDbType.Decimal, item.DayBank));
-        paras.Add(DBUtils.MakeInParam("@Day_Amount", SqlDbType.Decimal, item.DayAmount));
-        paras.Add(DBUtils.MakeInParam("@Day_Nonow", SqlDbType.Decimal, item.DayNonow));
-        paras.Add(DBUtils.MakeInParam("@Day_Error", SqlDbType.Decimal, item.DayError));
-        paras.Add(DBUtils.MakeInParam("@Day_Repair", SqlDbType.Decimal, item.DayRepair));
-        paras.Add(DBUtils.MakeInParam("@Day_Replace", SqlDbType.Decimal, item.DayReplace));
-        paras.Add(DBUtils.MakeInParam("@Day_Back", SqlDbType.Decimal, item.DayBack));
-        paras.Add(DBUtils.MakeInParam("@Day_Rela", SqlDbType.Decimal, item.DayRela));
-        paras.Add(DBUtils.MakeInParam("@Day_Adjust", SqlDbType.Decimal, item.DayAdjust));
-        paras.Add(DBUtils.MakeInParam("@Back_Cash", SqlDbType.Decimal, item.BackCash));
-        paras.Add(DBUtils.MakeInParam("@Day_Last", SqlDbType.Decimal, item.DayLast));
-        paras.Add(DBUtils.MakeInParam("@Day_BackFee", SqlDbType.Decimal, item.DayBackFee));
-        paras.Add(DBUtils.MakeInParam("@Day_Design", SqlDbType.Decimal, item.DayDesign));
-        paras.Add(DBUtils.MakeInParam("@Reco_Date", SqlDbType.DateTime, item.RecoDate));
-        paras.Add(DBUtils.MakeInParam("@Day_Cash_Day", SqlDbType.NVarChar, 8, item.DayCashDay));
-        paras.Add(DBUtils.MakeInParam("@Reco_Man", SqlDbType.NVarChar, 6, item.RecoMan));
-        paras.Add(DBUtils.MakeInParam("@Reco_Man_Name", SqlDbType.NVarChar, 10, item.RecoManName));
-        paras.Add(DBUtils.MakeInParam("@Day_Direct", SqlDbType.Decimal, item.DayDirect));
-        paras.Add(DBUtils.MakeInParam("@Day_ApplyBack", SqlDbType.Decimal, item.DayApplyBack));        
-
-        DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_SetCashLock", paras);
-
-        cmd.Transaction.Commit();
-      }
-      catch
-      {
-        cmd.Transaction.Rollback();
-        throw;
-      }
-      finally
-      {
-        DBUtils.SetDispose(conn, cmd);
-      }
-    }
+   
 
     public static void ResetMan(string manid)
     {
@@ -461,39 +410,6 @@ namespace GuFun.WinCore
       }
     }
     
-    public static void ModifyManCash(BillDeptBacks items, string operid)
-    {
-
-      SqlConnection conn = DBUtils.GetConnection();
-      SqlCommand cmd = DBUtils.GetCommand();
-
-      try
-      {
-        cmd.Transaction = conn.BeginTransaction();
-
-        ArrayList paras = new ArrayList();
-
-        foreach (BillDeptBack item in items)
-        {
-          paras.Clear();
-          paras.Add(DBUtils.MakeInParam("@Man_ID", SqlDbType.NVarChar, 6, item.ManID));
-          paras.Add(DBUtils.MakeInParam("@Back_Cash", SqlDbType.Decimal, item.BackStandard));
-          paras.Add(DBUtils.MakeInParam("@Oper_ID", SqlDbType.NVarChar, 6, operid));
-
-          DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Modify_ManCash", paras);
-        }
-
-        cmd.Transaction.Commit();
-      }
-      catch
-      {
-        cmd.Transaction.Rollback();
-        throw;
-      }
-      finally
-      {
-        DBUtils.SetDispose(conn, cmd);
-      }
-    }
+   
 	}
 }

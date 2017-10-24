@@ -60,104 +60,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackCash\BillBackCash\BillBackCash.cs" />
-    <Compile Include="BackCash\BillBackCash\BackCashCheck.cs" />
-    <Compile Include="BackCash\BillBackCash\SqlProvider.cs" />
-    <Compile Include="Bank\BillAuditBatchDetail\BillAuditBatchDetail.cs" />
-    <Compile Include="Bank\BillAuditBatchDetail\BillAuditBatchDetails.cs" />
-    <Compile Include="Bank\BillAuditBatchDetail\SqlProvider.cs" />
-    <Compile Include="Bank\BillAuditBatch\BillAuditBatch.cs" />
-    <Compile Include="Bank\BillAuditBatch\SqlProvider.cs" />
-    <Compile Include="Bank\ImportItem.cs" />
-    <Compile Include="Bank\ImportItems.cs" />
-    <Compile Include="BillFormat\BillFormat\BillFormat.cs" />
-    <Compile Include="BillFormat\BillFormat\BillFormats.cs" />
-    <Compile Include="BillFormat\BillFormat\SqlProvider.cs" />
-    <Compile Include="BillFormat\BillLine\BillLine.cs" />
-    <Compile Include="BillFormat\BillLine\BillLines.cs" />
-    <Compile Include="BillFormat\BillLine\SqlProvider.cs" />
-    <Compile Include="BillFormat\BillMain\BillMain.cs" />
-    <Compile Include="BillFormat\BillMain\BillMains.cs" />
-    <Compile Include="BillFormat\BillMain\SqlProvider.cs" />
-    <Compile Include="BillFormat\BillSelectMain\BillSelectMain.cs" />
-    <Compile Include="BillFormat\BillSelectMain\SqlProvider.cs" />
-    <Compile Include="BillFormat\BillWord\BillWord.cs" />
-    <Compile Include="BillFormat\BillWord\BillWords.cs" />
-    <Compile Include="BillFormat\BillWord\SqlProvider.cs" />
-    <Compile Include="Bill\BackType\BillBackType.cs" />
-    <Compile Include="Bill\BackType\SqlProvider.cs" />
-    <Compile Include="Bill\BillAdjustCash\BillAdjustCash.cs" />
-    <Compile Include="Bill\BillAdjustCash\SqlProvider.cs" />
-    <Compile Include="Bill\BillAuthDetail\BillAuthDetail.cs" />
-    <Compile Include="Bill\BillAuthDetail\SqlProvider.cs" />
-    <Compile Include="Bill\BillBackChange\SqlProvider.cs" />
-    <Compile Include="Bill\BillBackFee\BillBackFee.cs" />
-    <Compile Include="Bill\BillBackFee\SqlProvider.cs" />
-    <Compile Include="Bill\BillBackGet\SqlProvider.cs" />
-    <Compile Include="Bill\BillBack\BillBack.cs" />
-    <Compile Include="Bill\BillBack\SqlProvider.cs" />
-    <Compile Include="Bill\BillBankAccept\BankAccept.cs" />
-    <Compile Include="Bill\BillBankAccept\BankAcceptData.cs" />
-    <Compile Include="Bill\BillBankAccept\BankAcceptDatas.cs" />
-    <Compile Include="Bill\BillBankAccept\SqlProvider.cs" />
-    <Compile Include="Bill\BillCashBack\BillCashBack.cs" />
-    <Compile Include="Bill\BillCashBack\SqlProvider.cs" />
-    <Compile Include="Bill\BillCashBank\BillCashBank.cs" />
-    <Compile Include="Bill\BillCashBank\SqlProvider.cs" />
-    <Compile Include="Bill\BillChange\BillChange.cs" />
-    <Compile Include="Bill\BillChange\BillChangeData.cs" />
-    <Compile Include="Bill\BillChange\BillChangeDatas.cs" />
-    <Compile Include="Bill\BillChange\SqlProvider.cs" />
-    <Compile Include="Bill\BillDayBill\BillDayBill.cs" />
-    <Compile Include="Bill\BillDayBill\SqlProvider.cs" />
-    <Compile Include="Bill\BillDayCash\BillDayCash.cs" />
-    <Compile Include="Bill\BillDayCash\SqlProvider.cs" />
-    <Compile Include="Bill\BillDeptBack\BillDeptBack.cs" />
-    <Compile Include="Bill\BillDeptBack\BillDeptBacks.cs" />
-    <Compile Include="Bill\BillDeptBack\SqlProvider.cs" />
-    <Compile Include="Bill\BillDept\BillDept.cs" />
-    <Compile Include="Bill\BillDept\PageBillDept.cs" />
-    <Compile Include="Bill\BillDept\SqlProvider.cs" />
-    <Compile Include="Bill\BillDetailPrint\SqlProvider.cs" />
-    <Compile Include="Bill\BillDetail\BillDetail.cs" />
-    <Compile Include="Bill\BillDetail\SqlProvider.cs" />
-    <Compile Include="Bill\BillGet\BillGet.cs" />
-    <Compile Include="Bill\BillGet\BillGets.cs" />
-    <Compile Include="Bill\BillGet\SqlProvider.cs" />
-    <Compile Include="Bill\BillSelfDetail\BillSelfDetail.cs" />
-    <Compile Include="Bill\BillSelfDetail\SqlProvider.cs" />
-    <Compile Include="Bill\DatCust\DatCust.cs" />
-    <Compile Include="Bill\DatCust\SqlProvider.cs" />
-    <Compile Include="Bill\NewBackFee\BackFeeCheck.cs" />
-    <Compile Include="Bill\NewBackFee\NewBackFee.cs" />
-    <Compile Include="Bill\NewBackFee\SqlProvider.cs" />
-    <Compile Include="Bill\PartPrint.cs" />
     <Compile Include="Enumerations\AuthBound.cs" />
-    <Compile Include="Enumerations\BackCashFlow.cs" />
-    <Compile Include="Enumerations\BackCashStatus.cs" />
-    <Compile Include="Enumerations\BackFeeBill.cs" />
-    <Compile Include="Enumerations\BackFeeFlow.cs" />
-    <Compile Include="Enumerations\BackFeeStatus.cs" />
-    <Compile Include="Enumerations\BackType.cs" />
-    <Compile Include="Enumerations\BillType.cs" />
-    <Compile Include="Enumerations\DeptFlow.cs" />
+    <Compile Include="Enumerations\ColType.cs" />
     <Compile Include="Enumerations\ExcelNowStatus.cs" />
-    <Compile Include="Enumerations\FeeBackModel.cs" />
     <Compile Include="Enumerations\LoginStatus.cs" />
     <Compile Include="Enumerations\ManType.cs" />
     <Compile Include="Enumerations\NowStatus.cs" />
-    <Compile Include="Enumerations\OperType.cs" />
-    <Compile Include="Ers\DatBank\DatBank.cs" />
-    <Compile Include="Ers\DatBank\SqlProvider.cs" />
-    <Compile Include="ExcelRpt\BillExcelDetail\BillExcelDetail.cs" />
-    <Compile Include="ExcelRpt\BillExcelDetail\BillExcelDetails.cs" />
-    <Compile Include="ExcelRpt\BillExcelDetail\SqlProvider.cs" />
-    <Compile Include="ExcelRpt\BillExcel\BillExcel.cs" />
-    <Compile Include="ExcelRpt\BillExcel\SqlProvider.cs" />
-    <Compile Include="ExcelRpt\ExcelChange\ExcelChange.cs" />
-    <Compile Include="ExcelRpt\ExcelChange\ExcelChangeData.cs" />
-    <Compile Include="ExcelRpt\ExcelChange\ExcelChangeDatas.cs" />
-    <Compile Include="ExcelRpt\ExcelChange\SqlProvider.cs" />
+    <Compile Include="Pdm\ColumnInfo.cs" />
+    <Compile Include="Pdm\ColumnTable.cs" />
+    <Compile Include="Pdm\KeyInfo.cs" />
+    <Compile Include="Pdm\PdmColumn.cs" />
+    <Compile Include="Pdm\PdmDatabase.cs" />
+    <Compile Include="Pdm\PdmHelper.cs" />
+    <Compile Include="Pdm\PdmIndex.cs" />
+    <Compile Include="Pdm\PdmKey.cs" />
+    <Compile Include="Pdm\PdmReader.cs" />
+    <Compile Include="Pdm\PdmTable.cs" />
+    <Compile Include="Pdm\SqlProvider.cs" />
+    <Compile Include="Pdm\TableInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SqlBaseProvider.cs" />
     <Compile Include="Publics\CacheParameter.cs" />
@@ -166,6 +86,7 @@
     <Compile Include="Publics\InitSimpleParas.cs" />
     <Compile Include="Publics\MenuAuth.cs" />
     <Compile Include="Publics\MenuAuths.cs" />
+    <Compile Include="Publics\PublicTools.cs" />
     <Compile Include="Publics\UserCache.cs" />
     <Compile Include="System\RibButton\RibButton.cs" />
     <Compile Include="System\RibButton\RibButtons.cs" />
@@ -208,12 +129,6 @@
     <Compile Include="System\SysRole\SysRoleMenus.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GuFun.Utils\GuFun.Utils.csproj">
-      <Project>{0DD64F9E-A3BE-46C3-A7C0-60045A06BF07}</Project>
-      <Name>GuFun.Utils</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="bin\Debug\" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +147,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuFun.Utils\GuFun.Utils.csproj">
+      <Project>{0dd64f9e-a3be-46c3-a7c0-60045a06bf07}</Project>
+      <Name>GuFun.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
