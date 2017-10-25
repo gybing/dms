@@ -97,7 +97,7 @@ namespace GuFun.WinCore
 			return item;
 		}
 
-		public static void CreateUpdateDeleteSysCompany(SysCompany item, DataProviderAction action)
+		public static void SaveSysCompany(SysCompany item, DataProviderAction action)
 		{
 			if (item == null)
 				return;
@@ -125,7 +125,7 @@ namespace GuFun.WinCore
 				paras.Add(DBUtils.MakeInParam("@Remark", SqlDbType.NVarChar, 20, item.Remark));
 				paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
 
-				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_CreateUpdateDelete_SysCompany", paras);
+				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_SysCompany", paras);
 
 				cmd.Transaction.Commit();
 			}

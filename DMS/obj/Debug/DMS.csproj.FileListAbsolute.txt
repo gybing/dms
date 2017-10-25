@@ -23,3 +23,7 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManCompany.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.csproj.GenerateResource.Cache
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.exe
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.pdb
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManDept.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.BaseListForm.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditMan.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManMan.resources

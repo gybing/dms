@@ -52,24 +52,9 @@ namespace DMS
             MessageBox.Show(info, PublicConsts.PC_Tip);
         }
 
-        public static void SetDropDownList(ComboBox ddl, string name, DropAddType type, DropAddFlag flag, string index)
-        {
-            CacheParameter cp = Program.ManInfo.Parameters[name];
-
-            if ((cp != null) && !String.IsNullOrEmpty(cp.Name))
-            {
-                CtrlHelper.SetDropDownList(ddl, cp.Data, type, flag, index, cp.Display);
-            }
-        }
-
-        public static void SetDropDownList(ComboBox ddl, string name, DropAddType type, DropAddFlag flag)
-        {
-            SetDropDownList(ddl, name, type, flag, String.Empty);
-        }
 
         public static void DisableComboxTree(ExComboTree ect)
         {
-            //ect.DisableBackColor = Color.FromArgb(255, 250, 205);
             ect.DisableBackColor = Color.FromArgb(225, 192, 116);
             ect.ForeColor = Color.FromArgb(0, 0, 0);
             ect.Enabled = false;
@@ -81,5 +66,6 @@ namespace DMS
             ect.ForeColor = Color.FromArgb(0, 0, 0);
             ect.Enabled = true;
         }
+
     }
 }

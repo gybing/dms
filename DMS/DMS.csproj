@@ -47,8 +47,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System\EditMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\EditMan.Designer.cs">
+      <DependentUpon>EditMan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="System\ManMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\ManMan.Designer.cs">
+      <DependentUpon>ManMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BaseListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\BaseListForm.Designer.cs">
+      <DependentUpon>BaseListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\ManDept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\ManDept.Designer.cs">
+      <DependentUpon>ManDept.cs</DependentUpon>
     </Compile>
     <Compile Include="Pdm\CodeBuild.cs">
       <SubType>Form</SubType>
@@ -119,6 +143,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Update\RemoteFileUpdater.cs" />
+    <EmbeddedResource Include="System\EditMan.resx">
+      <DependentUpon>EditMan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\ManMan.resx">
+      <DependentUpon>ManMan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\BaseListForm.resx">
+      <DependentUpon>BaseListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pdm\CodeBuild.resx">
       <DependentUpon>CodeBuild.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="System\ManCompany.resx">
       <DependentUpon>ManCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\ManDept.resx">
+      <DependentUpon>ManDept.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

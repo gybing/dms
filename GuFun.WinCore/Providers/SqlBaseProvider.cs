@@ -78,24 +78,6 @@ namespace GuFun.WinCore
         if (reader.NextResult())
         {
           if (reader.Read())
-            uc.AuditMoney = (short)reader["Audit_Money"];
-        }
-
-        if (reader.NextResult())
-        {
-          if (reader.Read())
-          {
-            if ((int)reader["Cnt"] > 0)
-              uc.IsHoliday = true;
-            else
-              uc.IsHoliday = false;
-          }
-        }
-
-        // modify by cloudy 20101020 增加系统流程版本的读取
-        if (reader.NextResult())
-        {
-          if (reader.Read())
             uc.Dept.DeptFlow = (short)reader["Dept_Flow"];
         }
 

@@ -99,5 +99,33 @@ namespace DMS
 
             return true;
         }
+
+        protected override bool OnSaveData()
+        {
+            try
+            {
+                SysCompany sc = new SysCompany();
+                sc.CoID = txtCoID.Text;
+                sc.CoName = txtCoName.Text;
+                sc.CoAddress = txtCoAddress.Text;
+                sc.CoPost = txtCoPost.Text;
+                sc.CoTele = txtCoTele.Text;
+                sc.CoFax = txtCoFax.Text;
+                sc.CoEMail = txtCoEMail.Text;
+                sc.SortOrder = Convert.ToInt16(txtCoOrder.Text);
+                sc.CoMan = txtCoMan.Text;
+                sc.CoStatus = Convert.ToInt16(ddlCoStatus.SelectedValue);
+                if (this.FState == FormState.New)
+                    SqlBaseProvider.SaveSysCompany(sc, DataProviderAction.Create);
+                else
+                    SqlBaseProvider.SaveSysCompany(sc, DataProviderAction.Update);
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

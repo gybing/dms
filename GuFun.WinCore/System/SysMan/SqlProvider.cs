@@ -232,61 +232,61 @@ namespace GuFun.WinCore
       return rtn;
     }
 
-    public static void CreateUpdateDeleteSysMan(SysMan item, DataProviderAction action)
+    public static void SaveSysMan(SysMan item, DataProviderAction action)
+	{
+		if (item == null)
+			return;
+
+		SqlConnection conn = DBUtils.GetConnection();
+		SqlCommand cmd = DBUtils.GetCommand();
+
+		try
 		{
-			if (item == null)
-				return;
+			cmd.Transaction = conn.BeginTransaction();
 
-			SqlConnection conn = DBUtils.GetConnection();
-			SqlCommand cmd = DBUtils.GetCommand();
+			ArrayList paras = new ArrayList();
 
-			try
-			{
-				cmd.Transaction = conn.BeginTransaction();
+			paras.Add(DBUtils.MakeInParam("@Man_ID", SqlDbType.NVarChar, 6, item.ManID));
+			paras.Add(DBUtils.MakeInParam("@Man_Name", SqlDbType.NVarChar, 10, item.ManName));
+			paras.Add(DBUtils.MakeInParam("@Co_ID", SqlDbType.NVarChar, 4, item.CoID));
+			paras.Add(DBUtils.MakeInParam("@Dept_ID", SqlDbType.NVarChar, 8, item.DeptID));
+			paras.Add(DBUtils.MakeInParam("@Man_Type", SqlDbType.SmallInt, item.ManType));
+			paras.Add(DBUtils.MakeInParam("@Crt_Date", SqlDbType.DateTime, item.CrtDate));
+			paras.Add(DBUtils.MakeInParam("@Crt_Oper", SqlDbType.NVarChar, 6, item.CrtOper));
+			paras.Add(DBUtils.MakeInParam("@Man_Tele", SqlDbType.NVarChar, 30, item.ManTele));
+			paras.Add(DBUtils.MakeInParam("@Man_EMail", SqlDbType.NVarChar, 32, item.ManEMail));
+            paras.Add(DBUtils.MakeInParam("@Man_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.ManDate)));
+			paras.Add(DBUtils.MakeInParam("@Man_Level", SqlDbType.SmallInt, item.ManLevel));
+			paras.Add(DBUtils.MakeInParam("@Man_Title", SqlDbType.SmallInt, item.ManTitle));
+			paras.Add(DBUtils.MakeInParam("@Man_Sex", SqlDbType.SmallInt, item.ManSex));
+			paras.Add(DBUtils.MakeInParam("@Man_Status", SqlDbType.SmallInt, item.ManStatus));
+			paras.Add(DBUtils.MakeInParam("@Oper_Password", SqlDbType.NVarChar, 50, item.OperPassword));
+			paras.Add(DBUtils.MakeInParam("@Oper_Serial", SqlDbType.Int, item.OperSerial));
+			paras.Add(DBUtils.MakeInParam("@Work_Date", SqlDbType.NVarChar, 8, item.WorkDate));
+			paras.Add(DBUtils.MakeInParam("@Auth_Bound", SqlDbType.SmallInt, item.AuthBound));
+			paras.Add(DBUtils.MakeInParam("@Is_Admin", SqlDbType.Bit, item.IsAdmin));
+			paras.Add(DBUtils.MakeInParam("@Remark", SqlDbType.NVarChar, 20, item.Remark));
+			paras.Add(DBUtils.MakeInParam("@Back_Cash", SqlDbType.Decimal, item.BackCash));
+            paras.Add(DBUtils.MakeInParam("@Now_Cash", SqlDbType.Decimal, item.NowCash));
+            paras.Add(DBUtils.MakeInParam("@Pre_Work_Date", SqlDbType.NVarChar, 8, item.WorkDate));
+            paras.Add(DBUtils.MakeInParam("@Is_Back", SqlDbType.Bit, item.IsBack));
+            paras.Add(DBUtils.MakeInParam("@Is_DayCash", SqlDbType.Bit, item.IsDayCash));
+			paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
 
-				ArrayList paras = new ArrayList();
+			DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_SysMan", paras);
 
-				paras.Add(DBUtils.MakeInParam("@Man_ID", SqlDbType.NVarChar, 6, item.ManID));
-				paras.Add(DBUtils.MakeInParam("@Man_Name", SqlDbType.NVarChar, 10, item.ManName));
-				paras.Add(DBUtils.MakeInParam("@Co_ID", SqlDbType.NVarChar, 4, item.CoID));
-				paras.Add(DBUtils.MakeInParam("@Dept_ID", SqlDbType.NVarChar, 8, item.DeptID));
-				paras.Add(DBUtils.MakeInParam("@Man_Type", SqlDbType.SmallInt, item.ManType));
-				paras.Add(DBUtils.MakeInParam("@Crt_Date", SqlDbType.DateTime, item.CrtDate));
-				paras.Add(DBUtils.MakeInParam("@Crt_Oper", SqlDbType.NVarChar, 6, item.CrtOper));
-				paras.Add(DBUtils.MakeInParam("@Man_Tele", SqlDbType.NVarChar, 30, item.ManTele));
-				paras.Add(DBUtils.MakeInParam("@Man_EMail", SqlDbType.NVarChar, 32, item.ManEMail));
-                paras.Add(DBUtils.MakeInParam("@Man_Date", SqlDbType.DateTime, Publics.GetDataDateTime(item.ManDate)));
-				paras.Add(DBUtils.MakeInParam("@Man_Level", SqlDbType.SmallInt, item.ManLevel));
-				paras.Add(DBUtils.MakeInParam("@Man_Title", SqlDbType.SmallInt, item.ManTitle));
-				paras.Add(DBUtils.MakeInParam("@Man_Sex", SqlDbType.SmallInt, item.ManSex));
-				paras.Add(DBUtils.MakeInParam("@Man_Status", SqlDbType.SmallInt, item.ManStatus));
-				paras.Add(DBUtils.MakeInParam("@Oper_Password", SqlDbType.NVarChar, 50, item.OperPassword));
-				paras.Add(DBUtils.MakeInParam("@Oper_Serial", SqlDbType.Int, item.OperSerial));
-				paras.Add(DBUtils.MakeInParam("@Work_Date", SqlDbType.NVarChar, 8, item.WorkDate));
-				paras.Add(DBUtils.MakeInParam("@Auth_Bound", SqlDbType.SmallInt, item.AuthBound));
-				paras.Add(DBUtils.MakeInParam("@Is_Admin", SqlDbType.Bit, item.IsAdmin));
-				paras.Add(DBUtils.MakeInParam("@Remark", SqlDbType.NVarChar, 20, item.Remark));
-				paras.Add(DBUtils.MakeInParam("@Back_Cash", SqlDbType.Decimal, item.BackCash));
-        paras.Add(DBUtils.MakeInParam("@Now_Cash", SqlDbType.Decimal, item.NowCash));
-        paras.Add(DBUtils.MakeInParam("@Pre_Work_Date", SqlDbType.NVarChar, 8, item.WorkDate));
-        paras.Add(DBUtils.MakeInParam("@Is_Back", SqlDbType.Bit, item.IsBack));
-        paras.Add(DBUtils.MakeInParam("@Is_DayCash", SqlDbType.Bit, item.IsDayCash));
-				paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
-
-				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_CreateUpdateDelete_SysMan", paras);
-
-				cmd.Transaction.Commit();
-			}
-			catch
-			{
-				cmd.Transaction.Rollback();
-				throw;
-			}
-			finally
-			{
-				DBUtils.SetDispose(conn, cmd);
-			}
+			cmd.Transaction.Commit();
 		}
+		catch
+		{
+			cmd.Transaction.Rollback();
+			throw;
+		}
+		finally
+		{
+			DBUtils.SetDispose(conn, cmd);
+		}
+	}
 
     public static void SetLockMan(string manid, bool islock)
     {

@@ -607,7 +607,17 @@ namespace DMS
 
         private void tsbEdit_Click(object sender, EventArgs e)
         {
+            if (!IsCancelModify())
+                return;
 
+            if (!OnLoadData(false))
+                return;
+
+            // 更改窗体状态
+            this.FState = FormState.Edit;
+
+            OnDisplayAllCtrls(true);
+            OnDisplayEditCtrls(false);
         }
 
         private void tsbDelete_Click(object sender, EventArgs e)

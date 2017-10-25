@@ -177,7 +177,7 @@ namespace GuFun.WinCore
       return rtn;
     }
 
-		public static void CreateUpdateDeleteSysDept(SysDept item, DataProviderAction action)
+		public static void SaveSysDept(SysDept item, DataProviderAction action)
 		{
 			if (item == null)
 				return;
@@ -193,7 +193,7 @@ namespace GuFun.WinCore
 
 				paras.Add(DBUtils.MakeInParam("@Dept_ID", SqlDbType.NVarChar, 8, item.DeptID));
 				paras.Add(DBUtils.MakeInParam("@Dept_Name", SqlDbType.NVarChar, 30, item.DeptName));
-        paras.Add(DBUtils.MakeInParam("@Dept_Short", SqlDbType.NVarChar, 4, item.DeptShort));
+                paras.Add(DBUtils.MakeInParam("@Dept_Short", SqlDbType.NVarChar, 4, item.DeptShort));
 				paras.Add(DBUtils.MakeInParam("@Co_ID", SqlDbType.NVarChar, 4, item.CoID));
 				paras.Add(DBUtils.MakeInParam("@Dept_PID", SqlDbType.NVarChar, 8, item.DeptPID));
 				paras.Add(DBUtils.MakeInParam("@Crt_Date", SqlDbType.DateTime, item.CrtDate));
@@ -212,7 +212,7 @@ namespace GuFun.WinCore
 				paras.Add(DBUtils.MakeInParam("@Remark", SqlDbType.NVarChar, 20, item.Remark));
 				paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
 
-				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_CreateUpdateDelete_SysDept", paras);
+				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_SysDept", paras);
 
 				cmd.Transaction.Commit();
 			}
