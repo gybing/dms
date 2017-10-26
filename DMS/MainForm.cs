@@ -2,13 +2,6 @@
 using GuFun.WinControls;
 using GuFun.WinCore;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DMS
@@ -198,7 +191,7 @@ namespace DMS
                     }
                 }
 
-                //ribMain.Tabs.Add(rTab);
+                ribMain.Tabs.Add(rTab);
             }
         }
 
@@ -298,7 +291,7 @@ namespace DMS
                 if (codes.Length < 3)
                     return;
 
-                Form fm = Global.GetForm("GBill." + codes[2]);
+                Form fm = Global.GetForm("DMS." + codes[2]);
 
                 if ((fm != null) && !fm.IsDisposed)
                 {

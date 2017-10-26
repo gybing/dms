@@ -27,3 +27,10 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManDept.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.BaseListForm.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManMan.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManRole.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditRole.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.SetRole.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditSetRole.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.BaseParamForm.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ResetMan.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.UnLockMan.resources

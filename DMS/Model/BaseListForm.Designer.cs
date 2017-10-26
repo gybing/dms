@@ -354,7 +354,6 @@
         protected System.Windows.Forms.ToolStripButton tsbEdit;
         protected System.Windows.Forms.ToolStripButton tsbDelete;
         protected System.Windows.Forms.ToolStripButton tsbCopy;
-        private System.Windows.Forms.ToolStripSeparator tssModify;
         protected System.Windows.Forms.ToolStripButton tsbPrint;
         protected System.Windows.Forms.ToolStripButton tsbExport;
         private System.Windows.Forms.ToolStrip tsMain;
@@ -362,5 +361,6 @@
         protected GuFun.WinControls.ExPanel plSearch;
         protected GuFun.WinControls.ExDataGridView dgvList;
         protected System.Windows.Forms.ToolStripSeparator tssSearch;
+        protected System.Windows.Forms.ToolStripSeparator tssModify;
     }
 }
