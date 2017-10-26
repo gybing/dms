@@ -57,7 +57,7 @@ namespace DMS
 
         protected void CreateUserMenu()
         {
-            SqlBaseProvider.GetManMenus(Program.ManInfo, Program.ManInfo.Man.ManID, "BI");
+            SqlBaseProvider.GetManMenus(Program.ManInfo, Program.ManInfo.Man.ManID);
             SysMenuGroups mgs = Program.ManInfo.Menus;
 
             if ((mgs == null) || (mgs.Count <= 0))

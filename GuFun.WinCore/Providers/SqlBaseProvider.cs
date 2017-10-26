@@ -210,7 +210,7 @@ namespace GuFun.WinCore
 
     #region Menu Methods
 
-    public static void GetManMenus(UserCache uc, string manid, string sysid)
+    public static void GetManMenus(UserCache uc, string manid)
     {
       if (uc == null)
         return;
@@ -227,7 +227,6 @@ namespace GuFun.WinCore
       {
         ArrayList paras = new ArrayList();
         paras.Add(DBUtils.MakeInParam("@Man_ID", SqlDbType.NVarChar, 6, manid));
-        paras.Add(DBUtils.MakeInParam("@System_ID", SqlDbType.NVarChar, 2, sysid));
 
         SqlDataReader reader = DBUtils.ExecuteReader(CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Get_Man_Menus", paras);
 
