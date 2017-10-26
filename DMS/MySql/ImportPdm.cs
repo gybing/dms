@@ -1,4 +1,5 @@
 ﻿using GuFun.Utils;
+using GuFun.Utils.Enumerations;
 using GuFun.WinCore;
 using GuFun.WinCore.Pdm;
 using System;
@@ -13,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DMS
+namespace DMS.MySql
 {
     public partial class ImportPdm : BaseDialogForm
     {
@@ -102,6 +103,7 @@ namespace DMS
                     paras.Add(DBUtils.MakeInParam("DBName", SqlDbType.NVarChar, 40, db.DBName));
                     paras.Add(DBUtils.MakeInParam("DBCode", SqlDbType.NVarChar, 40, db.DBCode));
                     paras.Add(DBUtils.MakeInParam("IsLog", SqlDbType.Bit, cbLog.Checked));
+                    paras.Add(DBUtils.MakeInParam("DBType", SqlDbType.Int, DataBaseType.MySql));
                     paras.Add(DBUtils.MakeInParam("ACTION", SqlDbType.Int, DataProviderAction.Create));
 
                     DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, "dbo.P_Save_DB", paras);

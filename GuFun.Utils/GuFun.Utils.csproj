@@ -81,6 +81,7 @@
     <Compile Include="DataBase\SqlServer\SqlTool.cs" />
     <Compile Include="DataBase\Enumerations\SqlOperation.cs" />
     <Compile Include="Enumerations\AuthType.cs" />
+    <Compile Include="Enumerations\DataBaseType.cs" />
     <Compile Include="Enumerations\FormState.cs" />
     <Compile Include="Enumerations\LoginAction.cs" />
     <Compile Include="Enumerations\NavType.cs" />

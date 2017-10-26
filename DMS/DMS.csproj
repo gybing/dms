@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySql\CodeBuild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MySql\CodeBuild.Designer.cs">
+      <DependentUpon>CodeBuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MySql\ImportPdm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MySql\ImportPdm.Designer.cs">
+      <DependentUpon>ImportPdm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,16 +164,16 @@
     <Compile Include="System\ManDept.Designer.cs">
       <DependentUpon>ManDept.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pdm\CodeBuild.cs">
+    <Compile Include="SqlServer\CodeBuild.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pdm\CodeBuild.Designer.cs">
+    <Compile Include="SqlServer\CodeBuild.Designer.cs">
       <DependentUpon>CodeBuild.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pdm\ImportPdm.cs">
+    <Compile Include="SqlServer\ImportPdm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pdm\ImportPdm.Designer.cs">
+    <Compile Include="SqlServer\ImportPdm.Designer.cs">
       <DependentUpon>ImportPdm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseEditForm.cs">
@@ -230,6 +242,12 @@
     <EmbeddedResource Include="Model\BaseParamForm.resx">
       <DependentUpon>BaseParamForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MySql\CodeBuild.resx">
+      <DependentUpon>CodeBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MySql\ImportPdm.resx">
+      <DependentUpon>ImportPdm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,10 +272,10 @@
     <EmbeddedResource Include="Model\BaseListForm.resx">
       <DependentUpon>BaseListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pdm\CodeBuild.resx">
+    <EmbeddedResource Include="SqlServer\CodeBuild.resx">
       <DependentUpon>CodeBuild.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pdm\ImportPdm.resx">
+    <EmbeddedResource Include="SqlServer\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">

@@ -1,4 +1,4 @@
-﻿namespace DMS
+﻿namespace DMS.SqlServer
 {
     partial class ImportPdm
     {

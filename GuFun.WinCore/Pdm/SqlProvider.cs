@@ -12,13 +12,15 @@ namespace GuFun.WinCore
 {
     public partial class SqlBaseProvider
     {
-        public static DataTable GetDBForCombox()
+        public static DataTable GetDBForCombox(int DBType)
         {
             DataTable tblMain;
 
             try
             {
-                tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, "dbo.P_Get_DBForCombox");
+                ArrayList paras = new ArrayList();
+                paras.Add(DBUtils.MakeInParam("DBType", SqlDbType.VarChar, DBType));
+                tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, "dbo.P_Get_DBForCombox", paras);
                 tblMain.TableName = "SelectMain";
             }
             catch { throw; }
@@ -643,5 +645,6 @@ namespace GuFun.WinCore
 
             return tblMain;
         }
+
     }
 }

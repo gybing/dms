@@ -8,8 +8,6 @@ E:\Source\C#\DMS\DMS\bin\Debug\GuFun.Utils.pdb
 E:\Source\C#\DMS\DMS\bin\Debug\GuFun.WinControls.pdb
 E:\Source\C#\DMS\DMS\bin\Debug\GuFun.WinCore.pdb
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.csprojResolveAssemblyReference.cache
-E:\Source\C#\DMS\DMS\obj\Debug\DMS.CodeBuild.resources
-E:\Source\C#\DMS\DMS\obj\Debug\DMS.ImportPdm.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.Login.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.BaseDialogForm.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.BaseEditForm.resources
@@ -37,3 +35,7 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.UnLockMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.SetOnineMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.DeleteRegister.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.Register.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.SqlServer.ImportPdm.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.SqlServer.CodeBuild.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.MySql.ImportPdm.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.MySql.CodeBuild.resources

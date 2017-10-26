@@ -205,7 +205,7 @@ namespace DMS
                         return;
                     }
 
-                  
+
 
                     // 读取参数
                     SqlBaseProvider.GetCacheParameters(uc);
@@ -230,7 +230,7 @@ namespace DMS
             {
                 MessageBox.Show(ex.Message, PublicConsts.PC_Tip);
                 return;
-            }    
+            }
         }
 
     }

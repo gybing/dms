@@ -61,67 +61,67 @@ namespace DMS
             SysMenuGroups mgs = Program.ManInfo.Menus;
 
             if ((mgs == null) || (mgs.Count <= 0))
-            return;
+                return;
 
             int i, j, k;
 
             msMain.Items.Clear();
             for (i = 0; i < mgs.Count; i++)
             {
-            SysMenuGroup mgitem = mgs[i];
+                SysMenuGroup mgitem = mgs[i];
 
-            if ((mgitem.Menus == null) || (mgitem.Menus.Count <= 0))
-                continue;
+                if ((mgitem.Menus == null) || (mgitem.Menus.Count <= 0))
+                    continue;
 
-            ToolStripMenuItem gi = new ToolStripMenuItem();
-            gi.Name = "MenuGroup" + mgitem.MgID.ToString();
-            gi.Text = mgitem.MgName;        
+                ToolStripMenuItem gi = new ToolStripMenuItem();
+                gi.Name = "MenuGroup" + mgitem.MgID.ToString();
+                gi.Text = mgitem.MgName;
 
-            for (j = 0; j < mgitem.Menus.Count; j++)
-            {
-          
-
-                SysMenu mitem = mgitem.Menus[j];
-
-                // modify by cloudy 20101022
-                //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((mitem.MFunction == "ManEquipBackFee") || (mitem.MFunction == "ManReDeptBackFee")))
-                //continue;
-
-                ToolStripMenuItem mi = new ToolStripMenuItem();
-                mi.Name = mitem.MCode + "-" + mitem.MFunction;
-                mi.Text = mitem.MName;
-
-                if (!String.IsNullOrEmpty(mitem.MFunction))
+                for (j = 0; j < mgitem.Menus.Count; j++)
                 {
-                MenuAuth ma = new MenuAuth();
-                ma.MID = mitem.MID;
-                ma.MCode = mitem.MCode;
-                ma.MFunction = mitem.MFunction;
-                ma.MShortcut = mitem.MShortcut;
-                ma.Auth = mitem.MAuth;
-                Program.ManInfo.Auths.Add(ma);
+
+
+                    SysMenu mitem = mgitem.Menus[j];
+
+                    // modify by cloudy 20101022
+                    //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((mitem.MFunction == "ManEquipBackFee") || (mitem.MFunction == "ManReDeptBackFee")))
+                    //continue;
+
+                    ToolStripMenuItem mi = new ToolStripMenuItem();
+                    mi.Name = mitem.MCode + "-" + mitem.MFunction;
+                    mi.Text = mitem.MName;
+
+                    if (!String.IsNullOrEmpty(mitem.MFunction))
+                    {
+                        MenuAuth ma = new MenuAuth();
+                        ma.MID = mitem.MID;
+                        ma.MCode = mitem.MCode;
+                        ma.MFunction = mitem.MFunction;
+                        ma.MShortcut = mitem.MShortcut;
+                        ma.Auth = mitem.MAuth;
+                        Program.ManInfo.Auths.Add(ma);
+                    }
+
+                    gi.DropDownItems.Add(mi);
+
+                    if (mitem.IsLine)
+                        gi.DropDownItems.Add(new ToolStripSeparator());
+
+                    if ((mitem.SubMenus != null) && (mitem.SubMenus.Count > 0))
+                    {
+                        AddSubMenu(mitem, mi);
+                    }
+                    else
+                    {
+                        if (!String.IsNullOrEmpty(mitem.MFunction))
+                            mi.Click += new EventHandler(Menu_Click);
+                    }
                 }
 
-                gi.DropDownItems.Add(mi);
-
-                if (mitem.IsLine)
-                gi.DropDownItems.Add(new ToolStripSeparator());
-
-                if ((mitem.SubMenus != null) && (mitem.SubMenus.Count > 0))
-                {
-                AddSubMenu(mitem, mi);
-                }
-                else
-                {
-                if (!String.IsNullOrEmpty(mitem.MFunction))
-                    mi.Click += new EventHandler(Menu_Click);
-                }
+                msMain.Items.Add(gi);
             }
 
-            msMain.Items.Add(gi);
-            }
 
-      
 
             RibTabs rts = Program.ManInfo.Ribbons;
             RibTab rt;
@@ -138,16 +138,16 @@ namespace DMS
                 // Ribbon Tab's Panels Count为0，则不做处理
                 if (rt.Panels.Count <= 0)
                     continue;
-        
+
                 // 判断该Tab下的所有Panel是否包含了按钮，如果没有，则不做处理
                 for (j = 0; j < rt.Panels.Count; j++)
                 {
                     if (rt.Panels[j].Buttons.Count <= 0)
-                    continue;
+                        continue;
                     else
                     {
-                    isRibTab = true;            
-                    break;
+                        isRibTab = true;
+                        break;
                     }
                 }
 
@@ -160,34 +160,34 @@ namespace DMS
                 {
                     if (rt.Panels[j].Buttons.Count > 0)
                     {
-                    RibbonPanel rPanel = new RibbonPanel();
-                    rPanel.Text = rt.Panels[j].RibPanelName;
+                        RibbonPanel rPanel = new RibbonPanel();
+                        rPanel.Text = rt.Panels[j].RibPanelName;
 
-                    for (k = 0; k < rt.Panels[j].Buttons.Count; k++)
-                    {
-                        // modify by cloudy 20101022
-                        //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((rt.Panels[j].Buttons[k].MFunction == "ManEquipBackFee") || (rt.Panels[j].Buttons[k].MFunction == "ManReDeptBackFee")))
-                        //continue;
-
-                        RibbonButton rButton = new RibbonButton();
-                        rButton.Text = rt.Panels[j].Buttons[k].RibBtnName;
-
-                        if (!String.IsNullOrEmpty(rt.Panels[j].Buttons[k].MFunction))
+                        for (k = 0; k < rt.Panels[j].Buttons.Count; k++)
                         {
-                        rButton.Function = rt.Panels[j].Buttons[k].RibCode + "-" + rt.Panels[j].Buttons[k].MCode + "-" + rt.Panels[j].Buttons[k].MFunction;
-                        rButton.Click += new EventHandler(Ribbon_Click);
+                            // modify by cloudy 20101022
+                            //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((rt.Panels[j].Buttons[k].MFunction == "ManEquipBackFee") || (rt.Panels[j].Buttons[k].MFunction == "ManReDeptBackFee")))
+                            //continue;
+
+                            RibbonButton rButton = new RibbonButton();
+                            rButton.Text = rt.Panels[j].Buttons[k].RibBtnName;
+
+                            if (!String.IsNullOrEmpty(rt.Panels[j].Buttons[k].MFunction))
+                            {
+                                rButton.Function = rt.Panels[j].Buttons[k].RibCode + "-" + rt.Panels[j].Buttons[k].MCode + "-" + rt.Panels[j].Buttons[k].MFunction;
+                                rButton.Click += new EventHandler(Ribbon_Click);
+                            }
+
+                            if (rt.Panels[j].Buttons[k].RibImageIndex > -1)
+                            {
+                                if (ilRibbon.Images.Count > rt.Panels[j].Buttons[k].RibImageIndex)
+                                    rButton.Image = ilRibbon.Images[rt.Panels[j].Buttons[k].RibImageIndex];
+                            }
+
+                            rPanel.Items.Add(rButton);
                         }
 
-                        if (rt.Panels[j].Buttons[k].RibImageIndex > -1)
-                        {
-                        if (ilRibbon.Images.Count > rt.Panels[j].Buttons[k].RibImageIndex)
-                            rButton.Image = ilRibbon.Images[rt.Panels[j].Buttons[k].RibImageIndex];                  
-                        }
-
-                        rPanel.Items.Add(rButton);
-                    }
-
-                    rTab.Panels.Add(rPanel);
+                        rTab.Panels.Add(rPanel);
                     }
                 }
 
@@ -396,7 +396,7 @@ namespace DMS
                 {
                     ((System.Windows.Forms.MdiClient)this.Controls[i]).BackColor = StringHelper.GetColor("#99CCC3");
                     //this.BackgroundImage = GBill.Properties.Resources.back;
-                   
+
                     break;
                 }
             }
@@ -407,7 +407,7 @@ namespace DMS
 
                 bool isUnPrint = true;
 
-                
+
             }
             catch (Exception ex)
             {

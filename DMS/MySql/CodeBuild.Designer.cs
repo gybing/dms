@@ -1,4 +1,4 @@
-﻿namespace DMS
+﻿namespace DMS.MySql
 {
     partial class CodeBuild
     {

@@ -1,4 +1,5 @@
 ﻿using GuFun.Utils;
+using GuFun.Utils.Enumerations;
 using GuFun.WinCore;
 using GuFun.WinCore.Pdm;
 using System;
@@ -9,7 +10,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DMS
+namespace DMS.SqlServer
 {
     public partial class CodeBuild : DMS.BaseDialogForm
     {
@@ -20,7 +21,8 @@ namespace DMS
         public CodeBuild()
         {
             InitializeComponent();
-            CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
+
+            CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.SqlServer)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
 
             ddlDB.SelectedValueChanged += new EventHandler(ddlDB_SelectedIndexChanged);
 
