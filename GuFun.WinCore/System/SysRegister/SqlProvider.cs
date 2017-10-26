@@ -91,7 +91,7 @@ namespace GuFun.WinCore
       return item;
     }
 
-		public static void CreateUpdateDeleteSysRegister(SysRegister item, DataProviderAction action)
+		public static void SaveSysRegister(SysRegister item, DataProviderAction action)
 		{
 			if (item == null)
 				return;
@@ -120,7 +120,7 @@ namespace GuFun.WinCore
 				paras.Add(DBUtils.MakeInParam("@Crt_Date", SqlDbType.DateTime, item.CrtDate));
 				paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
 
-				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_CreateUpdateDelete_SysRegister", paras);
+				DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_SysRegister", paras);
 
 				if (action == DataProviderAction.Create)
 				{

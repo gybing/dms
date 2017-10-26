@@ -226,6 +226,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "金禾软件开发平台";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.ssMain.ResumeLayout(false);
             this.ssMain.PerformLayout();
             this.ResumeLayout(false);

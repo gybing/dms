@@ -421,5 +421,17 @@ namespace DMS
         {
             this.Refresh();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                SqlBaseProvider.LoginOutSysOnline(Program.ManInfo.Man.ManID, Program.ManInfo.Register.RegID);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

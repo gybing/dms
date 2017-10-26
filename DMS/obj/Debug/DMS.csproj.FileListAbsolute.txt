@@ -34,3 +34,6 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditSetRole.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.BaseParamForm.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.ResetMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.UnLockMan.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.SetOnineMan.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.DeleteRegister.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.Register.resources

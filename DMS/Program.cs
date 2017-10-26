@@ -79,6 +79,20 @@ namespace DMS
                     }
 
                 }
+
+                SqlBaseProvider.GetCacheParameters(ManInfo);
+
+                Program.CpuInfo = Publics.GetFirstMacAddress();
+                // 判断是否首次注册
+                SysRegister sr = SqlBaseProvider.GetSysRegister(Publics.GetRegisterNumber(Program.CpuInfo));
+
+                // 如果未注册则进行注册
+                if (String.IsNullOrEmpty(sr.DeptID))
+                {
+                    Register rgForm = new Register();
+                    if (rgForm.ShowDialog() != DialogResult.OK)
+                        Application.Exit();
+                }
             }
 
             Login lg = new Login();
