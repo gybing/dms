@@ -1165,6 +1165,7 @@ namespace DMS.MySql
                 string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
                 string pname = String.Empty;
                 string column = String.Empty;
+                string primaryID = String.Empty;
 
                 foreach (string tableset in tablesets)
                 {
@@ -1215,6 +1216,7 @@ namespace DMS.MySql
                     {
                         if (i == 0)
                         {
+                            primaryID = item.DisplayColumn;
                             txtResult.Text += PublicTools.WriteTab(1) + "inout _" + item.DisplayColumn.ToLower() + " " + item.DataType + "," + PublicTools.WriteEnter(1);
                         }
                         else
@@ -1230,6 +1232,9 @@ namespace DMS.MySql
                 txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "if _action = 2" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+
+                txtResult.Text += PublicTools.WriteTab(2) + "call P_Create_" + primaryID + "(@"+primaryID.ToLower()+");" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "set _" + primaryID.ToLower() + " = @" + primaryID.ToLower() + ";" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(2) + "insert into " + pColumn.TableCode.ToLower() + "(";
                 //i = 0;
