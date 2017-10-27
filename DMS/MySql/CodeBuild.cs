@@ -949,38 +949,34 @@ namespace DMS.MySql
 
                 if (cbPage.Checked)
                 {
-                    txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Search_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "drop procedure P_Search_" + pname + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Search_" + pname + ";" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Search_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Search_" + pname + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@search varchar(4000) = null, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@start int = null, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@end int = null, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@total int = null out, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@userid varchar(14) = null, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@getaction varchar(10) = null" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _search varchar(4000), " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _start int, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _end int, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "inout _total int, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _userid varchar(14), " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _getaction varchar(10)" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(1) + "if (@start is not null) and (@end is not null)" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "declare @Sql nvarchar(4000)" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(1) + "if (_start is not null) and (_end is not null)" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select count(*) into @allcnt from ";
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select @TOTAL = count(*) from '" + PublicTools.WriteEnter(1);
 
-                    othersql = PublicTools.WriteTab(3) + "+ '";
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if (othersql.IndexOf(item.RelaTable.ToLower()) < 0)
                             othersql += item.RelaTable.ToLower() + " " + item.Prefix.ToLower() + ", ";
                     }
                     othersql = othersql.Substring(0, othersql.Length - 2);
-                    othersql += " '" + PublicTools.WriteEnter(1);
+                    othersql += " ";
 
-                    othersql += PublicTools.WriteTab(3) + "+ 'where ";
+                    othersql +=  "where ";
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
                     {
@@ -996,15 +992,21 @@ namespace DMS.MySql
                     if (hasColumn)
                         othersql = othersql.Substring(0, othersql.Length - 5);
                     else
-                        othersql = othersql.Substring(0, othersql.Length - 6);
-                    othersql += " '" + PublicTools.WriteEnter(1);
+                        othersql = othersql + " 1 = 1";
+                    othersql += " ';" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += othersql;
-                    txtResult.Text += PublicTools.WriteTab(2) + "if (@search is not null) and (@search != '')" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = @Sql + ' and ' +  @search" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(2) + "exec sp_executesql @Sql, N'@TOTAL int out', @total out" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if (_search is not null) and (_search != '')" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = concat(@Sql, ' and ',  _search);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select * from (select a.*";
+                    txtResult.Text += PublicTools.WriteTab(2) + "prepare stmt from @sql;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "execute stmt;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "deallocate prepare stmt;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _total = @allcnt;" + PublicTools.WriteEnter(2);
+
+                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select a.*";
 
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
@@ -1015,18 +1017,20 @@ namespace DMS.MySql
                             hasColumn = true;
                         }
                     }
-                    txtResult.Text += ", '" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "+ 'row_number() over (order by a." + pColumn.ColumnCode.ToLower() + " desc) as RN from '" + PublicTools.WriteEnter(1);
-                    txtResult.Text += othersql + PublicTools.WriteEnter(1);
+                    txtResult.Text += " from ";
+                    txtResult.Text += othersql;
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "if (@search is not null) and (@search != '')" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = @Sql + ' and ' +  @search" + PublicTools.WriteEnter(2);
-
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = @Sql + ' ) SearchList where RN between ' + ltrim(str(@start)) + ' and ' + ltrim(str(@end))" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(2) + "exec(@Sql)" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if (_search is not null) and (_search != '')" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = concat(@Sql, ' and ',  _search);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = concat(@Sql,' order by a.baseid limit ',_start-1,',',_end);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "prepare stmt from @Sql;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "execute stmt;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "deallocate prepare stmt;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
                 }
                 else
                 {
@@ -1090,7 +1094,7 @@ namespace DMS.MySql
                         txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 10);
                     txtResult.Text += PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(3) + "order by a." + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "order by a." + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(1) + "elseif (_getaction = 'row')" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
@@ -1128,7 +1132,7 @@ namespace DMS.MySql
                         if (othersql.IndexOf("a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower()) < 0)
                             othersql += "a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower() + " and ";
                     }
-                    txtResult.Text += othersql + "a." + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
+                    txtResult.Text += othersql + "a." + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
