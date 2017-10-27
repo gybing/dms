@@ -950,7 +950,7 @@ namespace DMS.MySql
                 if (cbPage.Checked)
                 {
                     txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Search_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Search_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "drop procedure P_Search_" + pname + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
 
                     txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Search_" + pname + PublicTools.WriteEnter(1);
@@ -1031,7 +1031,7 @@ namespace DMS.MySql
                 else
                 {
                     txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Get_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Get_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "drop procedure P_Get_" + pname + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
 
                     txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Get_" + pname + PublicTools.WriteEnter(1);
@@ -1202,7 +1202,7 @@ namespace DMS.MySql
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 int i = 0;
                 txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Save_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Save_" + pname + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "drop procedure P_Save_" + pname + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
 
                 txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Save_" + pname + PublicTools.WriteEnter(1);
@@ -1335,14 +1335,14 @@ namespace DMS.MySql
                 packageclass += "." + txtClassName.Text;
 
                 txtResult.Text = PublicTools.WriteTab(1) + "<select id=\"Get" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "{call dbo.P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"GetList" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "{call dbo.P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
@@ -1350,7 +1350,7 @@ namespace DMS.MySql
                 if (cbSearch.Checked)
                 {
                     txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"Search" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "{call dbo.P_Search_" + gname + "(" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "{call P_Search_" + gname + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.search,javaType=String,jdbcType=VARCHAR}," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.start,javaType=int,jdbcType=INTEGER}," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.end,javaType=int,jdbcType=INTEGER}," + PublicTools.WriteEnter(1);
@@ -1362,7 +1362,7 @@ namespace DMS.MySql
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "<update id=\"Save" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" flushCache=\"true\">" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "{call dbo.P_Save_" + sname + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Save_" + sname + "(" + PublicTools.WriteEnter(1);
 
                 foreach (PdmColumn c in pTable.Columns)
                 {
