@@ -1030,19 +1030,18 @@ namespace DMS.MySql
                 }
                 else
                 {
-                    txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Get_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "drop procedure P_Get_" + pname + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Get_" + pname + ";" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Get_" + pname + PublicTools.WriteEnter(1);
+
+                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Get_" + pname + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@" + pColumn.ColumnCode.ToLower() + " " + pColumn.DataType.ToLower() + " = null, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "@getaction varchar(10) = null" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _" + pColumn.ColumnCode.ToLower() + " " + pColumn.DataType.ToLower() + "," + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _getaction varchar(10)" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "if (@getaction = 'full') or (@getaction is null)" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "if (_getaction = 'full') or (_getaction is null)" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "select a.*";
                     i = 0;
@@ -1093,11 +1092,10 @@ namespace DMS.MySql
 
                     txtResult.Text += PublicTools.WriteTab(3) + "order by a." + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "else if (@getaction = 'row')" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "if @" + pColumn.ColumnCode.ToLower() + " is not null " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "begin" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "elseif (_getaction = 'row')" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if _" + pColumn.ColumnCode.ToLower() + " is not null " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "select a.*";
                     i = 0;
@@ -1130,12 +1128,12 @@ namespace DMS.MySql
                         if (othersql.IndexOf("a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower()) < 0)
                             othersql += "a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower() + " and ";
                     }
-                    txtResult.Text += othersql + "a." + pColumn.ColumnCode.ToLower() + " = @" + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
+                    txtResult.Text += othersql + "a." + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
                 }
             }
             catch (Exception ex)
@@ -1270,7 +1268,7 @@ namespace DMS.MySql
                     txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pColumn.TableCode.ToLower() + " where " + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
 
-                txtResult.Text += PublicTools.WriteTab(1) + "endif;" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
             }
