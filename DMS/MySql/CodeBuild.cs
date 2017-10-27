@@ -1201,28 +1201,36 @@ namespace DMS.MySql
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 int i = 0;
-                txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Save_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "drop procedure P_Save_" + pname + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Save_" + pname + ";" + PublicTools.WriteEnter(1);
 
-                txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Save_" + pname + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Save_" + pname + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
 
                 foreach (ColumnTable item in pColumnTables)
                 {
                     if (item.Prefix == "a")
-                        txtResult.Text += PublicTools.WriteTab(1) + "@" + item.DisplayColumn.ToLower() + " " + item.DataType + " = null," + PublicTools.WriteEnter(1);
+                    {
+                        if (i == 0)
+                        {
+                            txtResult.Text += PublicTools.WriteTab(1) + "inout _" + item.DisplayColumn.ToLower() + " " + item.DataType + "," + PublicTools.WriteEnter(1);
+                        }
+                        else
+                        {
+                            txtResult.Text += PublicTools.WriteTab(1) + "in _" + item.DisplayColumn.ToLower() + " " + item.DataType + "," + PublicTools.WriteEnter(1);
+                        }
+                    }
+                    i++;                       
                 }
 
-                txtResult.Text += PublicTools.WriteTab(1) + "@action int" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "in _action int" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "if @action = 2" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "if _action = 2" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(2) + "insert into " + pColumn.TableCode.ToLower() + "(";
-                i = 0;
+                //i = 0;
                 foreach (ColumnTable item in pColumnTables)
                 {
                     if (item.Prefix == "a")
@@ -1231,47 +1239,40 @@ namespace DMS.MySql
                 txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 2);
 
                 txtResult.Text += ")" + PublicTools.WriteEnter(1) + PublicTools.WriteTab(3) + "values (";
-                i = 0;
+                //i = 0;
                 foreach (ColumnTable item in pColumnTables)
                 {
                     if (item.Prefix == "a")
-                        txtResult.Text += "@" + item.DisplayColumn.ToLower() + ", ";
+                        txtResult.Text += "_" + item.DisplayColumn.ToLower() + ", ";
                 }
-                txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 2) + ")";
+                txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 2) + ");";
                 txtResult.Text += PublicTools.WriteEnter(1);
 
-                txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
 
                 if (cbEdit.Checked)
                 {
-                    txtResult.Text += PublicTools.WriteTab(1) + "else if @action = 3" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "elseif _action = 3" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "update " + pColumn.TableCode.ToLower() + " set ";
-                    i = 0;
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if ((item.Prefix == "a") && (item.DisplayColumn != pColumn.ColumnCode))
-                            txtResult.Text += PublicTools.WriteEnter(1) + PublicTools.WriteTab(3) + item.DisplayColumn.ToLower() + " = @" + item.DisplayColumn.ToLower() + ",";
+                            txtResult.Text += PublicTools.WriteEnter(1) + PublicTools.WriteTab(3) + item.DisplayColumn.ToLower() + " = _" + item.DisplayColumn.ToLower() + ",";
                     }
                     txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 1) + PublicTools.WriteEnter(1);
-
-                    txtResult.Text += PublicTools.WriteTab(3) + "where " + pColumn.ColumnCode.ToLower() + " = @" + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
-
-                    txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "where " + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
                 if (cbDelete.Checked)
                 {
-                    txtResult.Text += PublicTools.WriteTab(1) + "else if @action = 4" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
-
-                    txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pColumn.TableCode.ToLower() + " where " + pColumn.ColumnCode.ToLower() + " = @" + pColumn.ColumnCode.ToLower() + PublicTools.WriteEnter(1);
-
-                    txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "elseif _action = 4" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pColumn.TableCode.ToLower() + " where " + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
 
-                txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(2);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                txtResult.Text += PublicTools.WriteTab(1) + "endif;" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
             }
             catch (Exception ex)
             {
