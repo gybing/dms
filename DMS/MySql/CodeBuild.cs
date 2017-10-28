@@ -1387,6 +1387,79 @@ namespace DMS.MySql
             }
         }
 
+        private void btnKey_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(pTable.TableCode))
+                {
+                    MessageBox.Show("没有加载表！");
+                    return;
+                }
+
+                if (String.IsNullOrEmpty(txtSet.Text.Trim()))
+                {
+                    MessageBox.Show("没有配置信息！");
+                    return;
+                }
+                
+                if (pTable.Keys.Count > 0)
+                {
+                    foreach (var pdmKey in pTable.Keys)
+                    {
+                        string keyColumn = pdmKey.Columns[0].ColumnCode;
+                        string dataType = pdmKey.Columns[0].DataType;
+                        string defaultnum = "0000000001";
+
+                        int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
+
+                        txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Create_" + keyColumn + ";" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Create_" + keyColumn + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(1) + "out _" + keyColumn.ToLower() + " " + dataType + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
+
+                        if (length > 10)
+                        {
+                            txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keyColumn.ToLower() + " ,"+(length - 10)+")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keyColumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
+
+                            txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), '"+defaultnum.Substring(defaultnum.Length - (length - 10), length - 10)+"');" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), right(concat('0000000000',(convert(right(@maxno, " + (length - 10) + "), signed)+1))," + (length - 10) + "));" + PublicTools.WriteEnter(1);
+                        }
+                        else
+                        {
+                            txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keyColumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = right(concat('0000000000',(convert(@maxno,signed)+1))," + length + ");" + PublicTools.WriteEnter(1);
+                        }
+                        txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(1) + "select _" + keyColumn.ToLower() + ";" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
+                       
+                    }
+                }
+
+               
+                
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
         private void cbPage_CheckedChanged(object sender, EventArgs e)
         {
             if (cbPage.Checked)
@@ -1419,5 +1492,7 @@ namespace DMS.MySql
                 cbPage.Checked = true;
             }
         }
+
+        
     }
 }

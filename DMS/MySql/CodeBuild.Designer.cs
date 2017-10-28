@@ -76,6 +76,7 @@
             this.lbpkg = new System.Windows.Forms.Label();
             this.lbtb = new System.Windows.Forms.Label();
             this.lbdb = new System.Windows.Forms.Label();
+            this.btnKey = new GuFun.WinControls.VistaButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColumn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).BeginInit();
             this.exPanel1.SuspendLayout();
@@ -222,6 +223,7 @@
             // 
             // exPanel1
             // 
+            this.exPanel1.Controls.Add(this.btnKey);
             this.exPanel1.Controls.Add(this.btnAction);
             this.exPanel1.Controls.Add(this.btnService);
             this.exPanel1.Controls.Add(this.btnDao);
@@ -339,7 +341,7 @@
             this.btnExit.ButtonText = "退出";
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(932, 12);
+            this.btnExit.Location = new System.Drawing.Point(1018, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(74, 48);
             this.btnExit.TabIndex = 26;
@@ -367,7 +369,7 @@
             this.btnJs.ButtonText = "生成JS语句";
             this.btnJs.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnJs.ForeColor = System.Drawing.Color.Black;
-            this.btnJs.Location = new System.Drawing.Point(852, 12);
+            this.btnJs.Location = new System.Drawing.Point(938, 12);
             this.btnJs.Name = "btnJs";
             this.btnJs.Size = new System.Drawing.Size(74, 48);
             this.btnJs.TabIndex = 19;
@@ -381,9 +383,9 @@
             this.btnSaveSql.ButtonText = "生成保存语句";
             this.btnSaveSql.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSaveSql.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveSql.Location = new System.Drawing.Point(772, 12);
+            this.btnSaveSql.Location = new System.Drawing.Point(852, 12);
             this.btnSaveSql.Name = "btnSaveSql";
-            this.btnSaveSql.Size = new System.Drawing.Size(74, 48);
+            this.btnSaveSql.Size = new System.Drawing.Size(80, 48);
             this.btnSaveSql.TabIndex = 18;
             this.btnSaveSql.Click += new System.EventHandler(this.btnSaveSql_Click);
             // 
@@ -627,6 +629,20 @@
             this.lbdb.TabIndex = 0;
             this.lbdb.Text = "数据库：";
             // 
+            // btnKey
+            // 
+            this.btnKey.BackColor = System.Drawing.Color.Transparent;
+            this.btnKey.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnKey.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnKey.ButtonText = "生成主键";
+            this.btnKey.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnKey.ForeColor = System.Drawing.Color.Black;
+            this.btnKey.Location = new System.Drawing.Point(772, 12);
+            this.btnKey.Name = "btnKey";
+            this.btnKey.Size = new System.Drawing.Size(74, 48);
+            this.btnKey.TabIndex = 27;
+            this.btnKey.Click += new System.EventHandler(this.btnKey_Click);
+            // 
             // CodeBuild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -699,5 +715,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecision;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIdentity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnNotNull;
+        private GuFun.WinControls.VistaButton btnKey;
     }
 }
