@@ -1448,10 +1448,6 @@ namespace DMS.MySql
                        
                     }
                 }
-
-               
-                
-
             }
             catch (Exception)
             {
