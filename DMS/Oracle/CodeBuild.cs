@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DMS.MySql
+namespace DMS.Oracle
 {
     public partial class CodeBuild : DMS.BaseDialogForm
     {
@@ -22,7 +22,7 @@ namespace DMS.MySql
         {
             InitializeComponent();
 
-            CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.MySql)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
+            CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.Oracle)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
 
             ddlDB.SelectedValueChanged += new EventHandler(ddlDB_SelectedIndexChanged);
 
@@ -1166,17 +1166,6 @@ namespace DMS.MySql
                 string pname = String.Empty;
                 string column = String.Empty;
                 string primaryID = String.Empty;
-                string keys = String.Empty;
-
-                foreach (var tbkeys in pTable.Keys)
-                {
-                    keys = keys + "," + tbkeys.Columns[0].ColumnCode;
-                }
-
-                if (!String.IsNullOrEmpty(keys))
-                {
-                    keys = keys.Substring(1);
-                }
 
                 foreach (string tableset in tablesets)
                 {
@@ -1214,6 +1203,7 @@ namespace DMS.MySql
                 }
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
+                int i = 0;
                 txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Save_" + pname + ";" + PublicTools.WriteEnter(1);
 
@@ -1224,7 +1214,7 @@ namespace DMS.MySql
                 {
                     if (item.Prefix == "a")
                     {
-                        if (keys.IndexOf(item.ColumnCode) >= 0)
+                        if (i == 0)
                         {
                             primaryID = item.DisplayColumn;
                             txtResult.Text += PublicTools.WriteTab(1) + "inout _" + item.DisplayColumn.ToLower() + " " + item.DataType + "," + PublicTools.WriteEnter(1);
@@ -1234,6 +1224,7 @@ namespace DMS.MySql
                             txtResult.Text += PublicTools.WriteTab(1) + "in _" + item.DisplayColumn.ToLower() + " " + item.DataType + "," + PublicTools.WriteEnter(1);
                         }
                     }
+                    i++;                       
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "in _action int" + PublicTools.WriteEnter(1);
@@ -1345,17 +1336,6 @@ namespace DMS.MySql
                 }
 
                 OnGetSave();
-                string keys = String.Empty;
-
-                foreach (var tbkeys in pTable.Keys)
-                {
-                    keys = keys + "," + tbkeys.Columns[0].ColumnCode;
-                }
-
-                if (!String.IsNullOrEmpty(keys))
-                {
-                    keys = keys.Substring(1);
-                }
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -1394,14 +1374,7 @@ namespace DMS.MySql
 
                 foreach (PdmColumn c in pTable.Columns)
                 {
-                    if (keys.IndexOf(c.ColumnCode) >= 0)
-                    {
-                        txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + ",mode=INOUT}," + PublicTools.WriteEnter(1);
-                    }
-                    else
-                    {
-                        txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + "}," + PublicTools.WriteEnter(1);
-                    }
+                    txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 }
                 txtResult.Text += PublicTools.WriteTab(3) + "#{deal.action,javaType=int,jdbcType=INTEGER}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);

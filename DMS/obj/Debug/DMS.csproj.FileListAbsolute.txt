@@ -39,3 +39,5 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.UnLockMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.csproj.GenerateResource.Cache
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.exe
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.pdb
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.Oracle.CodeBuild.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.Oracle.ImportPdm.resources

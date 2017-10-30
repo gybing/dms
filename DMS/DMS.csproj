@@ -59,6 +59,18 @@
     <Compile Include="MySql\ImportPdm.Designer.cs">
       <DependentUpon>ImportPdm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Oracle\CodeBuild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oracle\CodeBuild.Designer.cs">
+      <DependentUpon>CodeBuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oracle\ImportPdm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oracle\ImportPdm.Designer.cs">
+      <DependentUpon>ImportPdm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +258,12 @@
       <DependentUpon>CodeBuild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MySql\ImportPdm.resx">
+      <DependentUpon>ImportPdm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oracle\CodeBuild.resx">
+      <DependentUpon>CodeBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oracle\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">

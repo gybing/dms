@@ -996,7 +996,7 @@ namespace DMS.SqlServer
                     if (hasColumn)
                         othersql = othersql.Substring(0, othersql.Length - 5);
                     else
-                        othersql = othersql.Substring(0, othersql.Length - 6);
+                        othersql = othersql + " 1 = 1";
                     othersql += " '" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += othersql;
@@ -1164,6 +1164,18 @@ namespace DMS.SqlServer
                 string pname = String.Empty;
                 string column = String.Empty;
                 string primaryID = String.Empty;
+                string keys = String.Empty;
+
+                foreach (var tbkeys in pTable.Keys)
+                {
+                    keys = keys + "," + tbkeys.Columns[0].ColumnCode;
+                }
+
+                if (!String.IsNullOrEmpty(keys))
+                {
+                    keys = keys.Substring(1);
+                }
+
 
                 foreach (string tableset in tablesets)
                 {
@@ -1214,7 +1226,7 @@ namespace DMS.SqlServer
                 {
                     if (item.Prefix == "a")
                     {
-                        if (i == 0)
+                        if (keys.IndexOf(item.ColumnCode) >= 0)
                         {
                             primaryID = item.DisplayColumn;
                             txtResult.Text += PublicTools.WriteTab(1) + "@" + item.DisplayColumn.ToLower() + " " + item.DataType + " = null output," + PublicTools.WriteEnter(1);
@@ -1224,7 +1236,6 @@ namespace DMS.SqlServer
                             txtResult.Text += PublicTools.WriteTab(1) + "@" + item.DisplayColumn.ToLower() + " " + item.DataType + " = null," + PublicTools.WriteEnter(1);
                         }
                     }
-                    i++;
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "@action int" + PublicTools.WriteEnter(1);
@@ -1344,6 +1355,18 @@ namespace DMS.SqlServer
 
                 OnGetSave();
 
+                string keys = String.Empty;
+
+                foreach (var tbkeys in pTable.Keys)
+                {
+                    keys = keys + "," + tbkeys.Columns[0].ColumnCode;
+                }
+
+                if (!String.IsNullOrEmpty(keys))
+                {
+                    keys = keys.Substring(1);
+                }
+
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
                     packageclass += "." + txtCatalog.Text.Trim().ToLower();
@@ -1381,7 +1404,14 @@ namespace DMS.SqlServer
 
                 foreach (PdmColumn c in pTable.Columns)
                 {
-                    txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + "}," + PublicTools.WriteEnter(1);
+                    if (keys.IndexOf(c.ColumnCode) >= 0)
+                    {
+                        txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + ",mode=INOUT}," + PublicTools.WriteEnter(1);
+                    }
+                    else
+                    {
+                        txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + "}," + PublicTools.WriteEnter(1);
+                    }
                 }
                 txtResult.Text += PublicTools.WriteTab(3) + "#{deal.action,javaType=int,jdbcType=INTEGER}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
