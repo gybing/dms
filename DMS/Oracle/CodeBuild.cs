@@ -1227,12 +1227,12 @@ namespace DMS.Oracle
                         if (keys.IndexOf(item.ColumnCode) >= 0)
                         {
                             primaryID = item.DisplayColumn;
-                            vars = "v_" + item.DisplayColumn.ToLower() + " " + item.DataType + ";";
-                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in out " + item.DataType.Substring(0,item.DataType.IndexOf("(")) + "," + PublicTools.WriteEnter(1);
+                            vars = "v_" + item.DisplayColumn.ToLower() + " " + item.DataType.ToLower() + ";";
+                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in out " + item.DataType.Substring(0,item.DataType.IndexOf("(")).ToLower() + "," + PublicTools.WriteEnter(1);
                         }
                         else
                         {
-                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in " + item.DataType.Substring(0, item.DataType.IndexOf("(")) + "," + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in " + item.DataType.Substring(0, item.DataType.IndexOf("(")).ToLower() + "," + PublicTools.WriteEnter(1);
                         }
                     }
                     i++;                       
@@ -1431,38 +1431,36 @@ namespace DMS.Oracle
 
                         int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
 
-                        txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Create_" + keyColumn + ";" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Create_" + keyColumn + PublicTools.WriteEnter(1);
+                        txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Create_" + keyColumn + "\"" + PublicTools.WriteEnter(1);
                         txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(1) + "out _" + keyColumn.ToLower() + " " + dataType + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(1) + "p_" + keyColumn.ToLower() + " in out " + dataType.Substring(0, dataType.IndexOf("(")).ToLower() + PublicTools.WriteEnter(1);
                         txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "v_maxno varchar2(20);" + PublicTools.WriteEnter(1);
                         txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
 
                         if (length > 10)
                         {
-                            txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keyColumn.ToLower() + " ,"+(length - 10)+")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keyColumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "select max(substr(\"" + keyColumn + "\" ,"+(length - 9)+")) into v_maxno from \"" + pTable.TableCode + "\"" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + " where substr(\"" + keyColumn + "\" ,0 ,10) = 'PK'||to_char(sysdate,'YYYYMMDD');" + PublicTools.WriteEnter(1);
 
-                            txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "if v_maxno is null" + PublicTools.WriteEnter(1);
                             txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), '"+defaultnum.Substring(defaultnum.Length - (length - 10), length - 10)+"');" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := 'PK'||to_char(sysdate,'YYYYMMDD')||'"+defaultnum.Substring(defaultnum.Length - (length - 10), length - 10)+"';" + PublicTools.WriteEnter(1);
                             txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), right(concat('0000000000',(convert(right(@maxno, " + (length - 10) + "), signed)+1))," + (length - 10) + "));" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := 'PK'||to_char(sysdate,'YYYYMMDD')||substr(('0000000000' ||(to_number(v_maxno)+1)), length('0000000000' ||(to_number(v_maxno)+1)) -" + (length - 11) + ");" + PublicTools.WriteEnter(1);
                         }
                         else
                         {
-                            txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keyColumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "select max(\"" + keyColumn + "\") into v_maxno from \"" + pTable.TableCode + "\";" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "if v_maxno is null" + PublicTools.WriteEnter(1);
                             txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
                             txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = right(concat('0000000000',(convert(@maxno,signed)+1))," + length + ");" + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := substr('0000000000'||(to_number(v_maxno)+1), length('0000000000'||(to_number(v_maxno)+1)) - " + length + ");" + PublicTools.WriteEnter(1);
                         }
                         txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(1) + "select _" + keyColumn.ToLower() + ";" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
                        
                     }
                 }
