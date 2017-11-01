@@ -96,7 +96,10 @@ namespace DMS
             }
 
             Login lg = new Login();
-            DialogResult rtn = lg.ShowDialog();
+
+            FirstLogined:
+                DialogResult rtn = lg.ShowDialog();
+                Program.NowLoginMan = lg.txtManID.Text;
 
             if (rtn == DialogResult.OK)
             {
@@ -111,9 +114,21 @@ namespace DMS
             }
             else if (rtn == DialogResult.Yes)
             {
-                
+                FirstLogin first = new FirstLogin();
+
+                if (first.ShowDialog() == DialogResult.OK)
+                {
+                    goto FirstLogined;
+                }
+                else
+                {
+                    Application.Exit();
+                }
             }
-           
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

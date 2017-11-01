@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System\FirstLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\FirstLogin.Designer.cs">
+      <DependentUpon>FirstLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="MySql\CodeBuild.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="System\EditSetRole.resx">
       <DependentUpon>EditSetRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\FirstLogin.resx">
+      <DependentUpon>FirstLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\ManRole.resx">
       <DependentUpon>ManRole.cs</DependentUpon>
