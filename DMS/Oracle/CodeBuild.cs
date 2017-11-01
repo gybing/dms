@@ -543,7 +543,7 @@ namespace DMS.Oracle
                 else
                     txtResult.Text += PublicTools.WriteTab(1) + "public void GetList" + txtClassName.Text + "(" + txtClassName.Text + " item);" + PublicTools.WriteEnter(2);
                 if (cbSearch.Checked)
-                    txtResult.Text += PublicTools.WriteTab(1) + "public List<" + txtClassName.Text + "> Search" + txtClassName.Text + "(" + txtClassName.Text + " item);" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(1) + "public void Search" + txtClassName.Text + "(" + txtClassName.Text + " item);" + PublicTools.WriteEnter(2);
                 txtResult.Text += PublicTools.WriteTab(1) + "public void Save" + txtClassName.Text + "(" + txtClassName.Text + " item);" + PublicTools.WriteEnter(2);
 
                 txtResult.Text += PublicTools.WriteTab(1) + "// endregion " + txtClassName.Text + " Methods" + PublicTools.WriteEnter(2);
@@ -580,9 +580,9 @@ namespace DMS.Oracle
 
                 txtResult.Text += PublicTools.WriteTab(1) + "public static " + txtClassName.Text + " Get" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) { " + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper mapper = DBUtils.getMapper(session, com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper.class);	" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + txtClassName.Text + " rtv = new " + txtClassName.Text + "()" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "item.getItem().setGetaction(ActionGetType.row.toString());" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "mapper.Get" + txtClassName.Text + "(item);" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + txtClassName.Text + " rtv = new " + txtClassName.Text + "()" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "List<" + txtClassName.Text + "> lists = item.getItem().getBean();" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "if(lists.size() > 0) {" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "rtv = lists.get(0);" + PublicTools.WriteEnter(1);
@@ -619,7 +619,12 @@ namespace DMS.Oracle
                 {
                     txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> Search" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) { " + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper mapper = DBUtils.getMapper(session, com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper.class);	" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(2) + "return mapper.Search" + txtClassName.Text + "(item);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "mapper.Search" + txtClassName.Text + "(item);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "List<" + txtClassName.Text + "> lists = item.getItem().getBean();" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if(lists.size() <= 0) {" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "lists = new ArrayList<" + txtClassName.Text + "> ();" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "return lists" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
                 }
 
@@ -965,26 +970,29 @@ namespace DMS.Oracle
 
                 if (cbPage.Checked)
                 {
-                    txtResult.Text = PublicTools.WriteTab(0) + "create procedure P_Search_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Search_" + pname + "\"" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "in _search varchar(4000), " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "in _start int, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "in _end int, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "inout _total int, " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "in _userid varchar(14), " + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "in _getaction varchar(10)" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_search in varchar2, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_start in int, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_end in int, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_total out int, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_userid in varchar2, " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_getaction in varchar2," + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_cur out sys_refcursor" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "v_sql varchar2(1000);" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(1) + "if (_start is not null) and (_end is not null)" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "if (p_start is not null) and (p_end is not null)" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select count(*) into @allcnt from ";
+                    txtResult.Text += PublicTools.WriteTab(2) + "v_sql := 'select count(*) from ";
 
 
                     foreach (ColumnTable item in pColumnTables)
                     {
-                        if (othersql.IndexOf(item.RelaTable.ToLower()) < 0)
-                            othersql += item.RelaTable.ToLower() + " " + item.Prefix.ToLower() + ", ";
+                        if (othersql.IndexOf(item.RelaTable) < 0)
+                            othersql += "\"" + item.RelaTable + "\" " + item.Prefix.ToLower() + ", ";
                     }
                     othersql = othersql.Substring(0, othersql.Length - 2);
                     othersql += " ";
@@ -996,9 +1004,9 @@ namespace DMS.Oracle
                         if (item.TableCode == item.RelaTable)
                             continue;
 
-                        if (othersql.IndexOf("a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower()) < 0)
+                        if (othersql.IndexOf("a.\"" + item.ColumnCode + "\" = " + item.Prefix.ToLower() + ".\"" + item.RelaColumn + "\"") < 0)
                         {
-                            othersql += "a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower() + " and ";
+                            othersql += "a.\"" + item.ColumnCode + "\" = " + item.Prefix.ToLower() + ".\"" + item.RelaColumn + "\" and ";
                             hasColumn = true;
                         }
                     }
@@ -1009,41 +1017,34 @@ namespace DMS.Oracle
                     othersql += " ';" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += othersql;
-                    txtResult.Text += PublicTools.WriteTab(2) + "if (_search is not null) and (_search != '')" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if (p_search is not null) and (p_search != '')" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = concat(@Sql, ' and ',  _search);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "v_sql := v_sql || ' and ' || p_search;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "execute immediate v_sql into p_total;" + PublicTools.WriteEnter(2);
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "prepare stmt from @sql;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "execute stmt;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "deallocate prepare stmt;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _total = @allcnt;" + PublicTools.WriteEnter(2);
-
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select a.*";
+                    txtResult.Text += PublicTools.WriteTab(2) + "v_sql := 'select * from (select a.*";
 
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if (item.Prefix != "a")
                         {
-                            txtResult.Text += ", " + item.Prefix.ToLower() + "." + item.DisplayColumn.ToLower();
+                            txtResult.Text += ", " + item.Prefix.ToLower() + ".\"" + item.DisplayColumn + "\"";
                             hasColumn = true;
                         }
                     }
-                    txtResult.Text += " from ";
+                    txtResult.Text += " , rownum rn from ";
                     txtResult.Text += othersql;
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "if (_search is not null) and (_search != '')" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if (p_search is not null) and (p_search != '')" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = concat(@Sql, ' and ',  _search);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "v_sql := v_sql || ' and ' || p_search;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = concat(@Sql,' order by a.baseid limit ',_start-1,',',_end);" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "prepare stmt from @Sql;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "execute stmt;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "deallocate prepare stmt;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "v_sql := v_sql || ' order by a.\"" + column + "\") where rn between ' || p_start || ' and ' || p_end;" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "open p_cur for v_sql;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
                 }
                 else
                 {
@@ -1401,7 +1402,7 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(2) + "{call \"P_Get_" + gname + "\"(" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "#{item.bean, mode=OUT,jdbcType=CURSOR,javaType=java.sql.ResultSet,resultMap=" + txtClassName.Text.ToLower() + "}" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "#{item.bean,jdbcType=CURSOR,javaType=java.sql.ResultSet,resultMap=" + txtClassName.Text.ToLower() + ",mode=OUT}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
 
@@ -1409,7 +1410,7 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(2) + "{call \"P_Get_" + gname + "\"(" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "#{item.bean, mode=OUT,jdbcType=CURSOR,javaType=java.sql.ResultSet,resultMap=" + txtClassName.Text.ToLower() + "}" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "#{item.bean,jdbcType=CURSOR,javaType=java.sql.ResultSet,resultMap=" + txtClassName.Text.ToLower() + ",mode=OUT}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
 
@@ -1422,7 +1423,8 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.end,javaType=int,jdbcType=INTEGER}," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.total,javaType=int,jdbcType=INTEGER,mode=OUT}," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.userid,javaType=String,jdbcType=VARCHAR}," + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "#{search.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "#{search.getaction,javaType=String,jdbcType=VARCHAR}," + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "#{item.bean,jdbcType=CURSOR,javaType=java.sql.ResultSet,resultMap=" + txtClassName.Text.ToLower() + ",mode=OUT}" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
                 }
