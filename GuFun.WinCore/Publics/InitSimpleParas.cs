@@ -153,5 +153,17 @@ namespace GuFun.WinCore
 
       DBUtils.ExecuteNonQuery(CommandType.Text, sql);
     }
+
+    public void Del()
+    {
+        string sql = String.Empty;
+
+        if ((_idType == ColumnType.Int) || (_idType == ColumnType.SmallInt))
+            sql = "delete from  " + _tableName + " where " + _idCode + " = " + _idValue;
+        else
+            sql = "delete from  " + _tableName + " where " + _idCode + " = '" + _idValue + "'";
+
+        DBUtils.ExecuteNonQuery(CommandType.Text, sql);
+    }
   }
 }

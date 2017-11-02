@@ -30,6 +30,7 @@ namespace DMS
             tsbSave.ImageIndex = 11;
             tsbCancel.ImageIndex = 12;
             tsbExport.ImageIndex = 14;
+            tsbDel.ImageIndex = 9;
 
             CtrlHelper.InitDataGridView(dgvMain, true);
             colID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -251,6 +252,15 @@ namespace DMS
             }
         }
 
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvMain.SelectedRows)
+            {
+                iParas.IdValue = item.Cells[0].Value.ToString();
+                dgvMain.Rows.RemoveAt(item.Index);
+                iParas.Del();
+            }
+        }
 
     }
 }

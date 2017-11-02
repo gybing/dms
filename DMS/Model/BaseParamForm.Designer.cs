@@ -34,6 +34,7 @@
             this.tssExit = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbDel = new System.Windows.Forms.ToolStripButton();
             this.tssModify = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbCancel = new System.Windows.Forms.ToolStripButton();
@@ -79,6 +80,7 @@
             this.tssExit,
             this.tsbAdd,
             this.tsbEdit,
+            this.tsbDel,
             this.tssModify,
             this.tsbSave,
             this.tsbCancel,
@@ -126,6 +128,17 @@
             this.tsbEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
+            // 
+            // tsbDel
+            // 
+            this.tsbDel.Image = ((System.Drawing.Image)(resources.GetObject("tsbDel.Image")));
+            this.tsbDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDel.Name = "tsbDel";
+            this.tsbDel.Size = new System.Drawing.Size(36, 37);
+            this.tsbDel.Text = "删除";
+            this.tsbDel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // tssModify
             // 
@@ -282,5 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         protected GuFun.WinControls.ExDataGridView dgvMain;
+        private System.Windows.Forms.ToolStripButton tsbDel;
     }
 }

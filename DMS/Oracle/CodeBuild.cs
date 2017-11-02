@@ -1150,6 +1150,7 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
                 }
+                txtResult.Text += PublicTools.WriteTab(0) + "/" + PublicTools.WriteEnter(1);
             }
             catch (Exception ex)
             {
@@ -1309,6 +1310,7 @@ namespace DMS.Oracle
 
                 txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "/" + PublicTools.WriteEnter(1);
             }
             catch (Exception ex)
             {
@@ -1503,8 +1505,8 @@ namespace DMS.Oracle
                         }
                         txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
                         txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
-                       
                     }
+                    txtResult.Text += PublicTools.WriteTab(0) + "/" + PublicTools.WriteEnter(1);
                 }
             }
             catch (Exception)
