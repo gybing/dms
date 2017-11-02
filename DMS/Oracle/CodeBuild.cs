@@ -872,9 +872,11 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteTab(1) + "public String Search" + txtClassName.Text + "() throws Exception {" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "OnlineUser ou = ToolUtils.GetOnlineUser();" + PublicTools.WriteEnter(2);
                     txtResult.Text += PublicTools.WriteTab(2) + "if (ou != null) {" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getSearch().setStart(start + 1);" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getSearch().setEnd(this.GetEndCnt());" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(3) + "List<" + txtClassName.Text + "> lists = " + txtPrefix.Text + "Dao.Search" + txtClassName.Text + "(this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "());" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(3) + "String search = \"\";" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(3) + "this.SetSearch(this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getSearch(), this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getItem(), ou, search);;" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(3) + "this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getSearch().setStart(start + 1);" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(3) + "this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getSearch().setEnd(this.GetEndCnt());" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(3) + "List<" + txtClassName.Text + "> lists = " + txtPrefix.Text + "Dao.Search" + txtClassName.Text + "(this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "());" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "if (!hasexport) {" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(4) + "ToolUtils.OutString(this.OutLists(lists, this.get" + PublicTools.GetFirstUpper(txtValue.Text) + "().getSearch().getTotal(), false));" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "}" + PublicTools.WriteEnter(1);
