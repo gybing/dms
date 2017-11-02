@@ -641,7 +641,8 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(1) + "public static " + txtClassName.Text + " Get" + txtClassName.Text + "(" + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "SqlSession session = DBUtils.getFactory();" + PublicTools.WriteEnter(2);
                 txtResult.Text += PublicTools.WriteTab(2) + "try {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "return Get" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "return Sql" + txtPrefix.Text + "Dao.Get" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(3) + "return Get" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "} catch (Exception e) {" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "return new " + txtClassName.Text + "();" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
@@ -650,14 +651,14 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
 
-                txtResult.Text += PublicTools.WriteTab(1) + "public static " + txtClassName.Text + " Get" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "case Oracle10:" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(4) + "return new " + txtClassName.Text + "();" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "default:" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(4) + "return Sql" + txtPrefix.Text + "Dao.Get" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
+                //txtResult.Text += PublicTools.WriteTab(1) + "public static " + txtClassName.Text + " Get" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(2) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(3) + "case Oracle10:" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(4) + "return new " + txtClassName.Text + "();" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(3) + "default:" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(4) + "return Sql" + txtPrefix.Text + "Dao.Get" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
 
                 if (cbNo.Checked)
                     txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> GetList" + txtClassName.Text + "() {" + PublicTools.WriteEnter(1);
@@ -666,9 +667,11 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(2) + "SqlSession session = DBUtils.getFactory();" + PublicTools.WriteEnter(2);
                 txtResult.Text += PublicTools.WriteTab(2) + "try {" + PublicTools.WriteEnter(1);
                 if (cbNo.Checked)
-                    txtResult.Text += PublicTools.WriteTab(3) + "return GetList" + txtClassName.Text + "(session);" + PublicTools.WriteEnter(1);
+                     txtResult.Text += PublicTools.WriteTab(3) + "return Sql" + txtPrefix.Text + "Dao.GetList" + txtClassName.Text + "(session);" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(3) + "return GetList" + txtClassName.Text + "(session);" + PublicTools.WriteEnter(1);
                 else
-                    txtResult.Text += PublicTools.WriteTab(3) + "return GetList" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "return Sql" + txtPrefix.Text + "Dao.GetList" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(3) + "return GetList" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "} catch (Exception e) {" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "return new ArrayList<" + txtClassName.Text + ">();" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
@@ -677,32 +680,32 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
 
-                if (cbNo.Checked)
-                    txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> GetList" + txtClassName.Text + "(SqlSession session) {" + PublicTools.WriteEnter(1);
-                else
-                    txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> GetList" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "case Oracle10:" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(4) + "return new ArrayList<" + txtClassName.Text + ">();" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "default:" + PublicTools.WriteEnter(1);
-                if (cbNo.Checked)
-                    txtResult.Text += PublicTools.WriteTab(4) + "return Sql" + txtPrefix.Text + "Dao.GetList" + txtClassName.Text + "(session);" + PublicTools.WriteEnter(1);
-                else
-                    txtResult.Text += PublicTools.WriteTab(4) + "return Sql" + txtPrefix.Text + "Dao.GetList" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
+                //if (cbNo.Checked)
+                //    txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> GetList" + txtClassName.Text + "(SqlSession session) {" + PublicTools.WriteEnter(1);
+                //else
+                //    txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> GetList" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(2) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(3) + "case Oracle10:" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(4) + "return new ArrayList<" + txtClassName.Text + ">();" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(3) + "default:" + PublicTools.WriteEnter(1);
+                //if (cbNo.Checked)
+                //    txtResult.Text += PublicTools.WriteTab(4) + "return Sql" + txtPrefix.Text + "Dao.GetList" + txtClassName.Text + "(session);" + PublicTools.WriteEnter(1);
+                //else
+                //    txtResult.Text += PublicTools.WriteTab(4) + "return Sql" + txtPrefix.Text + "Dao.GetList" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
 
                 if (cbSearch.Checked)
                 {
                     txtResult.Text += PublicTools.WriteTab(1) + "public static List<" + txtClassName.Text + "> Search" + txtClassName.Text + "(" + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "SqlSession session = DBUtils.getFactory();" + PublicTools.WriteEnter(2);
                     txtResult.Text += PublicTools.WriteTab(2) + "try {" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(4) + "case Oracle10:" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(5) + "return new ArrayList<" + txtClassName.Text + ">();" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(4) + "default:" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(5) + "return Sql" + txtPrefix.Text + "Dao.Search" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(3) + "}" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(3) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(4) + "case Oracle10:" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(5) + "return new ArrayList<" + txtClassName.Text + ">();" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(4) + "default:" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "return Sql" + txtPrefix.Text + "Dao.Search" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                    //txtResult.Text += PublicTools.WriteTab(3) + "}" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "} catch (Exception e) {" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "return new ArrayList<" + txtClassName.Text + ">();" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
@@ -713,13 +716,13 @@ namespace DMS.Oracle
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "public static void Save" + txtClassName.Text + "(SqlSession session, " + txtClassName.Text + " item) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "case Oracle10:" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(4) + "break;" + PublicTools.WriteEnter(2);
-                txtResult.Text += PublicTools.WriteTab(3) + "default:" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(4) + "Sql" + txtPrefix.Text + "Dao.Save" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(4) + "break;" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(2) + "switch(ToolUtils.GetDataBaseType()) {" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(3) + "case Oracle10:" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(4) + "break;" + PublicTools.WriteEnter(2);
+                //txtResult.Text += PublicTools.WriteTab(3) + "default:" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "Sql" + txtPrefix.Text + "Dao.Save" + txtClassName.Text + "(session, item);" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(4) + "break;" + PublicTools.WriteEnter(1);
+                //txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
                 txtResult.Text += PublicTools.WriteTab(1) + "// endregion " + txtClassName.Text + " Methods" + PublicTools.WriteEnter(2);
             }
