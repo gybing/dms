@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace DMS.Oracle
@@ -258,7 +259,7 @@ namespace DMS.Oracle
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -964,7 +965,6 @@ namespace DMS.Oracle
                 }
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
-                int i = 0;
                 string othersql = String.Empty;
                 bool hasColumn = false;
 
@@ -997,7 +997,7 @@ namespace DMS.Oracle
                     othersql = othersql.Substring(0, othersql.Length - 2);
                     othersql += " ";
 
-                    othersql +=  "where ";
+                    othersql += "where ";
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
                     {
@@ -1048,9 +1048,16 @@ namespace DMS.Oracle
                 }
                 else
                 {
+                    string datatype = pColumn.DataType.ToLower();
+
+                    if (pColumn.DataType.IndexOf("(") >= 0)
+                    {
+                        datatype = pColumn.DataType.Substring(0, pColumn.DataType.IndexOf("(")).ToLower();
+                    }
+
                     txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Get_" + pname + "\"" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "p_" + pColumn.ColumnCode.ToLower() + " in " + pColumn.DataType.Substring(0, pColumn.DataType.IndexOf("(")).ToLower() + "," + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "p_" + pColumn.ColumnCode.ToLower() + " in " + datatype + "," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_getaction in varchar2," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_cur out sys_refcursor" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
@@ -1060,7 +1067,6 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "open p_cur for select a.*";
-                    i = 0;
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
                     {
@@ -1073,13 +1079,12 @@ namespace DMS.Oracle
                     txtResult.Text += " " + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(3) + "from ";
-                    i = 0;
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if (txtResult.Text.IndexOf(item.RelaTable) < 0)
                         {
-                            txtResult.Text += "\""+ item.RelaTable + "\" " + item.Prefix.ToLower() + ", ";
+                            txtResult.Text += "\"" + item.RelaTable + "\" " + item.Prefix.ToLower() + ", ";
                             hasColumn = true;
                         }
                     }
@@ -1087,7 +1092,6 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(3) + "where ";
-                    i = 0;
                     hasColumn = false;
                     foreach (ColumnTable item in pColumnTables)
                     {
@@ -1114,7 +1118,6 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "open p_cur for select a.*";
-                    i = 0;
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if (item.Prefix != "a")
@@ -1123,7 +1126,6 @@ namespace DMS.Oracle
                     txtResult.Text += " " + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(3) + "from ";
-                    i = 0;
                     othersql = String.Empty;
                     foreach (ColumnTable item in pColumnTables)
                     {
@@ -1135,7 +1137,6 @@ namespace DMS.Oracle
                     othersql += PublicTools.WriteEnter(1);
 
                     othersql += PublicTools.WriteTab(3) + "where ";
-                    i = 0;
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if (item.TableCode == item.RelaTable)
@@ -1178,18 +1179,7 @@ namespace DMS.Oracle
                 string pname = String.Empty;
                 string column = String.Empty;
                 string primaryID = String.Empty;
-                string keys = String.Empty;
                 string vars = String.Empty;
-
-                foreach (var tbkeys in pTable.Keys)
-                {
-                    keys = keys + "," + tbkeys.Columns[0].ColumnCode;
-                }
-
-                if (!String.IsNullOrEmpty(keys))
-                {
-                    keys = keys.Substring(1);
-                }
 
                 foreach (string tableset in tablesets)
                 {
@@ -1227,27 +1217,31 @@ namespace DMS.Oracle
                 }
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
-                int i = 0;
-               
-                txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Save_" + pname +"\"" + PublicTools.WriteEnter(1);
+
+                txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Save_" + pname + "\"" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
 
                 foreach (ColumnTable item in pColumnTables)
                 {
+                    string datatype = item.DataType.ToLower();
+                    if (item.DataType.IndexOf("(") >= 0)
+                    {
+                        datatype = item.DataType.Substring(0, item.DataType.IndexOf("(")).ToLower();
+                    }
+
                     if (item.Prefix == "a")
                     {
-                        if (keys.IndexOf(item.ColumnCode) >= 0)
+                        if (pColumn.ColumnCode.IndexOf(item.ColumnCode) >= 0)
                         {
                             primaryID = item.DisplayColumn;
                             vars = "v_" + item.DisplayColumn.ToLower() + " " + item.DataType.ToLower() + ";";
-                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in out " + item.DataType.Substring(0,item.DataType.IndexOf("(")).ToLower() + "," + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in out " + datatype + "," + PublicTools.WriteEnter(1);
                         }
                         else
                         {
-                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in " + item.DataType.Substring(0, item.DataType.IndexOf("(")).ToLower() + "," + PublicTools.WriteEnter(1);
+                            txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in " + datatype + "," + PublicTools.WriteEnter(1);
                         }
                     }
-                    i++;                       
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "p_action in int" + PublicTools.WriteEnter(1);
@@ -1368,15 +1362,43 @@ namespace DMS.Oracle
 
                 OnGetSave();
 
-                string keys = String.Empty;
-                foreach (var tbkeys in pTable.Keys)
+                string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
+                string pname = String.Empty;
+                string column = String.Empty;
+                foreach (string tableset in tablesets)
                 {
-                    keys = keys + "," + tbkeys.Columns[0].ColumnCode;
+                    if (String.IsNullOrEmpty(tableset))
+                        continue;
+
+                    string[] sets = tableset.Split('|');
+
+                    if (sets.Length <= 0)
+                        continue;
+
+                    if (sets[0].ToLower() == "g")
+                    {
+                        if (sets.Length != 3)
+                            continue;
+
+                        pname = sets[1];
+                        column = sets[2];
+
+                        break;
+                    }
                 }
-                if (!String.IsNullOrEmpty(keys))
+                if (String.IsNullOrEmpty(pname))
+                    return;
+
+                PdmColumn pColumn = new PdmColumn();
+                foreach (PdmColumn item in pTable.Columns)
                 {
-                    keys = keys.Substring(1);
+                    if (item.ColumnCode.ToLower() == column.ToLower())
+                    {
+                        pColumn = item;
+                        break;
+                    }
                 }
+
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -1386,7 +1408,7 @@ namespace DMS.Oracle
                 txtResult.Text = PublicTools.WriteTab(1) + "<resultMap id=\"" + txtClassName.Text.ToLower() + "\" type=\"" + packageclass + "\">" + PublicTools.WriteEnter(1);
                 foreach (PdmColumn c in pTable.Columns)
                 {
-                    if (keys.IndexOf(c.ColumnCode) >= 0)
+                    if (pColumn.ColumnCode.ToLower().IndexOf(c.ColumnCode) >= 0)
                     {
                         txtResult.Text += PublicTools.WriteTab(2) + "<id property=\"" + c.ColumnCode.ToLower() + "\" column=\"" + c.ColumnCode.ToLower() + "\"/>" + PublicTools.WriteEnter(1);
                     }
@@ -1400,7 +1422,7 @@ namespace DMS.Oracle
 
 
 
-                txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"Get" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass +  "\" resultType=\"" + packageclass +"\" >" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"Get" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "{call \"P_Get_" + gname + "\"(" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
@@ -1436,7 +1458,14 @@ namespace DMS.Oracle
 
                 foreach (PdmColumn c in pTable.Columns)
                 {
-                    txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + "}," + PublicTools.WriteEnter(1);
+                    if (pColumn.ColumnCode.IndexOf(c.ColumnCode) >= 0)
+                    {
+                        txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + ",mode=INOUT}," + PublicTools.WriteEnter(1);
+                    }
+                    else
+                    {
+                        txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + "}," + PublicTools.WriteEnter(1);
+                    }
                 }
                 txtResult.Text += PublicTools.WriteTab(3) + "#{deal.action,javaType=int,jdbcType=INTEGER}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
@@ -1464,54 +1493,97 @@ namespace DMS.Oracle
                     MessageBox.Show("没有配置信息！");
                     return;
                 }
-                
-                if (pTable.Keys.Count > 0)
+
+                string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
+                string pname = String.Empty;
+                string column = String.Empty;
+                foreach (string tableset in tablesets)
                 {
-                    foreach (var pdmKey in pTable.Keys)
+                    if (String.IsNullOrEmpty(tableset))
+                        continue;
+
+                    string[] sets = tableset.Split('|');
+
+                    if (sets.Length <= 0)
+                        continue;
+
+                    if (sets[0].ToLower() == "g")
                     {
-                        string keyColumn = pdmKey.Columns[0].ColumnCode;
-                        string dataType = pdmKey.Columns[0].DataType;
-                        string defaultnum = "0000000001";
+                        if (sets.Length != 3)
+                            continue;
 
-                        int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
+                        pname = sets[1];
+                        column = sets[2];
 
-                        txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Create_" + keyColumn + "\"" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(1) + "p_" + keyColumn.ToLower() + " in out " + dataType.Substring(0, dataType.IndexOf("(")).ToLower() + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "v_maxno varchar2(20);" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
-
-                        if (length > 10)
-                        {
-                            txtResult.Text += PublicTools.WriteTab(1) + "select max(substr(\"" + keyColumn + "\" ,"+(length - 9)+")) into v_maxno from \"" + pTable.TableCode + "\"" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + " where substr(\"" + keyColumn + "\" ,0 ,10) = 'PK'||to_char(sysdate,'YYYYMMDD');" + PublicTools.WriteEnter(1);
-
-                            txtResult.Text += PublicTools.WriteTab(1) + "if v_maxno is null" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := 'PK'||to_char(sysdate,'YYYYMMDD')||'"+defaultnum.Substring(defaultnum.Length - (length - 10), length - 10)+"';" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := 'PK'||to_char(sysdate,'YYYYMMDD')||substr(('0000000000' ||(to_number(v_maxno)+1)), length('0000000000' ||(to_number(v_maxno)+1)) -" + (length - 11) + ");" + PublicTools.WriteEnter(1);
-                        }
-                        else
-                        {
-                            txtResult.Text += PublicTools.WriteTab(1) + "select max(\"" + keyColumn + "\") into v_maxno from \"" + pTable.TableCode + "\";" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(1) + "if v_maxno is null" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                            txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := substr('0000000000'||(to_number(v_maxno)+1), length('0000000000'||(to_number(v_maxno)+1)) - " + length + ");" + PublicTools.WriteEnter(1);
-                        }
-                        txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
-                        txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
+                        break;
                     }
-                    txtResult.Text += PublicTools.WriteTab(0) + "/" + PublicTools.WriteEnter(1);
                 }
+                if (String.IsNullOrEmpty(pname))
+                    return;
+
+                PdmColumn pColumn = new PdmColumn();
+                foreach (PdmColumn item in pTable.Columns)
+                {
+                    if (item.ColumnCode.ToLower() == column.ToLower())
+                    {
+                        pColumn = item;
+                        break;
+                    }
+                }
+
+                string keyColumn = pColumn.ColumnCode;
+                string dataType = pColumn.DataType;
+                string defaultnum = "0000000001";
+                string datatype = dataType.ToLower();
+
+                if (dataType.IndexOf("(") >= 0)
+                {
+                    datatype = dataType.Substring(0, dataType.IndexOf("(")).ToLower();
+                }
+                else
+                {
+                    Global.ShowSysInfo("主键生成必须有长度限定，请确认字段长度！");
+                    return;
+                }
+
+
+                int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
+
+                txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure \"P_Create_" + keyColumn + "\"" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "p_" + keyColumn.ToLower() + " in out " + datatype + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "v_maxno varchar2(20);" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
+
+                if (length > 10)
+                {
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(substr(\"" + keyColumn + "\" ," + (length - 9) + ")) into v_maxno from \"" + pTable.TableCode + "\"" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + " where substr(\"" + keyColumn + "\" ,0 ,10) = 'PK'||to_char(sysdate,'YYYYMMDD');" + PublicTools.WriteEnter(1);
+
+                    txtResult.Text += PublicTools.WriteTab(1) + "if v_maxno is null" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := 'PK'||to_char(sysdate,'YYYYMMDD')||'" + defaultnum.Substring(defaultnum.Length - (length - 10), length - 10) + "';" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := 'PK'||to_char(sysdate,'YYYYMMDD')||substr(('0000000000' ||(to_number(v_maxno)+1)), length('0000000000' ||(to_number(v_maxno)+1)) -" + (length - 11) + ");" + PublicTools.WriteEnter(1);
+                }
+                else
+                {
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(\"" + keyColumn + "\") into v_maxno from \"" + pTable.TableCode + "\";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "if v_maxno is null" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "p_" + keyColumn.ToLower() + " := substr('0000000000'||(to_number(v_maxno)+1), length('0000000000'||(to_number(v_maxno)+1)) - " + length + ");" + PublicTools.WriteEnter(1);
+                }
+                txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "end;" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "/" + PublicTools.WriteEnter(1);
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -1532,7 +1604,7 @@ namespace DMS.Oracle
                 cbInsert.Checked = true;
                 cbDelete.Checked = true;
             }
-            
+
         }
 
         private void cbInsert_CheckedChanged(object sender, EventArgs e)
@@ -1549,6 +1621,6 @@ namespace DMS.Oracle
             }
         }
 
-        
+
     }
 }
