@@ -49,11 +49,35 @@ namespace DMS
 
             EditProject edit = new EditProject();
             edit.id = String.Empty;
+            edit.parentForm = this;
 
             if (edit.ShowDialog() == DialogResult.OK)
             {
 
             }
+        }
+
+        protected override void OnEditData()
+        {
+            base.OnEditData();
+            if (dgvList.SelectedRows.Count != 1)
+            {
+                Global.ShowSysInfo("请选择需要修改的数据行！");
+                return;
+            }
+
+            EditProject edit = new EditProject();
+            edit.id = dgvList.SelectedRows[0].Cells["ProjectID"].Value.ToString();
+            edit.parentForm = this;
+            if (edit.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void RefreshForm()
+        {
+            OnBindData();
         }
     }
 }

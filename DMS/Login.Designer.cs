@@ -73,7 +73,7 @@
             this.chbRemember.Location = new System.Drawing.Point(670, 451);
             this.chbRemember.Name = "chbRemember";
             this.chbRemember.Size = new System.Drawing.Size(15, 14);
-            this.chbRemember.TabIndex = 3;
+            this.chbRemember.TabIndex = 4;
             this.chbRemember.UseVisualStyleBackColor = true;
             // 
             // btnLogin
@@ -82,7 +82,7 @@
             this.btnLogin.Location = new System.Drawing.Point(509, 484);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(45, 23);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);

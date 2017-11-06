@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusProject.cs" />
     <Compile Include="Enumerations\AuthBound.cs" />
     <Compile Include="Enumerations\ColType.cs" />
     <Compile Include="Enumerations\ExcelNowStatus.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="Publics\MenuAuths.cs" />
     <Compile Include="Publics\PublicTools.cs" />
     <Compile Include="Publics\UserCache.cs" />
-    <Compile Include="Project\BusProject\SqlBaseProvider.cs" />
+    <Compile Include="Project\BusProject\SqlProvider.cs" />
     <Compile Include="System\RibButton\RibButton.cs" />
     <Compile Include="System\RibButton\RibButtons.cs" />
     <Compile Include="System\RibButton\SqlProvider.cs" />

@@ -645,6 +645,6 @@ namespace GuFun.WinCore
 
             return tblMain;
         }
-
+        
     }
 }

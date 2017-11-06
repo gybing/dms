@@ -32,7 +32,7 @@
             this.lbProjectCode = new System.Windows.Forms.Label();
             this.txtProjectCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lbProjectType = new System.Windows.Forms.Label();
             this.ddlProjectType = new System.Windows.Forms.ComboBox();
             this.lbProjectManager = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.plEdit.Controls.Add(this.lbProjectManager);
             this.plEdit.Controls.Add(this.ddlProjectType);
             this.plEdit.Controls.Add(this.lbProjectType);
-            this.plEdit.Controls.Add(this.textBox1);
+            this.plEdit.Controls.Add(this.txtProjectName);
             this.plEdit.Controls.Add(this.label1);
             this.plEdit.Controls.Add(this.txtProjectCode);
             this.plEdit.Controls.Add(this.lbProjectCode);
@@ -109,12 +109,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "项目名称：";
             // 
-            // textBox1
+            // txtProjectName
             // 
-            this.textBox1.Location = new System.Drawing.Point(310, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 21);
-            this.textBox1.TabIndex = 3;
+            this.txtProjectName.Location = new System.Drawing.Point(310, 7);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.Size = new System.Drawing.Size(160, 21);
+            this.txtProjectName.TabIndex = 3;
             // 
             // lbProjectType
             // 
@@ -221,7 +221,7 @@
         private System.Windows.Forms.Label lbProjectCode;
         private System.Windows.Forms.TextBox txtProjectCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.Label lbProjectType;
         private System.Windows.Forms.ComboBox ddlProjectType;
         private System.Windows.Forms.Label lbProjectManager;
