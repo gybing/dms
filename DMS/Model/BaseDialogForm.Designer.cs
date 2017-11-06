@@ -62,7 +62,6 @@
             this.MinimizeBox = false;
             this.Name = "BaseDialogForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BaseDialogForm_KeyPress);
             this.ResumeLayout(false);
 
         }

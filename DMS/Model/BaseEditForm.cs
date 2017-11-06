@@ -83,7 +83,7 @@ namespace DMS
         {
             OnInitData();
 
-            if (this.fState == FormState.Detail)
+            if (this.fState == FormState.Edit)
             {
                 tsbEdit.Visible = false;
                 tsbSave.Visible = true;
@@ -93,7 +93,7 @@ namespace DMS
                 OnDisplayEditCtrls(false);
             }
 
-            this.fState = FormState.Edit;
+            //this.fState = FormState.Edit;
         }
 
         #endregion Button Click Methods

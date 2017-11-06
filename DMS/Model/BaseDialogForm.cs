@@ -15,18 +15,18 @@ namespace DMS
             InitializeComponent();
         }
 
-        private void BaseDialogForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((this.ActiveControl != null) && !this.ActiveControl.GetType().ToString().Contains("Button") && !this.ActiveControl.GetType().ToString().Contains("DataGridView") && (e.KeyChar == (char)13))
-            {
-                if (this.ActiveControl is TextBox)
-                {
-                    if (((TextBox)this.ActiveControl).Multiline)
-                        return;
-                }
+        //private void BaseDialogForm_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if ((this.ActiveControl != null) && !this.ActiveControl.GetType().ToString().Contains("Button") && !this.ActiveControl.GetType().ToString().Contains("DataGridView") && (e.KeyChar == (char)13))
+        //    {
+        //        if (this.ActiveControl is TextBox)
+        //        {
+        //            if (((TextBox)this.ActiveControl).Multiline)
+        //                return;
+        //        }
 
-                SendKeys.Send("{TAB}");
-            }
-        }
+        //        SendKeys.Send("{TAB}");
+        //    }
+        //}
     }
 }

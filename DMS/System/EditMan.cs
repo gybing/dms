@@ -214,7 +214,7 @@ namespace DMS
                 tsbSave.Visible = false;
                 tsbCancel.Visible = false;
                 fState = FormState.Detail;
-
+                
                 if (parentForm != null)
                 {
                     parentForm.RefreshForm();

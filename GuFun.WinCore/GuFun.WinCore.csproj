@@ -88,6 +88,7 @@
     <Compile Include="Publics\MenuAuths.cs" />
     <Compile Include="Publics\PublicTools.cs" />
     <Compile Include="Publics\UserCache.cs" />
+    <Compile Include="Project\BusProject\SqlBaseProvider.cs" />
     <Compile Include="System\RibButton\RibButton.cs" />
     <Compile Include="System\RibButton\RibButtons.cs" />
     <Compile Include="System\RibButton\SqlProvider.cs" />
