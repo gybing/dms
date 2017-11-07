@@ -157,15 +157,15 @@
             // 
             this.ilRibbon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilRibbon.ImageStream")));
             this.ilRibbon.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilRibbon.Images.SetKeyName(0, "01.gif");
-            this.ilRibbon.Images.SetKeyName(1, "02.gif");
-            this.ilRibbon.Images.SetKeyName(2, "03.gif");
-            this.ilRibbon.Images.SetKeyName(3, "04.gif");
-            this.ilRibbon.Images.SetKeyName(4, "05.gif");
-            this.ilRibbon.Images.SetKeyName(5, "06.gif");
-            this.ilRibbon.Images.SetKeyName(6, "07.gif");
-            this.ilRibbon.Images.SetKeyName(7, "08.gif");
-            this.ilRibbon.Images.SetKeyName(8, "09.gif");
+            this.ilRibbon.Images.SetKeyName(0, "1.gif");
+            this.ilRibbon.Images.SetKeyName(1, "2.gif");
+            this.ilRibbon.Images.SetKeyName(2, "3.gif");
+            this.ilRibbon.Images.SetKeyName(3, "4.gif");
+            this.ilRibbon.Images.SetKeyName(4, "5.gif");
+            this.ilRibbon.Images.SetKeyName(5, "6.gif");
+            this.ilRibbon.Images.SetKeyName(6, "7.gif");
+            this.ilRibbon.Images.SetKeyName(7, "8.gif");
+            this.ilRibbon.Images.SetKeyName(8, "9.gif");
             this.ilRibbon.Images.SetKeyName(9, "10.gif");
             this.ilRibbon.Images.SetKeyName(10, "11.gif");
             this.ilRibbon.Images.SetKeyName(11, "12.gif");
@@ -174,36 +174,6 @@
             this.ilRibbon.Images.SetKeyName(14, "15.gif");
             this.ilRibbon.Images.SetKeyName(15, "16.gif");
             this.ilRibbon.Images.SetKeyName(16, "17.gif");
-            this.ilRibbon.Images.SetKeyName(17, "18.gif");
-            this.ilRibbon.Images.SetKeyName(18, "19.gif");
-            this.ilRibbon.Images.SetKeyName(19, "20.gif");
-            this.ilRibbon.Images.SetKeyName(20, "21.gif");
-            this.ilRibbon.Images.SetKeyName(21, "22.gif");
-            this.ilRibbon.Images.SetKeyName(22, "23.gif");
-            this.ilRibbon.Images.SetKeyName(23, "24.gif");
-            this.ilRibbon.Images.SetKeyName(24, "25.gif");
-            this.ilRibbon.Images.SetKeyName(25, "26.gif");
-            this.ilRibbon.Images.SetKeyName(26, "27.gif");
-            this.ilRibbon.Images.SetKeyName(27, "28.gif");
-            this.ilRibbon.Images.SetKeyName(28, "29.gif");
-            this.ilRibbon.Images.SetKeyName(29, "30.gif");
-            this.ilRibbon.Images.SetKeyName(30, "31.gif");
-            this.ilRibbon.Images.SetKeyName(31, "32.gif");
-            this.ilRibbon.Images.SetKeyName(32, "33.gif");
-            this.ilRibbon.Images.SetKeyName(33, "34.gif");
-            this.ilRibbon.Images.SetKeyName(34, "35.gif");
-            this.ilRibbon.Images.SetKeyName(35, "36.gif");
-            this.ilRibbon.Images.SetKeyName(36, "37.gif");
-            this.ilRibbon.Images.SetKeyName(37, "38.gif");
-            this.ilRibbon.Images.SetKeyName(38, "39.gif");
-            this.ilRibbon.Images.SetKeyName(39, "40.gif");
-            this.ilRibbon.Images.SetKeyName(40, "41.gif");
-            this.ilRibbon.Images.SetKeyName(41, "42.gif");
-            this.ilRibbon.Images.SetKeyName(42, "43.gif");
-            this.ilRibbon.Images.SetKeyName(43, "44.gif");
-            this.ilRibbon.Images.SetKeyName(44, "45.gif");
-            this.ilRibbon.Images.SetKeyName(45, "46.gif");
-            this.ilRibbon.Images.SetKeyName(46, "47.gif");
             // 
             // tmOnline
             // 
