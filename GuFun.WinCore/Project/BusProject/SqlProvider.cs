@@ -45,16 +45,16 @@ namespace GuFun.WinCore
 
                 ArrayList paras = new ArrayList();
 
-                paras.Add(DBUtils.MakeInParam("@ProjectID", SqlDbType.VarChar, 6, item.ProjectID));
-                paras.Add(DBUtils.MakeInParam("@ProjectCode", SqlDbType.NVarChar, 6, item.ProjectCode));
-                paras.Add(DBUtils.MakeInParam("@ProjectName", SqlDbType.NVarChar, 6, item.ProjectName));
-                paras.Add(DBUtils.MakeInParam("@ProjectType", SqlDbType.VarChar, 6, item.ProjectType));
-                paras.Add(DBUtils.MakeInParam("@ProjectManager", SqlDbType.VarChar, 6, item.ProjectManager));
-                paras.Add(DBUtils.MakeInParam("@WorkDate", SqlDbType.Decimal, 6, item.WorkDate));
-                paras.Add(DBUtils.MakeInParam("@WorkUnit", SqlDbType.VarChar, 6, item.WorkUnit));
-                paras.Add(DBUtils.MakeInParam("@ProjectDesc", SqlDbType.Text, 6, item.ProjectDesc));
-                paras.Add(DBUtils.MakeInParam("@TranDate", SqlDbType.DateTime, 6, item.TranDate));
-                paras.Add(DBUtils.MakeInParam("@TranUser", SqlDbType.VarChar, 6, item.TranUser));
+                paras.Add(DBUtils.MakeInParam("@ProjectID", SqlDbType.VarChar, 20, item.ProjectID));
+                paras.Add(DBUtils.MakeInParam("@ProjectCode", SqlDbType.NVarChar, 20, item.ProjectCode));
+                paras.Add(DBUtils.MakeInParam("@ProjectName", SqlDbType.NVarChar, 50, item.ProjectName));
+                paras.Add(DBUtils.MakeInParam("@ProjectType", SqlDbType.VarChar, 2, item.ProjectType));
+                paras.Add(DBUtils.MakeInParam("@ProjectManager", SqlDbType.VarChar, 14, item.ProjectManager));
+                paras.Add(DBUtils.MakeInParam("@WorkDate", SqlDbType.Decimal, item.WorkDate));
+                paras.Add(DBUtils.MakeInParam("@WorkUnit", SqlDbType.VarChar, 2, item.WorkUnit));
+                paras.Add(DBUtils.MakeInParam("@ProjectDesc", SqlDbType.Text, item.ProjectDesc));
+                paras.Add(DBUtils.MakeInParam("@TranDate", SqlDbType.DateTime, item.TranDate));
+                paras.Add(DBUtils.MakeInParam("@TranUser", SqlDbType.VarChar, 14, item.TranUser));
                 paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
 
                 DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_BusProject", paras);

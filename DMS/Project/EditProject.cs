@@ -19,6 +19,14 @@ namespace DMS
         public EditProject()
         {
             InitializeComponent();
+
+            this.Text = "员工管理";
+            this.mCode = "0401";
+            tssPrint.Visible = false;
+            tsbPreview.Visible = false;
+            tsbPrint.Visible = false;
+
+            ml = SqlBaseProvider.GetSetManLevel();
         }
 
         private void EditProject_Load(object sender, EventArgs e)
