@@ -83,7 +83,7 @@ namespace DMS
         {
             OnInitData();
 
-            if (this.fState == FormState.Edit)
+            if (this.fState == FormState.Edit || this.fState == FormState.Detail)
             {
                 tsbEdit.Visible = false;
                 tsbSave.Visible = true;

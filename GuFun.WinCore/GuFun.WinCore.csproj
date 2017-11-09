@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusProject.cs" />
+    <Compile Include="Project\BusProject\BusProject.cs" />
     <Compile Include="Enumerations\AuthBound.cs" />
     <Compile Include="Enumerations\ColType.cs" />
     <Compile Include="Enumerations\ExcelNowStatus.cs" />

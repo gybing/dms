@@ -1,6 +1,6 @@
 ﻿namespace DMS
 {
-    partial class EditSetRole
+    partial class EditDeveloper
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSetRole));
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.clRole = new System.Windows.Forms.CheckedListBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDeveloper));
+            this.lbInfo = new System.Windows.Forms.Label();
+            this.clMan = new System.Windows.Forms.CheckedListBox();
             this.plEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // plEdit
             // 
             this.plEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.plEdit.Controls.Add(this.lblInfo);
-            this.plEdit.Controls.Add(this.clRole);
+            this.plEdit.Controls.Add(this.clMan);
+            this.plEdit.Controls.Add(this.lbInfo);
             this.plEdit.Size = new System.Drawing.Size(281, 251);
             // 
             // ilTools
@@ -60,30 +60,29 @@
             this.ilTools.Images.SetKeyName(13, "print.gif");
             this.ilTools.Images.SetKeyName(14, "export.gif");
             // 
-            // lblInfo
+            // lbInfo
             // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(12, 13);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(0, 12);
-            this.lblInfo.TabIndex = 1;
+            this.lbInfo.AutoSize = true;
+            this.lbInfo.Location = new System.Drawing.Point(13, 18);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(0, 12);
+            this.lbInfo.TabIndex = 0;
             // 
-            // clRole
+            // clMan
             // 
-            this.clRole.CheckOnClick = true;
-            this.clRole.FormattingEnabled = true;
-            this.clRole.Location = new System.Drawing.Point(12, 37);
-            this.clRole.Name = "clRole";
-            this.clRole.Size = new System.Drawing.Size(257, 212);
-            this.clRole.TabIndex = 0;
-            this.clRole.SelectedIndexChanged += new System.EventHandler(this.clRole_SelectedIndexChanged);
+            this.clMan.FormattingEnabled = true;
+            this.clMan.Location = new System.Drawing.Point(12, 37);
+            this.clMan.Name = "clMan";
+            this.clMan.Size = new System.Drawing.Size(257, 212);
+            this.clMan.TabIndex = 1;
+            this.clMan.SelectedIndexChanged += new System.EventHandler(this.clMan_SelectedIndexChanged);
             // 
-            // EditSetRole
+            // EditDeveloper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(281, 291);
-            this.Name = "EditSetRole";
-            this.Load += new System.EventHandler(this.EditSetRole_Load);
+            this.Name = "EditDeveloper";
+            this.Load += new System.EventHandler(this.EditDeveloper_Load);
             this.plEdit.ResumeLayout(false);
             this.plEdit.PerformLayout();
             this.ResumeLayout(false);
@@ -93,7 +92,9 @@
 
         #endregion
 
-        public System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.CheckedListBox clRole;
+        public System.Windows.Forms.Label lbInfo;
+        private System.Windows.Forms.CheckedListBox clMan;
+
+
     }
 }

@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\EditDeveloper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\EditDeveloper.Designer.cs">
+      <DependentUpon>EditDeveloper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Project\EditProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     </Compile>
     <Compile Include="Project\ProjectManage.Designer.cs">
       <DependentUpon>ProjectManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\SetDeveloper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\SetDeveloper.Designer.cs">
+      <DependentUpon>SetDeveloper.cs</DependentUpon>
     </Compile>
     <Compile Include="System\FirstLogin.cs">
       <SubType>Form</SubType>
@@ -284,11 +296,17 @@
     <EmbeddedResource Include="Oracle\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Project\EditDeveloper.resx">
+      <DependentUpon>EditDeveloper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Project\EditProject.resx">
       <DependentUpon>EditProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project\ProjectManage.resx">
       <DependentUpon>ProjectManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\SetDeveloper.resx">
+      <DependentUpon>SetDeveloper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

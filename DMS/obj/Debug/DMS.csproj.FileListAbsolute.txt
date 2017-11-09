@@ -44,3 +44,5 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.exe
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.pdb
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditProject.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.SetDeveloper.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditDeveloper.resources

@@ -113,7 +113,68 @@ namespace GuFun.WinCore
             item.TranUser = reader["TranUser"] as string;
            
             return item;
-        }   
+        }
 
+        public static DataTable GetDeveloper(string projectid)
+        {
+            DataTable tblMain;
+
+            try
+            {
+                ArrayList paras = new ArrayList();
+                paras.Add(DBUtils.MakeInParam("@ProjectID", SqlDbType.VarChar, 20, projectid));
+
+                tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Get_Developer", paras);
+                tblMain.TableName = "SelectMain";
+            }
+            catch { throw; }
+
+            return tblMain;
+        }
+
+        public static void SaveDeveloper(string projectid, DataTable mans)
+        {
+            if (String.IsNullOrEmpty(projectid))
+                return;
+
+            SqlConnection conn = DBUtils.GetConnection();
+            SqlCommand cmd = DBUtils.GetCommand();
+
+            try
+            {
+                cmd.Transaction = conn.BeginTransaction();
+
+                ArrayList paras = new ArrayList();
+                paras.Add(DBUtils.MakeInParam("@ManID", SqlDbType.NVarChar, 6, null));
+                paras.Add(DBUtils.MakeInParam("@ProjectID", SqlDbType.VarChar, 20, projectid));
+                paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int,DataProviderAction.Delete));
+                DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_Developer", paras);
+
+                foreach (DataRow mandr in mans.Rows)
+                {
+                    paras.Clear();
+
+                    if (Convert.ToBoolean(mandr["Is_Select"]))
+                    {
+                        paras.Add(DBUtils.MakeInParam("@ManID", SqlDbType.NVarChar, 6, mandr["Man_ID"]));
+                        paras.Add(DBUtils.MakeInParam("@ProjectID", SqlDbType.VarChar, 20, projectid));
+                        paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int,DataProviderAction.Create));
+                        DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_Developer", paras);
+                    }
+                }
+
+                cmd.Transaction.Commit();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                DBUtils.SetDispose(conn, cmd);
+            }
+        }
     }
 }
