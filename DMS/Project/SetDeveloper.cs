@@ -30,7 +30,7 @@ namespace DMS
             tsbPrint.Visible = false;
             tsbExport.Visible = false;
 
-            this.Text = "角色分配";
+            this.Text = "分配人员";
             this.mCode = "0402";
 
             CoreCtrls.SetDataGridView(dgvList, "P_Search_BusProject", Program.ManInfo);

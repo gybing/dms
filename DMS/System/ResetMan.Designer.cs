@@ -99,6 +99,7 @@
             this.Controls.Add(this.txtManID);
             this.Controls.Add(this.lblManID);
             this.Name = "ResetMan";
+            this.Text = "密码重置";
             this.ResumeLayout(false);
             this.PerformLayout();
 

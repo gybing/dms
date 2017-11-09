@@ -15,6 +15,8 @@ namespace DMS
         public ResetMan()
         {
             InitializeComponent();
+            btnReset.BackColor = SystemColors.Control;
+            btnExit.BackColor = SystemColors.Control;
         }
 
         private void btnExit_Click(object sender, EventArgs e)

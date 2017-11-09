@@ -40,7 +40,10 @@ namespace GuFun.WinCore
                 tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Get_SysRoleByMan", paras);
                 tblMain.TableName = "SelectMain";
             }
-            catch { throw; }
+            catch (Exception ex)
+            { 
+                throw; 
+            }
 
             return tblMain;
         }
