@@ -29,6 +29,7 @@ namespace DMS
             tsbSave.Text = "设置";
 
             allCtrls = new object[] { clMan };
+            this.fState = FormState.Edit;
         }
 
         private void EditDeveloper_Load(object sender, EventArgs e)

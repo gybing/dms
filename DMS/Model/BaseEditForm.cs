@@ -82,8 +82,8 @@ namespace DMS
         private void tsbEdit_Click(object sender, EventArgs e)
         {
             OnInitData();
-
-            if (this.fState == FormState.Edit || this.fState == FormState.Detail)
+            this.fState = FormState.Edit;
+            if (this.fState == FormState.Edit)
             {
                 tsbEdit.Visible = false;
                 tsbSave.Visible = true;
@@ -92,8 +92,6 @@ namespace DMS
                 OnDisplayAllCtrls(true);
                 OnDisplayEditCtrls(false);
             }
-
-            //this.fState = FormState.Edit;
         }
 
         #endregion Button Click Methods
