@@ -50,10 +50,16 @@ namespace DMS
         {
             string sql = String.Empty;
             string projectname = String.Empty;
+            string projectManager = Program.ManInfo.Man.ManID;
 
             if (!String.IsNullOrEmpty(txtProjectName.Text))
             {
                 sql += " and a.ProjectName like '%" + txtProjectName.Text + "%' ";
+            }
+
+            if (!String.IsNullOrEmpty(projectManager))
+            {
+                sql += " and a.ProjectManager = '" + projectManager + "' ";
             }
 
             dgvList.DataSource = SqlBaseProvider.SearchBusProject(sql);
