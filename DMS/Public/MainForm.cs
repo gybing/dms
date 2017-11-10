@@ -313,51 +313,26 @@ namespace DMS
             }
         }
 
-
-
         private void Change_Click(object sender, EventArgs e)
         {
-            Program.isCancel = false;
-
             string ManID = Program.ManInfo.Man.ManID;
             short RegID = Program.ManInfo.Register.RegID;
-
-        FirstLogined:
-
-            Login lg = new Login();
-            DialogResult rtn = lg.ShowDialog();
-            Program.NowLoginMan = lg.txtManID.Text;
-
-            if (rtn == DialogResult.OK)
+            try
             {
-                Program.isCancel = true;
-
-                try
-                {
-                    SqlBaseProvider.LoginOutSysOnline(ManID, RegID);
-                }
-                catch (Exception)
-                {
-
-                }
-
-                this.Close();
+                SqlBaseProvider.LoginOutSysOnline(ManID, RegID);
             }
-            else if (rtn == DialogResult.Yes)
+            catch (Exception)
             {
-                //FirstLogin first = new FirstLogin();
 
-                //if (first.ShowDialog() == DialogResult.OK)
-                //{
-                //    goto FirstLogined;
-                //}
             }
+
+            Application.Restart();
         }
 
         private void Password_Click(object sender, EventArgs e)
         {
-            //FirstLogin first = new FirstLogin();
-            //first.ShowDialog();
+            FirstLogin first = new FirstLogin();
+            first.ShowDialog();
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -404,10 +379,6 @@ namespace DMS
             try
             {
                 DateTime now = SqlBaseProvider.GetSysDate();
-
-                bool isUnPrint = true;
-
-
             }
             catch (Exception ex)
             {

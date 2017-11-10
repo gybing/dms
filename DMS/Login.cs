@@ -129,6 +129,12 @@ namespace DMS
             this.Height = pLogin.Height;
         }
 
+        private void chbRemember_Click(object sender, EventArgs e)
+        {
+            // 选择保存时候取反
+            isCheck = !isCheck;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try

@@ -75,6 +75,7 @@
             this.chbRemember.Size = new System.Drawing.Size(15, 14);
             this.chbRemember.TabIndex = 4;
             this.chbRemember.UseVisualStyleBackColor = true;
+            this.chbRemember.Click += new System.EventHandler(this.chbRemember_Click);
             // 
             // btnLogin
             // 

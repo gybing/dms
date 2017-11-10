@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -33,11 +34,11 @@ namespace DMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+
             System.Diagnostics.Process[] papp = System.Diagnostics.Process.GetProcessesByName(Application.ProductName);
             if (papp.Length > 1)
             {
-                MessageBox.Show("该程序已经运行，不能重复运行！");
-                return;
+                SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
             }
             else
             {
@@ -105,7 +106,6 @@ namespace DMS
             {
             GotoMain:
                 Application.Run(new MainForm());
-
                 if (isCancel)
                 {
                     isCancel = false;

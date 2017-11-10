@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuFun.WinCore", "GuFun.WinC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveUpdate", "LiveUpdate\LiveUpdate.csproj", "{56250140-00FC-42CD-B5A5-37141638E364}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup", "Setup\Setup.isproj", "{148E32AC-F957-49E8-9B1C-F46084DD2BDE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -72,16 +70,6 @@ Global
 		{56250140-00FC-42CD-B5A5-37141638E364}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56250140-00FC-42CD-B5A5-37141638E364}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{56250140-00FC-42CD-B5A5-37141638E364}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.CD_ROM|Any CPU.Build.0 = CD_ROM
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.Debug|Any CPU.ActiveCfg = DVD-5
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.Debug|Any CPU.Build.0 = DVD-5
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.DVD-5|Any CPU.ActiveCfg = DVD-5
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.DVD-5|Any CPU.Build.0 = DVD-5
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.Release|Any CPU.ActiveCfg = SingleImage
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.Release|Any CPU.Build.0 = SingleImage
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.SingleImage|Any CPU.ActiveCfg = SingleImage
-		{148E32AC-F957-49E8-9B1C-F46084DD2BDE}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
