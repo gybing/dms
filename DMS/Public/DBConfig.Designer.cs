@@ -77,6 +77,7 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "保存设置";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnTest
             // 
@@ -86,6 +87,7 @@
             this.btnTest.TabIndex = 5;
             this.btnTest.Text = "测试连接";
             this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // btnCancel
             // 
@@ -95,6 +97,7 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // DBConfig
             // 
@@ -110,6 +113,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DBConfig";
             this.Text = "数据库测试";
+            this.Load += new System.EventHandler(this.DBConfig_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
