@@ -21,6 +21,7 @@ namespace DMS.SqlServer
         public ImportPdm()
         {
             InitializeComponent();
+            CtrlHelper.SetDropDownList(ddlProject, CoreCtrls.GetComboBoxItems("Select * from T_Bus_Project order by ProjectID", SqlTextType.Text, "ProjectName,ProjectID"), DropAddType.New, DropAddFlag.Select);
         }
 
         private void closefrom_Click(object sender, EventArgs e)
@@ -64,6 +65,12 @@ namespace DMS.SqlServer
                 return;
             }
 
+            if (ddlProject.SelectedValue.ToString() == DropAddFlag.Select.ToString())
+            {
+                Global.ShowSysInfo("请选择所属项目！");
+                return;
+            }
+
             SqlConnection conn = null;
             SqlCommand cmd = null;
 
@@ -94,6 +101,7 @@ namespace DMS.SqlServer
                     db.DBCode = dbcode.Text;
                     db.DBName = dbname.Text;
                 }
+                db.ProjectID = ddlProject.SelectedValue.ToString();
 
                 if (db.DBID <= 0)
                 {
@@ -104,6 +112,7 @@ namespace DMS.SqlServer
                     paras.Add(DBUtils.MakeInParam("DBCode", SqlDbType.NVarChar, 40, db.DBCode));
                     paras.Add(DBUtils.MakeInParam("IsLog", SqlDbType.Bit, cbLog.Checked));
                     paras.Add(DBUtils.MakeInParam("DBType", SqlDbType.Int, DataBaseType.SqlServer));
+                    paras.Add(DBUtils.MakeInParam("ProjectID", SqlDbType.VarChar, db.ProjectID));
                     paras.Add(DBUtils.MakeInParam("ACTION", SqlDbType.Int, DataProviderAction.Create));
 
                     DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, "dbo.P_Save_DB", paras);

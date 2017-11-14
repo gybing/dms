@@ -27,12 +27,15 @@ namespace GuFun.WinCore.Pdm
 
         public int DBSerial { get; set; }
 
+        public string ProjectID { get; set; }
+
         public void OnInit()
         {
             this.DBID = 0;
             this.DBName = String.Empty;
             this.DBCode = String.Empty;
             this.DBSerial = 0;
+            this.ProjectID = String.Empty;
         }
 
         public void OnPopulate(IDataReader reader)
@@ -41,6 +44,7 @@ namespace GuFun.WinCore.Pdm
             this.DBName = reader["DBName"] as string;
             this.DBCode = reader["DBCode"] as string;
             this.DBSerial = (int)reader["DBSerial"];
+            this.ProjectID = reader["ProjectID"] as string;
         }
     }
 }
