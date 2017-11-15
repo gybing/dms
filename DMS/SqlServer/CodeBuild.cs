@@ -40,7 +40,6 @@ namespace DMS.SqlServer
         private void ddlDB_SelectedIndexChanged(object sender, EventArgs e)
         {
             int dbid = ddlDB.SelectedValue.ToString().ToLower() == "select" ? 0 : Convert.ToInt32(ddlDB.SelectedValue);
-            string manid = Program.ManInfo.Man.ManID;
             Program.DBID = dbid;
             CtrlHelper.SetDropDownList(ddlTable, SqlBaseProvider.GetTableNoPmtByDB(dbid), DropAddType.New, DropAddFlag.Select, String.Empty, "TableName,TableCode");
 
@@ -51,7 +50,7 @@ namespace DMS.SqlServer
 
             dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
 
-            BusHours hours = SqlBaseProvider.GetHoursByDB(dbid, manid);
+            BusHours hours = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID,Program.LoginDate);
 
             if (hours != null)
             {
@@ -65,10 +64,11 @@ namespace DMS.SqlServer
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID);
+            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID,Program.LoginDate);
             if (item != null)
             {
                 item.DBID = Program.DBID;
+                item.WorkEnd = DateTime.Now;
                 SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
             }
 
@@ -1661,7 +1661,7 @@ namespace DMS.SqlServer
                 BusHours item = new BusHours();
                 item.DBID = ddlDB.SelectedValue.ToString().ToLower() == "select" ? 0 : Convert.ToInt32(ddlDB.SelectedValue);
                 item.ManID = Program.ManInfo.Man.ManID;
-
+                item.WorkEnd = DateTime.Now;
                 SqlBaseProvider.SaveBusHours(item, DataProviderAction.Create);
                 isHours = true;
                 Global.ShowSysInfo("打卡成功！");

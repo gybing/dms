@@ -118,7 +118,7 @@
             // sslTips
             // 
             this.sslTips.Name = "sslTips";
-            this.sslTips.Size = new System.Drawing.Size(575, 21);
+            this.sslTips.Size = new System.Drawing.Size(544, 21);
             this.sslTips.Spring = true;
             // 
             // sslMan
@@ -145,7 +145,7 @@
             this.sslTime.Name = "sslTime";
             this.sslTime.Size = new System.Drawing.Size(72, 21);
             this.sslTime.Text = "当前日期：";
-            this.sslTime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.sslTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tmTime
             // 

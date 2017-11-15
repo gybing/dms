@@ -11,6 +11,8 @@ namespace DMS
         public MainForm()
         {
             InitializeComponent();
+            Program.LoginDate = DateTime.Now.ToString("yyyy-MM-dd");
+
             msMain.Renderer = new Office2007Renderer();
             ssMain.Renderer = msMain.Renderer;
             sslMan.Text = " " + sslMan.Text + Program.ManInfo.Man.ManName;
@@ -344,6 +346,23 @@ namespace DMS
         private void tmTime_Tick(object sender, EventArgs e)
         {
             sslTime.Text = " 当前时间：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string NowDate = DateTime.Now.ToString("yyyy-MM-dd");
+            if (Program.LoginDate != NowDate)
+            {
+                BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
+                if (item != null)
+                {
+                    item.DBID = Program.DBID;
+                    item.ManID = Program.ManInfo.Man.ManID;
+                    item.WorkEnd = Convert.ToDateTime(Program.LoginDate + " 23:59:59");
+                    SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
+                    Program.LoginDate = NowDate;
+
+                    item.WorkEnd = Convert.ToDateTime(Program.LoginDate);
+                    SqlBaseProvider.SaveBusHours(item, DataProviderAction.Create);
+                }
+                
+            }
         }
 
         private void tmOnline_Tick(object sender, EventArgs e)
@@ -398,10 +417,11 @@ namespace DMS
             try
             {
                 SqlBaseProvider.LoginOutSysOnline(Program.ManInfo.Man.ManID, Program.ManInfo.Register.RegID);
-                BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID);
+                BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
                 if (item != null)
                 {
                     item.DBID = Program.DBID;
+                    item.WorkEnd = DateTime.Now;
                     SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
                 }
             }

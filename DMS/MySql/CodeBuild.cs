@@ -50,7 +50,7 @@ namespace DMS.MySql
             dgvColumn.DataSource = null;
 
             dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
-            BusHours hours = SqlBaseProvider.GetHoursByDB(dbid, manid);
+            BusHours hours = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
 
             if (hours != null)
             {
@@ -64,10 +64,11 @@ namespace DMS.MySql
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID);
+            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
             if (item != null)
             {
                 item.DBID = Program.DBID;
+                item.WorkEnd = DateTime.Now;
                 SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
             }
 
@@ -1657,7 +1658,7 @@ namespace DMS.MySql
                 BusHours item = new BusHours();
                 item.DBID = ddlDB.SelectedValue.ToString().ToLower() == "select" ? 0 : Convert.ToInt32(ddlDB.SelectedValue);
                 item.ManID = Program.ManInfo.Man.ManID;
-
+                item.WorkEnd = DateTime.Now;
                 SqlBaseProvider.SaveBusHours(item, DataProviderAction.Create);
                 isHours = true;
                 Global.ShowSysInfo("打卡成功！");

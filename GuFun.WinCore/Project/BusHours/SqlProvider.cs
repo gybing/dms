@@ -13,7 +13,7 @@ namespace GuFun.WinCore
     public partial class SqlBaseProvider
     {
 
-        public static BusHours GetHoursByDB(int dbid, string ManID)
+        public static BusHours GetHoursByDB(int dbid, string ManID, string WorkDate)
         {
             BusHours rtn = null;
 
@@ -22,6 +22,7 @@ namespace GuFun.WinCore
                 ArrayList paras = new ArrayList();
                 paras.Add(DBUtils.MakeInParam("DBID", SqlDbType.Int, dbid));
                 paras.Add(DBUtils.MakeInParam("ManID", SqlDbType.NVarChar, ManID));
+                paras.Add(DBUtils.MakeInParam("WorkDate", SqlDbType.DateTime, Convert.ToDateTime(WorkDate)));
 
                 SqlDataReader reader = DBUtils.ExecuteReader(CommandType.StoredProcedure, "dbo.P_Get_HoursByDB", paras);
 
@@ -54,6 +55,7 @@ namespace GuFun.WinCore
 
                 paras.Add(DBUtils.MakeInParam("@DBID", SqlDbType.Int, item.DBID));
                 paras.Add(DBUtils.MakeInParam("@ManID", SqlDbType.NVarChar, 6, item.ManID));
+                paras.Add(DBUtils.MakeInParam("@WorkEnd", SqlDbType.DateTime, item.WorkEnd));
                 paras.Add(DBUtils.MakeInParam("@Action", SqlDbType.Int, action));
                 DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Save_BusHours", paras);
 
