@@ -631,20 +631,6 @@ namespace GuFun.WinCore
 
             return rtn;
         }
-
-        public static DataTable GetCardNo()
-        {
-            DataTable tblMain;
-
-            try
-            {
-                tblMain = DBUtils.ExecuteDataTable(CommandType.Text, "select cardno from t_card order by cardno");
-                tblMain.TableName = "SelectMain";
-            }
-            catch { throw; }
-
-            return tblMain;
-        }
         
     }
 }

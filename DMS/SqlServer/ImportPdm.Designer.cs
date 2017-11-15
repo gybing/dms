@@ -120,7 +120,7 @@
             this.choosefile.ForeColor = System.Drawing.Color.Black;
             this.choosefile.Location = new System.Drawing.Point(40, 113);
             this.choosefile.Name = "choosefile";
-            this.choosefile.Size = new System.Drawing.Size(114, 31);
+            this.choosefile.Size = new System.Drawing.Size(115, 31);
             this.choosefile.TabIndex = 9;
             this.choosefile.Click += new System.EventHandler(this.choosefile_Click);
             // 
@@ -184,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 161);
+            this.ClientSize = new System.Drawing.Size(711, 162);
             this.Controls.Add(this.ddlProject);
             this.Controls.Add(this.lbProject);
             this.Controls.Add(this.cbLog);

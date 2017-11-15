@@ -21,6 +21,7 @@ namespace DMS
         public static string NowLoginMan;
         public static DataTable Dept = new DataTable();
         public static DataTable DefaultDept = new DataTable();
+        public static int DBID;
 
         [DllImport("User32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd); 

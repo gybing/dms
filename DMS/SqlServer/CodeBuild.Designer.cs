@@ -43,6 +43,7 @@
             this.txtResult = new System.Windows.Forms.RichTextBox();
             this.txtSet = new System.Windows.Forms.RichTextBox();
             this.exPanel1 = new GuFun.WinControls.ExPanel();
+            this.btnWork = new GuFun.WinControls.VistaButton();
             this.btnKey = new GuFun.WinControls.VistaButton();
             this.btnAction = new GuFun.WinControls.VistaButton();
             this.btnService = new GuFun.WinControls.VistaButton();
@@ -118,10 +119,10 @@
             this.ColumnPrecision,
             this.ColumnIdentity,
             this.ColumnNotNull});
-            this.dgvColumn.Location = new System.Drawing.Point(0, 533);
+            this.dgvColumn.Location = new System.Drawing.Point(0, 563);
             this.dgvColumn.Name = "dgvColumn";
             this.dgvColumn.RowTemplate.Height = 23;
-            this.dgvColumn.Size = new System.Drawing.Size(1424, 210);
+            this.dgvColumn.Size = new System.Drawing.Size(1424, 180);
             this.dgvColumn.TabIndex = 4;
             // 
             // ColumnID
@@ -191,7 +192,7 @@
             this.dgvPmtSet.Name = "dgvPmtSet";
             this.dgvPmtSet.ReadOnly = true;
             this.dgvPmtSet.RowTemplate.Height = 23;
-            this.dgvPmtSet.Size = new System.Drawing.Size(329, 404);
+            this.dgvPmtSet.Size = new System.Drawing.Size(329, 435);
             this.dgvPmtSet.TabIndex = 3;
             // 
             // TableSet
@@ -208,7 +209,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.Location = new System.Drawing.Point(400, 130);
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(697, 404);
+            this.txtResult.Size = new System.Drawing.Size(697, 435);
             this.txtResult.TabIndex = 2;
             this.txtResult.Text = "";
             // 
@@ -216,13 +217,14 @@
             // 
             this.txtSet.Location = new System.Drawing.Point(0, 130);
             this.txtSet.Name = "txtSet";
-            this.txtSet.Size = new System.Drawing.Size(400, 404);
+            this.txtSet.Size = new System.Drawing.Size(400, 435);
             this.txtSet.TabIndex = 1;
             this.txtSet.Text = "";
             this.txtSet.WordWrap = false;
             // 
             // exPanel1
             // 
+            this.exPanel1.Controls.Add(this.btnWork);
             this.exPanel1.Controls.Add(this.btnKey);
             this.exPanel1.Controls.Add(this.btnAction);
             this.exPanel1.Controls.Add(this.btnService);
@@ -262,6 +264,20 @@
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Size = new System.Drawing.Size(1425, 130);
             this.exPanel1.TabIndex = 0;
+            // 
+            // btnWork
+            // 
+            this.btnWork.BackColor = System.Drawing.Color.Transparent;
+            this.btnWork.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnWork.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnWork.ButtonText = "打卡";
+            this.btnWork.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnWork.ForeColor = System.Drawing.Color.Black;
+            this.btnWork.Location = new System.Drawing.Point(1018, 12);
+            this.btnWork.Name = "btnWork";
+            this.btnWork.Size = new System.Drawing.Size(74, 48);
+            this.btnWork.TabIndex = 28;
+            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
             // 
             // btnKey
             // 
@@ -355,7 +371,7 @@
             this.btnExit.ButtonText = "退出";
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(1018, 12);
+            this.btnExit.Location = new System.Drawing.Point(1098, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(74, 48);
             this.btnExit.TabIndex = 26;
@@ -716,5 +732,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIdentity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnNotNull;
         private GuFun.WinControls.VistaButton btnKey;
+        private GuFun.WinControls.VistaButton btnWork;
     }
 }

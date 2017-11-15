@@ -16,6 +16,8 @@ namespace DMS.MySql
     {
         private PdmTable pTable;
 
+        private bool isHours = false;
+
         private string[] Prefix = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t" };
 
         public CodeBuild()
@@ -38,7 +40,8 @@ namespace DMS.MySql
         private void ddlDB_SelectedIndexChanged(object sender, EventArgs e)
         {
             int dbid = ddlDB.SelectedValue.ToString().ToLower() == "select" ? 0 : Convert.ToInt32(ddlDB.SelectedValue);
-
+            string manid = Program.ManInfo.Man.ManID;
+            Program.DBID = dbid;
             CtrlHelper.SetDropDownList(ddlTable, SqlBaseProvider.GetTableNoPmtByDB(dbid), DropAddType.New, DropAddFlag.Select, String.Empty, "TableName,TableCode");
 
             pTable.OnInit();
@@ -47,10 +50,27 @@ namespace DMS.MySql
             dgvColumn.DataSource = null;
 
             dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
+            BusHours hours = SqlBaseProvider.GetHoursByDB(dbid, manid);
+
+            if (hours != null)
+            {
+                isHours = true;
+            }
+            else
+            {
+                isHours = false;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID);
+            if (item != null)
+            {
+                item.DBID = Program.DBID;
+                SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
+            }
+
             this.Close();
         }
 
@@ -307,6 +327,12 @@ namespace DMS.MySql
                     return;
                 }
 
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
+                    return;
+                }
+
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
 
                 txtResult.Text = PublicTools.WriteTab(0) + "package com." + txtPackage.Text + ".entity";
@@ -527,6 +553,12 @@ namespace DMS.MySql
                     return;
                 }
 
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
+                    return;
+                }
+
                 OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
@@ -565,6 +597,12 @@ namespace DMS.MySql
 
                 if (!varifySet(txtSet.Text))
                 {
+                    return;
+                }
+
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
                     return;
                 }
 
@@ -724,6 +762,12 @@ namespace DMS.MySql
                     return;
                 }
 
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
+                    return;
+                }
+
                 OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
@@ -776,6 +820,12 @@ namespace DMS.MySql
 
                 if (!varifySet(txtSet.Text))
                 {
+                    return;
+                }
+
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
                     return;
                 }
 
@@ -907,6 +957,12 @@ namespace DMS.MySql
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
                     MessageBox.Show("没有配置信息！");
+                    return;
+                }
+
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
                     return;
                 }
 
@@ -1162,6 +1218,12 @@ namespace DMS.MySql
                     return;
                 }
 
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
+                    return;
+                }
+
                 string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
                 string pname = String.Empty;
                 string column = String.Empty;
@@ -1301,6 +1363,12 @@ namespace DMS.MySql
                     return;
                 }
 
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
+                    return;
+                }
+
                 txtResult.Text = String.Empty;
                 foreach (PdmColumn pColumn in pTable.Columns)
                 {
@@ -1330,6 +1398,12 @@ namespace DMS.MySql
 
                 if (!varifySet(txtSet.Text))
                 {
+                    return;
+                }
+
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
                     return;
                 }
 
@@ -1443,6 +1517,12 @@ namespace DMS.MySql
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
                     MessageBox.Show("没有配置信息！");
+                    return;
+                }
+
+                if (!isHours)
+                {
+                    MessageBox.Show("请先打卡！");
                     return;
                 }
 
@@ -1564,6 +1644,30 @@ namespace DMS.MySql
             }
         }
 
+        private void btnWork_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    MessageBox.Show("请选择数据库！");
+                    return;
+                }
+
+                BusHours item = new BusHours();
+                item.DBID = ddlDB.SelectedValue.ToString().ToLower() == "select" ? 0 : Convert.ToInt32(ddlDB.SelectedValue);
+                item.ManID = Program.ManInfo.Man.ManID;
+
+                SqlBaseProvider.SaveBusHours(item, DataProviderAction.Create);
+                isHours = true;
+                Global.ShowSysInfo("打卡成功！");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

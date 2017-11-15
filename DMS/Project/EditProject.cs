@@ -34,7 +34,8 @@ namespace DMS
             CtrlHelper.SetDropDownList(ddlProjectType, CoreCtrls.GetComboBoxItems("Select * from T_Pmt_Project_Type order by ProjectType", SqlTextType.Text, "ProjectTypeName,ProjectType"), DropAddType.New, DropAddFlag.Select);
             CtrlHelper.SetDropDownList(ddlWorkUnit, CoreCtrls.GetComboBoxItems("Select * from T_Pmt_Work_Unit order by WorkUnit", SqlTextType.Text, "WorkUnitName,WorkUnit"), DropAddType.New, DropAddFlag.Select);
             CtrlHelper.SetDropDownList(ddlProjectManager, CoreCtrls.GetComboBoxItems("select b.Man_ID, b.Man_Name from T_Sys_Oper_Role a, T_Sys_Man b where a.Man_ID = b.Man_ID and  a.Role_ID = '1'", SqlTextType.Text, "Man_Name,Man_ID"), DropAddType.New, DropAddFlag.Select);
-            this.allCtrls = new object[] { txtProjectCode, txtProjectName, ddlProjectType, ddlProjectManager, txtWorkDate, ddlWorkUnit, txtProjectDesc};
+            CtrlHelper.SetDropDownList(ddlProjectStatus, CoreCtrls.GetComboBoxItems("Select ProjectStatus, ProjectStatusName from T_Pmt_Project_Status order by ProjectStatus", SqlTextType.Text, "ProjectStatusName,ProjectStatus"), DropAddType.New, DropAddFlag.Select);
+            this.allCtrls = new object[] { txtProjectCode, txtProjectName, ddlProjectType, ddlProjectStatus, ddlProjectManager, txtWorkDate, ddlWorkUnit, txtProjectDesc };
             this.editCtrls = new object[] { };
             OnInitData(); 
         }
@@ -48,6 +49,7 @@ namespace DMS
                 item.ProjectCode = txtProjectCode.Text;
                 item.ProjectName = txtProjectName.Text;
                 item.ProjectType = ddlProjectType.SelectedValue.ToString();
+                item.ProjectStatus = ddlProjectStatus.SelectedValue.ToString();
                 item.ProjectManager = ddlProjectManager.SelectedValue.ToString();
                 item.WorkDate = Double.Parse(txtWorkDate.Text);
                 item.WorkUnit = ddlWorkUnit.SelectedValue.ToString();
@@ -94,6 +96,7 @@ namespace DMS
                     txtProjectDesc.Text = String.Empty;
                     txtWorkDate.Text = String.Empty;
                     CtrlHelper.SelectDropDownList(ddlProjectType, DropAddFlag.Select.ToString());
+                    CtrlHelper.SelectDropDownList(ddlProjectStatus, DropAddFlag.Select.ToString());
                     CtrlHelper.SelectDropDownList(ddlProjectManager, DropAddFlag.Select.ToString());
                     CtrlHelper.SelectDropDownList(ddlWorkUnit, DropAddFlag.Select.ToString());
                 }
@@ -112,6 +115,7 @@ namespace DMS
 
                     CtrlHelper.SelectDropDownList(ddlProjectManager, item.ProjectManager.ToString());
                     CtrlHelper.SelectDropDownList(ddlProjectType, item.ProjectType.ToString());
+                    CtrlHelper.SelectDropDownList(ddlProjectStatus, item.ProjectStatus.ToString());
                     CtrlHelper.SelectDropDownList(ddlWorkUnit, item.WorkUnit.ToString());
 
                     int mAuth = Program.ManInfo.Auths.FindAuthByCode(this.mCode);

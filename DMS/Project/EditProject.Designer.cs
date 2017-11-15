@@ -43,12 +43,16 @@
             this.ddlWorkUnit = new System.Windows.Forms.ComboBox();
             this.lbProjectDesc = new System.Windows.Forms.Label();
             this.txtProjectDesc = new System.Windows.Forms.RichTextBox();
+            this.lbProjectStatus = new System.Windows.Forms.Label();
+            this.ddlProjectStatus = new System.Windows.Forms.ComboBox();
             this.plEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // plEdit
             // 
             this.plEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.plEdit.Controls.Add(this.ddlProjectStatus);
+            this.plEdit.Controls.Add(this.lbProjectStatus);
             this.plEdit.Controls.Add(this.txtProjectDesc);
             this.plEdit.Controls.Add(this.lbProjectDesc);
             this.plEdit.Controls.Add(this.ddlWorkUnit);
@@ -189,7 +193,7 @@
             // lbProjectDesc
             // 
             this.lbProjectDesc.AutoSize = true;
-            this.lbProjectDesc.Location = new System.Drawing.Point(20, 70);
+            this.lbProjectDesc.Location = new System.Drawing.Point(20, 100);
             this.lbProjectDesc.Name = "lbProjectDesc";
             this.lbProjectDesc.Size = new System.Drawing.Size(65, 12);
             this.lbProjectDesc.TabIndex = 12;
@@ -197,11 +201,29 @@
             // 
             // txtProjectDesc
             // 
-            this.txtProjectDesc.Location = new System.Drawing.Point(82, 67);
+            this.txtProjectDesc.Location = new System.Drawing.Point(82, 100);
             this.txtProjectDesc.Name = "txtProjectDesc";
-            this.txtProjectDesc.Size = new System.Drawing.Size(613, 118);
+            this.txtProjectDesc.Size = new System.Drawing.Size(613, 85);
             this.txtProjectDesc.TabIndex = 13;
             this.txtProjectDesc.Text = "";
+            // 
+            // lbProjectStatus
+            // 
+            this.lbProjectStatus.AutoSize = true;
+            this.lbProjectStatus.Location = new System.Drawing.Point(20, 70);
+            this.lbProjectStatus.Name = "lbProjectStatus";
+            this.lbProjectStatus.Size = new System.Drawing.Size(65, 12);
+            this.lbProjectStatus.TabIndex = 14;
+            this.lbProjectStatus.Text = "项目状态：";
+            // 
+            // ddlProjectStatus
+            // 
+            this.ddlProjectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProjectStatus.FormattingEnabled = true;
+            this.ddlProjectStatus.Location = new System.Drawing.Point(82, 67);
+            this.ddlProjectStatus.Name = "ddlProjectStatus";
+            this.ddlProjectStatus.Size = new System.Drawing.Size(160, 20);
+            this.ddlProjectStatus.TabIndex = 15;
             // 
             // EditProject
             // 
@@ -232,5 +254,7 @@
         private System.Windows.Forms.ComboBox ddlWorkUnit;
         private System.Windows.Forms.Label lbProjectDesc;
         private System.Windows.Forms.RichTextBox txtProjectDesc;
+        private System.Windows.Forms.Label lbProjectStatus;
+        private System.Windows.Forms.ComboBox ddlProjectStatus;
     }
 }

@@ -39,6 +39,14 @@ namespace GuFun.WinCore
             set { _projectType = value; }
         }
 
+        private string _projectStatus;
+
+        public string ProjectStatus
+        {
+            get { return _projectStatus; }
+            set { _projectStatus = value; }
+        }
+
         private string _projectManager;
 
         public string ProjectManager
@@ -93,6 +101,7 @@ namespace GuFun.WinCore
             this._projectCode = String.Empty;
             this._projectName = String.Empty;
             this._projectType = String.Empty;
+            this._projectStatus = String.Empty;
             this._projectManager = String.Empty;
             this._workDate = 0;
             this._workUnit = String.Empty;
@@ -108,6 +117,7 @@ namespace GuFun.WinCore
             rtn += "[ProjectCode] = " + this.ProjectCode.ToString() + Environment.NewLine;
             rtn += "[ProjectName] = " + this.ProjectName.ToString() + Environment.NewLine;
             rtn += "[ProjectType] = " + this.ProjectType.ToString() + Environment.NewLine;
+            rtn += "[ProjectStatus] = " + this.ProjectStatus.ToString() + Environment.NewLine;
             rtn += "[ProjectManager] = " + this.ProjectManager.ToString() + Environment.NewLine;
             rtn += "[WorkDate] = " + this.WorkDate.ToString() + Environment.NewLine;
             rtn += "[WorkUnit] = " + this.WorkUnit.ToString() + Environment.NewLine;

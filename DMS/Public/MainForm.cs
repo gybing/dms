@@ -398,6 +398,12 @@ namespace DMS
             try
             {
                 SqlBaseProvider.LoginOutSysOnline(Program.ManInfo.Man.ManID, Program.ManInfo.Register.RegID);
+                BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID);
+                if (item != null)
+                {
+                    item.DBID = Program.DBID;
+                    SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
+                }
             }
             catch (Exception)
             {

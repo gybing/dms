@@ -127,6 +127,7 @@ namespace DMS.SqlServer
                     paras.Add(DBUtils.MakeInParam("DBID", SqlDbType.Int, db.DBID));
                     paras.Add(DBUtils.MakeInParam("DBName", SqlDbType.NVarChar, 40, db.DBName));
                     paras.Add(DBUtils.MakeInParam("DBCode", SqlDbType.NVarChar, 40, db.DBCode));
+                    paras.Add(DBUtils.MakeInParam("ProjectID", SqlDbType.VarChar, db.ProjectID));
                     paras.Add(DBUtils.MakeInParam("IsLog", SqlDbType.Bit, cbLog.Checked));
                     paras.Add(DBUtils.MakeInParam("ACTION", SqlDbType.Int, DataProviderAction.Update));
 

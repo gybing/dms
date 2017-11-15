@@ -39,6 +39,8 @@
             this.savefile = new GuFun.WinControls.VistaButton();
             this.closefrom = new GuFun.WinControls.VistaButton();
             this.cbLog = new System.Windows.Forms.CheckBox();
+            this.lbProject = new System.Windows.Forms.Label();
+            this.ddlProject = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // ilTools
@@ -81,7 +83,7 @@
             // lbdbcode
             // 
             this.lbdbcode.AutoSize = true;
-            this.lbdbcode.Location = new System.Drawing.Point(310, 83);
+            this.lbdbcode.Location = new System.Drawing.Point(255, 83);
             this.lbdbcode.Name = "lbdbcode";
             this.lbdbcode.Size = new System.Drawing.Size(77, 12);
             this.lbdbcode.TabIndex = 2;
@@ -91,21 +93,21 @@
             // 
             this.filename.Location = new System.Drawing.Point(40, 46);
             this.filename.Name = "filename";
-            this.filename.Size = new System.Drawing.Size(526, 21);
+            this.filename.Size = new System.Drawing.Size(632, 21);
             this.filename.TabIndex = 6;
             // 
             // dbname
             // 
             this.dbname.Location = new System.Drawing.Point(110, 80);
             this.dbname.Name = "dbname";
-            this.dbname.Size = new System.Drawing.Size(184, 21);
+            this.dbname.Size = new System.Drawing.Size(140, 21);
             this.dbname.TabIndex = 7;
             // 
             // dbcode
             // 
-            this.dbcode.Location = new System.Drawing.Point(380, 80);
+            this.dbcode.Location = new System.Drawing.Point(325, 80);
             this.dbcode.Name = "dbcode";
-            this.dbcode.Size = new System.Drawing.Size(186, 21);
+            this.dbcode.Size = new System.Drawing.Size(140, 21);
             this.dbcode.TabIndex = 8;
             // 
             // choosefile
@@ -118,7 +120,7 @@
             this.choosefile.ForeColor = System.Drawing.Color.Black;
             this.choosefile.Location = new System.Drawing.Point(40, 113);
             this.choosefile.Name = "choosefile";
-            this.choosefile.Size = new System.Drawing.Size(102, 31);
+            this.choosefile.Size = new System.Drawing.Size(115, 31);
             this.choosefile.TabIndex = 9;
             this.choosefile.Click += new System.EventHandler(this.choosefile_Click);
             // 
@@ -130,7 +132,7 @@
             this.savefile.ButtonText = "保存数据库设计";
             this.savefile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.savefile.ForeColor = System.Drawing.Color.Black;
-            this.savefile.Location = new System.Drawing.Point(171, 113);
+            this.savefile.Location = new System.Drawing.Point(212, 113);
             this.savefile.Name = "savefile";
             this.savefile.Size = new System.Drawing.Size(150, 31);
             this.savefile.TabIndex = 10;
@@ -144,27 +146,47 @@
             this.closefrom.ButtonText = "退出";
             this.closefrom.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.closefrom.ForeColor = System.Drawing.Color.Black;
-            this.closefrom.Location = new System.Drawing.Point(350, 113);
+            this.closefrom.Location = new System.Drawing.Point(416, 113);
             this.closefrom.Name = "closefrom";
-            this.closefrom.Size = new System.Drawing.Size(95, 31);
+            this.closefrom.Size = new System.Drawing.Size(101, 31);
             this.closefrom.TabIndex = 11;
             this.closefrom.Click += new System.EventHandler(this.closefrom_Click);
             // 
             // cbLog
             // 
             this.cbLog.AutoSize = true;
-            this.cbLog.Location = new System.Drawing.Point(470, 120);
+            this.cbLog.Location = new System.Drawing.Point(570, 120);
             this.cbLog.Name = "cbLog";
             this.cbLog.Size = new System.Drawing.Size(96, 16);
             this.cbLog.TabIndex = 12;
             this.cbLog.Text = "是否保留痕迹";
             this.cbLog.UseVisualStyleBackColor = true;
             // 
+            // lbProject
+            // 
+            this.lbProject.AutoSize = true;
+            this.lbProject.Location = new System.Drawing.Point(471, 83);
+            this.lbProject.Name = "lbProject";
+            this.lbProject.Size = new System.Drawing.Size(65, 12);
+            this.lbProject.TabIndex = 13;
+            this.lbProject.Text = "所属项目：";
+            // 
+            // ddlProject
+            // 
+            this.ddlProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProject.FormattingEnabled = true;
+            this.ddlProject.Location = new System.Drawing.Point(532, 80);
+            this.ddlProject.Name = "ddlProject";
+            this.ddlProject.Size = new System.Drawing.Size(140, 20);
+            this.ddlProject.TabIndex = 14;
+            // 
             // ImportPdm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 161);
+            this.ClientSize = new System.Drawing.Size(711, 162);
+            this.Controls.Add(this.ddlProject);
+            this.Controls.Add(this.lbProject);
             this.Controls.Add(this.cbLog);
             this.Controls.Add(this.closefrom);
             this.Controls.Add(this.savefile);
@@ -194,5 +216,7 @@
         private GuFun.WinControls.VistaButton savefile;
         private GuFun.WinControls.VistaButton closefrom;
         private System.Windows.Forms.CheckBox cbLog;
+        private System.Windows.Forms.Label lbProject;
+        private System.Windows.Forms.ComboBox ddlProject;
     }
 }

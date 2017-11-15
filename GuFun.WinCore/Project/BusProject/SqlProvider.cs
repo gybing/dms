@@ -49,6 +49,7 @@ namespace GuFun.WinCore
                 paras.Add(DBUtils.MakeInParam("@ProjectCode", SqlDbType.NVarChar, 20, item.ProjectCode));
                 paras.Add(DBUtils.MakeInParam("@ProjectName", SqlDbType.NVarChar, 50, item.ProjectName));
                 paras.Add(DBUtils.MakeInParam("@ProjectType", SqlDbType.VarChar, 2, item.ProjectType));
+                paras.Add(DBUtils.MakeInParam("@ProjectStatus", SqlDbType.VarChar, 2, item.ProjectStatus));
                 paras.Add(DBUtils.MakeInParam("@ProjectManager", SqlDbType.VarChar, 14, item.ProjectManager));
                 paras.Add(DBUtils.MakeInParam("@WorkDate", SqlDbType.Decimal, item.WorkDate));
                 paras.Add(DBUtils.MakeInParam("@WorkUnit", SqlDbType.VarChar, 2, item.WorkUnit));
@@ -105,6 +106,7 @@ namespace GuFun.WinCore
             item.ProjectCode = reader["ProjectCode"] as string;
             item.ProjectName = reader["ProjectName"] as string;
             item.ProjectType = reader["ProjectType"] as string;
+            item.ProjectStatus = reader["ProjectStatus"] as string;
             item.ProjectManager = reader["ProjectManager"] as string;
             item.WorkDate = Double.Parse(reader["WorkDate"].ToString());
             item.WorkUnit = reader["WorkUnit"] as string;

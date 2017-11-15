@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\BusHours\BusHours.cs" />
+    <Compile Include="Project\BusHours\SqlProvider.cs" />
     <Compile Include="Project\BusProject\BusProject.cs" />
     <Compile Include="Enumerations\AuthBound.cs" />
     <Compile Include="Enumerations\ColType.cs" />
