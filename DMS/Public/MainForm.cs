@@ -81,13 +81,7 @@ namespace DMS
 
                 for (j = 0; j < mgitem.Menus.Count; j++)
                 {
-
-
                     SysMenu mitem = mgitem.Menus[j];
-
-                    // modify by cloudy 20101022
-                    //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((mitem.MFunction == "ManEquipBackFee") || (mitem.MFunction == "ManReDeptBackFee")))
-                    //continue;
 
                     ToolStripMenuItem mi = new ToolStripMenuItem();
                     mi.Name = mitem.MCode + "-" + mitem.MFunction;
@@ -167,10 +161,6 @@ namespace DMS
 
                         for (k = 0; k < rt.Panels[j].Buttons.Count; k++)
                         {
-                            // modify by cloudy 20101022
-                            //if ((Program.ManInfo.Dept.DeptFlow != (short)DeptFlow.JiangPuLiuHe) && ((rt.Panels[j].Buttons[k].MFunction == "ManEquipBackFee") || (rt.Panels[j].Buttons[k].MFunction == "ManReDeptBackFee")))
-                            //continue;
-
                             RibbonButton rButton = new RibbonButton();
                             rButton.Text = rt.Panels[j].Buttons[k].RibBtnName;
 
@@ -389,8 +379,6 @@ namespace DMS
                 if (this.Controls[i].GetType().ToString() == "System.Windows.Forms.MdiClient")
                 {
                     ((System.Windows.Forms.MdiClient)this.Controls[i]).BackColor = StringHelper.GetColor("#99CCC3");
-                    //this.BackgroundImage = GBill.Properties.Resources.back;
-
                     break;
                 }
             }

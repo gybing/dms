@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySql\GpersistCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MySql\GpersistCode.Designer.cs">
+      <DependentUpon>GpersistCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oracle\GpersistCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oracle\GpersistCode.Designer.cs">
+      <DependentUpon>GpersistCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Project\EditDeveloper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,11 +83,11 @@
     <Compile Include="Project\SetDeveloper.Designer.cs">
       <DependentUpon>SetDeveloper.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServer\GpersistForm.cs">
+    <Compile Include="SqlServer\GpersistCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SqlServer\GpersistForm.Designer.cs">
-      <DependentUpon>GpersistForm.cs</DependentUpon>
+    <Compile Include="SqlServer\GpersistCode.Designer.cs">
+      <DependentUpon>GpersistCode.cs</DependentUpon>
     </Compile>
     <Compile Include="System\FirstLogin.cs">
       <SubType>Form</SubType>
@@ -292,11 +304,17 @@
     <EmbeddedResource Include="MySql\CodeBuild.resx">
       <DependentUpon>CodeBuild.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MySql\GpersistCode.resx">
+      <DependentUpon>GpersistCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MySql\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Oracle\CodeBuild.resx">
       <DependentUpon>CodeBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oracle\GpersistCode.resx">
+      <DependentUpon>GpersistCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Oracle\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>
@@ -316,8 +334,8 @@
     <EmbeddedResource Include="Public\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SqlServer\GpersistForm.resx">
-      <DependentUpon>GpersistForm.cs</DependentUpon>
+    <EmbeddedResource Include="SqlServer\GpersistCode.resx">
+      <DependentUpon>GpersistCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\DeleteRegister.resx">
       <DependentUpon>DeleteRegister.cs</DependentUpon>

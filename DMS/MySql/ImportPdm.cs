@@ -65,6 +65,12 @@ namespace DMS.MySql
                 return;
             }
 
+            if (ddlProject.SelectedValue.ToString() == DropAddFlag.Select.ToString())
+            {
+                Global.ShowSysInfo("请选择所属项目！");
+                return;
+            }
+
             SqlConnection conn = null;
             SqlCommand cmd = null;
 

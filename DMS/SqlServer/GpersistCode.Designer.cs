@@ -1,6 +1,6 @@
 ﻿namespace DMS.SqlServer
 {
-    partial class GpersistForm
+    partial class GpersistCode
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,14 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GpersistForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GpersistCode));
             this.plCenter = new System.Windows.Forms.Panel();
             this.txtResult = new System.Windows.Forms.RichTextBox();
             this.txtSet = new System.Windows.Forms.RichTextBox();
             this.plRight = new System.Windows.Forms.Panel();
             this.dgvPmtSet = new System.Windows.Forms.DataGridView();
+            this.TableSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plColumn = new System.Windows.Forms.Panel();
             this.dgvColumn = new System.Windows.Forms.DataGridView();
+            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrecision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIdentity = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnNotNull = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,13 +52,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TableSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrecision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plTop = new GuFun.WinControls.ExPanel();
             this.btnAction = new GuFun.WinControls.VistaButton();
             this.btnService = new GuFun.WinControls.VistaButton();
@@ -123,7 +123,7 @@
             this.plCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plCenter.Location = new System.Drawing.Point(0, 130);
             this.plCenter.Name = "plCenter";
-            this.plCenter.Size = new System.Drawing.Size(1424, 330);
+            this.plCenter.Size = new System.Drawing.Size(1424, 250);
             this.plCenter.TabIndex = 2;
             // 
             // txtResult
@@ -131,7 +131,7 @@
             this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResult.Location = new System.Drawing.Point(310, 0);
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(874, 330);
+            this.txtResult.Size = new System.Drawing.Size(874, 250);
             this.txtResult.TabIndex = 2;
             this.txtResult.Text = "";
             this.txtResult.WordWrap = false;
@@ -141,7 +141,7 @@
             this.txtSet.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtSet.Location = new System.Drawing.Point(0, 0);
             this.txtSet.Name = "txtSet";
-            this.txtSet.Size = new System.Drawing.Size(310, 330);
+            this.txtSet.Size = new System.Drawing.Size(310, 250);
             this.txtSet.TabIndex = 1;
             this.txtSet.Text = "";
             this.txtSet.WordWrap = false;
@@ -152,7 +152,7 @@
             this.plRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.plRight.Location = new System.Drawing.Point(1184, 0);
             this.plRight.Name = "plRight";
-            this.plRight.Size = new System.Drawing.Size(240, 330);
+            this.plRight.Size = new System.Drawing.Size(240, 250);
             this.plRight.TabIndex = 0;
             // 
             // dgvPmtSet
@@ -167,16 +167,24 @@
             this.dgvPmtSet.Name = "dgvPmtSet";
             this.dgvPmtSet.ReadOnly = true;
             this.dgvPmtSet.RowTemplate.Height = 23;
-            this.dgvPmtSet.Size = new System.Drawing.Size(240, 330);
+            this.dgvPmtSet.Size = new System.Drawing.Size(240, 250);
             this.dgvPmtSet.TabIndex = 0;
+            // 
+            // TableSet
+            // 
+            this.TableSet.DataPropertyName = "TableSet";
+            this.TableSet.HeaderText = "配置信息";
+            this.TableSet.Name = "TableSet";
+            this.TableSet.ReadOnly = true;
+            this.TableSet.Width = 400;
             // 
             // plColumn
             // 
             this.plColumn.Controls.Add(this.dgvColumn);
             this.plColumn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.plColumn.Location = new System.Drawing.Point(0, 460);
+            this.plColumn.Location = new System.Drawing.Point(0, 380);
             this.plColumn.Name = "plColumn";
-            this.plColumn.Size = new System.Drawing.Size(1424, 180);
+            this.plColumn.Size = new System.Drawing.Size(1424, 260);
             this.plColumn.TabIndex = 1;
             // 
             // dgvColumn
@@ -197,8 +205,49 @@
             this.dgvColumn.Location = new System.Drawing.Point(0, 0);
             this.dgvColumn.Name = "dgvColumn";
             this.dgvColumn.RowTemplate.Height = 23;
-            this.dgvColumn.Size = new System.Drawing.Size(1424, 180);
+            this.dgvColumn.Size = new System.Drawing.Size(1424, 260);
             this.dgvColumn.TabIndex = 0;
+            // 
+            // ColumnID
+            // 
+            this.ColumnID.DataPropertyName = "ColumnID";
+            this.ColumnID.HeaderText = "序号";
+            this.ColumnID.Name = "ColumnID";
+            this.ColumnID.Width = 60;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.DataPropertyName = "ColumnName";
+            this.ColumnName.HeaderText = "名称";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.Width = 150;
+            // 
+            // ColumnCode
+            // 
+            this.ColumnCode.DataPropertyName = "ColumnCode";
+            this.ColumnCode.HeaderText = "代码";
+            this.ColumnCode.Name = "ColumnCode";
+            this.ColumnCode.Width = 150;
+            // 
+            // DataType
+            // 
+            this.DataType.DataPropertyName = "DataType";
+            this.DataType.HeaderText = "数据类型";
+            this.DataType.Name = "DataType";
+            // 
+            // ColumnLength
+            // 
+            this.ColumnLength.DataPropertyName = "ColumnLength";
+            this.ColumnLength.HeaderText = "长度";
+            this.ColumnLength.Name = "ColumnLength";
+            this.ColumnLength.Width = 60;
+            // 
+            // ColumnPrecision
+            // 
+            this.ColumnPrecision.DataPropertyName = "ColumnPrecision";
+            this.ColumnPrecision.HeaderText = "精度";
+            this.ColumnPrecision.Name = "ColumnPrecision";
+            this.ColumnPrecision.Width = 60;
             // 
             // ColumnIdentity
             // 
@@ -261,54 +310,6 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 400;
             // 
-            // TableSet
-            // 
-            this.TableSet.HeaderText = "配置信息";
-            this.TableSet.Name = "TableSet";
-            this.TableSet.ReadOnly = true;
-            this.TableSet.Width = 400;
-            // 
-            // ColumnID
-            // 
-            this.ColumnID.DataPropertyName = "ColumnID";
-            this.ColumnID.HeaderText = "序号";
-            this.ColumnID.Name = "ColumnID";
-            this.ColumnID.Width = 60;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.DataPropertyName = "ColumnName";
-            this.ColumnName.HeaderText = "名称";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.Width = 150;
-            // 
-            // ColumnCode
-            // 
-            this.ColumnCode.DataPropertyName = "ColumnCode";
-            this.ColumnCode.HeaderText = "代码";
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.Width = 150;
-            // 
-            // DataType
-            // 
-            this.DataType.DataPropertyName = "DataType";
-            this.DataType.HeaderText = "数据类型";
-            this.DataType.Name = "DataType";
-            // 
-            // ColumnLength
-            // 
-            this.ColumnLength.DataPropertyName = "ColumnLength";
-            this.ColumnLength.HeaderText = "长度";
-            this.ColumnLength.Name = "ColumnLength";
-            this.ColumnLength.Width = 60;
-            // 
-            // ColumnPrecision
-            // 
-            this.ColumnPrecision.DataPropertyName = "ColumnPrecision";
-            this.ColumnPrecision.HeaderText = "精度";
-            this.ColumnPrecision.Name = "ColumnPrecision";
-            this.ColumnPrecision.Width = 60;
-            // 
             // plTop
             // 
             this.plTop.Border3DStyle = System.Windows.Forms.Border3DStyle.Raised;
@@ -361,10 +362,10 @@
             this.btnAction.ButtonText = "生成Action";
             this.btnAction.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnAction.ForeColor = System.Drawing.Color.Black;
-            this.btnAction.Location = new System.Drawing.Point(1044, 66);
+            this.btnAction.Location = new System.Drawing.Point(1044, 68);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(70, 48);
-            this.btnAction.TabIndex = 33;
+            this.btnAction.TabIndex = 25;
             this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // btnService
@@ -378,7 +379,7 @@
             this.btnService.Location = new System.Drawing.Point(963, 68);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(75, 48);
-            this.btnService.TabIndex = 32;
+            this.btnService.TabIndex = 24;
             this.btnService.Click += new System.EventHandler(this.btnService_Click);
             // 
             // btnDao
@@ -392,7 +393,7 @@
             this.btnDao.Location = new System.Drawing.Point(891, 68);
             this.btnDao.Name = "btnDao";
             this.btnDao.Size = new System.Drawing.Size(66, 48);
-            this.btnDao.TabIndex = 31;
+            this.btnDao.TabIndex = 23;
             this.btnDao.Click += new System.EventHandler(this.btnDao_Click);
             // 
             // btnMapper
@@ -406,7 +407,7 @@
             this.btnMapper.Location = new System.Drawing.Point(805, 68);
             this.btnMapper.Name = "btnMapper";
             this.btnMapper.Size = new System.Drawing.Size(80, 48);
-            this.btnMapper.TabIndex = 30;
+            this.btnMapper.TabIndex = 22;
             this.btnMapper.Click += new System.EventHandler(this.btnMapper_Click);
             // 
             // btnXml
@@ -420,7 +421,7 @@
             this.btnXml.Location = new System.Drawing.Point(733, 68);
             this.btnXml.Name = "btnXml";
             this.btnXml.Size = new System.Drawing.Size(66, 48);
-            this.btnXml.TabIndex = 29;
+            this.btnXml.TabIndex = 21;
             this.btnXml.Click += new System.EventHandler(this.btnXml_Click);
             // 
             // btnExit
@@ -434,7 +435,7 @@
             this.btnExit.Location = new System.Drawing.Point(1044, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 48);
-            this.btnExit.TabIndex = 28;
+            this.btnExit.TabIndex = 26;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnWork
@@ -448,7 +449,7 @@
             this.btnWork.Location = new System.Drawing.Point(963, 12);
             this.btnWork.Name = "btnWork";
             this.btnWork.Size = new System.Drawing.Size(75, 48);
-            this.btnWork.TabIndex = 27;
+            this.btnWork.TabIndex = 15;
             this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
             // 
             // btnBean
@@ -462,7 +463,7 @@
             this.btnBean.Location = new System.Drawing.Point(661, 68);
             this.btnBean.Name = "btnBean";
             this.btnBean.Size = new System.Drawing.Size(66, 48);
-            this.btnBean.TabIndex = 27;
+            this.btnBean.TabIndex = 20;
             this.btnBean.Click += new System.EventHandler(this.btnBean_Click);
             // 
             // btnJs
@@ -476,7 +477,7 @@
             this.btnJs.Location = new System.Drawing.Point(891, 12);
             this.btnJs.Name = "btnJs";
             this.btnJs.Size = new System.Drawing.Size(66, 48);
-            this.btnJs.TabIndex = 26;
+            this.btnJs.TabIndex = 19;
             this.btnJs.Click += new System.EventHandler(this.btnJs_Click);
             // 
             // btnKey
@@ -490,7 +491,7 @@
             this.btnKey.Location = new System.Drawing.Point(733, 12);
             this.btnKey.Name = "btnKey";
             this.btnKey.Size = new System.Drawing.Size(66, 48);
-            this.btnKey.TabIndex = 25;
+            this.btnKey.TabIndex = 17;
             this.btnKey.Click += new System.EventHandler(this.btnKey_Click);
             // 
             // btnSaveSql
@@ -504,7 +505,7 @@
             this.btnSaveSql.Location = new System.Drawing.Point(805, 12);
             this.btnSaveSql.Name = "btnSaveSql";
             this.btnSaveSql.Size = new System.Drawing.Size(80, 48);
-            this.btnSaveSql.TabIndex = 24;
+            this.btnSaveSql.TabIndex = 18;
             this.btnSaveSql.Click += new System.EventHandler(this.btnSaveSql_Click);
             // 
             // btnGetSql
@@ -518,36 +519,40 @@
             this.btnGetSql.Location = new System.Drawing.Point(661, 12);
             this.btnGetSql.Name = "btnGetSql";
             this.btnGetSql.Size = new System.Drawing.Size(66, 48);
-            this.btnGetSql.TabIndex = 23;
+            this.btnGetSql.TabIndex = 16;
             this.btnGetSql.Click += new System.EventHandler(this.btnGetSql_Click);
             // 
             // cbNo
             // 
             this.cbNo.AutoSize = true;
-            this.cbNo.Location = new System.Drawing.Point(553, 70);
+            this.cbNo.Location = new System.Drawing.Point(571, 70);
             this.cbNo.Name = "cbNo";
             this.cbNo.Size = new System.Drawing.Size(84, 16);
-            this.cbNo.TabIndex = 22;
+            this.cbNo.TabIndex = 12;
             this.cbNo.Text = "List无参数";
             this.cbNo.UseVisualStyleBackColor = true;
             // 
             // cbDelete
             // 
             this.cbDelete.AutoSize = true;
+            this.cbDelete.Checked = true;
+            this.cbDelete.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDelete.Location = new System.Drawing.Point(607, 42);
             this.cbDelete.Name = "cbDelete";
             this.cbDelete.Size = new System.Drawing.Size(48, 16);
-            this.cbDelete.TabIndex = 21;
+            this.cbDelete.TabIndex = 0;
             this.cbDelete.Text = "删除";
             this.cbDelete.UseVisualStyleBackColor = true;
             // 
             // cbInsert
             // 
             this.cbInsert.AutoSize = true;
+            this.cbInsert.Checked = true;
+            this.cbInsert.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbInsert.Location = new System.Drawing.Point(553, 43);
             this.cbInsert.Name = "cbInsert";
             this.cbInsert.Size = new System.Drawing.Size(48, 16);
-            this.cbInsert.TabIndex = 20;
+            this.cbInsert.TabIndex = 14;
             this.cbInsert.Text = "新增";
             this.cbInsert.UseVisualStyleBackColor = true;
             this.cbInsert.CheckedChanged += new System.EventHandler(this.cbInsert_CheckedChanged);
@@ -555,10 +560,12 @@
             // cbEdit
             // 
             this.cbEdit.AutoSize = true;
+            this.cbEdit.Checked = true;
+            this.cbEdit.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbEdit.Location = new System.Drawing.Point(607, 15);
             this.cbEdit.Name = "cbEdit";
             this.cbEdit.Size = new System.Drawing.Size(48, 16);
-            this.cbEdit.TabIndex = 19;
+            this.cbEdit.TabIndex = 0;
             this.cbEdit.Text = "修改";
             this.cbEdit.UseVisualStyleBackColor = true;
             // 
@@ -568,7 +575,7 @@
             this.cbPage.Location = new System.Drawing.Point(553, 15);
             this.cbPage.Name = "cbPage";
             this.cbPage.Size = new System.Drawing.Size(48, 16);
-            this.cbPage.TabIndex = 18;
+            this.cbPage.TabIndex = 13;
             this.cbPage.Text = "分页";
             this.cbPage.UseVisualStyleBackColor = true;
             this.cbPage.CheckedChanged += new System.EventHandler(this.cbPage_CheckedChanged);
@@ -576,10 +583,12 @@
             // cbSearch
             // 
             this.cbSearch.AutoSize = true;
+            this.cbSearch.Checked = true;
+            this.cbSearch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSearch.Location = new System.Drawing.Point(447, 70);
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(96, 16);
-            this.cbSearch.TabIndex = 17;
+            this.cbSearch.TabIndex = 11;
             this.cbSearch.Text = "是否含Search";
             this.cbSearch.UseVisualStyleBackColor = true;
             // 
@@ -594,7 +603,7 @@
             this.btnSave.Location = new System.Drawing.Point(475, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 48);
-            this.btnSave.TabIndex = 16;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnSet
@@ -608,7 +617,7 @@
             this.btnSet.Location = new System.Drawing.Point(405, 12);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(64, 48);
-            this.btnSet.TabIndex = 15;
+            this.btnSet.TabIndex = 9;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
             // btnRead
@@ -622,15 +631,15 @@
             this.btnRead.Location = new System.Drawing.Point(335, 12);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(64, 48);
-            this.btnRead.TabIndex = 14;
+            this.btnRead.TabIndex = 8;
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // txtValue
             // 
-            this.txtValue.Location = new System.Drawing.Point(485, 96);
+            this.txtValue.Location = new System.Drawing.Point(492, 96);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(150, 21);
-            this.txtValue.TabIndex = 13;
+            this.txtValue.Size = new System.Drawing.Size(153, 21);
+            this.txtValue.TabIndex = 7;
             // 
             // lbValue
             // 
@@ -638,7 +647,7 @@
             this.lbValue.Location = new System.Drawing.Point(445, 100);
             this.lbValue.Name = "lbValue";
             this.lbValue.Size = new System.Drawing.Size(41, 12);
-            this.lbValue.TabIndex = 12;
+            this.lbValue.TabIndex = 0;
             this.lbValue.Text = "变量：";
             // 
             // txtClassName
@@ -646,14 +655,14 @@
             this.txtClassName.Location = new System.Drawing.Point(280, 96);
             this.txtClassName.Name = "txtClassName";
             this.txtClassName.Size = new System.Drawing.Size(150, 21);
-            this.txtClassName.TabIndex = 11;
+            this.txtClassName.TabIndex = 6;
             // 
             // txtPrefix
             // 
             this.txtPrefix.Location = new System.Drawing.Point(280, 68);
             this.txtPrefix.Name = "txtPrefix";
             this.txtPrefix.Size = new System.Drawing.Size(150, 21);
-            this.txtPrefix.TabIndex = 10;
+            this.txtPrefix.TabIndex = 4;
             // 
             // lbClassName
             // 
@@ -661,7 +670,7 @@
             this.lbClassName.Location = new System.Drawing.Point(235, 100);
             this.lbClassName.Name = "lbClassName";
             this.lbClassName.Size = new System.Drawing.Size(41, 12);
-            this.lbClassName.TabIndex = 9;
+            this.lbClassName.TabIndex = 0;
             this.lbClassName.Text = "类名：";
             // 
             // lbPrefix
@@ -670,7 +679,7 @@
             this.lbPrefix.Location = new System.Drawing.Point(235, 72);
             this.lbPrefix.Name = "lbPrefix";
             this.lbPrefix.Size = new System.Drawing.Size(41, 12);
-            this.lbPrefix.TabIndex = 8;
+            this.lbPrefix.TabIndex = 0;
             this.lbPrefix.Text = "前缀：";
             // 
             // txtCatalog
@@ -678,7 +687,7 @@
             this.txtCatalog.Location = new System.Drawing.Point(72, 96);
             this.txtCatalog.Name = "txtCatalog";
             this.txtCatalog.Size = new System.Drawing.Size(150, 21);
-            this.txtCatalog.TabIndex = 7;
+            this.txtCatalog.TabIndex = 5;
             // 
             // lbCatalog
             // 
@@ -686,7 +695,7 @@
             this.lbCatalog.Location = new System.Drawing.Point(18, 100);
             this.lbCatalog.Name = "lbCatalog";
             this.lbCatalog.Size = new System.Drawing.Size(53, 12);
-            this.lbCatalog.TabIndex = 6;
+            this.lbCatalog.TabIndex = 0;
             this.lbCatalog.Text = "类目录：";
             // 
             // txtPackage
@@ -694,7 +703,7 @@
             this.txtPackage.Location = new System.Drawing.Point(72, 68);
             this.txtPackage.Name = "txtPackage";
             this.txtPackage.Size = new System.Drawing.Size(150, 21);
-            this.txtPackage.TabIndex = 5;
+            this.txtPackage.TabIndex = 3;
             // 
             // lbPackage
             // 
@@ -702,7 +711,7 @@
             this.lbPackage.Location = new System.Drawing.Point(18, 72);
             this.lbPackage.Name = "lbPackage";
             this.lbPackage.Size = new System.Drawing.Size(41, 12);
-            this.lbPackage.TabIndex = 4;
+            this.lbPackage.TabIndex = 0;
             this.lbPackage.Text = "包名：";
             // 
             // ddlTable
@@ -711,7 +720,7 @@
             this.ddlTable.Location = new System.Drawing.Point(72, 40);
             this.ddlTable.Name = "ddlTable";
             this.ddlTable.Size = new System.Drawing.Size(255, 20);
-            this.ddlTable.TabIndex = 3;
+            this.ddlTable.TabIndex = 2;
             // 
             // lbTable
             // 
@@ -719,7 +728,7 @@
             this.lbTable.Location = new System.Drawing.Point(18, 44);
             this.lbTable.Name = "lbTable";
             this.lbTable.Size = new System.Drawing.Size(53, 12);
-            this.lbTable.TabIndex = 2;
+            this.lbTable.TabIndex = 0;
             this.lbTable.Text = "数据表：";
             // 
             // ddlDB
@@ -768,7 +777,6 @@
         private System.Windows.Forms.Panel plCenter;
         private System.Windows.Forms.Panel plRight;
         private System.Windows.Forms.DataGridView dgvPmtSet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TableSet;
         private System.Windows.Forms.RichTextBox txtSet;
         private System.Windows.Forms.RichTextBox txtResult;
         private System.Windows.Forms.DataGridView dgvColumn;
@@ -822,5 +830,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TableSet;
     }
 }
