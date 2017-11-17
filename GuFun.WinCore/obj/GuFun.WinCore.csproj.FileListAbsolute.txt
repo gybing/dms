@@ -1,7 +1,0 @@
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\bin\Debug\GuFun.WinCore.dll
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\bin\Debug\GuFun.WinCore.pdb
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\bin\Debug\GuFun.Utils.dll
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\bin\Debug\GuFun.Utils.pdb
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\obj\Debug\ResolveAssemblyReference.cache
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\obj\Debug\GuFun.WinCore.dll
-E:\Sources\Win\bm\GuFun.BillManager\GuFun.WinCore\obj\Debug\GuFun.WinCore.pdb
