@@ -21,6 +21,7 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.ProjectManage.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.SetDeveloper.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.Register.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.SqlServer.GpersistCode.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ConnectEncryptForm.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.DeleteRegister.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditRole.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditSetRole.resources
