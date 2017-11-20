@@ -46,4 +46,7 @@ E:\Source\C#\DMS\DMS\obj\Release\DMS.UnLockMan.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.csproj.GenerateResource.Cache
 E:\Source\C#\DMS\DMS\obj\Release\DMS.exe
 E:\Source\C#\DMS\DMS\obj\Release\DMS.pdb
-E:\Source\C#\DMS\DMS\obj\Release\DMS.SqlServer.GpersistForm.resources
+E:\Source\C#\DMS\DMS\obj\Release\DMS.MySql.GpersistCode.resources
+E:\Source\C#\DMS\DMS\obj\Release\DMS.Oracle.GpersistCode.resources
+E:\Source\C#\DMS\DMS\obj\Release\DMS.SqlServer.GpersistCode.resources
+E:\Source\C#\DMS\DMS\obj\Release\DMS.ConnectEncryptForm.resources

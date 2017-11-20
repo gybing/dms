@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System\ConnectEncryptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\ConnectEncryptForm.Designer.cs">
+      <DependentUpon>ConnectEncryptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MySql\GpersistCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SqlServer\GpersistCode.resx">
       <DependentUpon>GpersistCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\ConnectEncryptForm.resx">
+      <DependentUpon>ConnectEncryptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\DeleteRegister.resx">
       <DependentUpon>DeleteRegister.cs</DependentUpon>

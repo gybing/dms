@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 105000
 File Encoding         : 65001
 
-Date: 2017-11-17 09:30:58
+Date: 2017-11-18 13:40:44
 */
 
 
@@ -3642,10 +3642,10 @@ GO
 INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711160000000002', N'999', N'PK201711070000000001', N'2017-11-16 15:53:08.943', N'2017-11-16 16:29:11.290', N'2017-11-16', N'.60')
 GO
 GO
-INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711170000000001', N'999', N'PK201711070000000001', N'2017-11-17 09:12:15.763', null, N'2017-11-17', null)
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711170000000001', N'999', N'PK201711070000000001', N'2017-11-17 09:12:15.763', N'2017-11-17 11:27:23.890', N'2017-11-17', N'2.25')
 GO
 GO
-INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711170000000002', N'999', N'PK201711060000000005', N'2017-11-17 09:28:01.550', N'2017-11-17 09:28:52.793', N'2017-11-17', N'.00')
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711170000000002', N'999', N'PK201711060000000005', N'2017-11-17 09:28:01.550', N'2017-11-17 17:21:39.203', N'2017-11-17', N'7.88')
 GO
 GO
 
@@ -8857,7 +8857,7 @@ CREATE TABLE [dbo].[T_Sys_Log] (
 
 
 GO
-DBCC CHECKIDENT(N'[dbo].[T_Sys_Log]', RESEED, 246)
+DBCC CHECKIDENT(N'[dbo].[T_Sys_Log]', RESEED, 269)
 GO
 
 -- ----------------------------
@@ -9435,6 +9435,60 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'246', N'2017-11-17 09:11:42.030', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'247', N'2017-11-17 10:34:10.230', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'248', N'2017-11-17 10:35:10.117', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'249', N'2017-11-17 11:21:52.610', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'255', N'2017-11-17 17:21:39.183', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'256', N'2017-11-17 17:31:51.370', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'257', N'2017-11-17 17:37:02.677', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'258', N'2017-11-17 17:37:09.217', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'259', N'2017-11-17 17:37:56.373', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'260', N'2017-11-17 17:38:04.990', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'261', N'2017-11-17 17:42:19.577', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'262', N'2017-11-17 17:42:25.490', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'263', N'2017-11-17 17:43:30.980', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'264', N'2017-11-17 17:43:39.660', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'265', N'2017-11-17 17:44:21.827', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'266', N'2017-11-17 18:07:21.403', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'267', N'2017-11-17 18:08:06.663', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'268', N'2017-11-17 18:10:49.627', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'269', N'2017-11-17 18:12:09.990', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'8', N'2017-11-14 20:39:59.407', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
@@ -9594,6 +9648,21 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'245', N'2017-11-16 21:00:13.840', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'250', N'2017-11-17 11:25:21.443', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'251', N'2017-11-17 11:25:34.423', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'252', N'2017-11-17 11:27:09.050', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'253', N'2017-11-17 11:27:23.873', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'254', N'2017-11-17 11:28:16.227', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'232', N'2017-11-16 15:32:58.760', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
@@ -9728,16 +9797,16 @@ GO
 INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'605', N'角色分配', N'605', N'6', N'1', N'5', N'515', N'进行角色的分配', N'SetRole', N'1', N'0', N'0', null, null, null, N'-1', N'0', N'0605', N'0', N'')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'606', N'员工解锁', N'606', N'6', N'1', N'6', N'512', N'给锁定状态不能登录的员工进行解锁', N'UnLockMan', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0606', N'0', N'')
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'620', N'员工解锁', N'620', N'6', N'1', N'7', N'512', N'给锁定状态不能登录的员工进行解锁', N'UnLockMan', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0620', N'0', N'')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'607', N'密码重置', N'607', N'6', N'1', N'7', N'512', N'给遗失密码的员工重新恢复痴思密码', N'ResetMan', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0607', N'0', N'')
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'621', N'密码重置', N'621', N'6', N'1', N'8', N'512', N'给遗失密码的员工重新恢复痴思密码', N'ResetMan', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0621', N'0', N'')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'610', N'在线状态删除', N'610', N'6', N'1', N'10', N'512', N'在线状态删除', N'SetOnineMan', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0610', N'0', N'')
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'622', N'在线状态删除', N'622', N'6', N'1', N'9', N'512', N'在线状态删除', N'SetOnineMan', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0622', N'0', N'')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'611', N'注册信息删除', N'611', N'6', N'1', N'11', N'512', N'注册信息删除', N'DeleteRegister', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0611', N'0', N'')
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'623', N'注册信息删除', N'623', N'6', N'1', N'10', N'512', N'注册信息删除', N'DeleteRegister', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0623', N'0', N'')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'630', N'系统参数', N'630', N'6', N'1', N'30', N'0', N'基础系统相关的参数', N'', N'0', N'1', N'631', null, null, null, N'-1', N'0', N'0000', N'0', N'')
@@ -9774,6 +9843,9 @@ INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'402', N'分配人员', N'402', N'4', N'1', N'1', N'515', N'进行开发人员分配', N'SetDeveloper', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0402', N'0', null)
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'610', N'连接字加密', N'610', N'6', N'1', N'6', N'47', N'连接字加密', N'ConnectEncryptForm', N'1', N'0', N'0', null, null, null, N'-1', N'0', N'0610', N'0', null)
 GO
 GO
 
@@ -9903,9 +9975,6 @@ GO
 -- ----------------------------
 -- Records of T_Sys_Online
 -- ----------------------------
-INSERT INTO [dbo].[T_Sys_Online] ([Man_ID], [Login_Date], [Online_Date], [Menu_Code], [Reg_ID]) VALUES (N'999', N'2017-11-17 09:11:42.020', N'2017-11-17 09:11:42.020', null, N'14')
-GO
-GO
 
 -- ----------------------------
 -- Table structure for T_Sys_Oper_Role
@@ -10055,16 +10124,19 @@ GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'605', N'515')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'606', N'512')
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'610', N'47')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'607', N'512')
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'620', N'512')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'610', N'512')
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'621', N'512')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'611', N'512')
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'622', N'512')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'623', N'512')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'630', N'0')
@@ -10077,9 +10149,6 @@ INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', 
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'633', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'634', N'47')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'101', N'47')
@@ -10098,6 +10167,9 @@ INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', 
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'302', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'634', N'47')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'101', N'47')
