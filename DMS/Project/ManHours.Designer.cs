@@ -1,6 +1,6 @@
 ﻿namespace DMS
 {
-    partial class ProjectManage
+    partial class ManHours
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -43,7 +43,7 @@
             // lbProjectName
             // 
             this.lbProjectName.AutoSize = true;
-            this.lbProjectName.Location = new System.Drawing.Point(17, 11);
+            this.lbProjectName.Location = new System.Drawing.Point(17, 14);
             this.lbProjectName.Name = "lbProjectName";
             this.lbProjectName.Size = new System.Drawing.Size(65, 12);
             this.lbProjectName.TabIndex = 0;
@@ -51,17 +51,17 @@
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(80, 8);
+            this.txtProjectName.Location = new System.Drawing.Point(80, 9);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(144, 21);
+            this.txtProjectName.Size = new System.Drawing.Size(136, 21);
             this.txtProjectName.TabIndex = 1;
             // 
-            // ProjectManage
+            // ManHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(770, 406);
-            this.Name = "ProjectManage";
-            this.Load += new System.EventHandler(this.ProjectManage_Load);
+            this.Name = "ManHours";
+            this.Load += new System.EventHandler(this.ManHours_Load);
             this.plSearch.ResumeLayout(false);
             this.plSearch.PerformLayout();
             this.ResumeLayout(false);

@@ -118,7 +118,7 @@
             // sslTips
             // 
             this.sslTips.Name = "sslTips";
-            this.sslTips.Size = new System.Drawing.Size(544, 21);
+            this.sslTips.Size = new System.Drawing.Size(575, 21);
             this.sslTips.Spring = true;
             // 
             // sslMan
@@ -197,6 +197,8 @@
             this.Text = "金禾软件开发平台";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.ssMain.ResumeLayout(false);
             this.ssMain.PerformLayout();
             this.ResumeLayout(false);

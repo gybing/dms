@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\ManHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\ManHours.Designer.cs">
+      <DependentUpon>ManHours.cs</DependentUpon>
+    </Compile>
     <Compile Include="System\ConnectEncryptForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,11 +83,11 @@
     <Compile Include="Project\EditProject.Designer.cs">
       <DependentUpon>EditProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Project\ProjectManage.cs">
+    <Compile Include="Project\ManProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Project\ProjectManage.Designer.cs">
-      <DependentUpon>ProjectManage.cs</DependentUpon>
+    <Compile Include="Project\ManProject.Designer.cs">
+      <DependentUpon>ManProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Project\SetDeveloper.cs">
       <SubType>Form</SubType>
@@ -331,8 +337,11 @@
     <EmbeddedResource Include="Project\EditProject.resx">
       <DependentUpon>EditProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Project\ProjectManage.resx">
-      <DependentUpon>ProjectManage.cs</DependentUpon>
+    <EmbeddedResource Include="Project\ManHours.resx">
+      <DependentUpon>ManHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\ManProject.resx">
+      <DependentUpon>ManProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project\SetDeveloper.resx">
       <DependentUpon>SetDeveloper.cs</DependentUpon>
@@ -456,6 +465,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\back.jpg" />
     <Content Include="Resources\background\login.jpg" />
     <Content Include="Resources\ribbon\1.gif" />
     <Content Include="Resources\ribbon\10.gif" />
@@ -466,6 +476,7 @@
     <Content Include="Resources\ribbon\15.gif" />
     <Content Include="Resources\ribbon\16.gif" />
     <Content Include="Resources\ribbon\17.gif" />
+    <Content Include="Resources\ribbon\18.gif" />
     <Content Include="Resources\ribbon\2.gif" />
     <Content Include="Resources\ribbon\3.gif" />
     <Content Include="Resources\ribbon\4.gif" />

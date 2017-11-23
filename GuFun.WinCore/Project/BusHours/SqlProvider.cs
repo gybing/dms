@@ -72,5 +72,32 @@ namespace GuFun.WinCore
             }
 
         }
+
+
+        public static DataTable SearchBusHours(PageBusHours item)
+        {
+            DataTable tblMain;
+            try
+            {
+                ArrayList paras = new ArrayList();
+                paras.Add(DBUtils.MakeInParam("@Search", SqlDbType.NVarChar, 200, item.Search));
+                paras.Add(DBUtils.MakeInParam("@Start", SqlDbType.Int, item.Start));
+                paras.Add(DBUtils.MakeInParam("@End", SqlDbType.Int, item.End));
+                paras.Add(DBUtils.MakeOutParam("@Total", SqlDbType.Int));
+                tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Search_BusHours", paras);
+                tblMain.TableName = "SelectMain";
+
+                if (paras.Count > 0)
+                {
+                    item.Total = ((((SqlParameter)paras[paras.Count - 1]).Value != DBNull.Value) ? (Convert.ToInt32(((SqlParameter)paras[paras.Count - 1]).Value)) : (int)0);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, PublicConsts.PC_Tip);
+                throw;
+            }
+            return tblMain;
+        }
     }
 }

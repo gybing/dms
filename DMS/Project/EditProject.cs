@@ -14,7 +14,7 @@ namespace DMS
     {
         private short ml = 0;
         public string id = String.Empty;
-        public ProjectManage parentForm;
+        public ManProject parentForm;
 
         public EditProject()
         {

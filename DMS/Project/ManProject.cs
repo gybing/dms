@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace DMS
 {
-    public partial class ProjectManage : DMS.BaseListForm
+    public partial class ManProject : DMS.BaseListForm
     {
-        public ProjectManage()
+        public ManProject()
         {
             InitializeComponent();
             tsbFirst.Visible = false;
