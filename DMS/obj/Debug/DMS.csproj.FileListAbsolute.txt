@@ -51,3 +51,4 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.exe
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.pdb
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManProject.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManHours.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditHours.resources

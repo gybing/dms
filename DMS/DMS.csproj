@@ -53,6 +53,12 @@
     <Compile Include="Project\ManHours.Designer.cs">
       <DependentUpon>ManHours.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project\EditHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\EditHours.Designer.cs">
+      <DependentUpon>EditHours.cs</DependentUpon>
+    </Compile>
     <Compile Include="System\ConnectEncryptForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Project\SetDeveloper.resx">
       <DependentUpon>SetDeveloper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\EditHours.resx">
+      <DependentUpon>EditHours.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Public\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
