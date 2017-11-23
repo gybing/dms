@@ -17,7 +17,10 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.Oracle.GpersistCode.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.Oracle.ImportPdm.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditDeveloper.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditProject.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManHours.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManProject.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.SetDeveloper.resources
+E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditHours.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.Register.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.SqlServer.GpersistCode.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.ConnectEncryptForm.resources
@@ -49,6 +52,3 @@ E:\Source\C#\DMS\DMS\obj\Debug\DMS.UnLockMan.resources
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.csproj.GenerateResource.Cache
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.exe
 E:\Source\C#\DMS\DMS\obj\Debug\DMS.pdb
-E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManProject.resources
-E:\Source\C#\DMS\DMS\obj\Debug\DMS.ManHours.resources
-E:\Source\C#\DMS\DMS\obj\Debug\DMS.EditHours.resources

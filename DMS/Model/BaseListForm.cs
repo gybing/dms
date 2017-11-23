@@ -16,7 +16,7 @@ namespace DMS
         public int mAuth = 0;
         public int CurrentPage = 0;
         public int AllCount = 0;
-        public int PageRows = 50;
+        public int PageRows = 2;
 
         public BaseListForm()
         {
@@ -262,7 +262,7 @@ namespace DMS
 
             CurrentPage = 0;
             AllCount = 0;
-            PageRows = 50;
+            PageRows = 2;
         }
 
         protected virtual void OnInitAuth()
@@ -364,6 +364,16 @@ namespace DMS
         private void dgvList_ColumnSortModeChanged(object sender, DataGridViewColumnEventArgs e)
         {
             OnSortedLast();
+        }
+
+        private void tsbSearch_ButtonClick(object sender, EventArgs e)
+        {
+            OnSearch();
+        }
+
+        protected virtual void OnSearch()
+        {
+
         }
        
     }

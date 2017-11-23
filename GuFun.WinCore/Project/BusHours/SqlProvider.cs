@@ -84,12 +84,13 @@ namespace GuFun.WinCore
                 paras.Add(DBUtils.MakeInParam("@Start", SqlDbType.Int, item.Start));
                 paras.Add(DBUtils.MakeInParam("@End", SqlDbType.Int, item.End));
                 paras.Add(DBUtils.MakeOutParam("@Total", SqlDbType.Int));
+                paras.Add(DBUtils.MakeInParam("@GetAction", SqlDbType.VarChar, 10, item.GetAction));
                 tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Search_BusHours", paras);
                 tblMain.TableName = "SelectMain";
 
                 if (paras.Count > 0)
                 {
-                    item.Total = ((((SqlParameter)paras[paras.Count - 1]).Value != DBNull.Value) ? (Convert.ToInt32(((SqlParameter)paras[paras.Count - 1]).Value)) : (int)0);
+                    item.Total = ((((SqlParameter)paras[paras.Count - 2]).Value != DBNull.Value) ? (Convert.ToInt32(((SqlParameter)paras[paras.Count - 2]).Value)) : (int)0);
                 }
             }
             catch (Exception ex)

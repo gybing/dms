@@ -1,4 +1,5 @@
-﻿using GuFun.WinCore;
+﻿using GuFun.Utils;
+using GuFun.WinCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,18 +33,16 @@ namespace DMS
         protected override void OnBindData()
         {
             PageBusHours page = new PageBusHours();
-           
-            page.Start = this.CurrentPage * this.PageRows + 1;
-            page.End = (this.CurrentPage + 1) * this.PageRows;
-
-            this.AllCount = 7;
-
             string sql = String.Empty;
             string projectname = String.Empty;
 
+            page.Start = this.CurrentPage * this.PageRows + 1;
+            page.End = (this.CurrentPage + 1) * this.PageRows;
+
             if (!String.IsNullOrEmpty(txtProjectName.Text))
             {
-                page.Search += " and a.ProjectName like '%" + txtProjectName.Text + "%' ";
+                page.Search += ToolUtils.GetAndSearch(page.Search) + "b.ProjectName like '%" + txtProjectName.Text + "%' ";
+                page.GetAction = Convert.ToString(ActionType.Full);
             }
 
             DataTable dt = SqlBaseProvider.SearchBusHours(page);
@@ -55,6 +54,10 @@ namespace DMS
 
         }
 
+        protected override void OnSearch()
+        {
+            OnBindData();
+        }
 
         protected override void OnAddData()
         {

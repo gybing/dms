@@ -80,6 +80,7 @@
     <Compile Include="DataBase\SqlServer\SqlHelper.cs" />
     <Compile Include="DataBase\SqlServer\SqlTool.cs" />
     <Compile Include="DataBase\Enumerations\SqlOperation.cs" />
+    <Compile Include="Enumerations\ActionType.cs" />
     <Compile Include="Enumerations\AuthType.cs" />
     <Compile Include="Enumerations\DataBaseType.cs" />
     <Compile Include="Enumerations\FormState.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="StrFunctions\Crypto.cs" />
     <Compile Include="StrFunctions\EnumHelper.cs" />
     <Compile Include="StrFunctions\StringHelper.cs" />
+    <Compile Include="Tools\ToolsUtils.cs" />
     <Compile Include="Tools\CryptoHelper.cs" />
   </ItemGroup>
   <ItemGroup>

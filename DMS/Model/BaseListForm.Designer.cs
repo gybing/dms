@@ -216,27 +216,28 @@
             this.tsbSearch.Text = "查询";
             this.tsbSearch.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbSearch.ButtonClick += new System.EventHandler(this.tsbSearch_ButtonClick);
             // 
             // miBlur
             // 
             this.miBlur.Checked = true;
             this.miBlur.CheckState = System.Windows.Forms.CheckState.Checked;
             this.miBlur.Name = "miBlur";
-            this.miBlur.Size = new System.Drawing.Size(136, 22);
+            this.miBlur.Size = new System.Drawing.Size(152, 22);
             this.miBlur.Text = "模糊查询";
             this.miBlur.Click += new System.EventHandler(this.miBlur_Click);
             // 
             // miExact
             // 
             this.miExact.Name = "miExact";
-            this.miExact.Size = new System.Drawing.Size(136, 22);
+            this.miExact.Size = new System.Drawing.Size(152, 22);
             this.miExact.Text = "精确查询";
             this.miExact.Click += new System.EventHandler(this.miExact_Click);
             // 
             // miLeft
             // 
             this.miLeft.Name = "miLeft";
-            this.miLeft.Size = new System.Drawing.Size(136, 22);
+            this.miLeft.Size = new System.Drawing.Size(152, 22);
             this.miLeft.Text = "左相似查询";
             this.miLeft.Click += new System.EventHandler(this.miLeft_Click);
             // 

@@ -38,12 +38,22 @@ namespace GuFun.WinCore
             get { return _total; }
             set { _total = value; }
         }
+
+        private string _getAction;
+
+        public string GetAction
+        {
+            get { return _getAction; }
+            set { _getAction = value; }
+        }
+
         public PageBusHours()
         {
             _search = String.Empty;
             _start = 0;
             _end = 0;
             _total = 0;
+            _getAction = String.Empty;
         }
     }
 }
