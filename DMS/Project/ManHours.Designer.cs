@@ -51,7 +51,7 @@
             this.lbProjectCode.Name = "lbProjectCode";
             this.lbProjectCode.Size = new System.Drawing.Size(65, 12);
             this.lbProjectCode.TabIndex = 0;
-            this.lbProjectCode.Text = "项目编号：";
+            this.lbProjectCode.Text = "项目代号：";
             // 
             // txtProjectCode
             // 
@@ -71,7 +71,7 @@
             // 
             // txtManName
             // 
-            this.txtManName.Location = new System.Drawing.Point(292, 9);
+            this.txtManName.Location = new System.Drawing.Point(295, 9);
             this.txtManName.Name = "txtManName";
             this.txtManName.Size = new System.Drawing.Size(135, 21);
             this.txtManName.TabIndex = 3;
