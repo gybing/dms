@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 105000
 File Encoding         : 65001
 
-Date: 2017-11-18 13:40:44
+Date: 2017-11-24 13:16:23
 */
 
 
@@ -3648,6 +3648,18 @@ GO
 INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711170000000002', N'999', N'PK201711060000000005', N'2017-11-17 09:28:01.550', N'2017-11-17 17:21:39.203', N'2017-11-17', N'7.88')
 GO
 GO
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711200000000001', N'999', N'PK201711070000000001', N'2017-11-20 19:49:00.183', N'2017-11-20 19:49:06.850', N'2017-11-20', N'.00')
+GO
+GO
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711210000000001', N'999', N'PK201711060000000005', N'2017-11-21 15:03:30.940', N'2017-11-21 15:05:11.293', N'2017-11-21', N'.03')
+GO
+GO
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711220000000001', N'999', N'PK201711070000000001', N'2017-11-22 09:13:39.387', N'2017-11-22 11:07:14.870', N'2017-11-22', N'1.90')
+GO
+GO
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711240000000001', N'999', N'PK201711070000000001', N'2017-11-24 13:10:24.277', N'2017-11-24 13:15:09.213', N'2017-11-24', N'.08')
+GO
+GO
 
 -- ----------------------------
 -- Table structure for T_Bus_Project
@@ -3678,7 +3690,7 @@ INSERT INTO [dbo].[T_Bus_Project] ([ProjectID], [ProjectCode], [ProjectName], [P
 12121', N'2017-11-14 16:24:49.783', N'999', N'01')
 GO
 GO
-INSERT INTO [dbo].[T_Bus_Project] ([ProjectID], [ProjectCode], [ProjectName], [ProjectType], [ProjectManager], [WorkDate], [WorkUnit], [ProjectDesc], [TranDate], [TranUser], [ProjectStatus]) VALUES (N'PK201711070000000001', N'alms', N'江苏省检测中心项目', N'02', N'999', N'4.00', N'01', N'', N'2017-11-14 17:12:18.313', N'999', N'01')
+INSERT INTO [dbo].[T_Bus_Project] ([ProjectID], [ProjectCode], [ProjectName], [ProjectType], [ProjectManager], [WorkDate], [WorkUnit], [ProjectDesc], [TranDate], [TranUser], [ProjectStatus]) VALUES (N'PK201711070000000001', N'alms', N'江苏省检测中心项目', N'02', N'999', N'4.00', N'01', N'2121', N'2017-11-23 09:16:45.200', N'999', N'01')
 GO
 GO
 
@@ -8530,6 +8542,9 @@ GO
 INSERT INTO [dbo].[T_Set_Sql] ([Sql_ID], [Sql_Name], [Sql_Type], [Sql_Text], [Sql_Main_Table], [Sql_Keys], [Sql_Order], [Sql_Group], [Sql_Having], [Sql_Dropdown], [Crt_Date], [Sql_Page_Size], [Sql_Page_Heigh], [Sql_Page_Width], [Sql_Orietation], [Sql_Top_Margin], [Sql_Bottom_Margin], [Sql_Left_Margin], [Sql_Right_Margin], [Sql_Title], [Sql_Top_Font], [Sql_Font], [Sql_ISO], [Is_Print_Company], [Sql_Print_Set]) VALUES (N'P_Search_BusProject', N'项目管理', N'2', N'P_Search_BusProject', N'T_Bus_Project', null, null, null, null, null, N'2017-11-06 11:47:54.000', N'0', N'0', N'0', N'0', N'0', N'0', N'0', N'0', null, null, null, null, N'0', N'0')
 GO
 GO
+INSERT INTO [dbo].[T_Set_Sql] ([Sql_ID], [Sql_Name], [Sql_Type], [Sql_Text], [Sql_Main_Table], [Sql_Keys], [Sql_Order], [Sql_Group], [Sql_Having], [Sql_Dropdown], [Crt_Date], [Sql_Page_Size], [Sql_Page_Heigh], [Sql_Page_Width], [Sql_Orietation], [Sql_Top_Margin], [Sql_Bottom_Margin], [Sql_Left_Margin], [Sql_Right_Margin], [Sql_Title], [Sql_Top_Font], [Sql_Font], [Sql_ISO], [Is_Print_Company], [Sql_Print_Set]) VALUES (N'P_Search_BusHours', N'工时统计', N'2', N'P_Search_BusHours', N'T_Bus_Hours', null, null, null, null, null, N'2017-11-23 09:32:42.000', N'0', N'0', N'0', N'0', N'0', N'0', N'0', N'0', null, null, null, null, N'0', N'0')
+GO
+GO
 
 -- ----------------------------
 -- Table structure for T_Set_Sql_Detail
@@ -8684,6 +8699,36 @@ INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code]
 GO
 GO
 INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusProject', N'10', N'项目描述', N'TranUser', N'TranUser', N'7', N'100', N'9', N'1', N'0', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'1', N'项目代号', N'ProjectCode', N'ProjectCode', N'7', N'160', N'1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'2', N'项目名称', N'ProjectName', N'ProjectName', N'7', N'200', N'2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'3', N'人员名称', N'ManName', N'ManName', N'7', N'120', N'3', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'4', N'开始时间', N'WorkStart', N'WorkStart', N'8', N'200', N'4', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'5', N'结束时间', N'WorkEnd', N'WorkEnd', N'8', N'200', N'5', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'6', N'记录日期', N'WorkDate', N'WorkDate', N'3', N'160', N'6', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'7', N'工时(小时)', N'WorkCount', N'WorkCount', N'7', N'200', N'7', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'8', N'工时编号', N'HoursID', N'HoursID', N'7', N'100', N'8', N'1', N'0', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'9', N'人员编号', N'ManID', N'ManID', N'7', N'100', N'9', N'1', N'0', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
+GO
+GO
+INSERT INTO [dbo].[T_Set_Sql_Detail] ([Sql_ID], [Col_ID], [Col_Name], [Col_Code], [Col_Base_Code], [Col_Type], [Disp_Size], [Disp_Order], [Disp_Auth], [Is_Visible], [Is_Print], [Is_Order], [Is_Lock], [Is_Alias], [Col_Foot], [Col_Foot_Value], [Rela_Sql], [Col_Format]) VALUES (N'P_Search_BusHours', N'10', N'项目编号', N'ProjectID', N'ProjectID', N'7', N'100', N'10', N'1', N'0', N'0', N'0', N'0', N'0', N'0', N'', N'', N'')
 GO
 GO
 
@@ -8857,7 +8902,7 @@ CREATE TABLE [dbo].[T_Sys_Log] (
 
 
 GO
-DBCC CHECKIDENT(N'[dbo].[T_Sys_Log]', RESEED, 269)
+DBCC CHECKIDENT(N'[dbo].[T_Sys_Log]', RESEED, 558)
 GO
 
 -- ----------------------------
@@ -9489,6 +9534,258 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'269', N'2017-11-17 18:12:09.990', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'270', N'2017-11-20 09:19:39.127', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'271', N'2017-11-20 09:20:40.463', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'272', N'2017-11-20 09:21:04.880', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'273', N'2017-11-20 09:21:31.300', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'274', N'2017-11-20 09:28:03.073', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'275', N'2017-11-20 09:28:13.343', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'276', N'2017-11-20 09:29:35.807', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'277', N'2017-11-20 09:30:03.190', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'278', N'2017-11-20 09:35:53.423', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'279', N'2017-11-20 09:37:26.910', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'280', N'2017-11-20 15:23:34.080', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'281', N'2017-11-20 15:24:04.833', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'282', N'2017-11-20 19:23:15.643', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'283', N'2017-11-20 19:34:47.033', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'284', N'2017-11-20 19:34:57.960', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'285', N'2017-11-20 19:35:04.363', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'286', N'2017-11-20 19:44:12.953', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'287', N'2017-11-20 19:44:22.033', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'288', N'2017-11-20 19:44:37.803', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'289', N'2017-11-20 19:44:43.127', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'290', N'2017-11-20 19:46:36.443', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'291', N'2017-11-20 19:46:41.900', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'292', N'2017-11-20 19:46:59.650', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'293', N'2017-11-20 19:47:26.287', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'294', N'2017-11-20 19:48:47.030', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'295', N'2017-11-20 19:49:06.830', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'296', N'2017-11-20 19:52:18.710', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'297', N'2017-11-20 19:52:25.500', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'298', N'2017-11-20 19:57:34.803', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'300', N'2017-11-21 15:03:18.427', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'301', N'2017-11-21 15:05:11.270', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'302', N'2017-11-22 09:13:15.933', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'303', N'2017-11-22 10:31:18.727', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'304', N'2017-11-22 10:39:19.140', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'306', N'2017-11-22 10:42:13.550', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'307', N'2017-11-22 10:42:46.043', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'308', N'2017-11-22 10:49:37.440', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'309', N'2017-11-22 10:49:46.563', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'310', N'2017-11-22 10:50:08.617', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'311', N'2017-11-22 10:52:38.457', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'312', N'2017-11-22 10:53:09.490', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'313', N'2017-11-22 10:53:22.413', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'314', N'2017-11-22 10:54:13.497', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'315', N'2017-11-22 10:54:32.387', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'316', N'2017-11-22 10:55:25.153', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'317', N'2017-11-22 10:57:35.580', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'318', N'2017-11-22 10:58:49.853', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'319', N'2017-11-22 10:59:05.527', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'320', N'2017-11-22 10:59:35.943', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'321', N'2017-11-22 11:00:31.607', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'322', N'2017-11-22 11:07:14.860', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'323', N'2017-11-22 11:08:58.293', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'324', N'2017-11-22 11:10:41.363', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'325', N'2017-11-22 11:25:40.470', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'326', N'2017-11-22 11:30:15.150', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'327', N'2017-11-22 11:30:26.073', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'328', N'2017-11-22 11:31:23.293', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'329', N'2017-11-22 11:31:41.440', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'330', N'2017-11-22 11:31:44.350', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'331', N'2017-11-22 11:31:56.473', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'332', N'2017-11-22 11:32:05.700', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'333', N'2017-11-22 11:32:11.540', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'334', N'2017-11-22 11:32:15.217', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'335', N'2017-11-22 11:32:34.210', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'336', N'2017-11-22 11:32:48.877', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'337', N'2017-11-22 11:33:43.293', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'338', N'2017-11-22 11:34:59.077', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'339', N'2017-11-22 11:35:15.710', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'340', N'2017-11-22 11:35:55.763', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'341', N'2017-11-22 11:42:15.070', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'342', N'2017-11-22 11:42:17.780', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'343', N'2017-11-22 16:46:57.220', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'344', N'2017-11-22 16:48:20.340', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'345', N'2017-11-22 16:49:22.143', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'346', N'2017-11-22 16:49:30.130', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'351', N'2017-11-22 16:56:05.030', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'352', N'2017-11-22 19:25:10.047', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'353', N'2017-11-22 20:17:20.420', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'354', N'2017-11-22 20:18:09.350', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'355', N'2017-11-23 09:07:54.237', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'356', N'2017-11-23 09:08:01.020', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'357', N'2017-11-23 09:11:07.113', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'358', N'2017-11-23 09:12:32.380', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'359', N'2017-11-23 09:12:39.817', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'8', N'2017-11-14 20:39:59.407', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
@@ -9514,6 +9811,357 @@ INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'170', N'2017-11-15 18:47:39.853', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'305', N'2017-11-22 10:40:22.870', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'360', N'2017-11-23 09:12:46.087', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'361', N'2017-11-23 09:13:16.240', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'362', N'2017-11-23 09:13:42.023', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'363', N'2017-11-23 09:15:47.730', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'364', N'2017-11-23 09:17:11.190', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'369', N'2017-11-23 09:45:57.740', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'370', N'2017-11-23 09:46:04.430', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'371', N'2017-11-23 09:46:45.980', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'373', N'2017-11-23 10:15:40.903', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'374', N'2017-11-23 10:15:50.667', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'375', N'2017-11-23 10:17:43.590', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'376', N'2017-11-23 10:19:37.550', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'377', N'2017-11-23 10:36:55.147', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'378', N'2017-11-23 10:37:34.977', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'394', N'2017-11-23 11:19:48.530', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'395', N'2017-11-23 11:22:05.727', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'396', N'2017-11-23 11:22:26.540', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'397', N'2017-11-23 11:23:42.497', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'398', N'2017-11-23 11:24:02.740', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'399', N'2017-11-23 11:24:21.530', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'400', N'2017-11-23 11:24:47.710', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'401', N'2017-11-23 11:25:03.267', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'402', N'2017-11-23 11:25:26.093', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'403', N'2017-11-23 11:26:07.230', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'404', N'2017-11-23 11:33:32.323', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'405', N'2017-11-23 11:33:40.540', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'406', N'2017-11-23 11:33:56.143', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'407', N'2017-11-23 11:34:05.887', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'408', N'2017-11-23 11:35:58.030', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'409', N'2017-11-23 11:36:07.753', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'410', N'2017-11-23 11:49:29.340', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'412', N'2017-11-23 11:53:33.023', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'414', N'2017-11-23 13:13:52.413', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'416', N'2017-11-23 13:17:15.630', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'417', N'2017-11-23 13:17:26.830', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'418', N'2017-11-23 13:17:49.120', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'419', N'2017-11-23 13:18:59.917', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'420', N'2017-11-23 13:22:17.890', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'421', N'2017-11-23 13:23:00.330', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'422', N'2017-11-23 13:25:01.893', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'423', N'2017-11-23 13:25:26.910', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'424', N'2017-11-23 13:27:05.240', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'426', N'2017-11-23 13:31:19.187', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'427', N'2017-11-23 13:31:43.270', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'428', N'2017-11-23 13:31:50.500', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'429', N'2017-11-23 13:32:29.727', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'430', N'2017-11-23 13:32:42.280', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'434', N'2017-11-23 14:15:17.447', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'438', N'2017-11-23 14:24:07.743', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'440', N'2017-11-23 14:34:31.710', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'446', N'2017-11-23 14:42:35.237', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'455', N'2017-11-23 14:57:03.197', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'457', N'2017-11-23 15:20:11.210', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'463', N'2017-11-23 15:28:54.390', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'464', N'2017-11-23 16:01:27.367', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'465', N'2017-11-23 16:06:33.147', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'466', N'2017-11-23 16:06:45.920', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'469', N'2017-11-23 16:30:30.057', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'480', N'2017-11-23 17:37:18.493', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'481', N'2017-11-23 17:41:57.030', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'482', N'2017-11-23 17:42:25.613', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'483', N'2017-11-23 17:43:39.317', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'484', N'2017-11-23 17:44:17.027', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'485', N'2017-11-23 17:44:24.713', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'486', N'2017-11-23 17:47:44.357', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'487', N'2017-11-23 17:49:36.217', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'488', N'2017-11-23 17:49:44.570', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'489', N'2017-11-23 17:50:48.467', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'490', N'2017-11-23 17:52:04.203', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'491', N'2017-11-23 17:56:06.573', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'492', N'2017-11-23 17:56:57.450', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'493', N'2017-11-23 18:00:22.093', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'494', N'2017-11-23 18:00:38.530', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'495', N'2017-11-23 18:01:13.270', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'496', N'2017-11-23 18:01:25.873', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'497', N'2017-11-23 18:01:41.690', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'498', N'2017-11-23 18:01:47.687', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'499', N'2017-11-23 18:02:42.943', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'500', N'2017-11-23 18:02:51.297', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'501', N'2017-11-23 18:04:01.197', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'502', N'2017-11-23 18:05:46.797', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'503', N'2017-11-23 18:06:42.080', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'504', N'2017-11-23 18:06:47.560', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'505', N'2017-11-24 09:07:09.943', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'506', N'2017-11-24 09:08:40.957', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'507', N'2017-11-24 09:08:50.310', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'508', N'2017-11-24 09:10:16.350', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'509', N'2017-11-24 09:16:38.817', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'510', N'2017-11-24 09:25:27.347', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'517', N'2017-11-24 09:33:53.480', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'519', N'2017-11-24 09:48:46.327', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'520', N'2017-11-24 09:49:06.413', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'521', N'2017-11-24 09:50:25.037', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'523', N'2017-11-24 10:00:39.077', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'536', N'2017-11-24 10:18:26.890', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'537', N'2017-11-24 10:18:51.073', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'538', N'2017-11-24 10:19:17.077', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'539', N'2017-11-24 10:19:27.687', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'540', N'2017-11-24 10:19:45.943', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'541', N'2017-11-24 10:20:18.543', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'542', N'2017-11-24 10:20:53.747', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'543', N'2017-11-24 10:21:13.043', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'544', N'2017-11-24 10:34:08.780', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'545', N'2017-11-24 10:34:39.123', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'546', N'2017-11-24 10:41:18.137', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'547', N'2017-11-24 10:45:39.807', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'548', N'2017-11-24 10:47:10.317', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'549', N'2017-11-24 10:52:28.530', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'551', N'2017-11-24 10:57:18.160', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'552', N'2017-11-24 10:58:16.553', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'553', N'2017-11-24 11:06:22.867', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'554', N'2017-11-24 11:07:22.713', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'555', N'2017-11-24 11:36:04.973', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'556', N'2017-11-24 13:01:39.000', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'557', N'2017-11-24 13:09:35.997', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'558', N'2017-11-24 13:15:09.193', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'50', N'2017-11-15 12:12:09.770', N'999', N'0000', N'1', N'登出系统')
@@ -9559,6 +10207,15 @@ INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'235', N'2017-11-16 16:22:43.463', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'299', N'2017-11-20 20:00:43.163', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'511', N'2017-11-24 09:26:10.423', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'550', N'2017-11-24 10:56:27.330', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'186', N'2017-11-15 20:36:15.977', N'999', N'0000', N'1', N'登录系统')
@@ -9663,6 +10320,30 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'254', N'2017-11-17 11:28:16.227', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'347', N'2017-11-22 16:52:36.087', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'348', N'2017-11-22 16:52:45.610', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'349', N'2017-11-22 16:52:53.753', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'350', N'2017-11-22 16:54:00.990', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'365', N'2017-11-23 09:33:58.380', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'366', N'2017-11-23 09:34:20.580', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'367', N'2017-11-23 09:34:30.777', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'368', N'2017-11-23 09:34:42.287', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'232', N'2017-11-16 15:32:58.760', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
@@ -9670,6 +10351,237 @@ INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'243', N'2017-11-16 19:16:14.637', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'380', N'2017-11-23 10:55:30.023', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'381', N'2017-11-23 10:56:34.427', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'382', N'2017-11-23 10:56:48.047', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'383', N'2017-11-23 10:57:38.233', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'384', N'2017-11-23 10:57:52.010', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'385', N'2017-11-23 10:58:24.327', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'386', N'2017-11-23 10:58:36.247', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'387', N'2017-11-23 11:00:38.690', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'388', N'2017-11-23 11:10:07.207', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'389', N'2017-11-23 11:10:37.750', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'390', N'2017-11-23 11:10:47.943', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'391', N'2017-11-23 11:11:30.643', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'392', N'2017-11-23 11:11:56.977', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'393', N'2017-11-23 11:13:09.440', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'411', N'2017-11-23 11:53:25.557', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'413', N'2017-11-23 13:13:43.717', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'415', N'2017-11-23 13:17:08.720', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'425', N'2017-11-23 13:31:11.277', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'467', N'2017-11-23 16:08:14.017', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'468', N'2017-11-23 16:10:58.873', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'470', N'2017-11-23 16:35:03.013', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'471', N'2017-11-23 16:36:09.953', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'372', N'2017-11-23 10:15:17.447', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'379', N'2017-11-23 10:54:04.060', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'431', N'2017-11-23 13:37:25.280', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'432', N'2017-11-23 13:38:01.937', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'433', N'2017-11-23 13:39:40.843', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'435', N'2017-11-23 14:15:34.367', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'436', N'2017-11-23 14:16:37.353', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'437', N'2017-11-23 14:16:56.203', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'439', N'2017-11-23 14:26:33.810', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'441', N'2017-11-23 14:34:44.860', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'442', N'2017-11-23 14:36:09.483', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'443', N'2017-11-23 14:36:26.670', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'444', N'2017-11-23 14:37:46.557', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'445', N'2017-11-23 14:38:04.710', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'447', N'2017-11-23 14:42:43.223', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'448', N'2017-11-23 14:43:25.347', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'449', N'2017-11-23 14:43:32.333', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'450', N'2017-11-23 14:44:42.080', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'451', N'2017-11-23 14:49:08.493', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'452', N'2017-11-23 14:49:54.563', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'453', N'2017-11-23 14:50:04.540', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'454', N'2017-11-23 14:50:59.073', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'456', N'2017-11-23 14:57:09.693', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'458', N'2017-11-23 15:22:30.790', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'459', N'2017-11-23 15:24:05.203', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'460', N'2017-11-23 15:24:12.700', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'461', N'2017-11-23 15:24:28.437', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'462', N'2017-11-23 15:24:48.483', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'472', N'2017-11-23 16:37:19.647', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'473', N'2017-11-23 16:38:37.157', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'474', N'2017-11-23 16:38:55.943', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'475', N'2017-11-23 16:45:39.947', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'476', N'2017-11-23 16:48:10.930', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'477', N'2017-11-23 16:49:22.123', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'478', N'2017-11-23 16:49:46.680', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'479', N'2017-11-23 16:50:09.793', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'512', N'2017-11-24 09:26:57.843', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'513', N'2017-11-24 09:27:18.923', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'514', N'2017-11-24 09:28:07.627', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'515', N'2017-11-24 09:28:17.440', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'516', N'2017-11-24 09:28:24.990', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'518', N'2017-11-24 09:47:26.917', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'522', N'2017-11-24 09:55:00.247', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'524', N'2017-11-24 10:01:43.953', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'525', N'2017-11-24 10:02:49.763', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'526', N'2017-11-24 10:03:22.060', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'527', N'2017-11-24 10:03:41.850', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'528', N'2017-11-24 10:04:10.733', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'529', N'2017-11-24 10:05:42.233', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'530', N'2017-11-24 10:05:57.507', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'531', N'2017-11-24 10:06:13.197', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'532', N'2017-11-24 10:06:59.897', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'533', N'2017-11-24 10:09:05.220', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'534', N'2017-11-24 10:09:14.893', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'535', N'2017-11-24 10:10:36.577', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
 SET IDENTITY_INSERT [dbo].[T_Sys_Log] OFF
@@ -9839,13 +10751,16 @@ GO
 INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'302', N'生成Gpersist代码', N'302', N'3', N'1', N'2', N'47', N'生成开发相关代码', N'Oracle.GpersistCode', N'0', N'0', N'0', N'', N'', N'', N'-1', N'0', N'0302', N'0', N'')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'401', N'项目管理', N'401', N'4', N'1', N'1', N'47', N'项目管理', N'ProjectManage', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0401', N'0', null)
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'401', N'项目管理', N'401', N'4', N'1', N'1', N'47', N'项目管理', N'ManProject', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0401', N'0', null)
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'402', N'分配人员', N'402', N'4', N'1', N'1', N'515', N'进行开发人员分配', N'SetDeveloper', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0402', N'0', null)
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'402', N'分配人员', N'402', N'4', N'1', N'2', N'515', N'进行开发人员分配', N'SetDeveloper', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0402', N'0', null)
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'610', N'连接字加密', N'610', N'6', N'1', N'6', N'47', N'连接字加密', N'ConnectEncryptForm', N'1', N'0', N'0', null, null, null, N'-1', N'0', N'0610', N'0', null)
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Menu] ([M_ID], [M_Name], [M_PID], [Mg_ID], [M_Level], [M_Disp], [M_Auth], [M_Tip], [M_Function], [Is_Line], [Is_Sub], [M_SID], [M_Normal_Icon], [M_Hot_Icon], [M_Disable_Icon], [M_Icon_Index], [Is_Base], [M_Code], [M_Status], [M_Shortcut]) VALUES (N'403', N'工时管理', N'403', N'4', N'1', N'3', N'131', N'员工工时管理', N'ManHours', N'0', N'0', N'0', null, null, null, N'-1', N'0', N'0403', N'0', null)
 GO
 GO
 
@@ -10085,6 +11000,69 @@ GO
 -- ----------------------------
 -- Records of T_Sys_Role_Menu
 -- ----------------------------
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'101', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'102', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'201', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'202', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'301', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'302', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'401', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'402', N'515')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'603', N'238')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'604', N'238')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'605', N'515')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'606', N'512')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'607', N'512')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'610', N'512')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'611', N'512')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'101', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'102', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'201', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'202', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'301', N'47')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'302', N'47')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'101', N'238')
 GO
 GO
@@ -10107,6 +11085,9 @@ INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', 
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'402', N'515')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'403', N'131')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'601', N'239')
@@ -10151,70 +11132,7 @@ GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'633', N'47')
 GO
 GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'101', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'102', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'201', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'202', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'301', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'3', N'302', N'47')
-GO
-GO
 INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'1', N'634', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'101', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'102', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'201', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'202', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'301', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'302', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'401', N'47')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'402', N'515')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'603', N'238')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'604', N'238')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'605', N'515')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'606', N'512')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'607', N'512')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'610', N'512')
-GO
-GO
-INSERT INTO [dbo].[T_Sys_Role_Menu] ([Role_ID], [M_ID], [M_Auth]) VALUES (N'2', N'611', N'512')
 GO
 GO
 
@@ -13956,6 +14874,60 @@ end
 
 
 
+
+
+
+GO
+
+-- ----------------------------
+-- Procedure structure for P_Search_BusHours
+-- ----------------------------
+DROP PROCEDURE [dbo].[P_Search_BusHours]
+GO
+CREATE procedure [dbo].[P_Search_BusHours]
+(
+  @search varchar(4000) = null, 
+  @start int = null, 
+  @end int = null, 
+  @total int = null out,
+  @getaction varchar(10) = null
+)
+as
+begin
+	declare @Sql nvarchar(4000)
+	if (@getaction = 'Full')
+	begin
+		set @sql = 'select a.*, b.projectcode, b.projectname, c.man_name manname  ' + 
+			'from t_bus_hours a, t_bus_project b, t_sys_man c where a.projectid = b.projectid and a.manid = c.man_id '
+		if (@search is not null) and (@search != '')
+				set @Sql = @Sql + ' and ' +  @search
+		set @Sql = @Sql +' order by a.projectid, a.manid desc, a.workdate asc '
+ 		set @total = 0
+ 		exec(@Sql)
+	end
+	else
+	begin
+		if (@start is not null) and (@end is not null)
+		begin
+			set @Sql = 'select @TOTAL = count(*) from '
+				+ 't_bus_hours a, t_bus_project b, t_sys_man c '
+				+ 'where a.projectid = b.projectid and a.manid = c.man_id '
+			if (@search is not null) and (@search != '')
+				set @Sql = @Sql + ' and ' +  @search
+
+			exec sp_executesql @Sql, N'@TOTAL int out', @total out
+
+			set @Sql = 'select * from (select a.*, b.projectcode, b.projectname, c.man_name manname, '
+				+ 'row_number() over (order by a.projectid, a.manid desc, a.workdate asc) as RN from '
+				+ 't_bus_hours a, t_bus_project b, t_sys_man c '
+				+ 'where a.projectid = b.projectid and a.manid = c.man_id '
+			if (@search is not null) and (@search != '')
+				set @Sql = @Sql + ' and ' +  @search
+			set @Sql = @Sql + ' ) SearchList where RN between ' + ltrim(str(@start)) + ' and ' + ltrim(str(@end))
+			exec(@Sql)
+ 		end
+   end
+end
 
 
 
