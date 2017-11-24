@@ -28,33 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbProjectName = new System.Windows.Forms.Label();
-            this.txtProjectName = new System.Windows.Forms.TextBox();
+            this.lbProjectCode = new System.Windows.Forms.Label();
+            this.txtProjectCode = new System.Windows.Forms.TextBox();
+            this.lbManName = new System.Windows.Forms.Label();
+            this.txtManName = new System.Windows.Forms.TextBox();
             this.plSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // plSearch
             // 
             this.plSearch.BackColor = System.Drawing.SystemColors.Control;
-            this.plSearch.Controls.Add(this.txtProjectName);
-            this.plSearch.Controls.Add(this.lbProjectName);
+            this.plSearch.Controls.Add(this.txtManName);
+            this.plSearch.Controls.Add(this.lbManName);
+            this.plSearch.Controls.Add(this.txtProjectCode);
+            this.plSearch.Controls.Add(this.lbProjectCode);
             this.plSearch.Size = new System.Drawing.Size(770, 38);
             // 
-            // lbProjectName
+            // lbProjectCode
             // 
-            this.lbProjectName.AutoSize = true;
-            this.lbProjectName.Location = new System.Drawing.Point(17, 14);
-            this.lbProjectName.Name = "lbProjectName";
-            this.lbProjectName.Size = new System.Drawing.Size(65, 12);
-            this.lbProjectName.TabIndex = 0;
-            this.lbProjectName.Text = "项目名称：";
+            this.lbProjectCode.AutoSize = true;
+            this.lbProjectCode.Location = new System.Drawing.Point(17, 14);
+            this.lbProjectCode.Name = "lbProjectCode";
+            this.lbProjectCode.Size = new System.Drawing.Size(65, 12);
+            this.lbProjectCode.TabIndex = 0;
+            this.lbProjectCode.Text = "项目编号：";
             // 
-            // txtProjectName
+            // txtProjectCode
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(80, 9);
-            this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(136, 21);
-            this.txtProjectName.TabIndex = 1;
+            this.txtProjectCode.Location = new System.Drawing.Point(80, 9);
+            this.txtProjectCode.Name = "txtProjectCode";
+            this.txtProjectCode.Size = new System.Drawing.Size(135, 21);
+            this.txtProjectCode.TabIndex = 1;
+            // 
+            // lbManName
+            // 
+            this.lbManName.AutoSize = true;
+            this.lbManName.Location = new System.Drawing.Point(232, 14);
+            this.lbManName.Name = "lbManName";
+            this.lbManName.Size = new System.Drawing.Size(65, 12);
+            this.lbManName.TabIndex = 2;
+            this.lbManName.Text = "开发人员：";
+            // 
+            // txtManName
+            // 
+            this.txtManName.Location = new System.Drawing.Point(292, 9);
+            this.txtManName.Name = "txtManName";
+            this.txtManName.Size = new System.Drawing.Size(135, 21);
+            this.txtManName.TabIndex = 3;
             // 
             // ManHours
             // 
@@ -71,7 +91,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbProjectName;
-        private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.Label lbProjectCode;
+        private System.Windows.Forms.TextBox txtProjectCode;
+        private System.Windows.Forms.Label lbManName;
+        private System.Windows.Forms.TextBox txtManName;
     }
 }

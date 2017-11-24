@@ -35,20 +35,32 @@ namespace DMS
             PageBusHours page = new PageBusHours();
             string sql = String.Empty;
             string projectname = String.Empty;
+            bool isSearch = false;
 
             page.Start = this.CurrentPage * this.PageRows + 1;
             page.End = (this.CurrentPage + 1) * this.PageRows;
 
-            if (!String.IsNullOrEmpty(txtProjectName.Text))
+            if (!String.IsNullOrEmpty(txtProjectCode.Text))
             {
-                page.Search += ToolUtils.GetAndSearch(page.Search) + "b.ProjectName like '%" + txtProjectName.Text + "%' ";
+                page.Search += ToolUtils.GetAndSearch(page.Search) + "b.ProjectCode like '%" + txtProjectCode.Text + "%' ";
+                isSearch = true;
+            }
+
+            if (!String.IsNullOrEmpty(txtManName.Text))
+            {
+                page.Search += ToolUtils.GetAndSearch(page.Search) + "c.Man_Name like '%" + txtManName.Text + "%' ";
+                isSearch = true;
+            }
+
+            if (isSearch)
+            {
                 page.GetAction = Convert.ToString(ActionType.Full);
             }
 
             DataTable dt = SqlBaseProvider.SearchBusHours(page);
             if ((dt != null) && (dt.Rows.Count > 0))
             {
-                if (!String.IsNullOrEmpty(txtProjectName.Text))
+                if (isSearch)
                 {
                     DataRow dr = dt.NewRow();
                     dr["ProjectCode"] = "合计："+ dt.Compute("Count(WorkCount)", null) + "人/日";
