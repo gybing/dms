@@ -48,6 +48,13 @@ namespace DMS
             DataTable dt = SqlBaseProvider.SearchBusHours(page);
             if ((dt != null) && (dt.Rows.Count > 0))
             {
+                if (!String.IsNullOrEmpty(txtProjectName.Text))
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["ProjectCode"] = "合计："+ dt.Compute("Count(WorkCount)", null) + "人/日";
+                    dr["WorkCount"] = dt.Compute("Sum(WorkCount)", null);
+                    dt.Rows.Add(dr.ItemArray);
+                }
                 dgvList.DataSource = dt;
                 this.AllCount = page.Total;
             }
