@@ -63,7 +63,6 @@
             this.btnWork = new GuFun.WinControls.VistaButton();
             this.btnBean = new GuFun.WinControls.VistaButton();
             this.btnJs = new GuFun.WinControls.VistaButton();
-            this.btnKey = new GuFun.WinControls.VistaButton();
             this.btnSaveSql = new GuFun.WinControls.VistaButton();
             this.btnGetSql = new GuFun.WinControls.VistaButton();
             this.cbNo = new System.Windows.Forms.CheckBox();
@@ -324,7 +323,6 @@
             this.plTop.Controls.Add(this.btnWork);
             this.plTop.Controls.Add(this.btnBean);
             this.plTop.Controls.Add(this.btnJs);
-            this.plTop.Controls.Add(this.btnKey);
             this.plTop.Controls.Add(this.btnSaveSql);
             this.plTop.Controls.Add(this.btnGetSql);
             this.plTop.Controls.Add(this.cbNo);
@@ -364,10 +362,10 @@
             this.btnReset.ButtonText = "重置";
             this.btnReset.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(1044, 12);
+            this.btnReset.Location = new System.Drawing.Point(963, 12);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(70, 48);
-            this.btnReset.TabIndex = 27;
+            this.btnReset.Size = new System.Drawing.Size(75, 48);
+            this.btnReset.TabIndex = 26;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnAction
@@ -381,7 +379,7 @@
             this.btnAction.Location = new System.Drawing.Point(1044, 68);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(70, 48);
-            this.btnAction.TabIndex = 25;
+            this.btnAction.TabIndex = 24;
             this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // btnService
@@ -395,7 +393,7 @@
             this.btnService.Location = new System.Drawing.Point(963, 68);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(75, 48);
-            this.btnService.TabIndex = 24;
+            this.btnService.TabIndex = 23;
             this.btnService.Click += new System.EventHandler(this.btnService_Click);
             // 
             // btnDao
@@ -409,7 +407,7 @@
             this.btnDao.Location = new System.Drawing.Point(891, 68);
             this.btnDao.Name = "btnDao";
             this.btnDao.Size = new System.Drawing.Size(66, 48);
-            this.btnDao.TabIndex = 23;
+            this.btnDao.TabIndex = 22;
             this.btnDao.Click += new System.EventHandler(this.btnDao_Click);
             // 
             // btnMapper
@@ -423,7 +421,7 @@
             this.btnMapper.Location = new System.Drawing.Point(805, 68);
             this.btnMapper.Name = "btnMapper";
             this.btnMapper.Size = new System.Drawing.Size(80, 48);
-            this.btnMapper.TabIndex = 22;
+            this.btnMapper.TabIndex = 21;
             this.btnMapper.Click += new System.EventHandler(this.btnMapper_Click);
             // 
             // btnXml
@@ -437,7 +435,7 @@
             this.btnXml.Location = new System.Drawing.Point(733, 68);
             this.btnXml.Name = "btnXml";
             this.btnXml.Size = new System.Drawing.Size(66, 48);
-            this.btnXml.TabIndex = 21;
+            this.btnXml.TabIndex = 20;
             this.btnXml.Click += new System.EventHandler(this.btnXml_Click);
             // 
             // btnExit
@@ -448,10 +446,10 @@
             this.btnExit.ButtonText = "退出";
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(1120, 12);
+            this.btnExit.Location = new System.Drawing.Point(1044, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 48);
-            this.btnExit.TabIndex = 26;
+            this.btnExit.TabIndex = 27;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnWork
@@ -462,10 +460,10 @@
             this.btnWork.ButtonText = "打卡";
             this.btnWork.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnWork.ForeColor = System.Drawing.Color.Black;
-            this.btnWork.Location = new System.Drawing.Point(963, 12);
+            this.btnWork.Location = new System.Drawing.Point(891, 12);
             this.btnWork.Name = "btnWork";
-            this.btnWork.Size = new System.Drawing.Size(75, 48);
-            this.btnWork.TabIndex = 15;
+            this.btnWork.Size = new System.Drawing.Size(66, 48);
+            this.btnWork.TabIndex = 25;
             this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
             // 
             // btnBean
@@ -479,7 +477,7 @@
             this.btnBean.Location = new System.Drawing.Point(661, 68);
             this.btnBean.Name = "btnBean";
             this.btnBean.Size = new System.Drawing.Size(66, 48);
-            this.btnBean.TabIndex = 20;
+            this.btnBean.TabIndex = 19;
             this.btnBean.Click += new System.EventHandler(this.btnBean_Click);
             // 
             // btnJs
@@ -490,25 +488,11 @@
             this.btnJs.ButtonText = "生成JS语句";
             this.btnJs.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnJs.ForeColor = System.Drawing.Color.Black;
-            this.btnJs.Location = new System.Drawing.Point(891, 12);
+            this.btnJs.Location = new System.Drawing.Point(805, 12);
             this.btnJs.Name = "btnJs";
-            this.btnJs.Size = new System.Drawing.Size(66, 48);
-            this.btnJs.TabIndex = 19;
+            this.btnJs.Size = new System.Drawing.Size(80, 48);
+            this.btnJs.TabIndex = 18;
             this.btnJs.Click += new System.EventHandler(this.btnJs_Click);
-            // 
-            // btnKey
-            // 
-            this.btnKey.BackColor = System.Drawing.Color.Transparent;
-            this.btnKey.BaseColor = System.Drawing.SystemColors.Highlight;
-            this.btnKey.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnKey.ButtonText = "生成主键";
-            this.btnKey.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnKey.ForeColor = System.Drawing.Color.Black;
-            this.btnKey.Location = new System.Drawing.Point(733, 12);
-            this.btnKey.Name = "btnKey";
-            this.btnKey.Size = new System.Drawing.Size(66, 48);
-            this.btnKey.TabIndex = 17;
-            this.btnKey.Click += new System.EventHandler(this.btnKey_Click);
             // 
             // btnSaveSql
             // 
@@ -518,10 +502,10 @@
             this.btnSaveSql.ButtonText = "生成保存语句";
             this.btnSaveSql.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSaveSql.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveSql.Location = new System.Drawing.Point(805, 12);
+            this.btnSaveSql.Location = new System.Drawing.Point(733, 12);
             this.btnSaveSql.Name = "btnSaveSql";
-            this.btnSaveSql.Size = new System.Drawing.Size(80, 48);
-            this.btnSaveSql.TabIndex = 18;
+            this.btnSaveSql.Size = new System.Drawing.Size(66, 48);
+            this.btnSaveSql.TabIndex = 17;
             this.btnSaveSql.Click += new System.EventHandler(this.btnSaveSql_Click);
             // 
             // btnGetSql
@@ -837,7 +821,6 @@
         private GuFun.WinControls.VistaButton btnWork;
         private GuFun.WinControls.VistaButton btnBean;
         private GuFun.WinControls.VistaButton btnJs;
-        private GuFun.WinControls.VistaButton btnKey;
         private GuFun.WinControls.VistaButton btnSaveSql;
         private GuFun.WinControls.VistaButton btnGetSql;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

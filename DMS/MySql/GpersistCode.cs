@@ -1228,8 +1228,54 @@ namespace DMS.MySql
                     }
                 }
 
-                List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
+                string keyColumn = pColumn.ColumnCode;
+                string dataType = pColumn.DataType;
+                string defaultnum = "0000000001";
+
+                if (dataType.IndexOf("(") < 0)
+                {
+                    Global.ShowSysInfo("主键生成必须有长度限定，请确认字段长度！");
+                    return;
+                }
+
+                int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
+
                 txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Create_" + keyColumn + ";" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Create_" + keyColumn + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "out _" + keyColumn.ToLower() + " " + dataType + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
+
+                if (length > 10)
+                {
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keyColumn.ToLower() + " ," + (length - 10) + ")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keyColumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
+
+                    txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), '" + defaultnum.Substring(defaultnum.Length - (length - 10), length - 10) + "');" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), right(concat('0000000000',(convert(right(@maxno, " + (length - 10) + "), signed)+1))," + (length - 10) + "));" + PublicTools.WriteEnter(1);
+                }
+                else
+                {
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keyColumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = right(concat('0000000000',(convert(@maxno,signed)+1))," + length + ");" + PublicTools.WriteEnter(1);
+                }
+                txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "select _" + keyColumn.ToLower() + ";" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteEnter(2);
+
+                List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
+                txtResult.Text += PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Save_" + pname + ";" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Save_" + pname + PublicTools.WriteEnter(1);
@@ -1463,113 +1509,6 @@ namespace DMS.MySql
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnKey_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (String.IsNullOrEmpty(pTable.TableCode))
-                {
-                    MessageBox.Show("没有加载表！");
-                    return;
-                }
-
-                if (String.IsNullOrEmpty(txtSet.Text.Trim()))
-                {
-                    MessageBox.Show("没有配置信息！");
-                    return;
-                }
-
-                if (!isHours)
-                {
-                    MessageBox.Show("请先打卡！");
-                    return;
-                }
-
-                string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-                string pname = String.Empty;
-                string column = String.Empty;
-                foreach (string tableset in tablesets)
-                {
-                    if (String.IsNullOrEmpty(tableset))
-                        continue;
-
-                    string[] sets = tableset.Split('|');
-
-                    if (sets.Length <= 0)
-                        continue;
-
-                    if (sets[0].ToLower() == "g")
-                    {
-                        if (sets.Length != 3)
-                            continue;
-
-                        pname = sets[1];
-                        column = sets[2];
-
-                        break;
-                    }
-                }
-                if (String.IsNullOrEmpty(pname))
-                    return;
-
-                PdmColumn pColumn = new PdmColumn();
-                foreach (PdmColumn item in pTable.Columns)
-                {
-                    if (item.ColumnCode.ToLower() == column.ToLower())
-                    {
-                        pColumn = item;
-                        break;
-                    }
-                }
-
-
-                string keyColumn = pColumn.ColumnCode;
-                string dataType = pColumn.DataType;
-                string defaultnum = "0000000001";
-
-                int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
-
-                txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Create_" + keyColumn + ";" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Create_" + keyColumn + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "out _" + keyColumn.ToLower() + " " + dataType + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
-
-                if (length > 10)
-                {
-                    txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keyColumn.ToLower() + " ," + (length - 10) + ")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keyColumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
-
-                    txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), '" + defaultnum.Substring(defaultnum.Length - (length - 10), length - 10) + "');" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), right(concat('0000000000',(convert(right(@maxno, " + (length - 10) + "), signed)+1))," + (length - 10) + "));" + PublicTools.WriteEnter(1);
-                }
-                else
-                {
-                    txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keyColumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = right(concat('0000000000',(convert(@maxno,signed)+1))," + length + ");" + PublicTools.WriteEnter(1);
-                }
-                txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "select _" + keyColumn.ToLower() + ";" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
-
-            }
-            catch (Exception)
-            {
-
-                throw;
             }
         }
 
