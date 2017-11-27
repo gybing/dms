@@ -1584,5 +1584,24 @@ namespace DMS.MySql
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
 
+        private void GpersistCode_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
+                if (item != null)
+                {
+                    item.DBID = Program.DBID;
+                    item.WorkEnd = DateTime.Now;
+                    SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
+                    Program.DBID = -1;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
     }
 }

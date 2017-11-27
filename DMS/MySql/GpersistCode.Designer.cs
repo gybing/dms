@@ -53,6 +53,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plTop = new GuFun.WinControls.ExPanel();
+            this.vistaButton1 = new GuFun.WinControls.VistaButton();
             this.btnReset = new GuFun.WinControls.VistaButton();
             this.btnAction = new GuFun.WinControls.VistaButton();
             this.btnService = new GuFun.WinControls.VistaButton();
@@ -88,7 +89,6 @@
             this.lbTable = new System.Windows.Forms.Label();
             this.ddlDB = new System.Windows.Forms.ComboBox();
             this.lbDB = new System.Windows.Forms.Label();
-            this.vistaButton1 = new GuFun.WinControls.VistaButton();
             this.plCenter.SuspendLayout();
             this.plRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).BeginInit();
@@ -355,6 +355,20 @@
             this.plTop.Name = "plTop";
             this.plTop.Size = new System.Drawing.Size(1424, 130);
             this.plTop.TabIndex = 0;
+            // 
+            // vistaButton1
+            // 
+            this.vistaButton1.BackColor = System.Drawing.Color.Transparent;
+            this.vistaButton1.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.vistaButton1.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.vistaButton1.ButtonText = "重置";
+            this.vistaButton1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.vistaButton1.ForeColor = System.Drawing.Color.Black;
+            this.vistaButton1.Location = new System.Drawing.Point(963, 12);
+            this.vistaButton1.Name = "vistaButton1";
+            this.vistaButton1.Size = new System.Drawing.Size(75, 48);
+            this.vistaButton1.TabIndex = 26;
+            this.vistaButton1.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnReset
             // 
@@ -750,20 +764,6 @@
             this.lbDB.TabIndex = 0;
             this.lbDB.Text = "数据库：";
             // 
-            // vistaButton1
-            // 
-            this.vistaButton1.BackColor = System.Drawing.Color.Transparent;
-            this.vistaButton1.BaseColor = System.Drawing.SystemColors.Highlight;
-            this.vistaButton1.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.vistaButton1.ButtonText = "重置";
-            this.vistaButton1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
-            this.vistaButton1.ForeColor = System.Drawing.Color.Black;
-            this.vistaButton1.Location = new System.Drawing.Point(963, 12);
-            this.vistaButton1.Name = "vistaButton1";
-            this.vistaButton1.Size = new System.Drawing.Size(75, 48);
-            this.vistaButton1.TabIndex = 26;
-            this.vistaButton1.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // GpersistCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -775,6 +775,7 @@
             this.MinimizeBox = true;
             this.Name = "GpersistCode";
             this.Text = "生成存储过程";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GpersistCode_FormClosing);
             this.Load += new System.EventHandler(this.GpersistCode_Load);
             this.plCenter.ResumeLayout(false);
             this.plRight.ResumeLayout(false);

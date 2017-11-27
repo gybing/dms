@@ -759,6 +759,7 @@
             this.MinimizeBox = true;
             this.Name = "GpersistCode";
             this.Text = "生成存储过程";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GpersistCode_FormClosing);
             this.Load += new System.EventHandler(this.GpersistCode_Load);
             this.plCenter.ResumeLayout(false);
             this.plRight.ResumeLayout(false);
