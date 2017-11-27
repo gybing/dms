@@ -64,7 +64,9 @@ namespace DMS.SqlServer
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID,Program.LoginDate);
+            this.WindowState = FormWindowState.Maximized;
+
+            BusHours item = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
             if (item != null)
             {
                 item.DBID = Program.DBID;
@@ -1671,6 +1673,14 @@ namespace DMS.SqlServer
                 
                 throw;
             }
+        }
+
+        private void CodeBuild_Load(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            InitializeComponent();
+            this.Dock = DockStyle.Fill;
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
     }
 }

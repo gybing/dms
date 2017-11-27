@@ -23,7 +23,11 @@ namespace DMS.SqlServer
         public GpersistCode()
         {
             InitializeComponent();
+            this.initForm();
+        }
 
+        private void initForm() 
+        {
             CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.SqlServer)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
 
             ddlDB.SelectedValueChanged += new EventHandler(ddlDB_SelectedIndexChanged);
@@ -1633,6 +1637,22 @@ namespace DMS.SqlServer
             {
                 cbPage.Checked = true;
             }
+        }
+
+        private void GpersistCode_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            InitializeComponent();
+            this.initForm();
+            this.Dock = DockStyle.Fill;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
 
     }

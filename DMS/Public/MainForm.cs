@@ -8,6 +8,7 @@ namespace DMS
 {
     public partial class MainForm : Form
     {
+        private Form nowForm;
         public MainForm()
         {
             InitializeComponent();
@@ -252,9 +253,15 @@ namespace DMS
                 {
                     if (fm.MinimizeBox)
                     {
+                        if (nowForm != null && nowForm != fm)
+                        {
+                            nowForm.Close();
+                        }
+
                         fm.MdiParent = this;
                         fm.WindowState = FormWindowState.Maximized;
                         fm.Show();
+                        nowForm = fm;
                     }
                     else
                     {
@@ -289,9 +296,14 @@ namespace DMS
                 {
                     if (fm.MinimizeBox)
                     {
+                        if (nowForm != null && nowForm != fm)
+                        {
+                            nowForm.Close();
+                        }
                         fm.MdiParent = this;
                         fm.WindowState = FormWindowState.Maximized;
                         fm.Show();
+                        nowForm = fm;
                     }
                     else
                     {

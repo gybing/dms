@@ -88,6 +88,7 @@
             this.lbTable = new System.Windows.Forms.Label();
             this.ddlDB = new System.Windows.Forms.ComboBox();
             this.lbDB = new System.Windows.Forms.Label();
+            this.btnReset = new GuFun.WinControls.VistaButton();
             this.plCenter.SuspendLayout();
             this.plRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).BeginInit();
@@ -313,6 +314,7 @@
             // plTop
             // 
             this.plTop.Border3DStyle = System.Windows.Forms.Border3DStyle.Raised;
+            this.plTop.Controls.Add(this.btnReset);
             this.plTop.Controls.Add(this.btnAction);
             this.plTop.Controls.Add(this.btnService);
             this.plTop.Controls.Add(this.btnDao);
@@ -432,7 +434,7 @@
             this.btnExit.ButtonText = "退出";
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(1044, 12);
+            this.btnExit.Location = new System.Drawing.Point(1120, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 48);
             this.btnExit.TabIndex = 26;
@@ -748,7 +750,21 @@
             this.lbDB.TabIndex = 0;
             this.lbDB.Text = "数据库：";
             // 
-            // GpersistForm
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnReset.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnReset.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReset.ButtonText = "重置";
+            this.btnReset.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnReset.ForeColor = System.Drawing.Color.Black;
+            this.btnReset.Location = new System.Drawing.Point(1044, 12);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(70, 48);
+            this.btnReset.TabIndex = 27;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // GpersistCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(1424, 640);
@@ -757,8 +773,9 @@
             this.Controls.Add(this.plTop);
             this.MaximizeBox = true;
             this.MinimizeBox = true;
-            this.Name = "GpersistForm";
+            this.Name = "GpersistCode";
             this.Text = "生成存储过程";
+            this.Load += new System.EventHandler(this.GpersistCode_Load);
             this.plCenter.ResumeLayout(false);
             this.plRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).EndInit();
@@ -831,5 +848,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn TableSet;
+        private GuFun.WinControls.VistaButton btnReset;
     }
 }

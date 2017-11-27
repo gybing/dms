@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GpersistCode));
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plCenter = new System.Windows.Forms.Panel();
             this.txtResult = new System.Windows.Forms.RichTextBox();
             this.txtSet = new System.Windows.Forms.RichTextBox();
@@ -45,14 +52,8 @@
             this.ColumnPrecision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIdentity = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnNotNull = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plTop = new GuFun.WinControls.ExPanel();
+            this.btnReset = new GuFun.WinControls.VistaButton();
             this.btnAction = new GuFun.WinControls.VistaButton();
             this.btnService = new GuFun.WinControls.VistaButton();
             this.btnDao = new GuFun.WinControls.VistaButton();
@@ -114,6 +115,53 @@
             this.ilTools.Images.SetKeyName(12, "cancel.gif");
             this.ilTools.Images.SetKeyName(13, "print.gif");
             this.ilTools.Images.SetKeyName(14, "export.gif");
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ColumnID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "序号";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ColumnName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "名称";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ColumnCode";
+            this.dataGridViewTextBoxColumn3.HeaderText = "代码";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DataType";
+            this.dataGridViewTextBoxColumn4.HeaderText = "数据类型";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ColumnLength";
+            this.dataGridViewTextBoxColumn5.HeaderText = "长度";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ColumnPrecision";
+            this.dataGridViewTextBoxColumn6.HeaderText = "精度";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "配置信息";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 400;
             // 
             // plCenter
             // 
@@ -263,56 +311,10 @@
             this.ColumnNotNull.Name = "ColumnNotNull";
             this.ColumnNotNull.Width = 60;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ColumnID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "序号";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ColumnName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "名称";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ColumnCode";
-            this.dataGridViewTextBoxColumn3.HeaderText = "代码";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "DataType";
-            this.dataGridViewTextBoxColumn4.HeaderText = "数据类型";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "ColumnLength";
-            this.dataGridViewTextBoxColumn5.HeaderText = "长度";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "ColumnPrecision";
-            this.dataGridViewTextBoxColumn6.HeaderText = "精度";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "配置信息";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 400;
-            // 
             // plTop
             // 
             this.plTop.Border3DStyle = System.Windows.Forms.Border3DStyle.Raised;
+            this.plTop.Controls.Add(this.btnReset);
             this.plTop.Controls.Add(this.btnAction);
             this.plTop.Controls.Add(this.btnService);
             this.plTop.Controls.Add(this.btnDao);
@@ -353,6 +355,20 @@
             this.plTop.Name = "plTop";
             this.plTop.Size = new System.Drawing.Size(1424, 130);
             this.plTop.TabIndex = 0;
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnReset.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnReset.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReset.ButtonText = "重置";
+            this.btnReset.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnReset.ForeColor = System.Drawing.Color.Black;
+            this.btnReset.Location = new System.Drawing.Point(1044, 12);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(70, 48);
+            this.btnReset.TabIndex = 27;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnAction
             // 
@@ -432,7 +448,7 @@
             this.btnExit.ButtonText = "退出";
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(1044, 12);
+            this.btnExit.Location = new System.Drawing.Point(1120, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 48);
             this.btnExit.TabIndex = 26;
@@ -748,7 +764,7 @@
             this.lbDB.TabIndex = 0;
             this.lbDB.Text = "数据库：";
             // 
-            // GpersistForm
+            // GpersistCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(1424, 640);
@@ -757,8 +773,9 @@
             this.Controls.Add(this.plTop);
             this.MaximizeBox = true;
             this.MinimizeBox = true;
-            this.Name = "GpersistForm";
+            this.Name = "GpersistCode";
             this.Text = "生成存储过程";
+            this.Load += new System.EventHandler(this.GpersistCode_Load);
             this.plCenter.ResumeLayout(false);
             this.plRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).EndInit();
@@ -831,5 +848,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn TableSet;
+        private GuFun.WinControls.VistaButton btnReset;
     }
 }

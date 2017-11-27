@@ -674,6 +674,7 @@
             this.Name = "CodeBuild";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.Text = "生成存储过程";
+            this.Load += new System.EventHandler(this.CodeBuild_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvColumn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).EndInit();
             this.exPanel1.ResumeLayout(false);
