@@ -11,9 +11,6 @@ namespace GuFun.Utils
     public const string PC_MustColor = "MustColor";
     public const string DatabaseOwner = "dbo";
     public const string PC_ParamType = "ParamType";
-
-    public const string ErsDatabaseOwner = "ers.dbo";
-
     public const string PC_Tip = "系统提示";
   }
 }

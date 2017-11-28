@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 105000
 File Encoding         : 65001
 
-Date: 2017-11-27 15:36:31
+Date: 2017-11-28 17:29:53
 */
 
 
@@ -3663,10 +3663,13 @@ GO
 INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711240000000002', N'999', N'PK201711060000000005', N'2017-11-24 15:45:59.320', N'2017-11-24 15:47:06.280', N'2017-11-24', N'.03')
 GO
 GO
-INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711270000000001', N'999', N'PK201711070000000001', N'2017-11-27 10:28:47.727', null, N'2017-11-27', N'5.10')
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711270000000001', N'999', N'PK201711070000000001', N'2017-11-27 15:45:53.020', N'2017-11-27 18:58:37.357', N'2017-11-27', N'3.22')
 GO
 GO
-INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711270000000002', N'999', N'PK201711060000000005', N'2017-11-27 15:32:24.330', null, N'2017-11-27', N'.03')
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711270000000002', N'999', N'PK201711060000000005', N'2017-11-27 16:23:50.610', N'2017-11-27 21:34:40.527', N'2017-11-27', N'5.18')
+GO
+GO
+INSERT INTO [dbo].[T_Bus_Hours] ([HoursID], [ManID], [ProjectID], [WorkStart], [WorkEnd], [WorkDate], [WorkCount]) VALUES (N'PK201711280000000001', N'999', N'PK201711070000000001', N'2017-11-28 15:00:08.120', N'2017-11-28 17:28:46.097', N'2017-11-28', N'2.47')
 GO
 GO
 
@@ -8181,123 +8184,6 @@ GO
 GO
 
 -- ----------------------------
--- Table structure for T_Pmt_Parameter_Table
--- ----------------------------
-DROP TABLE [dbo].[T_Pmt_Parameter_Table]
-GO
-CREATE TABLE [dbo].[T_Pmt_Parameter_Table] (
-[Parameter_ID] smallint NOT NULL ,
-[Parameter_Name] nvarchar(30) NOT NULL ,
-[Parameter_Display] nvarchar(50) NULL 
-)
-
-
-GO
-
--- ----------------------------
--- Records of T_Pmt_Parameter_Table
--- ----------------------------
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'1', N'P_Get_CoStatus', N'Co_Status_Name,Co_Status')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'2', N'P_Get_DeptStatus', N'Dept_Status_Name,Dept_Status')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'3', N'P_Get_DeptType', N'Dept_Type_Name,Dept_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'4', N'P_Select_Company', N'Co_Name,Co_ID')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'5', N'P_Get_DeptLevel', N'Dept_Level_Name,Dept_Level')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'6', N'P_Get_Bank', N'Bank_Name,Bank_ID')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'7', N'P_Get_ManType', N'Man_Type_Name,Man_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'8', N'P_Get_ManTitle', N'Man_Title_Name,Man_Title')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'9', N'P_Get_ManLevel', N'Man_Level_Name,Man_Level')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'10', N'P_Get_ManSex', N'Man_Sex_Name,Man_Sex')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'11', N'P_Get_ManStatus', N'Man_Status_Name,Man_Status')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'12', N'P_Get_AuthBound', N'Auth_Bound_Name,Auth_Bound')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'13', N'P_Get_GetType', N'Get_Type_Name,Get_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'14', N'P_Get_UseType', N'Use_Type_Name,Use_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'15', N'P_Get_BeforeType', N'Before_Type_Name,Before_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'16', N'P_Get_TranType', N'Tran_Type_Name,Tran_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'17', N'P_Get_BillBillType', N'Bill_Type_Name,Bill_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'18', N'P_Get_RptBillType', N'Bill_Type_Name,Bill_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'19', N'P_Get_BackReason', N'Back_Reason_Name,Back_Reason')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'20', N'P_Get_OtherSource', N'Other_Source_Name,Other_Source')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'21', N'P_Get_GetTran', N'Get_Tran_Name,Get_Tran')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'22', N'P_Get_NowStatus', N'Now_Status_Name,Now_Status')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'23', N'P_Get_BackFinish', N'Finish_Type_Name,Finish_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'24', N'P_Get_AuditMoney', N'Audit_Money_Name,Audit_Money')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'25', N'P_Get_BackType', N'Back_Type_Name,Back_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'26', N'P_Get_BackFeeBill', N'BackFee_Bill_Name,BackFee_Bill')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'27', N'P_Get_FeeBackBill', N'BackFee_Bill_Name,BackFee_Bill')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'28', N'P_Get_FeeBackModel', N'FeeBack_Model_Name,FeeBack_Model')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'29', N'P_Get_RptOperType', N'Oper_Type_Name,Oper_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'30', N'P_Get_RptAccount', N'Rpt_Account_ID,Rpt_Account')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'31', N'P_Get_RptUse', N'Rpt_Use_ID,Rpt_Use')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'32', N'P_Get_CancelType', N'Cancel_Type_Name,Cancel_Type')
-GO
-GO
-INSERT INTO [dbo].[T_Pmt_Parameter_Table] ([Parameter_ID], [Parameter_Name], [Parameter_Display]) VALUES (N'33', N'P_Get_ErsBank', N'BankName,BankID')
-GO
-GO
-
--- ----------------------------
 -- Table structure for T_Pmt_Project_Status
 -- ----------------------------
 DROP TABLE [dbo].[T_Pmt_Project_Status]
@@ -9050,7 +8936,7 @@ CREATE TABLE [dbo].[T_Sys_Log] (
 
 
 GO
-DBCC CHECKIDENT(N'[dbo].[T_Sys_Log]', RESEED, 716)
+DBCC CHECKIDENT(N'[dbo].[T_Sys_Log]', RESEED, 780)
 GO
 
 -- ----------------------------
@@ -10783,6 +10669,33 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'715', N'2017-11-27 15:26:29.583', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'717', N'2017-11-27 15:53:17.523', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'723', N'2017-11-27 16:30:09.853', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'725', N'2017-11-27 21:34:40.550', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'726', N'2017-11-28 09:11:13.420', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'727', N'2017-11-28 09:13:58.393', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'728', N'2017-11-28 09:15:55.807', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'729', N'2017-11-28 13:15:48.193', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'730', N'2017-11-28 13:41:17.283', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'736', N'2017-11-28 14:16:45.773', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'186', N'2017-11-15 20:36:15.977', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
@@ -10910,6 +10823,114 @@ INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'562', N'2017-11-24 15:47:06.270', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'737', N'2017-11-28 14:18:09.640', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'738', N'2017-11-28 14:18:48.123', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'739', N'2017-11-28 14:18:55.377', N'111', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'740', N'2017-11-28 14:19:04.050', N'111', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'741', N'2017-11-28 14:19:10.003', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'742', N'2017-11-28 14:20:01.993', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'743', N'2017-11-28 14:20:33.813', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'744', N'2017-11-28 14:20:43.260', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'745', N'2017-11-28 14:23:27.323', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'746', N'2017-11-28 14:23:39.220', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'747', N'2017-11-28 14:28:05.453', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'748', N'2017-11-28 14:28:10.180', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'749', N'2017-11-28 14:32:42.400', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'750', N'2017-11-28 14:33:04.547', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'751', N'2017-11-28 14:46:53.210', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'752', N'2017-11-28 14:47:01.530', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'753', N'2017-11-28 14:51:33.410', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'754', N'2017-11-28 14:52:01.717', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'763', N'2017-11-28 14:59:38.527', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'764', N'2017-11-28 15:02:42.780', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'765', N'2017-11-28 15:05:26.907', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'766', N'2017-11-28 15:06:05.630', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'767', N'2017-11-28 15:06:15.723', N'101', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'768', N'2017-11-28 15:07:09.293', N'101', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'769', N'2017-11-28 15:09:59.740', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'770', N'2017-11-28 15:10:07.730', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'771', N'2017-11-28 15:10:14.420', N'111', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'772', N'2017-11-28 15:10:21.617', N'111', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'773', N'2017-11-28 15:10:30.313', N'101', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'774', N'2017-11-28 15:10:38.030', N'101', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'775', N'2017-11-28 15:10:50.273', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'776', N'2017-11-28 15:12:10.443', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'777', N'2017-11-28 16:37:41.767', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'778', N'2017-11-28 16:46:21.687', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'779', N'2017-11-28 17:27:19.233', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'780', N'2017-11-28 17:29:25.463', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'232', N'2017-11-16 15:32:58.760', N'999', N'0000', N'1', N'登录系统')
@@ -11095,6 +11116,21 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'479', N'2017-11-23 16:50:09.793', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'731', N'2017-11-28 13:44:17.887', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'732', N'2017-11-28 13:45:34.193', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'733', N'2017-11-28 13:46:30.427', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'734', N'2017-11-28 13:48:35.997', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'735', N'2017-11-28 13:50:18.580', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'512', N'2017-11-24 09:26:57.843', N'999', N'0000', N'1', N'登出系统')
 GO
 GO
@@ -11152,6 +11188,12 @@ GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'535', N'2017-11-24 10:10:36.577', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'755', N'2017-11-28 14:52:08.800', N'111', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'756', N'2017-11-28 14:52:22.857', N'111', N'0000', N'1', N'登出系统')
+GO
+GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'697', N'2017-11-27 14:58:09.337', N'999', N'0000', N'1', N'登录系统')
 GO
 GO
@@ -11204,6 +11246,42 @@ INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log
 GO
 GO
 INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'716', N'2017-11-27 15:27:42.583', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'718', N'2017-11-27 15:53:45.860', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'719', N'2017-11-27 15:54:41.457', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'720', N'2017-11-27 16:23:15.857', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'721', N'2017-11-27 16:24:27.047', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'722', N'2017-11-27 16:26:27.430', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'724', N'2017-11-27 18:55:19.840', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'757', N'2017-11-28 14:55:54.890', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'758', N'2017-11-28 14:56:51.083', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'759', N'2017-11-28 14:58:07.820', N'999', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'760', N'2017-11-28 14:58:10.340', N'999', N'0000', N'1', N'登出系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'761', N'2017-11-28 14:58:17.730', N'111', N'0000', N'1', N'登录系统')
+GO
+GO
+INSERT INTO [dbo].[T_Sys_Log] ([Log_ID], [Log_Date], [Man_ID], [Menu_Code], [Log_Action], [Log_Content]) VALUES (N'762', N'2017-11-28 14:58:21.010', N'111', N'0000', N'1', N'登出系统')
 GO
 GO
 SET IDENTITY_INSERT [dbo].[T_Sys_Log] OFF
@@ -11512,9 +11590,6 @@ GO
 -- ----------------------------
 -- Records of T_Sys_Online
 -- ----------------------------
-INSERT INTO [dbo].[T_Sys_Online] ([Man_ID], [Login_Date], [Online_Date], [Menu_Code], [Reg_ID]) VALUES (N'999', N'2017-11-27 15:27:42.583', N'2017-11-27 15:27:42.583', null, N'14')
-GO
-GO
 
 -- ----------------------------
 -- Table structure for T_Sys_Oper_Role
@@ -11935,13 +12010,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Continue_Online]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Continue_Online]
+CREATE procedure [dbo].[P_Continue_Online]
 (
 	@Man_ID nvarchar(6),
 	@Reg_ID smallint
@@ -11953,12 +12022,6 @@ begin
 	select * from T_Sys_Online where Man_ID = @Man_ID 
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -11966,8 +12029,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Create_HoursID]
 GO
-
-create procedure [dbo].[P_Create_HoursID]
+CREATE procedure [dbo].[P_Create_HoursID]
 (
 	@HoursID varchar(20) out
 )
@@ -11983,7 +12045,6 @@ begin
 			+replace(space(10-len(@maxno+1)),space(1),'0')+ltrim(str(@maxno+1))
 end
 
-
 GO
 
 -- ----------------------------
@@ -11991,9 +12052,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Create_ProjectID]
 GO
-
-
-create procedure [dbo].[P_Create_ProjectID]
+CREATE procedure [dbo].[P_Create_ProjectID]
 (
 	@ProjectID varchar(20) out
 )
@@ -12016,13 +12075,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Create_TranID]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Create_TranID]
+CREATE procedure [dbo].[P_Create_TranID]
 (
 	@Tran_ID nvarchar(20) out,
 	@Man_ID nvarchar(6)
@@ -12036,12 +12089,6 @@ begin
 	update T_Sys_Man set Oper_Serial = Oper_Serial + 1 where Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12049,13 +12096,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_Column]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Delete_Column]
+CREATE procedure [dbo].[P_Delete_Column]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -12066,12 +12107,6 @@ begin
 	delete from T_DMS_Column where DBID = @DBID and TableCode = @TableCode 
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12079,12 +12114,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_ColumnTable]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Delete_ColumnTable]
+CREATE procedure [dbo].[P_Delete_ColumnTable]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -12094,11 +12124,6 @@ begin
 	delete from T_DMS_COLUMNTABLE where DBID = @DBID and TableCode = @TableCode
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12106,12 +12131,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_Index]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Delete_Index]
+CREATE procedure [dbo].[P_Delete_Index]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null
@@ -12123,11 +12143,6 @@ begin
 	delete from T_DMS_INDEX_COLUMN where DBID = @DBID and TableCode = @TableCode
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12135,12 +12150,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_Key]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Delete_Key]
+CREATE procedure [dbo].[P_Delete_Key]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -12153,11 +12163,6 @@ begin
 	delete from T_DMS_KEY_COLUMN where DBID = @DBID and TableCode = @TableCode
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12165,13 +12170,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_OnlineMan]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Delete_OnlineMan]
+CREATE procedure [dbo].[P_Delete_OnlineMan]
 (
 	@Man_ID nvarchar(6),
 	@Reco_Man nvarchar(6)
@@ -12183,12 +12182,6 @@ begin
 	insert into T_Sys_Log (Log_Date, Man_ID, Menu_Code, Log_Action, Log_Content) values (getdate(), @Reco_Man, '0610', 1, '删除员工[' + @Man_ID + ']的在线状态')
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12196,13 +12189,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_OperRole]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Delete_OperRole]
+CREATE procedure [dbo].[P_Delete_OperRole]
 (
 	@Man_ID nvarchar(6)
 )
@@ -12211,12 +12198,6 @@ begin
 	delete from T_Sys_Oper_Role where Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12224,13 +12205,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_RoleMenuAndNav]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Delete_RoleMenuAndNav]
+CREATE procedure [dbo].[P_Delete_RoleMenuAndNav]
 (
 	@Role_ID smallint
 )
@@ -12241,12 +12216,6 @@ begin
 	delete from T_Sys_Role_Rib where Role_ID = @Role_ID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12254,13 +12223,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Delete_SetSqlDetail]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Delete_SetSqlDetail]
+CREATE procedure [dbo].[P_Delete_SetSqlDetail]
 (
 	@Sql_ID nvarchar(30)
 )
@@ -12269,12 +12232,6 @@ begin
 	delete from T_Set_Sql_Detail where Sql_ID = @Sql_ID 
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12282,13 +12239,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_First_Login]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_First_Login]
+CREATE procedure [dbo].[P_First_Login]
 (
 	@Man_ID nvarchar(6),
 	@Oper_Password nvarchar(50)
@@ -12298,103 +12249,6 @@ begin
 	update T_Sys_Man set Oper_Password = @Oper_Password, Is_First = 0, Work_Date = convert(nvarchar(8), getdate(), 112), Pre_Work_Date = convert(nvarchar(8), getdate(), 112)	where Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
-GO
-
--- ----------------------------
--- Procedure structure for P_Get_All_Parameters
--- ----------------------------
-DROP PROCEDURE [dbo].[P_Get_All_Parameters]
-GO
-
-
-
-
-
-
-
-create procedure [dbo].[P_Get_All_Parameters]
-as
-begin
-	select Parameter_ID, Parameter_Name, Parameter_Display from T_Pmt_Parameter_Table order by Parameter_ID
-	
-	select Co_Status, Co_Status_Name from T_Pmt_Co_Status order by Co_Status
-	
-	select Dept_Status, Dept_Status_Name from T_Pmt_Dept_Status order by Dept_Status
-	
-	select Dept_Type, Dept_Type_Name from T_Pmt_Dept_Type order by Dept_Type
-	
-	select Co_Name, Co_ID from T_Sys_Company order by Co_ID
-	
-	select Dept_Level, Dept_Level_Name from T_Pmt_Dept_Level order by Dept_Level
-	
-	select Bank_ID, Bank_Name from T_Bank order by Bank_ID
-	
-	select Man_Type, Man_Type_Name from T_Pmt_Man_Type order by Man_Type
-	
-	select Man_Title, Man_Title_Name from T_Pmt_Man_Title order by Man_Title
-	
-	select Man_Level, Man_Level_Name from T_Pmt_Man_Level order by Man_Level
-	
-	select Man_Sex, Man_Sex_Name from T_Pmt_Man_Sex order by Man_Sex
-	
-	select Man_Status, Man_Status_Name from T_Pmt_Man_Status order by Man_Status
-	
-	select Auth_Bound, Auth_Bound_Name from T_Pmt_Auth_Bound order by Auth_Bound
-	
-	select Get_Type, Get_Type_Name from T_Bill_Get_Type order by Get_Type
-	
-	select Use_Type, Use_Type_Name from T_Bill_Use_Type order by Use_Type
-	
-	select Before_Type, Before_Type_Name from T_Bill_Before_Type order by Before_Type
-	
-	select Tran_Type, Tran_Type_Name from T_Bill_Tran_Type order by Tran_Type
-	
-	select Bill_Type, Bill_Type_Name from T_Bill_Type where Bill_Type in (2, 4, 5) order by Bill_Type
-	
-	select Bill_Type, Bill_Type_Name from T_Bill_Type where Bill_Type in (2, 3, 4, 5) order by Bill_Type
-	
-	select Back_Reason, Back_Reason_Name from T_Pmt_Back_Reason order by Back_Reason
-	
-	select Other_Source, Other_Source_Name from T_Bill_Other_Source order by Other_Source
-	
-	select Get_Tran, Get_Tran_Name from T_Bill_Get_Tran order by Get_Tran
-	
-	select Now_Status, Now_Status_Name from T_Bill_Now_Status order by Now_Status
-	
-	select Finish_Type, Finish_Type_Name from T_Pmt_Back_Finish order by Finish_Type
-	
-	select Audit_Money, Audit_Money_Name from T_Bill_Audit_Money order by Audit_Money
-	
-	select Back_Type, Back_Type_Name from T_Bill_Back_Type order by Back_Type
-	
-	select BackFee_Bill, BackFee_Bill_Name from T_Bill_BackFee_Bill order by BackFee_Bill
-	
-	select BackFee_Bill, BackFee_Bill_Name from T_Bill_BackFee_Bill where BackFee_Bill > 1 order by BackFee_Bill 
-	
-	select FeeBack_Model, FeeBack_Model_Name from T_Bill_FeeBack_Model order by FeeBack_Model
-	
-	select Oper_Type, Oper_Type_Name from T_Bill_Oper_Type order by Oper_Type
-	
-	select Rpt_Account,Rpt_Account_ID from T_Pmt_Rpt_Account
-	
-	select Rpt_Use_ID,Rpt_Use from T_Pmt_Rpt_Use order by Rpt_Use_ID
-	
-	select Cancel_Type,Cancel_Type_Name from T_Pmt_Cancel_Type order by Cancel_Type
-	
-	select BankID,BankName from ers.dbo.t_bus_bank where bankid > '000' order by bankid
-end
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12402,13 +12256,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_AuthBound]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_AuthBound]
+CREATE procedure [dbo].[P_Get_AuthBound]
 (
 	@Auth_Bound smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -12428,12 +12276,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12441,9 +12283,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_BusProject]
 GO
-
-
-create procedure [dbo].[P_Get_BusProject]
+CREATE procedure [dbo].[P_Get_BusProject]
 (
 	@ProjectID varchar(20) = null,
 	@Get_Action nvarchar(10) = null
@@ -12460,13 +12300,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12474,13 +12307,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_ColType]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_ColType]
+CREATE procedure [dbo].[P_Get_ColType]
 (
 	@Col_Type smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -12500,12 +12327,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12513,12 +12334,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_ColumnByIndex]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_ColumnByIndex]
+CREATE procedure [dbo].[P_Get_ColumnByIndex]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -12530,11 +12346,6 @@ begin
 		where DBID = @DBID and TableCode = @TableCode and IndexCode = @IndexCode
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12542,12 +12353,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_ColumnByKey]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_ColumnByKey]
+CREATE procedure [dbo].[P_Get_ColumnByKey]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -12559,11 +12365,6 @@ begin
 		where DBID = @DBID and TableCode = @TableCode and KeyCode = @KeyCode
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12571,12 +12372,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_ColumnByTable]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_ColumnByTable]
+CREATE procedure [dbo].[P_Get_ColumnByTable]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -12588,11 +12384,6 @@ begin
 		order by a.ColumnID
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12600,12 +12391,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_ColumnTable]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_ColumnTable]
+CREATE procedure [dbo].[P_Get_ColumnTable]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -12616,11 +12402,6 @@ begin
 		and a.DBID = @DBID and a.TableCode = @TableCode order by a.ColumnSerial 
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12628,11 +12409,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_DBByCode]
 GO
-
-
-
-
-create procedure [dbo].[P_Get_DBByCode]
+CREATE procedure [dbo].[P_Get_DBByCode]
 (
 	@DBCode nvarchar(40)
 )
@@ -12641,12 +12418,6 @@ begin
 	select * from T_DMS_DB where DBCode = @DBCode
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12654,11 +12425,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_DBForCombox]
 GO
-
-
-
-
-create procedure [dbo].[P_Get_DBForCombox]
+CREATE procedure [dbo].[P_Get_DBForCombox]
 (
 	@DBType varchar(2) = null
 )
@@ -12667,12 +12434,6 @@ begin
 	select DBID, DBName + '(' + DBCode + ')' DBName from T_DMS_DB where DBType = @DBType order by DBID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12680,7 +12441,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_Developer]
 GO
-
 CREATE procedure [dbo].[P_Get_Developer]
 (
 	@ProjectID varchar(20) = null
@@ -12720,12 +12480,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12733,12 +12487,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_IndexByTable]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_IndexByTable]
+CREATE procedure [dbo].[P_Get_IndexByTable]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -12750,11 +12499,6 @@ begin
 		order by a.IndexID
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12762,12 +12506,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_KeyByTable]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_KeyByTable]
+CREATE procedure [dbo].[P_Get_KeyByTable]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -12779,11 +12518,6 @@ begin
 		order by a.KeyID
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12791,11 +12525,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_Man_Menus]
 GO
-
-
-
-
-create procedure [dbo].[P_Get_Man_Menus]
+CREATE procedure [dbo].[P_Get_Man_Menus]
 (
 	@Man_ID nvarchar(6)
 )
@@ -12816,14 +12546,6 @@ begin
 			where a.Rib_Btn = b.Rib_Btn and b.Role_ID = c.Role_ID and c.Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12831,13 +12553,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_ManByType]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_ManByType]
+CREATE procedure [dbo].[P_Get_ManByType]
 (
 	@Dept_ID nvarchar(8),
 	@Man_Type smallint
@@ -12850,12 +12566,6 @@ begin
 			and a.Dept_ID = @Dept_ID and a.Man_Type = @Man_Type
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12863,13 +12573,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_MenuAuth]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_MenuAuth]
+CREATE procedure [dbo].[P_Get_MenuAuth]
 (
 	@Auth_ID smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -12889,12 +12593,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12902,12 +12600,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_PmtSetByDB]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_PmtSetByDB]
+CREATE procedure [dbo].[P_Get_PmtSetByDB]
 (
 	@DBID int
 )
@@ -12916,11 +12609,6 @@ begin
 	select * from T_DMS_PMTSET where DBID = @DBID order by TableSet
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12928,13 +12616,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_Public]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_Public]
+CREATE procedure [dbo].[P_Get_Public]
 (
 	@Sql nvarchar(1024)
 )
@@ -12943,12 +12625,6 @@ begin
 	exec(@Sql)
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12956,12 +12632,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_RoleMenu]
 GO
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Get_RoleMenu]
 (
 	@Role_ID smallint = null
@@ -12978,12 +12648,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -12991,13 +12655,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_RoleNav]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_RoleNav]
+CREATE procedure [dbo].[P_Get_RoleNav]
 (
 	@Role_ID smallint = null
 )
@@ -13013,12 +12671,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13026,12 +12678,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SetByCode]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_SetByCode]
+CREATE procedure [dbo].[P_Get_SetByCode]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -13041,11 +12688,6 @@ begin
 	select * from T_DMS_TABLESET where DBID = @DBID and TableCode = @TableCode
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13053,23 +12695,11 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SetManLevel]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SetManLevel]
+CREATE procedure [dbo].[P_Get_SetManLevel]
 as
 begin
 	select Man_Level from T_Set_Man_Level
 end
-
-
-
-
-
-
 
 GO
 
@@ -13078,13 +12708,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SetSql]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SetSql]
+CREATE procedure [dbo].[P_Get_SetSql]
 (
 	@Sql_ID nvarchar(30) = null,
 	@Custom_Sql nvarchar(200) = null,
@@ -13119,12 +12743,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13132,13 +12750,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SetSqlDetail]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SetSqlDetail]
+CREATE procedure [dbo].[P_Get_SetSqlDetail]
 (
 	@Sql_ID nvarchar(30) = null,
 	@Col_ID smallint = null,	
@@ -13160,12 +12772,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13173,13 +12779,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysCompany]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysCompany]
+CREATE procedure [dbo].[P_Get_SysCompany]
 (
 	@Co_ID nvarchar(4) = null,
 	@Get_Action nvarchar(10) = null
@@ -13207,12 +12807,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13220,23 +12814,11 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysDate]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysDate]
+CREATE procedure [dbo].[P_Get_SysDate]
 as
 begin
 	select getdate()
 end
-
-
-
-
-
-
 
 GO
 
@@ -13245,13 +12827,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysDept]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysDept]
+CREATE procedure [dbo].[P_Get_SysDept]
 (
 	@Dept_ID nvarchar(8) = null,
 	@Co_ID nvarchar(4) = null,
@@ -13309,12 +12885,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13322,23 +12892,11 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysDeptByCountry]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysDeptByCountry]
+CREATE procedure [dbo].[P_Get_SysDeptByCountry]
 as
 begin
 			select * from T_Sys_Dept where Dept_PID = '01006' order by Dept_ID
 end
-
-
-
-
-
-
 
 GO
 
@@ -13347,13 +12905,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysLog]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysLog]
+CREATE procedure [dbo].[P_Get_SysLog]
 (
 	@Log_ID int = null,
 	@Get_Action nvarchar(10) = null
@@ -13373,12 +12925,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13386,13 +12932,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysMan]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysMan]
+CREATE procedure [dbo].[P_Get_SysMan]
 (
 	@Man_ID nvarchar(6) = null,
 	@Co_ID nvarchar(4) = null,
@@ -13449,12 +12989,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13462,13 +12996,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysManName]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysManName]
+CREATE procedure [dbo].[P_Get_SysManName]
 (
 	@Man_ID nvarchar(6)
 )
@@ -13477,12 +13005,6 @@ begin
 	select Man_Name from T_Sys_Man where Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13490,13 +13012,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysMenu]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysMenu]
+CREATE procedure [dbo].[P_Get_SysMenu]
 (
 	@M_ID smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -13516,12 +13032,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13529,13 +13039,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysMenuDetail]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysMenuDetail]
+CREATE procedure [dbo].[P_Get_SysMenuDetail]
 (
 	@M_ID smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -13548,12 +13052,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13561,13 +13059,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysMenuGroup]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysMenuGroup]
+CREATE procedure [dbo].[P_Get_SysMenuGroup]
 (
 	@Mg_ID smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -13587,12 +13079,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13600,13 +13086,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysOnline]
 GO
-
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Get_SysOnline]
 (
 	@Man_ID nvarchar(6) = null,
@@ -13627,13 +13106,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13641,13 +13113,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysRegister]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysRegister]
+CREATE procedure [dbo].[P_Get_SysRegister]
 (
 	@Reg_ID smallint = null,
 	@Reg_Number nvarchar(40) = null,
@@ -13672,12 +13138,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13685,13 +13145,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysRole]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysRole]
+CREATE procedure [dbo].[P_Get_SysRole]
 (
 	@Role_ID smallint = null,
 	@Get_Action nvarchar(10) = null
@@ -13710,12 +13164,6 @@ begin
 		end
 	end
 end
-
-
-
-
-
-
 
 GO
 
@@ -13742,13 +13190,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_SysSystem]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_SysSystem]
+CREATE procedure [dbo].[P_Get_SysSystem]
 (
 	@System_ID nvarchar(2) = null,
 	@Get_Action nvarchar(10) = null
@@ -13768,12 +13210,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13781,13 +13217,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_TableByCode]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Get_TableByCode]
+CREATE procedure [dbo].[P_Get_TableByCode]
 (
 	@DBID int,
 	@TableCode nvarchar(40)
@@ -13797,12 +13227,6 @@ begin
 	select * from T_DMS_TABLE where DBID = @DBID and lower(TableCode) = lower(@TableCode)
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13810,12 +13234,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Get_TableNoPmtByDB]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Get_TableNoPmtByDB]
+CREATE procedure [dbo].[P_Get_TableNoPmtByDB]
 (
 	@DBID int
 )
@@ -13824,11 +13243,6 @@ begin
 	select TableCode, TableName + '(' + TableCode + ')' TableName from T_DMS_TABLE where DBID = @DBID and IsPmt = 0 order by tablename
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13836,13 +13250,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Insert_OperRole]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Insert_OperRole]
+CREATE procedure [dbo].[P_Insert_OperRole]
 (
 	@Role_ID smallint,
 	@Man_ID nvarchar(6)
@@ -13854,12 +13262,6 @@ begin
 	insert into T_Sys_Oper_Role (Role_ID, Man_ID) values (@Role_ID, @Man_ID)
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13867,13 +13269,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Insert_RoleMenu]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Insert_RoleMenu]
+CREATE procedure [dbo].[P_Insert_RoleMenu]
 (
 	@Role_ID smallint,
 	@M_ID smallint,
@@ -13884,12 +13280,6 @@ begin
 	insert into T_Sys_Role_Menu (Role_ID, M_ID, M_Auth) values (@Role_ID, @M_ID, @M_Auth)
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13897,13 +13287,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Insert_RoleNav]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Insert_RoleNav]
+CREATE procedure [dbo].[P_Insert_RoleNav]
 (
 	@Role_ID smallint,
 	@Rib_Btn smallint
@@ -13913,12 +13297,6 @@ begin
 	insert into T_Sys_Role_Rib (Role_ID, Rib_Btn) values (@Role_ID, @Rib_Btn)
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13926,12 +13304,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Log_Column]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Log_Column]
+CREATE procedure [dbo].[P_Log_Column]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -13948,11 +13321,6 @@ begin
 	end
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13960,12 +13328,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Log_Index]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Log_Index]
+CREATE procedure [dbo].[P_Log_Index]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -13987,11 +13350,6 @@ begin
 	end
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -13999,13 +13357,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Log_Key]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Log_Key]
+CREATE procedure [dbo].[P_Log_Key]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -14027,11 +13379,6 @@ begin
 	end
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14039,13 +13386,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Login_Success]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Login_Success]
+CREATE procedure [dbo].[P_Login_Success]
 (
 	@Man_ID nvarchar(6),
 	@Work_Date nvarchar(8)
@@ -14055,12 +13396,6 @@ begin
 	update T_Sys_Man set Oper_Serial = 1, Pre_Work_Date = Work_Date, Work_Date = @Work_Date where Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14068,13 +13403,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Login_SysOnline]
 GO
-
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Login_SysOnline]
 (
 	@Man_ID nvarchar(6),
@@ -14086,13 +13414,6 @@ begin
 	insert into T_Sys_Log (Log_Date, Man_ID, Menu_Code, Log_Action, Log_Content) values (getdate(), @Man_ID, '0000', 1, '登录系统')
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14100,13 +13421,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_LoginOut_SysOnline]
 GO
-
-
-
-
-
-
-
 CREATE procedure [dbo].[P_LoginOut_SysOnline]
 (
 	@Man_ID nvarchar(6),
@@ -14118,13 +13432,6 @@ begin
 	insert into T_Sys_Log (Log_Date, Man_ID, Menu_Code, Log_Action, Log_Content) values (getdate(), @Man_ID, '0000', 1, '登出系统')
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14132,13 +13439,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_ResetMan]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_ResetMan]
+CREATE procedure [dbo].[P_ResetMan]
 (
 	@Man_ID nvarchar(6),
 	@Oper_Password nvarchar(50)
@@ -14147,12 +13448,6 @@ as
 begin
 	update T_Sys_Man set Oper_Password = @Oper_Password where Man_ID = @Man_ID
 end
-
-
-
-
-
-
 
 GO
 
@@ -14206,8 +13501,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_BusProject]
 GO
-
-
 CREATE procedure [dbo].[P_Save_BusProject]
 (
 	@ProjectID varchar(20) out,
@@ -14255,13 +13548,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14269,12 +13555,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_Column]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_Column]
+CREATE procedure [dbo].[P_Save_Column]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -14294,11 +13575,6 @@ begin
 			select @DBID, @TableCode, @ColumnID, @ColumnName, @ColumnCode, @DataType, @ColumnLength, @ColumnPrecision, @ColumnIdentity, @ColumnNotNull, DBSerial, DBSerial from T_DMS_DB where DBID = @DBID
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14306,12 +13582,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_ColumnTable]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_ColumnTable]
+CREATE procedure [dbo].[P_Save_ColumnTable]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -14327,11 +13598,6 @@ begin
 	insert into T_DMS_COLUMNTABLE (DBID, TableCode, ColumnSerial, ColumnCode, RelaTable, RelaColumn, DisplayColumn, Prefix) 
 		values (@DBID, @TableCode, @ColumnSerial, @ColumnCode, @RelaTable, @RelaColumn, @DisplayColumn, @Prefix)
 end
-
-
-
-
-
 
 GO
 
@@ -14371,17 +13637,8 @@ begin
 		begin
 			update T_DMS_DB set DBName = @DBName, DBCode = @DBCode, ProjectID = @ProjectID where DBID = @DBID
 		end
-	end
-	
-	
+	end	
 end
-
-
-
-
-
-
-
 
 GO
 
@@ -14416,12 +13673,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_Index]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_Index]
+CREATE procedure [dbo].[P_Save_Index]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -14436,11 +13688,6 @@ begin
 			values (@DBID, @TableCode, @IndexID, @IndexName, @IndexCode, @IsUnique)	
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14448,12 +13695,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_IndexColumn]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_IndexColumn]
+CREATE procedure [dbo].[P_Save_IndexColumn]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -14466,11 +13708,6 @@ begin
 			values (@DBID, @TableCode, @IndexCode, @ColumnCode)	
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14478,12 +13715,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_Key]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_Key]
+CREATE procedure [dbo].[P_Save_Key]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -14498,11 +13730,6 @@ begin
 			values (@DBID, @TableCode, @KeyID, @KeyName, @KeyCode, @IsPrimary)	
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14510,12 +13737,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_KeyColumn]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_KeyColumn]
+CREATE procedure [dbo].[P_Save_KeyColumn]
 (
 	@DBID int = null,
 	@TableCode nvarchar(40) = null,
@@ -14528,11 +13750,6 @@ begin
 			values (@DBID, @TableCode, @KeyCode, @ColumnCode)	
 end
 
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14540,11 +13757,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_PmtSet]
 GO
-
-
-
-
-create procedure [dbo].[P_Save_PmtSet]
+CREATE procedure [dbo].[P_Save_PmtSet]
 (
 	@DBID int,
 	@TableSet nvarchar(400)
@@ -14556,10 +13769,6 @@ begin
 	insert into T_DMS_PMTSET(DBID, TableSet) values (@DBID, @TableSet)
 end
 
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14567,13 +13776,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SetSql]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SetSql]
+CREATE procedure [dbo].[P_Save_SetSql]
 (
 	@Sql_ID nvarchar(30),
 	@Sql_Name nvarchar(50) = null,
@@ -14648,12 +13851,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14661,13 +13858,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SetSqlDetail]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SetSqlDetail]
+CREATE procedure [dbo].[P_Save_SetSqlDetail]
 (
 	@Sql_ID nvarchar(30) = null,
 	@Col_ID smallint = null,
@@ -14727,12 +13918,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14740,13 +13925,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysCompany]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysCompany]
+CREATE procedure [dbo].[P_Save_SysCompany]
 (
 	@Co_ID nvarchar(4),
 	@Co_Name nvarchar(40) = null,
@@ -14797,12 +13976,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14810,13 +13983,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysDept]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysDept]
+CREATE procedure [dbo].[P_Save_SysDept]
 (
 	@Dept_ID nvarchar(8),
 	@Dept_Name nvarchar(30) = null,
@@ -14880,12 +14047,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14893,13 +14054,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysLog]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysLog]
+CREATE procedure [dbo].[P_Save_SysLog]
 (
 	@Log_ID int out,
 	@Log_Date datetime = null,
@@ -14926,12 +14081,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -14939,13 +14088,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysMan]
 GO
-
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Save_SysMan]
 (
 	@Man_ID nvarchar(6),
@@ -15024,13 +14166,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15038,13 +14173,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysMenu]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysMenu]
+CREATE procedure [dbo].[P_Save_SysMenu]
 (
 	@M_ID smallint,
 	@M_Name nvarchar(40) = null,
@@ -15108,12 +14237,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15121,13 +14244,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysMenuDetail]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysMenuDetail]
+CREATE procedure [dbo].[P_Save_SysMenuDetail]
 (
 	@Auth_ID smallint = null,
 	@M_ID smallint = null,
@@ -15151,12 +14268,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15164,13 +14275,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysMenuGroup]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysMenuGroup]
+CREATE procedure [dbo].[P_Save_SysMenuGroup]
 (
 	@Mg_ID smallint,
 	@Mg_Name nvarchar(40) = null,
@@ -15215,12 +14320,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15228,13 +14327,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysOnline]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysOnline]
+CREATE procedure [dbo].[P_Save_SysOnline]
 (
 	@Man_ID nvarchar(6) = null,
 	@Login_Date datetime = null,
@@ -15262,12 +14355,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15275,13 +14362,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysRegister]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysRegister]
+CREATE procedure [dbo].[P_Save_SysRegister]
 (
 	@Reg_ID smallint out,
 	@Cpu_Code nvarchar(40) = null,
@@ -15312,12 +14393,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15325,12 +14400,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysRole]
 GO
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Save_SysRole]
 (
 	@Role_ID smallint out,
@@ -15363,12 +14432,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15376,13 +14439,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_SysSystem]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Save_SysSystem]
+CREATE procedure [dbo].[P_Save_SysSystem]
 (
 	@System_ID nvarchar(2),
 	@System_Name nvarchar(32) = null,
@@ -15407,12 +14464,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15420,12 +14471,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_Table]
 GO
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Save_Table]
 (
 	@DBID int = null,
@@ -15466,12 +14511,6 @@ begin
 		
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15479,12 +14518,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Save_TableSet]
 GO
-
-
-
-
-
-create procedure [dbo].[P_Save_TableSet]
+CREATE procedure [dbo].[P_Save_TableSet]
 (
 	@DBID int,
 	@TableCode nvarchar(40),
@@ -15496,11 +14530,6 @@ begin
 	
 	insert into T_DMS_TABLESET(DBID, TableCode, TableSet) values (@DBID, @TableCode, @TableSet)
 end
-
-
-
-
-
 
 GO
 
@@ -15554,8 +14583,6 @@ begin
    end
 end
 
-
-
 GO
 
 -- ----------------------------
@@ -15563,8 +14590,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Search_BusProject]
 GO
-
-
 CREATE procedure [dbo].[P_Search_BusProject]
 (
 	@Search nvarchar(300)
@@ -15589,7 +14614,6 @@ begin
 	exec(@Sql)
 end
 
-
 GO
 
 -- ----------------------------
@@ -15597,13 +14621,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Search_Man]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Search_Man]
+CREATE procedure [dbo].[P_Search_Man]
 (
 	@Search nvarchar(8)
 )
@@ -15613,12 +14631,6 @@ begin
 	
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15626,13 +14638,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Search_ManByDept]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Search_ManByDept]
+CREATE procedure [dbo].[P_Search_ManByDept]
 (
 	@Dept_ID nvarchar(8)
 )
@@ -15642,12 +14648,6 @@ begin
 	
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15655,13 +14655,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Search_SysMan]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Search_SysMan]
+CREATE procedure [dbo].[P_Search_SysMan]
 (
 	@Search nvarchar(200) = ''
 )
@@ -15686,12 +14680,6 @@ begin
 	exec(@Sql)
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15699,13 +14687,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Select_SysDept]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Select_SysDept]
+CREATE procedure [dbo].[P_Select_SysDept]
 (
 	@Is_Valid bit
 )
@@ -15721,12 +14703,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15734,13 +14710,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Select_SysMan]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Select_SysMan]
+CREATE procedure [dbo].[P_Select_SysMan]
 (
 	@Man_Name nvarchar(10) = null,
 	@Dept_ID nvarchar(8) = null
@@ -15769,12 +14739,6 @@ begin
 	end
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15782,13 +14746,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_SetLock]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_SetLock]
+CREATE procedure [dbo].[P_SetLock]
 (
 	@Man_ID nvarchar(6),
 	@Is_Lock bit
@@ -15798,12 +14756,6 @@ begin
 	update T_Sys_Man set Is_Lock = @Is_Lock where Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15811,13 +14763,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Valid_AuthMan]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Valid_AuthMan]
+CREATE procedure [dbo].[P_Valid_AuthMan]
 (
 	@Man_ID nvarchar(6),
 	@Password nvarchar(50)
@@ -15827,12 +14773,6 @@ begin
 	select * from T_Sys_Man where Man_ID = @Man_ID and Oper_Password = @Password and Man_Status = 0	
 end
 
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15840,13 +14780,6 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Valid_Login]
 GO
-
-
-
-
-
-
-
 CREATE procedure [dbo].[P_Valid_Login]
 (
 	@Man_ID nvarchar(6)
@@ -15867,13 +14800,6 @@ begin
 	select a.Dept_Flow from T_SYs_Dept_Flow a, T_Sys_Man b where a.Dept_ID = b.Dept_ID and b.Man_ID = @Man_ID
 end
 
-
-
-
-
-
-
-
 GO
 
 -- ----------------------------
@@ -15881,13 +14807,7 @@ GO
 -- ----------------------------
 DROP PROCEDURE [dbo].[P_Valid_Password]
 GO
-
-
-
-
-
-
-create procedure [dbo].[P_Valid_Password]
+CREATE procedure [dbo].[P_Valid_Password]
 (
 	@Man_ID nvarchar(6),
 	@Oper_Password nvarchar(50)
@@ -15896,12 +14816,6 @@ as
 begin
 	select count(*) Cnt from T_Sys_Man where Man_ID = @Man_ID and Oper_Password = @Oper_Password
 end
-
-
-
-
-
-
 
 GO
 
@@ -16101,16 +15015,6 @@ GO
 -- Primary Key structure for table T_Pmt_Man_Type
 -- ----------------------------
 ALTER TABLE [dbo].[T_Pmt_Man_Type] ADD PRIMARY KEY NONCLUSTERED ([Man_Type])
-GO
-
--- ----------------------------
--- Indexes structure for table T_Pmt_Parameter_Table
--- ----------------------------
-
--- ----------------------------
--- Primary Key structure for table T_Pmt_Parameter_Table
--- ----------------------------
-ALTER TABLE [dbo].[T_Pmt_Parameter_Table] ADD PRIMARY KEY ([Parameter_ID])
 GO
 
 -- ----------------------------
