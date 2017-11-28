@@ -1241,7 +1241,7 @@ namespace DMS.SqlServer
 
                 txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Create_" + keyColumn + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Create_" + keyColumn + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Create_" + keyColumn + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
@@ -1272,15 +1272,13 @@ namespace DMS.SqlServer
                     txtResult.Text += PublicTools.WriteTab(2) + "select @" + keyColumn.ToLower() + " = " + "replace(space(" + length + "-len(@maxno+1)),space(1),'0')+ltrim(str(@maxno+1))" + PublicTools.WriteEnter(1);
                 }
                 txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteEnter(2);
-
+                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(3);
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
 
                 txtResult.Text += PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Save_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Save_" + pname + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Save_" + pname + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
@@ -1356,7 +1354,7 @@ namespace DMS.SqlServer
                     txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
                 }
 
-                txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(2);
+                txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
             }
             catch (Exception ex)

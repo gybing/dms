@@ -61,25 +61,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modal\BaseDialogForm.cs">
+    <Compile Include="Model\BaseDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modal\BaseDialogForm.Designer.cs">
+    <Compile Include="Model\BaseDialogForm.Designer.cs">
       <DependentUpon>BaseDialogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modal\BaseForm.cs">
+    <Compile Include="Model\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modal\BaseForm.Designer.cs">
+    <Compile Include="Model\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Modal\BaseDialogForm.resx">
+    <EmbeddedResource Include="Model\BaseDialogForm.resx">
       <DependentUpon>BaseDialogForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modal\BaseForm.resx">
+    <EmbeddedResource Include="Model\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
