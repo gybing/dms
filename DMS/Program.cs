@@ -83,8 +83,6 @@ namespace DMS
 
                 }
 
-                SqlBaseProvider.GetCacheParameters(ManInfo);
-
                 Program.CpuInfo = Publics.GetFirstMacAddress();
                 // 判断是否首次注册
                 SysRegister sr = SqlBaseProvider.GetSysRegister(Publics.GetRegisterNumber(Program.CpuInfo));

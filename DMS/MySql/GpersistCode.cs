@@ -84,13 +84,13 @@ namespace DMS.MySql
         {
             if (ddlDB.SelectedValue.ToString().ToLower() == "select")
             {
-                MessageBox.Show("请选择数据库！");
+                Global.ShowSysInfo("请选择数据库！");
                 return;
             }
 
             if (ddlTable.SelectedValue.ToString().ToLower() == "select")
             {
-                MessageBox.Show("请选择数据表！");
+                Global.ShowSysInfo("请选择数据表！");
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -113,43 +113,43 @@ namespace DMS.MySql
         {
             if (dgvColumn.Rows.Count <= 0)
             {
-                MessageBox.Show("请先读取字段！");
+                Global.ShowSysInfo("请先读取字段！");
                 return false;
             }
 
             if (String.IsNullOrEmpty(txtPackage.Text))
             {
-                MessageBox.Show("请输入包名！");
+                Global.ShowSysInfo("请输入包名！");
                 return false;
             }
 
             if (String.IsNullOrEmpty(txtPrefix.Text))
             {
-                MessageBox.Show("请输入前缀！");
+                Global.ShowSysInfo("请输入前缀！");
                 return false;
             }
 
             if (String.IsNullOrEmpty(txtCatalog.Text))
             {
-                MessageBox.Show("请输入类目录！");
+                Global.ShowSysInfo("请输入类目录！");
                 return false;
             }
 
             if (String.IsNullOrEmpty(txtClassName.Text))
             {
-                MessageBox.Show("请输入类名！");
+                Global.ShowSysInfo("请输入类名！");
                 return false;
             }
 
             if (String.IsNullOrEmpty(txtValue.Text))
             {
-                MessageBox.Show("请输入变量！");
+                Global.ShowSysInfo("请输入变量！");
                 return false;
             }
 
             if (String.IsNullOrEmpty(txtSet.Text.Trim()))
             {
-                MessageBox.Show("没有配置信息，请在左边富文本框输入配置信息！");
+                Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                 return false;
             }
             return true;
@@ -163,7 +163,7 @@ namespace DMS.MySql
             {
                 if (String.IsNullOrEmpty(tableset))
                 {
-                    MessageBox.Show("请在左边富文本框，输入正确的配置信息！");
+                    Global.ShowSysInfo("请在左边富文本框，输入正确的配置信息！");
                     return false;
                 }
 
@@ -171,19 +171,19 @@ namespace DMS.MySql
 
                 if (sets[0].ToLower() != "g" && sets[0].ToLower() != "s" && sets[0].ToLower() != "c")
                 {
-                    MessageBox.Show("请在左边富文本框，输入正确的配置信息！");
+                    Global.ShowSysInfo("请在左边富文本框，输入正确的配置信息！");
                     return false;
                 }
 
                 if (sets.Length != 3 && sets.Length != 5)
                 {
-                    MessageBox.Show("请在左边富文本框，输入正确的配置信息！");
+                    Global.ShowSysInfo("请在左边富文本框，输入正确的配置信息！");
                     return false;
                 }
 
                 if (Array.IndexOf(sets, "") != -1)
                 {
-                    MessageBox.Show("请在左边富文本框，输入正确的配置信息！");
+                    Global.ShowSysInfo("请在左边富文本框，输入正确的配置信息！");
                     return false;
                 }
 
@@ -191,7 +191,7 @@ namespace DMS.MySql
                 {
                     if (sets.Length != 5)
                     {
-                        MessageBox.Show("请在左边富文本框，输入正确的配置信息！");
+                        Global.ShowSysInfo("请在左边富文本框，输入正确的配置信息！");
                         return false;
                     }
 
@@ -280,7 +280,7 @@ namespace DMS.MySql
 
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
 
-                MessageBox.Show("配置信息保存成功！");
+                Global.ShowSysInfo("配置信息保存成功！");
             }
             catch (Exception)
             {
@@ -310,12 +310,12 @@ namespace DMS.MySql
                     return;
                 }
 
-                MessageBox.Show("配置信息填写正确！");
+                Global.ShowSysInfo("配置信息填写正确！");
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -335,7 +335,7 @@ namespace DMS.MySql
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -401,7 +401,6 @@ namespace DMS.MySql
 
                 txtResult.Text += PublicTools.WriteTab(1) + "@Override" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "public String[] OnExclusions() {" + PublicTools.WriteEnter(1);
-                //txtResult.Text += PublicTools.WriteTab(2) + "// TODO Auto-generated method stub" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "return new String[] {\"deal\", \"item\"";
                 if (cbSearch.Checked)
                     txtResult.Text += ", \"search\"";
@@ -463,7 +462,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -561,7 +560,7 @@ namespace DMS.MySql
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -588,7 +587,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -608,7 +607,7 @@ namespace DMS.MySql
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -712,7 +711,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -732,7 +731,7 @@ namespace DMS.MySql
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -773,7 +772,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -793,7 +792,7 @@ namespace DMS.MySql
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -904,7 +903,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -914,19 +913,19 @@ namespace DMS.MySql
             {
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    MessageBox.Show("没有加载表！");
+                    Global.ShowSysInfo("没有加载表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    MessageBox.Show("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息！");
                     return;
                 }
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -1162,7 +1161,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -1172,19 +1171,19 @@ namespace DMS.MySql
             {
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    MessageBox.Show("没有加载表！");
+                    Global.ShowSysInfo("没有加载表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    MessageBox.Show("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息！");
                     return;
                 }
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -1351,7 +1350,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -1361,19 +1360,19 @@ namespace DMS.MySql
             {
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    MessageBox.Show("没有加载表！");
+                    Global.ShowSysInfo("没有加载表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    MessageBox.Show("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息！");
                     return;
                 }
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -1391,7 +1390,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -1411,7 +1410,7 @@ namespace DMS.MySql
 
                 if (!isHours)
                 {
-                    MessageBox.Show("请先打卡！");
+                    Global.ShowSysInfo("请先打卡！");
                     return;
                 }
 
@@ -1508,7 +1507,7 @@ namespace DMS.MySql
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Global.ShowSysInfo(ex.Message);
             }
         }
 
@@ -1518,7 +1517,7 @@ namespace DMS.MySql
             {
                 if (ddlDB.SelectedValue.ToString().ToLower() == "select")
                 {
-                    MessageBox.Show("请选择数据库！");
+                    Global.ShowSysInfo("请选择数据库！");
                     return;
                 }
 

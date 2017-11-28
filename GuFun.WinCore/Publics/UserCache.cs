@@ -102,53 +102,5 @@ namespace GuFun.WinCore
       }
       set { _auths = value; }
     }
-
-    private CacheParameters _parameters;
-
-    public CacheParameters Parameters
-    {
-      get
-      {
-        if (_parameters == null)
-          _parameters = new CacheParameters();
-
-        return _parameters;
-      }
-    }
-
-    private ArrayList _relaDept;
-
-    public ArrayList RelaDept
-    {
-      get
-      {
-        if (_relaDept == null)
-          _relaDept = new ArrayList();
-
-        return _relaDept;
-      }
-    }
-
-    private short _auditMoney;
-
-    public short AuditMoney
-    {
-      get { return _auditMoney; }
-      set { _auditMoney = value; }
-    }
-
-    private bool _isHoliday;
-
-    public bool IsHoliday
-    {
-      get { return _isHoliday; }
-      set { _isHoliday = value; }
-    }
-
-    public UserCache()
-    {
-      _auditMoney = 0;
-      _isHoliday = false;
-    }
   }
 }

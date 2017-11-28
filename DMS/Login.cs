@@ -193,16 +193,6 @@ namespace DMS
 
                     short ml = SqlBaseProvider.GetSetManLevel();
 
-                    if ((uc.Man.ManLevel >= ml) && (uc.Man.DeptID != sr.DeptID))
-                    {
-                        if (SqlBaseProvider.GetRelaDept(uc.Man.DeptID, sr.DeptID) <= 0)
-                        {
-                            MessageBox.Show("您的用户名不能在非部门外的终端使用本系统，请核实！", PublicConsts.PC_Tip);
-                            txtManID.Focus();
-                            return;
-                        }
-                    }
-
                     if (uc.Man.IsLock)
                     {
                         Global.ShowSysInfo("您的用户名被锁定，不能登录系统！" + StringHelper.WriteEnter(1) + "请与部门负责人或者系统管理员联系进行解锁！");
@@ -210,11 +200,6 @@ namespace DMS
                         this.DialogResult = DialogResult.Cancel;
                         return;
                     }
-
-
-
-                    // 读取参数
-                    SqlBaseProvider.GetCacheParameters(uc);
 
                     so.ManID = txtManID.Text;
                     so.RegID = sr.RegID;

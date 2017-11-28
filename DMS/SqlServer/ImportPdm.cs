@@ -21,6 +21,7 @@ namespace DMS.SqlServer
         public ImportPdm()
         {
             InitializeComponent();
+
             CtrlHelper.SetDropDownList(ddlProject, CoreCtrls.GetComboBoxItems("Select * from T_Bus_Project order by ProjectID", SqlTextType.Text, "ProjectName,ProjectID"), DropAddType.New, DropAddFlag.Select);
         }
 
