@@ -70,6 +70,7 @@
             // 
             // clMan
             // 
+            this.clMan.CheckOnClick = true;
             this.clMan.FormattingEnabled = true;
             this.clMan.Location = new System.Drawing.Point(12, 37);
             this.clMan.Name = "clMan";

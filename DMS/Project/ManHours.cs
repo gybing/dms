@@ -78,37 +78,37 @@ namespace DMS
             OnBindData();
         }
 
-        protected override void OnAddData()
-        {
-            base.OnAddData();
+        //protected override void OnAddData()
+        //{
+        //    base.OnAddData();
 
-            EditHours edit = new EditHours();
-            edit.id = String.Empty;
-            edit.parentForm = this;
+        //    EditHours edit = new EditHours();
+        //    edit.id = String.Empty;
+        //    edit.parentForm = this;
 
-            if (edit.ShowDialog() == DialogResult.OK)
-            {
+        //    if (edit.ShowDialog() == DialogResult.OK)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
-        protected override void OnEditData()
-        {
-            base.OnEditData();
-            if (dgvList.SelectedRows.Count != 1)
-            {
-                Global.ShowSysInfo("请选择需要修改的数据行！");
-                return;
-            }
+        //protected override void OnEditData()
+        //{
+        //    base.OnEditData();
+        //    if (dgvList.SelectedRows.Count != 1)
+        //    {
+        //        Global.ShowSysInfo("请选择需要修改的数据行！");
+        //        return;
+        //    }
 
-            EditHours edit = new EditHours();
-            edit.id = dgvList.SelectedRows[0].Cells["HoursID"].Value.ToString();
-            edit.parentForm = this;
-            if (edit.ShowDialog() == DialogResult.OK)
-            {
+        //    EditHours edit = new EditHours();
+        //    edit.id = dgvList.SelectedRows[0].Cells["HoursID"].Value.ToString();
+        //    edit.parentForm = this;
+        //    if (edit.ShowDialog() == DialogResult.OK)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         public void RefreshForm()
         {
