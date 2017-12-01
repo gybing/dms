@@ -395,7 +395,11 @@ namespace GuFun.Utils
         public static void SetDropDownList(ComboBox ddl, DataTable data, DropAddType type, DropAddFlag flag, string index, string colname)
         {
             if ((ddl == null) || (data == null))
+            {
+                ddl.DataSource = new ArrayList();
                 return;
+            }
+                
 
             ArrayList items = new ArrayList();
 

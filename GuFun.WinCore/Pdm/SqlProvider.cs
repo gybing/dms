@@ -54,7 +54,14 @@ namespace GuFun.WinCore
                 ArrayList paras = new ArrayList();
                 paras.Add(DBUtils.MakeInParam("DBID", SqlDbType.Int, DBID));
                 tblMain = DBUtils.ExecuteDataTable(CommandType.StoredProcedure, "dbo.P_Get_TableNoPmtByDB", paras);
-                tblMain.TableName = "SelectMain";
+                if (tblMain.Rows.Count == 0)
+                {
+                    tblMain = null;
+                }
+                else
+                {
+                    tblMain.TableName = "SelectMain";
+                }
             }
             catch { throw; }
 

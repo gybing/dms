@@ -50,6 +50,11 @@ namespace DMS.Oracle
             pTable.OnInit();
             txtSet.Text = String.Empty;
             txtResult.Text = String.Empty;
+            txtPackage.Text = String.Empty;
+            txtPrefix.Text = String.Empty;
+            txtCatalog.Text = String.Empty;
+            txtClassName.Text = String.Empty;
+            txtValue.Text = String.Empty;
             dgvColumn.DataSource = null;
 
             dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
@@ -80,40 +85,17 @@ namespace DMS.Oracle
             this.Close();
         }
 
-        private void btnRead_Click(object sender, EventArgs e)
+        private bool verifyInfo()
         {
             if (ddlDB.SelectedValue.ToString().ToLower() == "select")
             {
                 Global.ShowSysInfo("请选择数据库！");
-                return;
+                return false;
             }
 
-            if (ddlTable.SelectedValue.ToString().ToLower() == "select")
-            {
-                Global.ShowSysInfo("请选择数据表！");
-                return;
-            }
-
-            try
-            {
-                DataTable tabels = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                dgvColumn.DataSource = tabels;
-
-                SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-
-                txtSet.Text = pTable.TableSet;
-            }
-            catch (Exception ex)
-            {
-                Global.ShowSysInfo(ex.Message);
-            }
-        }
-
-        private bool verifyInfo()
-        {
             if (dgvColumn.Rows.Count <= 0)
             {
-                Global.ShowSysInfo("请先读取字段！");
+                Global.ShowSysInfo("请选择数据表！");
                 return false;
             }
 
@@ -932,15 +914,21 @@ namespace DMS.Oracle
         {
             try
             {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    Global.ShowSysInfo("请选择数据库！");
+                    return;
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    Global.ShowSysInfo("没有加载表！");
+                    Global.ShowSysInfo("请选择数据表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    Global.ShowSysInfo("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                     return;
                 }
 
@@ -1188,15 +1176,21 @@ namespace DMS.Oracle
         {
             try
             {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    Global.ShowSysInfo("请选择数据库！");
+                    return;
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    Global.ShowSysInfo("没有加载表！");
+                    Global.ShowSysInfo("请选择数据表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    Global.ShowSysInfo("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                     return;
                 }
 
@@ -1394,15 +1388,21 @@ namespace DMS.Oracle
         {
             try
             {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    Global.ShowSysInfo("请选择数据库！");
+                    return;
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    Global.ShowSysInfo("没有加载表！");
+                    Global.ShowSysInfo("请选择数据表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    Global.ShowSysInfo("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                     return;
                 }
 
@@ -1651,6 +1651,29 @@ namespace DMS.Oracle
             catch (Exception)
             {
 
+            }
+        }
+
+        private void ddlTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable tabels = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+                dgvColumn.DataSource = tabels;
+
+                SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+
+                txtSet.Text = pTable.TableSet;
+                txtResult.Text = String.Empty;
+                txtPackage.Text = String.Empty;
+                txtPrefix.Text = String.Empty;
+                txtCatalog.Text = String.Empty;
+                txtClassName.Text = String.Empty;
+                txtValue.Text = String.Empty;
+            }
+            catch (Exception ex)
+            {
+                Global.ShowSysInfo(ex.Message);
             }
         }
 

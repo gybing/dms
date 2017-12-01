@@ -73,7 +73,6 @@
             this.cbSearch = new System.Windows.Forms.CheckBox();
             this.btnSave = new GuFun.WinControls.VistaButton();
             this.btnSet = new GuFun.WinControls.VistaButton();
-            this.btnRead = new GuFun.WinControls.VistaButton();
             this.txtValue = new System.Windows.Forms.TextBox();
             this.lbValue = new System.Windows.Forms.Label();
             this.txtClassName = new System.Windows.Forms.TextBox();
@@ -333,7 +332,6 @@
             this.plTop.Controls.Add(this.cbSearch);
             this.plTop.Controls.Add(this.btnSave);
             this.plTop.Controls.Add(this.btnSet);
-            this.plTop.Controls.Add(this.btnRead);
             this.plTop.Controls.Add(this.txtValue);
             this.plTop.Controls.Add(this.lbValue);
             this.plTop.Controls.Add(this.txtClassName);
@@ -362,9 +360,9 @@
             this.btnReset.ButtonText = "重置";
             this.btnReset.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(963, 12);
+            this.btnReset.Location = new System.Drawing.Point(475, 12);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 48);
+            this.btnReset.Size = new System.Drawing.Size(64, 48);
             this.btnReset.TabIndex = 26;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -446,9 +444,9 @@
             this.btnExit.ButtonText = "退出";
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(1044, 12);
+            this.btnExit.Location = new System.Drawing.Point(963, 12);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(70, 48);
+            this.btnExit.Size = new System.Drawing.Size(75, 48);
             this.btnExit.TabIndex = 27;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -600,7 +598,7 @@
             this.btnSave.ButtonText = "保存配置";
             this.btnSave.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(475, 12);
+            this.btnSave.Location = new System.Drawing.Point(405, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 48);
             this.btnSave.TabIndex = 10;
@@ -614,25 +612,11 @@
             this.btnSet.ButtonText = "分析配置";
             this.btnSet.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSet.ForeColor = System.Drawing.Color.Black;
-            this.btnSet.Location = new System.Drawing.Point(405, 12);
+            this.btnSet.Location = new System.Drawing.Point(335, 12);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(64, 48);
             this.btnSet.TabIndex = 9;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
-            // 
-            // btnRead
-            // 
-            this.btnRead.BackColor = System.Drawing.Color.Transparent;
-            this.btnRead.BaseColor = System.Drawing.SystemColors.Highlight;
-            this.btnRead.ButtonColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRead.ButtonText = "读取字段";
-            this.btnRead.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnRead.ForeColor = System.Drawing.Color.Black;
-            this.btnRead.Location = new System.Drawing.Point(335, 12);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(64, 48);
-            this.btnRead.TabIndex = 8;
-            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // txtValue
             // 
@@ -721,6 +705,7 @@
             this.ddlTable.Name = "ddlTable";
             this.ddlTable.Size = new System.Drawing.Size(255, 20);
             this.ddlTable.TabIndex = 2;
+            this.ddlTable.SelectedIndexChanged += new System.EventHandler(this.ddlTable_SelectedIndexChanged);
             // 
             // lbTable
             // 
@@ -804,7 +789,6 @@
         private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.Label lbValue;
         private System.Windows.Forms.TextBox txtValue;
-        private GuFun.WinControls.VistaButton btnRead;
         private GuFun.WinControls.VistaButton btnSet;
         private GuFun.WinControls.VistaButton btnSave;
         private System.Windows.Forms.CheckBox cbSearch;

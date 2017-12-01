@@ -50,6 +50,11 @@ namespace DMS.SqlServer
             pTable.OnInit();
             txtSet.Text = String.Empty;
             txtResult.Text = String.Empty;
+            txtPackage.Text = String.Empty;
+            txtPrefix.Text = String.Empty;
+            txtCatalog.Text = String.Empty;
+            txtClassName.Text = String.Empty;
+            txtValue.Text = String.Empty;
             dgvColumn.DataSource = null;
 
             dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
@@ -80,20 +85,8 @@ namespace DMS.SqlServer
             this.Close();
         }
 
-        private void btnRead_Click(object sender, EventArgs e)
+        private void ddlTable_SelectedIndexChanged(object sender, EventArgs e) 
         {
-            if (ddlDB.SelectedValue.ToString().ToLower() == "select")
-            {
-                Global.ShowSysInfo("请选择数据库！");
-                return;
-            }
-
-            if (ddlTable.SelectedValue.ToString().ToLower() == "select")
-            {
-                Global.ShowSysInfo("请选择数据表！");
-                return;
-            }
-
             try
             {
                 DataTable tabels = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
@@ -102,6 +95,12 @@ namespace DMS.SqlServer
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
 
                 txtSet.Text = pTable.TableSet;
+                txtResult.Text = String.Empty;
+                txtPackage.Text = String.Empty;
+                txtPrefix.Text = String.Empty;
+                txtCatalog.Text = String.Empty;
+                txtClassName.Text = String.Empty;
+                txtValue.Text = String.Empty;
             }
             catch (Exception ex)
             {
@@ -111,9 +110,15 @@ namespace DMS.SqlServer
 
         private bool verifyInfo()
         {
+            if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+            {
+                Global.ShowSysInfo("请选择数据库！");
+                return false;
+            }
+
             if (dgvColumn.Rows.Count <= 0)
             {
-                Global.ShowSysInfo("请先读取字段！");
+                Global.ShowSysInfo("请选择数据表！");
                 return false;
             }
 
@@ -913,15 +918,21 @@ namespace DMS.SqlServer
         {
             try
             {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    Global.ShowSysInfo("请选择数据库！");
+                    return;
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    Global.ShowSysInfo("没有加载表！");
+                    Global.ShowSysInfo("请选择数据表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    Global.ShowSysInfo("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                     return;
                 }
 
@@ -1169,15 +1180,21 @@ namespace DMS.SqlServer
         {
             try
             {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    Global.ShowSysInfo("请选择数据库！");
+                    return;
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    Global.ShowSysInfo("没有加载表！");
+                    Global.ShowSysInfo("请选择数据表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    Global.ShowSysInfo("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                     return;
                 }
 
@@ -1367,15 +1384,21 @@ namespace DMS.SqlServer
         {
             try
             {
+                if (ddlDB.SelectedValue.ToString().ToLower() == "select")
+                {
+                    Global.ShowSysInfo("请选择数据库！");
+                    return;
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableCode))
                 {
-                    Global.ShowSysInfo("没有加载表！");
+                    Global.ShowSysInfo("请选择数据表！");
                     return;
                 }
 
                 if (String.IsNullOrEmpty(txtSet.Text.Trim()))
                 {
-                    Global.ShowSysInfo("没有配置信息！");
+                    Global.ShowSysInfo("没有配置信息，请在左边富文本框输入配置信息！");
                     return;
                 }
 

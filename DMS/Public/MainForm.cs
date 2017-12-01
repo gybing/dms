@@ -360,6 +360,7 @@ namespace DMS
                     SqlBaseProvider.SaveBusHours(item, DataProviderAction.Update);
                     Program.LoginDate = NowDate;
 
+                    // 跨天的情况，将WorkEnd作为临时变量，传递到后台，判断过12点后是否有打卡记录，如果没有，则会补打
                     item.WorkEnd = Convert.ToDateTime(Program.LoginDate);
                     SqlBaseProvider.SaveBusHours(item, DataProviderAction.Create);
                 }
