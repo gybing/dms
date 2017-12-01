@@ -45,6 +45,10 @@ namespace DMS.Oracle
         {
             int dbid = ddlDB.SelectedValue.ToString().ToLower() == "select" ? 0 : Convert.ToInt32(ddlDB.SelectedValue);
             Program.DBID = dbid;
+
+            BusProject project = SqlBaseProvider.GetBusProjectByDB(dbid);
+            Program.ProjectCode = project.ProjectCode;
+
             CtrlHelper.SetDropDownList(ddlTable, SqlBaseProvider.GetTableNoPmtByDB(dbid), DropAddType.New, DropAddFlag.Select, String.Empty, "TableName,TableCode");
 
             pTable.OnInit();
@@ -1658,18 +1662,34 @@ namespace DMS.Oracle
         {
             try
             {
-                DataTable tabels = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                dgvColumn.DataSource = tabels;
+                DataTable columns = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+                dgvColumn.DataSource = columns;
 
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-
+                txtPackage.Text = Program.ProjectCode;
                 txtSet.Text = pTable.TableSet;
                 txtResult.Text = String.Empty;
-                txtPackage.Text = String.Empty;
+
                 txtPrefix.Text = String.Empty;
                 txtCatalog.Text = String.Empty;
                 txtClassName.Text = String.Empty;
                 txtValue.Text = String.Empty;
+
+                if (columns.Rows.Count > 0)
+                {
+                    string tablename = String.Empty;
+                    string table = ddlTable.SelectedValue.ToString();
+                    string[] tables = table.Split('_');
+
+                    for (int i = 1; i < tables.Length; i++)
+                    {
+                        tablename += tables[i];
+                    }
+                    txtPrefix.Text = tables[1];
+                    txtCatalog.Text = tables[1].ToLower();
+                    txtClassName.Text = tablename;
+                    txtValue.Text = tablename.ToLower();
+                }
             }
             catch (Exception ex)
             {

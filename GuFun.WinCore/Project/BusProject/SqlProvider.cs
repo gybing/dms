@@ -99,6 +99,29 @@ namespace GuFun.WinCore
             return item;
         }
 
+        public static BusProject GetBusProjectByDB(int dbid)
+        {
+            BusProject item = new BusProject();
+
+            try
+            {
+                ArrayList paras = new ArrayList();
+                paras.Add(DBUtils.MakeInParam("@DBID", SqlDbType.Int, dbid));
+
+                SqlDataReader reader = DBUtils.ExecuteReader(CommandType.StoredProcedure, PublicConsts.DatabaseOwner + ".P_Get_BusProjectByDB", paras);
+
+                if (reader.Read())
+                {
+                    item = PopulateBusProject(reader);
+                }
+
+                reader.Close();
+            }
+            catch { throw; }
+
+            return item;
+        }
+
         public static BusProject PopulateBusProject(IDataReader reader)
         {
             BusProject item = new BusProject();

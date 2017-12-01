@@ -22,6 +22,7 @@ namespace DMS
         public static DataTable Dept = new DataTable();
         public static DataTable DefaultDept = new DataTable();
         public static int DBID;
+        public static string ProjectCode;
         public static string LoginDate;
 
         [DllImport("User32.dll")]

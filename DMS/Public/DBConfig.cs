@@ -63,7 +63,7 @@ namespace DMS
             {
                 int port = Convert.ToInt32(txtPort.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Global.ShowSysInfo("端口号必须为整数！");
                 return;
@@ -98,7 +98,7 @@ namespace DMS
             {
                 int port = Convert.ToInt32(txtPort.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Global.ShowSysInfo("端口号必须为整数！");
                 return;
@@ -129,7 +129,7 @@ namespace DMS
                 else
                     throw new Exception("指定的数据库不存在或者数据库配置错误！");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Global.ShowSysInfo("指定的数据库不存在或者数据库配置错误！");
             }
