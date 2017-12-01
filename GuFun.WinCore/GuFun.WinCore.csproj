@@ -60,6 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PdmUtils\ColumnInfo.cs" />
+    <Compile Include="PdmUtils\PdmFileReader.cs" />
+    <Compile Include="PdmUtils\PdmKey1.cs" />
+    <Compile Include="PdmUtils\PdmModels.cs" />
+    <Compile Include="PdmUtils\TableInfo.cs" />
+    <Compile Include="PdmUtils\ViewColumnInfo.cs" />
+    <Compile Include="PdmUtils\ViewInfo.cs" />
     <Compile Include="Project\BusHours\PageBusHours.cs" />
     <Compile Include="Project\BusHours\BusHours.cs" />
     <Compile Include="Project\BusHours\SqlProvider.cs" />
