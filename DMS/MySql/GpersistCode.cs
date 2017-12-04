@@ -1504,6 +1504,7 @@ namespace DMS.MySql
 
                 txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"GetList" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
