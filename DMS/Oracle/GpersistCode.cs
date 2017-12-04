@@ -186,7 +186,7 @@ namespace DMS.Oracle
             return true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void saveConfig()
         {
             try
             {
@@ -265,14 +265,18 @@ namespace DMS.Oracle
                 dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(pTable.DBID);
 
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
-
-                Global.ShowSysInfo("配置信息保存成功！");
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            saveConfig();
+            Global.ShowSysInfo("配置信息保存成功！");
         }
 
         private void btnSet_Click(object sender, EventArgs e)
@@ -1666,18 +1670,19 @@ namespace DMS.Oracle
                 dgvColumn.DataSource = columns;
 
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+                PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+
                 txtPackage.Text = Program.ProjectCode;
-                txtSet.Text = pTable.TableSet;
+                txtSet.Text = String.Empty;
                 txtResult.Text = String.Empty;
 
                 txtPrefix.Text = String.Empty;
                 txtCatalog.Text = String.Empty;
                 txtClassName.Text = String.Empty;
                 txtValue.Text = String.Empty;
-
+                string tablename = String.Empty;
                 if (columns.Rows.Count > 0)
                 {
-                    string tablename = String.Empty;
                     string table = ddlTable.SelectedValue.ToString();
                     string[] tables = table.Split('_');
 
@@ -1690,6 +1695,22 @@ namespace DMS.Oracle
                     txtClassName.Text = tablename;
                     txtValue.Text = tablename.ToLower();
                 }
+
+                if (String.IsNullOrEmpty(pTable.TableSet))
+                {
+                    if (pkc != null)
+                    {
+                        String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
+                        txtSetText += "S|" + tablename + "|" + pkc.ColumnCode;
+                        txtSet.Text = txtSetText;
+                        saveConfig();
+                    }
+                }
+                else
+                {
+                    txtSet.Text = pTable.TableSet;
+                }
+
             }
             catch (Exception ex)
             {

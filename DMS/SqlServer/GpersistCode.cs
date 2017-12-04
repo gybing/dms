@@ -97,8 +97,11 @@ namespace DMS.SqlServer
                 dgvColumn.DataSource = columns;
 
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+                PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+
                 txtPackage.Text = Program.ProjectCode;
                 txtSet.Text = pTable.TableSet;
+                txtSet.Text = String.Empty;
                 txtResult.Text = String.Empty;
 
                 txtPrefix.Text = String.Empty;
@@ -121,15 +124,20 @@ namespace DMS.SqlServer
                     txtValue.Text = tablename.ToLower();
                 }
 
-                PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                if (pkc != null)
+                if (String.IsNullOrEmpty(pTable.TableSet))
                 {
-                    String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
+                    if (pkc != null)
+                    {
+                        String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
                         txtSetText += "S|" + tablename + "|" + pkc.ColumnCode;
                         txtSet.Text = txtSetText;
+                        saveConfig();
+                    }
                 }
-
-
+                else
+                {
+                    txtSet.Text = pTable.TableSet;
+                }
             }
             catch (Exception ex)
             {
@@ -236,6 +244,12 @@ namespace DMS.SqlServer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            saveConfig();
+            Global.ShowSysInfo("配置信息保存成功！");
+        }
+
+        private void saveConfig() 
+        {
             try
             {
                 if (!verifyInfo())
@@ -313,8 +327,6 @@ namespace DMS.SqlServer
                 dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(pTable.DBID);
 
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
-
-                Global.ShowSysInfo("配置信息保存成功！");
             }
             catch (Exception)
             {
