@@ -502,6 +502,32 @@ namespace GuFun.WinCore
             DBUtils.ExecuteNonQuery(conn, cmd, CommandType.StoredProcedure, "dbo.P_Save_KeyColumn", paras);
         }
 
+        public static PdmKeyColumn GetKeyColumn(int dbid, string tablecode)
+        {
+            PdmKeyColumn rtn = null;
+
+            try
+            {
+                ArrayList paras = new ArrayList();
+                paras.Add(DBUtils.MakeInParam("DBID", SqlDbType.Int, dbid));
+                paras.Add(DBUtils.MakeInParam("TableCode", SqlDbType.NVarChar, 40, tablecode));
+
+                SqlDataReader reader = DBUtils.ExecuteReader(CommandType.StoredProcedure, "dbo.P_Get_KeyColumn", paras);
+
+                if (reader.Read())
+                {
+                    rtn = new PdmKeyColumn();
+                    rtn.OnPopulate(reader);
+                }
+                    
+
+                reader.Close();
+            }
+            catch { throw; }
+
+            return rtn;
+        }
+
         public static void DeleteIndex(SqlConnection conn, SqlCommand cmd, PdmTable pTable)
         {
             ArrayList paras = new ArrayList();

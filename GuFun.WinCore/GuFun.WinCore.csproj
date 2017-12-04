@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pdm\PdmKeyColumn.cs" />
     <Compile Include="Project\BusHours\PageBusHours.cs" />
     <Compile Include="Project\BusHours\BusHours.cs" />
     <Compile Include="Project\BusHours\SqlProvider.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Pdm\PdmHelper.cs" />
     <Compile Include="Pdm\PdmIndex.cs" />
     <Compile Include="Pdm\PdmKey.cs" />
-    <Compile Include="Pdm\PdmReader.cs" />
     <Compile Include="Pdm\PdmTable.cs" />
     <Compile Include="Pdm\SqlProvider.cs" />
     <Compile Include="Pdm\TableInfo.cs" />

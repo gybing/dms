@@ -236,7 +236,7 @@ namespace GuFun.WinCore.Pdm
         private void InitIndexes(XmlNode xnKeys, PdmTable pTable)
         {
             int i = 1;
-            pTable.Keys.Clear();
+            pTable.Indexs.Clear();
 
             foreach (XmlNode xnKey in xnKeys)
             {

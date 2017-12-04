@@ -105,10 +105,9 @@ namespace DMS.SqlServer
                 txtCatalog.Text = String.Empty;
                 txtClassName.Text = String.Empty;
                 txtValue.Text = String.Empty;
-
+                string tablename = String.Empty;
                 if (columns.Rows.Count > 0)
                 {
-                    string tablename = String.Empty;
                     string table = ddlTable.SelectedValue.ToString();
                     string[] tables = table.Split('_');
 
@@ -121,6 +120,16 @@ namespace DMS.SqlServer
                     txtClassName.Text = tablename;
                     txtValue.Text = tablename.ToLower();
                 }
+
+                PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
+                if (pkc != null)
+                {
+                    String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
+                        txtSetText += "S|" + tablename + "|" + pkc.ColumnCode;
+                        txtSet.Text = txtSetText;
+                }
+
+
             }
             catch (Exception ex)
             {
