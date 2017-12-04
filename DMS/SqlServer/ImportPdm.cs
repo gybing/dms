@@ -2,7 +2,6 @@
 using GuFun.Utils.Enumerations;
 using GuFun.WinCore;
 using GuFun.WinCore.Pdm;
-using GuFun.WinCore.PdmUtils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -79,11 +78,8 @@ namespace DMS.SqlServer
             try
             {
                 PdmHelper pdm = new PdmHelper(filename.Text);
-
-                //PdmFileReader pdr = new PdmFileReader();
-                //PdmModels pdm = pdr.ReadFromFile(filename.Text);
-
                 pdm.InitData();
+
                 conn = DBUtils.GetConnection();
                 cmd = DBUtils.GetCommand();
 
