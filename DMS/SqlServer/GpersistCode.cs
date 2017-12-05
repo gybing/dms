@@ -1030,7 +1030,7 @@ namespace DMS.SqlServer
                 {
                     txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Search_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Search_" + pname + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Search_" + pname + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
@@ -1046,7 +1046,7 @@ namespace DMS.SqlServer
 
                     txtResult.Text += PublicTools.WriteTab(1) + "if (@start is not null) and (@end is not null)" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "begin" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "declare @Sql nvarchar(4000)" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(2) + "declare @Sql nvarchar(4000)" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select @TOTAL = count(*) from '" + PublicTools.WriteEnter(1);
 
@@ -1080,7 +1080,7 @@ namespace DMS.SqlServer
 
                     txtResult.Text += othersql;
                     txtResult.Text += PublicTools.WriteTab(2) + "if (@search is not null) and (@search != '')" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = @Sql + ' and ' +  @search" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = @Sql + ' and ' +  @search" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "exec sp_executesql @Sql, N'@TOTAL int out', @total out" + PublicTools.WriteEnter(2);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = 'select * from (select a.*";
@@ -1096,22 +1096,22 @@ namespace DMS.SqlServer
                     }
                     txtResult.Text += ", '" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "+ 'row_number() over (order by a." + pColumn.ColumnCode.ToLower() + " desc) as RN from '" + PublicTools.WriteEnter(1);
-                    txtResult.Text += othersql + PublicTools.WriteEnter(1);
+                    txtResult.Text += othersql;
 
                     txtResult.Text += PublicTools.WriteTab(2) + "if (@search is not null) and (@search != '')" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = @Sql + ' and ' +  @search" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = @Sql + ' and ' +  @search" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = @Sql + ' ) SearchList where RN between ' + ltrim(str(@start)) + ' and ' + ltrim(str(@end))" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = @Sql + ' ) SearchList where RN between ' + ltrim(str(@start)) + ' and ' + ltrim(str(@end))" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "exec(@Sql)" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
                 }
                 else
                 {
                     txtResult.Text = PublicTools.WriteTab(0) + "if (exists (select name from sysobjects where (name = N'P_Get_" + pname + "') and (type = 'P')))" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "drop procedure dbo.P_Get_" + pname + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(0) + "create procedure [dbo].P_Get_" + pname + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
@@ -1207,8 +1207,8 @@ namespace DMS.SqlServer
 
                     txtResult.Text += PublicTools.WriteTab(2) + "end" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "end" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(2);
-                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                    txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
                 }
             }
             catch (Exception ex)
@@ -1330,7 +1330,7 @@ namespace DMS.SqlServer
                     txtResult.Text += PublicTools.WriteTab(2) + "select @" + keyColumn.ToLower() + " = " + "replace(space(" + length + "-len(@maxno+1)),space(1),'0')+ltrim(str(@maxno+1))" + PublicTools.WriteEnter(1);
                 }
                 txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(3);
+                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
 
@@ -1413,7 +1413,7 @@ namespace DMS.SqlServer
                 }
 
                 txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(2);
+                txtResult.Text += PublicTools.WriteTab(0) + "go" + PublicTools.WriteEnter(1);
             }
             catch (Exception ex)
             {

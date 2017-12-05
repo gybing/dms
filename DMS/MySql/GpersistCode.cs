@@ -1300,8 +1300,7 @@ namespace DMS.MySql
                 txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "select _" + keyColumn.ToLower() + ";" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteEnter(2);
+                txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(2);
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 txtResult.Text += PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
