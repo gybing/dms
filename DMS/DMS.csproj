@@ -113,23 +113,11 @@
     <Compile Include="System\FirstLogin.Designer.cs">
       <DependentUpon>FirstLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="MySql\CodeBuild.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MySql\CodeBuild.Designer.cs">
-      <DependentUpon>CodeBuild.cs</DependentUpon>
-    </Compile>
     <Compile Include="MySql\ImportPdm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MySql\ImportPdm.Designer.cs">
       <DependentUpon>ImportPdm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Oracle\CodeBuild.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Oracle\CodeBuild.Designer.cs">
-      <DependentUpon>CodeBuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Oracle\ImportPdm.cs">
       <SubType>Form</SubType>
@@ -242,12 +230,6 @@
     <Compile Include="System\ManDept.Designer.cs">
       <DependentUpon>ManDept.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServer\CodeBuild.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SqlServer\CodeBuild.Designer.cs">
-      <DependentUpon>CodeBuild.cs</DependentUpon>
-    </Compile>
     <Compile Include="SqlServer\ImportPdm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,17 +301,11 @@
     <EmbeddedResource Include="Model\BaseParamForm.resx">
       <DependentUpon>BaseParamForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MySql\CodeBuild.resx">
-      <DependentUpon>CodeBuild.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MySql\GpersistCode.resx">
       <DependentUpon>GpersistCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MySql\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Oracle\CodeBuild.resx">
-      <DependentUpon>CodeBuild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Oracle\GpersistCode.resx">
       <DependentUpon>GpersistCode.cs</DependentUpon>
@@ -387,9 +363,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Model\BaseListForm.resx">
       <DependentUpon>BaseListForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SqlServer\CodeBuild.resx">
-      <DependentUpon>CodeBuild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SqlServer\ImportPdm.resx">
       <DependentUpon>ImportPdm.cs</DependentUpon>

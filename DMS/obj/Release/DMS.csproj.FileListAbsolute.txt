@@ -9,9 +9,7 @@ E:\Source\C#\DMS\DMS\bin\Release\GuFun.WinControls.pdb
 E:\Source\C#\DMS\DMS\bin\Release\GuFun.WinCore.pdb
 E:\Source\C#\DMS\DMS\obj\Release\DMS.csprojResolveAssemblyReference.cache
 E:\Source\C#\DMS\DMS\obj\Release\DMS.BaseParamForm.resources
-E:\Source\C#\DMS\DMS\obj\Release\DMS.MySql.CodeBuild.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.MySql.ImportPdm.resources
-E:\Source\C#\DMS\DMS\obj\Release\DMS.Oracle.CodeBuild.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.Oracle.ImportPdm.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.EditDeveloper.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.EditProject.resources
@@ -25,7 +23,6 @@ E:\Source\C#\DMS\DMS\obj\Release\DMS.ManRole.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.EditMan.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.ManMan.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.BaseListForm.resources
-E:\Source\C#\DMS\DMS\obj\Release\DMS.SqlServer.CodeBuild.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.SqlServer.ImportPdm.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.Login.resources
 E:\Source\C#\DMS\DMS\obj\Release\DMS.BaseDialogForm.resources
