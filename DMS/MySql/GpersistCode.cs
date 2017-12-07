@@ -15,7 +15,8 @@ namespace DMS.MySql
     public partial class GpersistCode : DMS.BaseDialogForm
     {
         private PdmTable pTable;
-
+        public string keycolumn = String.Empty;
+        public PdmColumn keyCol = new PdmColumn();
         private bool isHours = false;
 
         private string[] Prefix = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
@@ -487,36 +488,10 @@ namespace DMS.MySql
             }
         }
 
-        public string keycolumn = String.Empty;
-        public PdmColumn keyCol = new PdmColumn();
+       
 
-        private void OnGetSave()
+        private void OnGetSave(string keycolumn)
         {
-            string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-            keycolumn = String.Empty;
-
-            foreach (string tableset in tablesets)
-            {
-                if (String.IsNullOrEmpty(tableset))
-                    continue;
-
-                string[] sets = tableset.Split('|');
-
-                if (sets.Length <= 0)
-                    continue;
-
-                if (sets[0].ToLower() == "g")
-                {
-                    if (sets.Length != 3)
-                        continue;
-
-                    keycolumn = sets[2];
-
-                    break;
-                }
-            }
-
-
             foreach (PdmColumn item in pTable.Columns)
             {
                 if (item.ColumnCode.ToLower() == keycolumn.ToLower())
@@ -525,7 +500,6 @@ namespace DMS.MySql
                     break;
                 }
             }
-
         }
 
         private void btnMapper_Click(object sender, EventArgs e)
@@ -547,8 +521,6 @@ namespace DMS.MySql
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -594,8 +566,6 @@ namespace DMS.MySql
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -719,8 +689,6 @@ namespace DMS.MySql
                     return;
                 }
 
-                OnGetSave();
-
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
                     packageclass += "." + txtCatalog.Text.Trim().ToLower();
@@ -779,8 +747,6 @@ namespace DMS.MySql
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -918,8 +884,6 @@ namespace DMS.MySql
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 string othersql = String.Empty;
@@ -1146,8 +1110,6 @@ namespace DMS.MySql
                     return;
                 }
 
-                OnGetSave();
-
                 string dataType = keyCol.DataType;
                 string defaultnum = "0000000001";
 
@@ -1169,7 +1131,7 @@ namespace DMS.MySql
 
                 if (length > 10)
                 {
-                    txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keycolumn.ToLower() + " ," + (length - 10) + ")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keycolumn.ToLower() + " ," + (length - 10) + ")) into @maxno from " + pTable.TableCode.ToLower() + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keycolumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
@@ -1180,7 +1142,7 @@ namespace DMS.MySql
                 }
                 else
                 {
-                    txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keycolumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keycolumn.ToLower() + ") into @maxno from " + pTable.TableCode.ToLower() + ";" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
@@ -1224,7 +1186,7 @@ namespace DMS.MySql
                 txtResult.Text += PublicTools.WriteTab(2) + "call P_Create_" + keycolumn + "(@" + keycolumn.ToLower() + ");" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = @" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
 
-                txtResult.Text += PublicTools.WriteTab(2) + "insert into " + pTable.TableCode + "(";
+                txtResult.Text += PublicTools.WriteTab(2) + "insert into " + pTable.TableCode.ToLower() + "(";
                 foreach (ColumnTable item in pColumnTables)
                 {
                     if (item.Prefix == "a")
@@ -1247,7 +1209,7 @@ namespace DMS.MySql
                     txtResult.Text += PublicTools.WriteTab(1) + "elseif _action = 3" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "update " + pTable.TableCode + " set ";
+                    txtResult.Text += PublicTools.WriteTab(2) + "update " + pTable.TableCode.ToLower() + " set ";
                     foreach (ColumnTable item in pColumnTables)
                     {
                         if ((item.Prefix == "a") && (item.DisplayColumn != keycolumn))
@@ -1260,7 +1222,7 @@ namespace DMS.MySql
                 {
                     txtResult.Text += PublicTools.WriteTab(1) + "elseif _action = 4" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pTable.TableCode + " where " + keycolumn.ToLower() + " = _" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pTable.TableCode.ToLower() + " where " + keycolumn.ToLower() + " = _" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
@@ -1338,8 +1300,6 @@ namespace DMS.MySql
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -1521,6 +1481,12 @@ namespace DMS.MySql
                     txtCatalog.Text = tables[1].ToLower();
                     txtClassName.Text = tablename;
                     txtValue.Text = tablename.ToLower();
+                }
+
+                if (pkc != null)
+                {
+                    keycolumn = pkc.ColumnCode;
+                    OnGetSave(keycolumn);
                 }
 
                 if (String.IsNullOrEmpty(pTable.TableSet))

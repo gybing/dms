@@ -15,9 +15,9 @@ namespace DMS.SqlServer
     public partial class GpersistCode : DMS.BaseDialogForm
     {
         private PdmTable pTable;
-
         private bool isHours = false;
-
+        public string keycolumn = String.Empty;
+        public PdmColumn keyCol = new PdmColumn();
         private string[] Prefix = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
         public GpersistCode()
@@ -124,6 +124,12 @@ namespace DMS.SqlServer
                     txtValue.Text = tablename.ToLower();
                 }
 
+                if (pkc != null)
+                {
+                    keycolumn = pkc.ColumnCode;
+                    OnGetSave(keycolumn);
+                }
+
                 if (String.IsNullOrEmpty(pTable.TableSet))
                 {
                     if (pkc != null)
@@ -138,6 +144,8 @@ namespace DMS.SqlServer
                 {
                     txtSet.Text = pTable.TableSet;
                 }
+
+                
             }
             catch (Exception ex)
             {
@@ -511,36 +519,10 @@ namespace DMS.SqlServer
             }
         }
 
-        public string keycolumn = String.Empty;
-        public PdmColumn keyCol = new PdmColumn();
+        
 
-        private void OnGetSave()
+        private void OnGetSave(string keycolumn)
         {
-            string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-            keycolumn = String.Empty;
-
-            foreach (string tableset in tablesets)
-            {
-                if (String.IsNullOrEmpty(tableset))
-                    continue;
-
-                string[] sets = tableset.Split('|');
-
-                if (sets.Length <= 0)
-                    continue;
-
-                if (sets[0].ToLower() == "g")
-                {
-                    if (sets.Length != 3)
-                        continue;
-
-                    keycolumn = sets[2];
-
-                    break;
-                }
-            }
-
-
             foreach (PdmColumn item in pTable.Columns)
             {
                 if (item.ColumnCode.ToLower() == keycolumn.ToLower())
@@ -571,8 +553,6 @@ namespace DMS.SqlServer
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -618,8 +598,6 @@ namespace DMS.SqlServer
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -745,8 +723,6 @@ namespace DMS.SqlServer
                     return;
                 }
 
-                OnGetSave();
-
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
                     packageclass += "." + txtCatalog.Text.Trim().ToLower();
@@ -805,8 +781,6 @@ namespace DMS.SqlServer
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -944,8 +918,6 @@ namespace DMS.SqlServer
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 string othersql = String.Empty;
@@ -1170,8 +1142,6 @@ namespace DMS.SqlServer
                     return;
                 }
 
-                OnGetSave();
-
                 string dataType = keyCol.DataType;
                 string defaultnum = "0000000001";
 
@@ -1371,8 +1341,6 @@ namespace DMS.SqlServer
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))

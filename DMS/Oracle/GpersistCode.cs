@@ -15,7 +15,8 @@ namespace DMS.Oracle
     public partial class GpersistCode : DMS.BaseDialogForm
     {
         private PdmTable pTable;
-
+        public string keycolumn = String.Empty;
+        public PdmColumn keyCol = new PdmColumn();
         private bool isHours = false;
 
         private string[] Prefix = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
@@ -459,36 +460,10 @@ namespace DMS.Oracle
             }
         }
 
-        public string keycolumn = String.Empty;
-        public PdmColumn keyCol = new PdmColumn();
+        
 
-        private void OnGetSave()
+        private void OnGetSave(string keycolumn)
         {
-            string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-            keycolumn = String.Empty;
-
-            foreach (string tableset in tablesets)
-            {
-                if (String.IsNullOrEmpty(tableset))
-                    continue;
-
-                string[] sets = tableset.Split('|');
-
-                if (sets.Length <= 0)
-                    continue;
-
-                if (sets[0].ToLower() == "g")
-                {
-                    if (sets.Length != 3)
-                        continue;
-
-                    keycolumn = sets[2];
-
-                    break;
-                }
-            }
-
-
             foreach (PdmColumn item in pTable.Columns)
             {
                 if (item.ColumnCode.ToLower() == keycolumn.ToLower())
@@ -497,7 +472,6 @@ namespace DMS.Oracle
                     break;
                 }
             }
-
         }
 
         private void btnMapper_Click(object sender, EventArgs e)
@@ -519,8 +493,6 @@ namespace DMS.Oracle
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -566,8 +538,6 @@ namespace DMS.Oracle
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -703,8 +673,6 @@ namespace DMS.Oracle
                     return;
                 }
 
-                OnGetSave();
-
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
                     packageclass += "." + txtCatalog.Text.Trim().ToLower();
@@ -763,8 +731,6 @@ namespace DMS.Oracle
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -902,8 +868,6 @@ namespace DMS.Oracle
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 string othersql = String.Empty;
@@ -1128,7 +1092,6 @@ namespace DMS.Oracle
                     return;
                 }
 
-                OnGetSave();
                 string vars = String.Empty;
                 string defaultnum = "0000000001";
                 string datatype = keyCol.DataType.ToLower();
@@ -1329,8 +1292,6 @@ namespace DMS.Oracle
                     Global.ShowSysInfo("请先打卡！");
                     return;
                 }
-
-                OnGetSave();
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
@@ -1534,6 +1495,12 @@ namespace DMS.Oracle
                     txtCatalog.Text = tables[1].ToLower();
                     txtClassName.Text = tablename;
                     txtValue.Text = tablename.ToLower();
+                }
+
+                if (pkc != null)
+                {
+                    keycolumn = pkc.ColumnCode;
+                    OnGetSave(keycolumn);
                 }
 
                 if (String.IsNullOrEmpty(pTable.TableSet))
