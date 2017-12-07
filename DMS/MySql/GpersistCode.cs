@@ -215,18 +215,18 @@ namespace DMS.MySql
             return true;
         }
 
-        private void saveConfig()
+        private bool saveConfig()
         {
             try
             {
                 if (!verifyInfo())
                 {
-                    return;
+                    return false;
                 }
 
                 if (!varifySet(txtSet.Text))
                 {
-                    return;
+                    return false;
                 }
 
                 pTable.TableSet = txtSet.Text;
@@ -279,7 +279,7 @@ namespace DMS.MySql
 
                             for (j = 0; j < cols.Count; j++)
                             {
-                                if (cols[j].ColumnCode == col.ColumnCode)
+                                if (cols[j].ColumnCode.ToLower() == col.ColumnCode.ToLower())
                                 {
                                     cols.Insert(j + 1, col);
                                     break;
@@ -293,6 +293,7 @@ namespace DMS.MySql
 
                 dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(pTable.DBID);
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
+                return true;
             }
             catch (Exception)
             {
@@ -303,8 +304,10 @@ namespace DMS.MySql
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            saveConfig();
-            Global.ShowSysInfo("配置信息保存成功！");
+            if (saveConfig())
+            {
+                 Global.ShowSysInfo("配置信息保存成功！");
+            } 
         }
 
         private void btnSet_Click(object sender, EventArgs e)
@@ -484,20 +487,13 @@ namespace DMS.MySql
             }
         }
 
-        public string gname = String.Empty;
-        public string gcolumn = String.Empty;
-        public string sname = String.Empty;
-        public string scolumn = String.Empty;
-        public PdmColumn gCol = new PdmColumn();
-        public PdmColumn sCol = new PdmColumn();
+        public string keycolumn = String.Empty;
+        public PdmColumn keyCol = new PdmColumn();
 
         private void OnGetSave()
         {
             string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-            gname = String.Empty;
-            gcolumn = String.Empty;
-            sname = String.Empty;
-            scolumn = String.Empty;
+            keycolumn = String.Empty;
 
             foreach (string tableset in tablesets)
             {
@@ -514,52 +510,22 @@ namespace DMS.MySql
                     if (sets.Length != 3)
                         continue;
 
-                    gname = sets[1];
-                    gcolumn = sets[2];
+                    keycolumn = sets[2];
 
                     break;
                 }
             }
 
-            foreach (string tableset in tablesets)
-            {
-                if (String.IsNullOrEmpty(tableset))
-                    continue;
-
-                string[] sets = tableset.Split('|');
-
-                if (sets.Length <= 0)
-                    continue;
-
-                if (sets[0].ToLower() == "s")
-                {
-                    if (sets.Length != 3)
-                        continue;
-
-                    sname = sets[1];
-                    scolumn = sets[2];
-
-                    break;
-                }
-            }
 
             foreach (PdmColumn item in pTable.Columns)
             {
-                if (item.ColumnCode.ToLower() == gcolumn.ToLower())
+                if (item.ColumnCode.ToLower() == keycolumn.ToLower())
                 {
-                    gCol = item;
+                    keyCol = item;
                     break;
                 }
             }
 
-            foreach (PdmColumn item in pTable.Columns)
-            {
-                if (item.ColumnCode.ToLower() == scolumn.ToLower())
-                {
-                    sCol = item;
-                    break;
-                }
-            }
         }
 
         private void btnMapper_Click(object sender, EventArgs e)
@@ -953,44 +919,7 @@ namespace DMS.MySql
                     return;
                 }
 
-                string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-                string pname = String.Empty;
-                string column = String.Empty;
-
-                foreach (string tableset in tablesets)
-                {
-                    if (String.IsNullOrEmpty(tableset))
-                        continue;
-
-                    string[] sets = tableset.Split('|');
-
-                    if (sets.Length <= 0)
-                        continue;
-
-                    if (sets[0].ToLower() == "g")
-                    {
-                        if (sets.Length != 3)
-                            continue;
-
-                        pname = sets[1];
-                        column = sets[2];
-
-                        break;
-                    }
-                }
-
-                if (String.IsNullOrEmpty(pname))
-                    return;
-
-                PdmColumn pColumn = new PdmColumn();
-                foreach (PdmColumn item in pTable.Columns)
-                {
-                    if (item.ColumnCode.ToLower() == column.ToLower())
-                    {
-                        pColumn = item;
-                        break;
-                    }
-                }
+                OnGetSave();
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 string othersql = String.Empty;
@@ -999,9 +928,9 @@ namespace DMS.MySql
                 if (cbPage.Checked)
                 {
                     txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Search_" + pname + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Search_" + txtClassName.Text + ";" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Search_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Search_" + txtClassName.Text + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "in _search varchar(4000), " + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "in _start int, " + PublicTools.WriteEnter(1);
@@ -1073,7 +1002,7 @@ namespace DMS.MySql
                     txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = concat(@Sql, ' and ',  _search);" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = concat(@Sql,' order by a.baseid limit ',_start-1,',',_end);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = concat(@Sql,' order by a."+keycolumn.ToLower()+" limit ',_start-1,',',_end);" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "prepare stmt from @Sql;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "execute stmt;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "deallocate prepare stmt;" + PublicTools.WriteEnter(1);
@@ -1084,12 +1013,12 @@ namespace DMS.MySql
                 else
                 {
                     txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Get_" + pname + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Get_" + txtClassName.Text + ";" + PublicTools.WriteEnter(1);
 
 
-                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Get_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Get_" + txtClassName.Text + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(1) + "in _" + pColumn.ColumnCode.ToLower() + " " + pColumn.DataType.ToLower() + "," + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "in _" + keycolumn.ToLower() + " " + keyCol.DataType.ToLower() + "," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "in _getaction varchar(10)" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
@@ -1140,11 +1069,11 @@ namespace DMS.MySql
                         txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 10);
                     txtResult.Text += PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(3) + "order by a." + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "order by a." + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(1) + "elseif (_getaction = 'row')" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "if _" + pColumn.ColumnCode.ToLower() + " is not null " + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "if _" + keycolumn.ToLower() + " is not null " + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "select a.*";
@@ -1175,7 +1104,7 @@ namespace DMS.MySql
                         if (othersql.IndexOf("a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower()) < 0)
                             othersql += "a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower() + " and ";
                     }
-                    txtResult.Text += othersql + "a." + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += othersql + "a." + keycolumn.ToLower() + " = _" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
@@ -1217,48 +1146,9 @@ namespace DMS.MySql
                     return;
                 }
 
-                string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-                string pname = String.Empty;
-                string column = String.Empty;
-                string primaryID = String.Empty;
+                OnGetSave();
 
-                foreach (string tableset in tablesets)
-                {
-                    if (String.IsNullOrEmpty(tableset))
-                        continue;
-
-                    string[] sets = tableset.Split('|');
-
-                    if (sets.Length <= 0)
-                        continue;
-
-                    if (sets[0].ToLower() == "s")
-                    {
-                        if (sets.Length != 3)
-                            continue;
-
-                        pname = sets[1];
-                        column = sets[2];
-
-                        break;
-                    }
-                }
-
-                if (String.IsNullOrEmpty(pname))
-                    return;
-
-                PdmColumn pColumn = new PdmColumn();
-                foreach (PdmColumn item in pTable.Columns)
-                {
-                    if (item.ColumnCode.ToLower() == column.ToLower())
-                    {
-                        pColumn = item;
-                        break;
-                    }
-                }
-
-                string keyColumn = pColumn.ColumnCode;
-                string dataType = pColumn.DataType;
+                string dataType = keyCol.DataType;
                 string defaultnum = "0000000001";
 
                 if (dataType.IndexOf("(") < 0)
@@ -1270,52 +1160,52 @@ namespace DMS.MySql
                 int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
 
                 txtResult.Text = PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Create_" + keyColumn + ";" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Create_" + keyColumn + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Create_" + keycolumn + ";" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Create_" + keycolumn + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "out _" + keyColumn.ToLower() + " " + dataType + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "out _" + keycolumn.ToLower() + " " + dataType + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
 
                 if (length > 10)
                 {
-                    txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keyColumn.ToLower() + " ," + (length - 10) + ")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keyColumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(right(" + keycolumn.ToLower() + " ," + (length - 10) + ")) into @maxno from " + pTable.TableCode + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + " where left(" + keycolumn.ToLower() + " ,10) = concat('PK',date_format(now(), '%Y%m%d'));" + PublicTools.WriteEnter(1);
 
                     txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), '" + defaultnum.Substring(defaultnum.Length - (length - 10), length - 10) + "');" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), '" + defaultnum.Substring(defaultnum.Length - (length - 10), length - 10) + "');" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), right(concat('0000000000',(convert(right(@maxno, " + (length - 10) + "), signed)+1))," + (length - 10) + "));" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = concat('PK', date_format(now(), '%Y%m%d'), right(concat('0000000000',(convert(right(@maxno, " + (length - 10) + "), signed)+1))," + (length - 10) + "));" + PublicTools.WriteEnter(1);
                 }
                 else
                 {
-                    txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keyColumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(1) + "select max(" + keycolumn.ToLower() + ") into @maxno from " + pTable.TableCode + ";" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "if @maxno is null" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = '" + defaultnum.Substring(defaultnum.Length - length, length) + "';" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "else" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keyColumn.ToLower() + " = right(concat('0000000000',(convert(@maxno,signed)+1))," + length + ");" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = right(concat('0000000000',(convert(@maxno,signed)+1))," + length + ");" + PublicTools.WriteEnter(1);
                 }
                 txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(1) + "select _" + keyColumn.ToLower() + ";" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(1) + "select _" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "end" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "$$" + PublicTools.WriteEnter(2);
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
                 txtResult.Text += PublicTools.WriteTab(0) + "delimiter $$" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Save_" + pname + ";" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "drop procedure if exists P_Save_" + txtClassName.Text + ";" + PublicTools.WriteEnter(1);
 
-                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Save_" + pname + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "create procedure P_Save_" + txtClassName.Text + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
 
                 foreach (ColumnTable item in pColumnTables)
                 {
                     if (item.Prefix == "a")
                     {
-                        if (pColumn.ColumnCode.IndexOf(item.ColumnCode) >= 0)
+                        if (keycolumn.IndexOf(item.ColumnCode) >= 0)
                         {
-                            primaryID = item.DisplayColumn;
+                            keycolumn = item.DisplayColumn;
                             txtResult.Text += PublicTools.WriteTab(1) + "inout _" + item.DisplayColumn.ToLower() + " " + item.DataType + "," + PublicTools.WriteEnter(1);
                         }
                         else
@@ -1331,10 +1221,10 @@ namespace DMS.MySql
                 txtResult.Text += PublicTools.WriteTab(1) + "if _action = 2" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
-                txtResult.Text += PublicTools.WriteTab(2) + "call P_Create_" + primaryID + "(@" + primaryID.ToLower() + ");" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "set _" + primaryID.ToLower() + " = @" + primaryID.ToLower() + ";" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "call P_Create_" + keycolumn + "(@" + keycolumn.ToLower() + ");" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "set _" + keycolumn.ToLower() + " = @" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
 
-                txtResult.Text += PublicTools.WriteTab(2) + "insert into " + pColumn.TableCode.ToLower() + "(";
+                txtResult.Text += PublicTools.WriteTab(2) + "insert into " + pTable.TableCode + "(";
                 foreach (ColumnTable item in pColumnTables)
                 {
                     if (item.Prefix == "a")
@@ -1357,20 +1247,20 @@ namespace DMS.MySql
                     txtResult.Text += PublicTools.WriteTab(1) + "elseif _action = 3" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
-                    txtResult.Text += PublicTools.WriteTab(2) + "update " + pColumn.TableCode.ToLower() + " set ";
+                    txtResult.Text += PublicTools.WriteTab(2) + "update " + pTable.TableCode + " set ";
                     foreach (ColumnTable item in pColumnTables)
                     {
-                        if ((item.Prefix == "a") && (item.DisplayColumn != pColumn.ColumnCode))
+                        if ((item.Prefix == "a") && (item.DisplayColumn != keycolumn))
                             txtResult.Text += PublicTools.WriteEnter(1) + PublicTools.WriteTab(3) + item.DisplayColumn.ToLower() + " = _" + item.DisplayColumn.ToLower() + ",";
                     }
                     txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 1) + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(3) + "where " + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(3) + "where " + keycolumn.ToLower() + " = _" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
                 if (cbDelete.Checked)
                 {
                     txtResult.Text += PublicTools.WriteTab(1) + "elseif _action = 4" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pColumn.TableCode.ToLower() + " where " + pColumn.ColumnCode.ToLower() + " = _" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "delete from " + pTable.TableCode + " where " + keycolumn.ToLower() + " = _" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "end if;" + PublicTools.WriteEnter(1);
@@ -1451,59 +1341,21 @@ namespace DMS.MySql
 
                 OnGetSave();
 
-                string[] tablesets = PublicTools.TextReadToArr(txtSet.Text);
-                string pname = String.Empty;
-                string column = String.Empty;
-                foreach (string tableset in tablesets)
-                {
-                    if (String.IsNullOrEmpty(tableset))
-                        continue;
-
-                    string[] sets = tableset.Split('|');
-
-                    if (sets.Length <= 0)
-                        continue;
-
-                    if (sets[0].ToLower() == "g")
-                    {
-                        if (sets.Length != 3)
-                            continue;
-
-                        pname = sets[1];
-                        column = sets[2];
-
-                        break;
-                    }
-                }
-                if (String.IsNullOrEmpty(pname))
-                    return;
-
-                PdmColumn pColumn = new PdmColumn();
-                foreach (PdmColumn item in pTable.Columns)
-                {
-                    if (item.ColumnCode.ToLower() == column.ToLower())
-                    {
-                        pColumn = item;
-                        break;
-                    }
-                }
-
-
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
                     packageclass += "." + txtCatalog.Text.Trim().ToLower();
                 packageclass += "." + txtClassName.Text;
 
                 txtResult.Text = PublicTools.WriteTab(1) + "<select id=\"Get" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + txtClassName.Text + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "#{" + keycolumn.ToLower() + ",javaType=" + PublicTools.GetJavaType(keyCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(keyCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
 
                 txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"GetList" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + gname + "(" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "#{" + gCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(gCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(gCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Get_" + txtClassName.Text + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "#{" + keyCol.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(keyCol.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(keyCol.GetColType()) + "}," + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(3) + "#{item.getaction,javaType=String,jdbcType=VARCHAR}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + ")}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "</select>" + PublicTools.WriteEnter(1);
@@ -1511,7 +1363,7 @@ namespace DMS.MySql
                 if (cbSearch.Checked)
                 {
                     txtResult.Text += PublicTools.WriteTab(1) + "<select id=\"Search" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" resultType=\"" + packageclass + "\" >" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "{call P_Search_" + gname + "(" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "{call P_Search_" + txtClassName.Text + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.search,javaType=String,jdbcType=VARCHAR}," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.start,javaType=int,jdbcType=INTEGER}," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "#{search.end,javaType=int,jdbcType=INTEGER}," + PublicTools.WriteEnter(1);
@@ -1523,11 +1375,11 @@ namespace DMS.MySql
                 }
 
                 txtResult.Text += PublicTools.WriteTab(1) + "<update id=\"Save" + txtClassName.Text + "\" statementType=\"CALLABLE\" parameterType=\"" + packageclass + "\" flushCache=\"true\">" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Save_" + sname + "(" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + "{call P_Save_" + txtClassName.Text + "(" + PublicTools.WriteEnter(1);
 
                 foreach (PdmColumn c in pTable.Columns)
                 {
-                    if (pColumn.ColumnCode.IndexOf(c.ColumnCode) >= 0)
+                    if (keycolumn.IndexOf(c.ColumnCode) >= 0)
                     {
                         txtResult.Text += PublicTools.WriteTab(3) + "#{" + c.ColumnCode.ToLower() + ",javaType=" + PublicTools.GetJavaType(c.GetColType()) + ",jdbcType=" + PublicTools.GetJdbcType(c.GetColType()) + ",mode=INOUT}," + PublicTools.WriteEnter(1);
                     }

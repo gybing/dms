@@ -911,7 +911,7 @@ namespace DMS.Oracle
 
                 if (cbPage.Checked)
                 {
-                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_SEARCH_" + keyCol.ColumnCode.ToUpper() + PublicTools.WriteEnter(1);
+                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_SEARCH_" + txtClassName.Text.ToUpper() + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_search in varchar2, " + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_start in int, " + PublicTools.WriteEnter(1);
@@ -996,7 +996,7 @@ namespace DMS.Oracle
                         datatype = keyCol.DataType.Substring(0, keyCol.DataType.IndexOf("(")).ToLower();
                     }
 
-                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_GET_" + keycolumn.ToUpper() + PublicTools.WriteEnter(1);
+                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_GET_" + txtClassName.Text.ToUpper() + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_" + keycolumn.ToLower() + " in " + datatype + "," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_getaction in varchar2," + PublicTools.WriteEnter(1);
@@ -1129,7 +1129,6 @@ namespace DMS.Oracle
                 }
 
                 OnGetSave();
-                string primaryID = String.Empty;
                 string vars = String.Empty;
                 string defaultnum = "0000000001";
                 string datatype = keyCol.DataType.ToLower();
@@ -1151,7 +1150,7 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(1) + "p_" + keycolumn.ToLower() + " in out " + datatype + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "as" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(0) + "v_maxno varchar2(20);" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "v_maxno " + keyCol.DataType.ToLower() + ";" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "begin" + PublicTools.WriteEnter(1);
 
                 if (length > 10)
@@ -1180,7 +1179,7 @@ namespace DMS.Oracle
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
 
-                txtResult.Text += PublicTools.WriteTab(0) + "create or replace procedure P_SAVE_" + keycolumn.ToUpper() + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "create or replace procedure P_SAVE_" + txtClassName.Text.ToUpper() + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
 
                 foreach (ColumnTable item in pColumnTables)
@@ -1189,7 +1188,6 @@ namespace DMS.Oracle
                     {
                         if (keycolumn.IndexOf(item.ColumnCode) >= 0)
                         {
-                            primaryID = item.DisplayColumn;
                             vars = "v_" + item.DisplayColumn.ToLower() + " " + item.DataType.ToLower() + ";";
                             txtResult.Text += PublicTools.WriteTab(1) + "p_" + item.DisplayColumn.ToLower() + " in out " + datatype + "," + PublicTools.WriteEnter(1);
                         }
@@ -1211,10 +1209,10 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(1) + "if p_action = 2" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "then" + PublicTools.WriteEnter(1);
 
-                if (!String.IsNullOrEmpty(primaryID))
+                if (!String.IsNullOrEmpty(keycolumn))
                 {
-                    txtResult.Text += PublicTools.WriteTab(2) + "P_CREATE_" + primaryID.ToUpper() + "(v_" + primaryID.ToLower() + ");" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "p_" + primaryID.ToLower() + " := v_" + primaryID.ToLower() + ";" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "P_CREATE_" + keycolumn.ToUpper() + "(v_" + keycolumn.ToLower() + ");" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "p_" + keycolumn.ToLower() + " := v_" + keycolumn.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
 
                 txtResult.Text += PublicTools.WriteTab(2) + "insert into " + keycolumn.ToLower() + "(";
@@ -1507,13 +1505,11 @@ namespace DMS.Oracle
         {
             try
             {
-                // 获取所有的column
                 DataTable columns = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
                 dgvColumn.DataSource = columns;
 
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
 
-                // 获取主键的column
                 PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
 
                 txtPackage.Text = Program.ProjectCode;
