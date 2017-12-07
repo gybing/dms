@@ -323,7 +323,7 @@ namespace GuFun.WinCore
             if (name.Length <= 1)
                 return name.ToUpper();
 
-            return name.Substring(0, 1).ToUpper() + name.Substring(1);
+            return name.Substring(0, 1).ToUpper() + name.Substring(1).ToLower();
         }
 
         public static IList<PdmTable> GetPmtTables(IList<PdmTable> tables)
