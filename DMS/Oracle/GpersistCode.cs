@@ -985,7 +985,7 @@ namespace DMS.Oracle
 
                 if (cbPage.Checked)
                 {
-                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_Search_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_SEARCH_" + pname.ToUpper() + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_search in varchar2, " + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_start in int, " + PublicTools.WriteEnter(1);
@@ -1070,7 +1070,7 @@ namespace DMS.Oracle
                         datatype = pColumn.DataType.Substring(0, pColumn.DataType.IndexOf("(")).ToLower();
                     }
 
-                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_Get_" + pname + PublicTools.WriteEnter(1);
+                    txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_GET_" + pname.ToUpper() + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_" + pColumn.ColumnCode.ToLower() + " in " + datatype + "," + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "p_getaction in varchar2," + PublicTools.WriteEnter(1);
@@ -1157,8 +1157,8 @@ namespace DMS.Oracle
                         if (item.TableCode == item.RelaTable)
                             continue;
 
-                        if (othersql.IndexOf("a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + ".\"" + item.RelaColumn + "\"") < 0)
-                            othersql += "a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + ".\"" + item.RelaColumn + "\" and ";
+                        if (othersql.IndexOf("a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + ".\"" + item.RelaColumn.ToLower() + "\"") < 0)
+                            othersql += "a." + item.ColumnCode.ToLower() + " = " + item.Prefix.ToLower() + "." + item.RelaColumn.ToLower() + " and ";
                     }
                     txtResult.Text += othersql + "a." + pColumn.ColumnCode.ToLower() + " = p_" + pColumn.ColumnCode.ToLower() + ";" + PublicTools.WriteEnter(1);
 
@@ -1260,7 +1260,7 @@ namespace DMS.Oracle
 
                 int length = Convert.ToInt32(dataType.Substring(dataType.IndexOf("(") + 1, dataType.Length - (dataType.IndexOf("(") + 1) - 1));
 
-                txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_Create_" + PublicTools.GetFirstUpper(keyColumn) + PublicTools.WriteEnter(1);
+                txtResult.Text = PublicTools.WriteTab(0) + "create or replace procedure P_CREATE_" + keyColumn.ToUpper() + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "p_" + keyColumn.ToLower() + " in out " + datatype + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + ")" + PublicTools.WriteEnter(1);
@@ -1294,7 +1294,7 @@ namespace DMS.Oracle
 
                 List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
 
-                txtResult.Text += PublicTools.WriteTab(0) + "create or replace procedure P_Save_" + pname + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(0) + "create or replace procedure P_SAVE_" + pname.ToUpper() + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(0) + "(" + PublicTools.WriteEnter(1);
 
                 foreach (ColumnTable item in pColumnTables)
@@ -1327,7 +1327,7 @@ namespace DMS.Oracle
 
                 if (!String.IsNullOrEmpty(primaryID))
                 {
-                    txtResult.Text += PublicTools.WriteTab(2) + "P_Create_" + PublicTools.GetFirstUpper(primaryID) + "(v_" + primaryID.ToLower() + ");" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "P_CREATE_" + primaryID.ToUpper() + "(v_" + primaryID.ToLower() + ");" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "p_" + primaryID.ToLower() + " := v_" + primaryID.ToLower() + ";" + PublicTools.WriteEnter(1);
                 }
 
@@ -1487,19 +1487,23 @@ namespace DMS.Oracle
 
                 string packageclass = "com." + txtPackage.Text + ".entity";
                 if (!String.IsNullOrEmpty(txtCatalog.Text.Trim()))
+                {
                     packageclass += "." + txtCatalog.Text.Trim().ToLower();
+                }
                 packageclass += "." + txtClassName.Text;
 
+                List<ColumnTable> pColumnTables = SqlBaseProvider.GetColumnTable(pTable.DBID, pTable.TableCode);
+
                 txtResult.Text = PublicTools.WriteTab(1) + "<resultMap id=\"" + txtClassName.Text.ToLower() + "\" type=\"" + packageclass + "\">" + PublicTools.WriteEnter(1);
-                foreach (PdmColumn c in pTable.Columns)
+                foreach (ColumnTable c in pColumnTables)
                 {
-                    if (pColumn.ColumnCode.ToLower().IndexOf(c.ColumnCode) >= 0)
+                    if (column.ToLower() == c.DisplayColumn.ToLower())
                     {
-                        txtResult.Text += PublicTools.WriteTab(2) + "<id property=\"" + c.ColumnCode.ToLower() + "\" column=\"" + c.ColumnCode.ToLower() + "\"/>" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(2) + "<id property=\"" + c.DisplayColumn.ToLower() + "\" column=\"" + c.DisplayColumn.ToLower() + "\"/>" + PublicTools.WriteEnter(1);
                     }
                     else
                     {
-                        txtResult.Text += PublicTools.WriteTab(2) + "<result property=\"" + c.ColumnCode.ToLower() + "\" column=\"" + c.ColumnCode.ToLower() + "\"/>" + PublicTools.WriteEnter(1);
+                        txtResult.Text += PublicTools.WriteTab(2) + "<result property=\"" + c.DisplayColumn.ToLower() + "\" column=\"" + c.DisplayColumn.ToLower() + "\"/>" + PublicTools.WriteEnter(1);
                     }
                 }
                 txtResult.Text += PublicTools.WriteTab(1) + "</resultMap>" + PublicTools.WriteEnter(1);
@@ -1688,8 +1692,8 @@ namespace DMS.Oracle
                 {
                     if (pkc != null)
                     {
-                        String txtSetText = "G|" + tablename + "|" + PublicTools.GetFirstUpper(pkc.ColumnCode) + PublicTools.WriteEnter(1);
-                        txtSetText += "S|" + tablename + "|" + PublicTools.GetFirstUpper(pkc.ColumnCode);
+                        String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode.ToUpper() + PublicTools.WriteEnter(1);
+                        txtSetText += "S|" + tablename + "|" + pkc.ColumnCode.ToUpper();
                         txtSet.Text = txtSetText;
                         saveConfig();
                     }
