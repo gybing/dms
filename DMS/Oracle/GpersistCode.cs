@@ -615,11 +615,10 @@ namespace DMS.Oracle
                 txtResult.Text += PublicTools.WriteTab(2) + "com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper mapper = DBUtils.getMapper(session, com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper.class);	" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "item.getItem().setGetaction(ActionGetType.row.toString());" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "mapper.Get" + txtClassName.Text + "(item);" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(2) + txtClassName.Text + " rtv = new " + txtClassName.Text + "()" + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(2) + txtClassName.Text + " rtv = new " + txtClassName.Text + "();" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "List<" + txtClassName.Text + "> lists = item.getItem().getBean();" + PublicTools.WriteEnter(1);
-
                 txtResult.Text += PublicTools.WriteTab(2) + "for(" + txtClassName.Text + " " + txtClassName.Text.ToLower() +" : lists) {" + PublicTools.WriteEnter(1);
-                txtResult.Text += PublicTools.WriteTab(3) + "rtv = " + txtClassName.Text.ToLower() + PublicTools.WriteEnter(1);
+                txtResult.Text += PublicTools.WriteTab(3) + "rtv = " + txtClassName.Text.ToLower() +";"+ PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "}" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(2) + "return rtv;" + PublicTools.WriteEnter(1);
                 txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
@@ -649,7 +648,7 @@ namespace DMS.Oracle
                     txtResult.Text += PublicTools.WriteTab(2) + "com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper mapper = DBUtils.getMapper(session, com." + txtPackage.Text + ".mapper.sqlserver." + txtPrefix.Text + "Mapper.class);	" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "mapper.Search" + txtClassName.Text + "(item);" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "List<" + txtClassName.Text + "> lists = item.getItem().getBean();" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "return lists" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "return lists;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(1) + "}" + PublicTools.WriteEnter(2);
                 }
 
