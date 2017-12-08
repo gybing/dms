@@ -1495,29 +1495,33 @@ namespace DMS.Oracle
                     txtCatalog.Text = tables[1].ToLower();
                     txtClassName.Text = tablename;
                     txtValue.Text = tablename.ToLower();
-                }
 
-                if (pkc != null)
-                {
-                    keycolumn = pkc.ColumnCode;
-                    OnGetSave(keycolumn);
-                }
-
-                if (String.IsNullOrEmpty(pTable.TableSet))
-                {
                     if (pkc != null)
                     {
-                        String txtSetText = "G|" + tablename.ToUpper() + "|" + pkc.ColumnCode.ToUpper() + PublicTools.WriteEnter(1);
-                        txtSetText += "S|" + tablename.ToUpper() + "|" + pkc.ColumnCode.ToUpper();
-                        txtSet.Text = txtSetText;
-                        saveConfig();
+                        keycolumn = pkc.ColumnCode;
+                        OnGetSave(keycolumn);
+                    }
+                    else
+                    {
+                        keyCol = pTable.Columns[0];
+                        keycolumn = pTable.Columns[0].ColumnCode;
+                    }
+
+                    if (String.IsNullOrEmpty(pTable.TableSet))
+                    {
+                        if (pkc != null)
+                        {
+                            String txtSetText = "G|" + tablename.ToUpper() + "|" + pkc.ColumnCode.ToUpper() + PublicTools.WriteEnter(1);
+                            txtSetText += "S|" + tablename.ToUpper() + "|" + pkc.ColumnCode.ToUpper();
+                            txtSet.Text = txtSetText;
+                            saveConfig();
+                        }
+                    }
+                    else
+                    {
+                        txtSet.Text = pTable.TableSet;
                     }
                 }
-                else
-                {
-                    txtSet.Text = pTable.TableSet;
-                }
-
             }
             catch (Exception ex)
             {

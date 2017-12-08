@@ -122,29 +122,33 @@ namespace DMS.SqlServer
                     txtCatalog.Text = tables[1].ToLower();
                     txtClassName.Text = tablename;
                     txtValue.Text = tablename.ToLower();
-                }
 
-                if (pkc != null)
-                {
-                    keycolumn = pkc.ColumnCode;
-                    OnGetSave(keycolumn);
-                }
-
-                if (String.IsNullOrEmpty(pTable.TableSet))
-                {
                     if (pkc != null)
                     {
-                        String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
-                        txtSetText += "S|" + tablename + "|" + pkc.ColumnCode;
-                        txtSet.Text = txtSetText;
-                        saveConfig();
+                        keycolumn = pkc.ColumnCode;
+                        OnGetSave(keycolumn);
+                    }
+                    else
+                    {
+                        keyCol = pTable.Columns[0];
+                        keycolumn = pTable.Columns[0].ColumnCode;
+                    }
+
+                    if (String.IsNullOrEmpty(pTable.TableSet))
+                    {
+                        if (pkc != null)
+                        {
+                            String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
+                            txtSetText += "S|" + tablename + "|" + pkc.ColumnCode;
+                            txtSet.Text = txtSetText;
+                            saveConfig();
+                        }
+                    }
+                    else
+                    {
+                        txtSet.Text = pTable.TableSet;
                     }
                 }
-                else
-                {
-                    txtSet.Text = pTable.TableSet;
-                }
-
                 
             }
             catch (Exception ex)
