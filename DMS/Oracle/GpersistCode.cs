@@ -30,15 +30,7 @@ namespace DMS.Oracle
         private void initForm()
         {
             CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.Oracle)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
-
             ddlDB.SelectedValueChanged += new EventHandler(ddlDB_SelectedIndexChanged);
-
-            dgvColumn.AllowUserToAddRows = false;
-            dgvColumn.AllowUserToDeleteRows = false;
-
-            CtrlHelper.InitDataGridView(dgvColumn);
-            CtrlHelper.InitDataGridView(dgvPmtSet);
-
             pTable = new PdmTable();
         }
 
@@ -60,10 +52,6 @@ namespace DMS.Oracle
             txtCatalog.Text = String.Empty;
             txtClassName.Text = String.Empty;
             txtValue.Text = String.Empty;
-            dgvColumn.DataSource = null;
-
-            dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
-
             BusHours hours = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
 
             if (hours != null)
@@ -95,12 +83,6 @@ namespace DMS.Oracle
             if (ddlDB.SelectedValue.ToString().ToLower() == "select")
             {
                 Global.ShowSysInfo("请选择数据库！");
-                return false;
-            }
-
-            if (dgvColumn.Rows.Count <= 0)
-            {
-                Global.ShowSysInfo("请选择数据表！");
                 return false;
             }
 
@@ -262,8 +244,6 @@ namespace DMS.Oracle
                         prefixcnt++;
                     }
                 }
-
-                dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(pTable.DBID);
 
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
                 return true;
@@ -1467,8 +1447,6 @@ namespace DMS.Oracle
             try
             {
                 DataTable columns = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                dgvColumn.DataSource = columns;
-
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
 
                 PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
@@ -1513,6 +1491,13 @@ namespace DMS.Oracle
                         {
                             String txtSetText = "G|" + tablename.ToUpper() + "|" + pkc.ColumnCode.ToUpper() + PublicTools.WriteEnter(1);
                             txtSetText += "S|" + tablename.ToUpper() + "|" + pkc.ColumnCode.ToUpper();
+                            txtSet.Text = txtSetText;
+                            saveConfig();
+                        }
+                        else
+                        {
+                            String txtSetText = "G|" + tablename + "|" + keycolumn + PublicTools.WriteEnter(1);
+                            txtSetText += "S|" + tablename + "|" + keycolumn;
                             txtSet.Text = txtSetText;
                             saveConfig();
                         }

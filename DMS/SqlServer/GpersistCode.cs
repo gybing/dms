@@ -31,13 +31,6 @@ namespace DMS.SqlServer
             CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.SqlServer)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
 
             ddlDB.SelectedValueChanged += new EventHandler(ddlDB_SelectedIndexChanged);
-
-            dgvColumn.AllowUserToAddRows = false;
-            dgvColumn.AllowUserToDeleteRows = false;
-
-            CtrlHelper.InitDataGridView(dgvColumn);
-            CtrlHelper.InitDataGridView(dgvPmtSet);
-
             pTable = new PdmTable();
         }
 
@@ -59,9 +52,6 @@ namespace DMS.SqlServer
             txtCatalog.Text = String.Empty;
             txtClassName.Text = String.Empty;
             txtValue.Text = String.Empty;
-            dgvColumn.DataSource = null;
-
-            dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
 
             BusHours hours = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
 
@@ -94,7 +84,6 @@ namespace DMS.SqlServer
             try
             {
                 DataTable columns = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                dgvColumn.DataSource = columns;
 
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
                 PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
@@ -143,6 +132,13 @@ namespace DMS.SqlServer
                             txtSet.Text = txtSetText;
                             saveConfig();
                         }
+                        else
+                        {
+                            String txtSetText = "G|" + tablename + "|" + keycolumn + PublicTools.WriteEnter(1);
+                            txtSetText += "S|" + tablename + "|" + keycolumn;
+                            txtSet.Text = txtSetText;
+                            saveConfig();
+                        }
                     }
                     else
                     {
@@ -162,12 +158,6 @@ namespace DMS.SqlServer
             if (ddlDB.SelectedValue.ToString().ToLower() == "select")
             {
                 Global.ShowSysInfo("请选择数据库！");
-                return false;
-            }
-
-            if (dgvColumn.Rows.Count <= 0)
-            {
-                Global.ShowSysInfo("请选择数据表！");
                 return false;
             }
 
@@ -336,7 +326,6 @@ namespace DMS.SqlServer
                     }
                 }
 
-                dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(pTable.DBID);
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
                 return true;
             }

@@ -32,19 +32,6 @@
             this.plCenter = new System.Windows.Forms.Panel();
             this.txtResult = new System.Windows.Forms.RichTextBox();
             this.txtSet = new System.Windows.Forms.RichTextBox();
-            this.plRight = new System.Windows.Forms.Panel();
-            this.dgvPmtSet = new System.Windows.Forms.DataGridView();
-            this.TableSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plColumn = new System.Windows.Forms.Panel();
-            this.dgvColumn = new System.Windows.Forms.DataGridView();
-            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrecision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdentity = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnNotNull = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,10 +75,6 @@
             this.ddlDB = new System.Windows.Forms.ComboBox();
             this.lbDB = new System.Windows.Forms.Label();
             this.plCenter.SuspendLayout();
-            this.plRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).BeginInit();
-            this.plColumn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvColumn)).BeginInit();
             this.plTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,11 +101,10 @@
             // 
             this.plCenter.Controls.Add(this.txtResult);
             this.plCenter.Controls.Add(this.txtSet);
-            this.plCenter.Controls.Add(this.plRight);
             this.plCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plCenter.Location = new System.Drawing.Point(0, 130);
             this.plCenter.Name = "plCenter";
-            this.plCenter.Size = new System.Drawing.Size(1424, 250);
+            this.plCenter.Size = new System.Drawing.Size(1424, 510);
             this.plCenter.TabIndex = 2;
             // 
             // txtResult
@@ -130,7 +112,7 @@
             this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResult.Location = new System.Drawing.Point(310, 0);
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(874, 250);
+            this.txtResult.Size = new System.Drawing.Size(1114, 510);
             this.txtResult.TabIndex = 2;
             this.txtResult.Text = "";
             this.txtResult.WordWrap = false;
@@ -140,127 +122,10 @@
             this.txtSet.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtSet.Location = new System.Drawing.Point(0, 0);
             this.txtSet.Name = "txtSet";
-            this.txtSet.Size = new System.Drawing.Size(310, 250);
+            this.txtSet.Size = new System.Drawing.Size(310, 510);
             this.txtSet.TabIndex = 1;
             this.txtSet.Text = "";
             this.txtSet.WordWrap = false;
-            // 
-            // plRight
-            // 
-            this.plRight.Controls.Add(this.dgvPmtSet);
-            this.plRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.plRight.Location = new System.Drawing.Point(1184, 0);
-            this.plRight.Name = "plRight";
-            this.plRight.Size = new System.Drawing.Size(240, 250);
-            this.plRight.TabIndex = 0;
-            // 
-            // dgvPmtSet
-            // 
-            this.dgvPmtSet.AllowUserToAddRows = false;
-            this.dgvPmtSet.AllowUserToDeleteRows = false;
-            this.dgvPmtSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPmtSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TableSet});
-            this.dgvPmtSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPmtSet.Location = new System.Drawing.Point(0, 0);
-            this.dgvPmtSet.Name = "dgvPmtSet";
-            this.dgvPmtSet.ReadOnly = true;
-            this.dgvPmtSet.RowTemplate.Height = 23;
-            this.dgvPmtSet.Size = new System.Drawing.Size(240, 250);
-            this.dgvPmtSet.TabIndex = 0;
-            // 
-            // TableSet
-            // 
-            this.TableSet.DataPropertyName = "TableSet";
-            this.TableSet.HeaderText = "配置信息";
-            this.TableSet.Name = "TableSet";
-            this.TableSet.ReadOnly = true;
-            this.TableSet.Width = 400;
-            // 
-            // plColumn
-            // 
-            this.plColumn.Controls.Add(this.dgvColumn);
-            this.plColumn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.plColumn.Location = new System.Drawing.Point(0, 380);
-            this.plColumn.Name = "plColumn";
-            this.plColumn.Size = new System.Drawing.Size(1424, 260);
-            this.plColumn.TabIndex = 1;
-            // 
-            // dgvColumn
-            // 
-            this.dgvColumn.AllowUserToAddRows = false;
-            this.dgvColumn.AllowUserToDeleteRows = false;
-            this.dgvColumn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvColumn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnID,
-            this.ColumnName,
-            this.ColumnCode,
-            this.DataType,
-            this.ColumnLength,
-            this.ColumnPrecision,
-            this.ColumnIdentity,
-            this.ColumnNotNull});
-            this.dgvColumn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvColumn.Location = new System.Drawing.Point(0, 0);
-            this.dgvColumn.Name = "dgvColumn";
-            this.dgvColumn.RowTemplate.Height = 23;
-            this.dgvColumn.Size = new System.Drawing.Size(1424, 260);
-            this.dgvColumn.TabIndex = 0;
-            // 
-            // ColumnID
-            // 
-            this.ColumnID.DataPropertyName = "ColumnID";
-            this.ColumnID.HeaderText = "序号";
-            this.ColumnID.Name = "ColumnID";
-            this.ColumnID.Width = 60;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.DataPropertyName = "ColumnName";
-            this.ColumnName.HeaderText = "名称";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.Width = 150;
-            // 
-            // ColumnCode
-            // 
-            this.ColumnCode.DataPropertyName = "ColumnCode";
-            this.ColumnCode.HeaderText = "代码";
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.Width = 150;
-            // 
-            // DataType
-            // 
-            this.DataType.DataPropertyName = "DataType";
-            this.DataType.HeaderText = "数据类型";
-            this.DataType.Name = "DataType";
-            // 
-            // ColumnLength
-            // 
-            this.ColumnLength.DataPropertyName = "ColumnLength";
-            this.ColumnLength.HeaderText = "长度";
-            this.ColumnLength.Name = "ColumnLength";
-            this.ColumnLength.Width = 60;
-            // 
-            // ColumnPrecision
-            // 
-            this.ColumnPrecision.DataPropertyName = "ColumnPrecision";
-            this.ColumnPrecision.HeaderText = "精度";
-            this.ColumnPrecision.Name = "ColumnPrecision";
-            this.ColumnPrecision.Width = 60;
-            // 
-            // ColumnIdentity
-            // 
-            this.ColumnIdentity.DataPropertyName = "ColumnIdentity";
-            this.ColumnIdentity.HeaderText = "自增";
-            this.ColumnIdentity.Name = "ColumnIdentity";
-            this.ColumnIdentity.Width = 60;
-            // 
-            // ColumnNotNull
-            // 
-            this.ColumnNotNull.DataPropertyName = "ColumnNotNull";
-            this.ColumnNotNull.HeaderText = "非空";
-            this.ColumnNotNull.Name = "ColumnNotNull";
-            this.ColumnNotNull.Width = 60;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -738,7 +603,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(1424, 640);
             this.Controls.Add(this.plCenter);
-            this.Controls.Add(this.plColumn);
             this.Controls.Add(this.plTop);
             this.MaximizeBox = true;
             this.MinimizeBox = true;
@@ -747,10 +611,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GpersistCode_FormClosing);
             this.Load += new System.EventHandler(this.GpersistCode_Load);
             this.plCenter.ResumeLayout(false);
-            this.plRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPmtSet)).EndInit();
-            this.plColumn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvColumn)).EndInit();
             this.plTop.ResumeLayout(false);
             this.plTop.PerformLayout();
             this.ResumeLayout(false);
@@ -760,21 +620,9 @@
         #endregion
 
         private GuFun.WinControls.ExPanel plTop;
-        private System.Windows.Forms.Panel plColumn;
         private System.Windows.Forms.Panel plCenter;
-        private System.Windows.Forms.Panel plRight;
-        private System.Windows.Forms.DataGridView dgvPmtSet;
         private System.Windows.Forms.RichTextBox txtSet;
         private System.Windows.Forms.RichTextBox txtResult;
-        private System.Windows.Forms.DataGridView dgvColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecision;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIdentity;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnNotNull;
         private System.Windows.Forms.Label lbDB;
         private System.Windows.Forms.ComboBox ddlDB;
         private System.Windows.Forms.Label lbTable;
@@ -815,7 +663,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TableSet;
         private GuFun.WinControls.VistaButton btnReset;
     }
 }

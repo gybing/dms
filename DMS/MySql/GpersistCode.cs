@@ -30,15 +30,7 @@ namespace DMS.MySql
         private void initForm()
         {
             CtrlHelper.SetDropDownList(ddlDB, SqlBaseProvider.GetDBForCombox(Convert.ToInt32(DataBaseType.MySql)), DropAddType.New, DropAddFlag.Select, String.Empty, "DBName,DBID");
-
             ddlDB.SelectedValueChanged += new EventHandler(ddlDB_SelectedIndexChanged);
-
-            dgvColumn.AllowUserToAddRows = false;
-            dgvColumn.AllowUserToDeleteRows = false;
-
-            CtrlHelper.InitDataGridView(dgvColumn);
-            CtrlHelper.InitDataGridView(dgvPmtSet);
-
             pTable = new PdmTable();
         }
 
@@ -61,9 +53,6 @@ namespace DMS.MySql
             txtCatalog.Text = String.Empty;
             txtClassName.Text = String.Empty;
             txtValue.Text = String.Empty;
-            dgvColumn.DataSource = null;
-
-            dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(dbid);
             BusHours hours = SqlBaseProvider.GetHoursByDB(Program.DBID, Program.ManInfo.Man.ManID, Program.LoginDate);
 
             if (hours != null)
@@ -107,8 +96,6 @@ namespace DMS.MySql
             try
             {
                 DataTable tabels = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                dgvColumn.DataSource = tabels;
-
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
 
                 txtSet.Text = pTable.TableSet;
@@ -124,12 +111,6 @@ namespace DMS.MySql
             if (ddlDB.SelectedValue.ToString().ToLower() == "select")
             {
                 Global.ShowSysInfo("请选择数据库！");
-                return false;
-            }
-
-            if (dgvColumn.Rows.Count <= 0)
-            {
-                Global.ShowSysInfo("请选择数据表！");
                 return false;
             }
 
@@ -292,7 +273,6 @@ namespace DMS.MySql
                     }
                 }
 
-                dgvPmtSet.DataSource = SqlBaseProvider.GetPmtSetByDB(pTable.DBID);
                 SqlBaseProvider.SaveColumnTable(pTable, cols);
                 return true;
             }
@@ -307,8 +287,8 @@ namespace DMS.MySql
         {
             if (saveConfig())
             {
-                 Global.ShowSysInfo("配置信息保存成功！");
-            } 
+                Global.ShowSysInfo("配置信息保存成功！");
+            }
         }
 
         private void btnSet_Click(object sender, EventArgs e)
@@ -488,7 +468,7 @@ namespace DMS.MySql
             }
         }
 
-       
+
 
         private void OnGetSave(string keycolumn)
         {
@@ -966,7 +946,7 @@ namespace DMS.MySql
                     txtResult.Text += PublicTools.WriteTab(2) + "then" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(3) + "set @Sql = concat(@Sql, ' and ',  _search);" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "end if;" + PublicTools.WriteEnter(1);
-                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = concat(@Sql,' order by a."+keycolumn.ToLower()+" limit ',_start-1,',',_end);" + PublicTools.WriteEnter(1);
+                    txtResult.Text += PublicTools.WriteTab(2) + "set @Sql = concat(@Sql,' order by a." + keycolumn.ToLower() + " limit ',_start-1,',',_end);" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "prepare stmt from @Sql;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "execute stmt;" + PublicTools.WriteEnter(1);
                     txtResult.Text += PublicTools.WriteTab(2) + "deallocate prepare stmt;" + PublicTools.WriteEnter(1);
@@ -1455,7 +1435,6 @@ namespace DMS.MySql
             try
             {
                 DataTable columns = SqlBaseProvider.GetColumnByTable(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
-                dgvColumn.DataSource = columns;
 
                 SqlBaseProvider.GetTableByCode(pTable, Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
                 PdmKeyColumn pkc = SqlBaseProvider.GetKeyColumn(Convert.ToInt32(ddlDB.SelectedValue), ddlTable.SelectedValue.ToString());
@@ -1499,6 +1478,13 @@ namespace DMS.MySql
                         {
                             String txtSetText = "G|" + tablename + "|" + pkc.ColumnCode + PublicTools.WriteEnter(1);
                             txtSetText += "S|" + tablename + "|" + pkc.ColumnCode;
+                            txtSet.Text = txtSetText;
+                            saveConfig();
+                        }
+                        else
+                        {
+                            String txtSetText = "G|" + tablename + "|" + keycolumn + PublicTools.WriteEnter(1);
+                            txtSetText += "S|" + tablename + "|" + keycolumn;
                             txtSet.Text = txtSetText;
                             saveConfig();
                         }
